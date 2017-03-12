@@ -1,4 +1,4 @@
-package com.example.examplemod;
+package com.campsuvival.campsuvivalmod;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -8,7 +8,6 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.registry.GameData;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 @Mod(modid = CampSurvivalMod.MODID, version = CampSurvivalMod.VERSION)

@@ -1,4 +1,4 @@
-package com.example.examplemod;
+package com.campsuvival.campsuvivalmod;
 
 
 import net.minecraft.block.Block;
