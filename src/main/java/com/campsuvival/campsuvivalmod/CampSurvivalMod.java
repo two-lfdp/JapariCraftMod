@@ -32,7 +32,7 @@ public class CampSurvivalMod
         //テクスチャ・モデル指定JSONファイル名の登録。
         //今回は基本的な説明に留めるため、BlockStateについては解説しない。
         //詳しくは1.8のブロック追加を見るように。
-        if(event.getSide().isClient()){
+        if(event.getSide().isClient()) {
             ModelLoader.setCustomModelResourceLocation(woodenframeItemBlock, 0, new ModelResourceLocation(new ResourceLocation(MODID, "woodenframeblock"), "inventory"));
         }
     }
