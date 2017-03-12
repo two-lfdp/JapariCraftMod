@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "normal": [
+      { "model": "campsurvivalmod/blockWoodenFrame" },
+      { "model": "campsurvivalmod/blockWoodenFrame", "y": 90 },
+      { "model": "campsurvivalmod/blockWoodenFrame", "y": 180 },
+      { "model": "campsurvivalmod/blockWoodenFrame", "y": 270 }
+    ]
+  }
+}
