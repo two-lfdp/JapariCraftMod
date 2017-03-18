@@ -1,6 +1,5 @@
 {
-  "variants": {
-    "meta=0":  { "model": "samplemod:Woodenframeblock0" },
-    "meta=1":  { "model": "samplemod:Woodenframeblock1" }
-  }
+	"variants": {
+		"normal":  { "model": "campsurvivalmod:woodenframeblock" }
+	}
 }
