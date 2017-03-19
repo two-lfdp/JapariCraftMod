@@ -1,16 +1,17 @@
 [
 {
-  "modid": "campsurvival",
-  "name": "CampSurvival Mod",
+  "modid": "campsurvivalmod",
+  "name": "CampSurvivalMod",
   "description": "add survivalItem",
-  "version": "${0.1}",
-  "mcversion": "${mcversion}",
+  "version": "0.1",
+  "mcversion": "1.10.2",
   "url": "",
   "updateUrl": "",
   "authorList": ["bagu_chan"],
-  "credits": "bagu_chan",
+  "credits": "By bagu_chan",
   "logoFile": "",
   "screenshots": [],
   "dependencies": []
+  "useDependencyInformation": "true"
 }
 ]
