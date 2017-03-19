@@ -1,14 +1,14 @@
 [
 {
-  "modid": "examplemod",
-  "name": "Example Mod",
-  "description": "Example placeholder mod.",
-  "version": "${version}",
+  "modid": "campsurvival",
+  "name": "CampSurvival Mod",
+  "description": "add survivalItem",
+  "version": "${0.1}",
   "mcversion": "${mcversion}",
   "url": "",
   "updateUrl": "",
-  "authorList": ["ExampleDude"],
-  "credits": "The Forge and FML guys, for making this example",
+  "authorList": ["bagu_chan"],
+  "credits": "bagu_chan",
   "logoFile": "",
   "screenshots": [],
   "dependencies": []
