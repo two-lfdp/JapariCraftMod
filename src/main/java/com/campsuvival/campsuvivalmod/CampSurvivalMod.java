@@ -1,11 +1,13 @@
 package com.campsuvival.campsuvivalmod;
 
 import net.minecraft.block.Block;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
@@ -31,11 +33,12 @@ public class CampSurvivalMod
         //アイテムの登録。登録文字列はMOD内で被らなければ何でも良い。
         GameRegistry.register(japariman, new ResourceLocation(MODID, "japariman"));
 
-
-        //テクスチャ・モデル指定JSONファイル名の登録
-        if(event.getSide().isClient()) {
-            ModelLoader.setCustomModelResourceLocation(japariman, 0, new ModelResourceLocation(new ResourceLocation(MODID, "japariman"), "inventory"));
-        }
+        //テクスチャ・モデル指定JSONファイル名の登録。
+        if(event.getSide().isClient()){
+            //1IDで複数モデルを登録するなら、上のメソッドで登録した登録名を指定する。
+            ModelLoader.setCustomModelResourceLocation(japariman, 0, new ModelResourceLocation(japariman.getRegistryName(), "inventory"));
+                    }
+        
 
 
         woodenframeblock = new WoodenFrameBlock();
@@ -50,4 +53,8 @@ public class CampSurvivalMod
             ModelLoader.setCustomModelResourceLocation(woodenframeitemblock, 0, new ModelResourceLocation(new ResourceLocation(MODID, "woodenframeblock"), "inventory"));
         }
     }
+
+    @EventHandler
+    public void Init(FMLInitializationEvent event) {
+  }
 }
