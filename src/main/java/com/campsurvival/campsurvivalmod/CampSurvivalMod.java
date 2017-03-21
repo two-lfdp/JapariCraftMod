@@ -1,4 +1,4 @@
-package com.campsuvival.campsuvivalmod;
+package com.campsurvival.campsurvivalmod;
 
 import net.minecraftforge.fml.common.ModMetadata;
 import net.minecraft.block.Block;
