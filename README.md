@@ -1,3 +1,3 @@
-# CampSurvivalMod
+# JapariCraftMod
 サバイバル感を引き出すアイテムやブロックを追加します
 ===========
