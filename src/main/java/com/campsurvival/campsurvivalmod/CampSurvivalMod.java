@@ -21,29 +21,41 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 public class CampSurvivalMod
 {
     public static final String MODID = "campsurvivalmod";
-    public static final String VERSION = "1.0";
+    public static final String VERSION = "1.1";
     /** Woodenframeのブロックのインスタンスを格納する */
     //Modの情報を格納する。 mcmod.infoの上位互換
     @Mod.Metadata
     public static ModMetadata metadata;
     public static Block woodenframeblock;
     public static Item japariman;
+    public static Item japarimancocoa;
     @EventHandler
-    public void preInit(FMLPreInitializationEvent event){
-
-        japariman = new ItemFood(4,4,false)
+    public void preInit(FMLPreInitializationEvent event) {
+        loadMeta();
+        japariman = new ItemFood(4, 3, false)
                 .setCreativeTab(CreativeTabs.FOOD)/*クリエイティブのタブ*/
                 .setUnlocalizedName("Japariman")/*システム名の登録*/
                 .setMaxStackSize(64);/*スタックできる量。デフォルト64*/
-        //アイテムの登録。登録文字列はMOD内で被らなければ何でも良い。
+        //アイテムの登録
         GameRegistry.register(japariman, new ResourceLocation(MODID, "japariman"));
 
         //テクスチャ・モデル指定JSONファイル名の登録。
-        if(event.getSide().isClient()){
+        if (event.getSide().isClient()) {
             //1IDで複数モデルを登録するなら、上のメソッドで登録した登録名を指定する。
             ModelLoader.setCustomModelResourceLocation(japariman, 0, new ModelResourceLocation(japariman.getRegistryName(), "inventory"));
-                    }
-        
+        }
+
+        japarimancocoa = new ItemFood(5,4,false)
+                .setCreativeTab(CreativeTabs.FOOD)/*クリエイティブのタブ*/
+                .setUnlocalizedName("JaparimanCocoa")/*システム名の登録*/
+                .setMaxStackSize(64);/*スタックできる量。デフォルト64*/
+        //アイテムの登録
+        GameRegistry.register(japarimancocoa, new ResourceLocation(MODID, "japarimancocoa"));
+
+        //テクスチャ・モデル指定JSONファイル名の登録。
+        if(event.getSide().isClient()){
+            ModelLoader.setCustomModelResourceLocation(japarimancocoa, 0, new ModelResourceLocation(japarimancocoa.getRegistryName(), "inventory"));
+        }
 
 
         woodenframeblock = new WoodenFrameBlock();
@@ -74,6 +86,14 @@ public class CampSurvivalMod
                 " W ",
                 'W',Items.WHEAT,
                 'S',Items.SUGAR
+        );
+        GameRegistry.addRecipe(new ItemStack(CampSurvivalMod.japarimancocoa,4),
+                "CWC",
+                "WSW",
+                "CWC",
+                'W',Items.WHEAT,
+                'S',Items.SUGAR,
+                'C',new ItemStack(Items.DYE,1, 3)
         );
     }
     private void loadMeta() {
