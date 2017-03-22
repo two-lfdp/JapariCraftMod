@@ -1,4 +1,4 @@
-package com.campsurvival.campsurvivalmod;
+package com.japaricraft.japaricraftmod;
 
 
 import net.minecraft.block.Block;

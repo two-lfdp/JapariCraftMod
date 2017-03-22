@@ -1,5 +1,5 @@
 {
-    "parent": "campsurvivalmod:block/woodenframeblock",
+    "parent": "japaricraftmod:block/woodenframeblock",
     "display": {
         "thirdperson": {
             "rotation": [ 10, -45, 170 ],

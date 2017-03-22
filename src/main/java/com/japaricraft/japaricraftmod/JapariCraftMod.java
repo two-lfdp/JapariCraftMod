@@ -1,4 +1,4 @@
-package com.campsurvival.campsurvivalmod;
+package com.japaricraft.japaricraftmod;
 
 import net.minecraftforge.fml.common.ModMetadata;
 import net.minecraft.block.Block;
@@ -17,11 +17,11 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-@Mod(modid = CampSurvivalMod.MODID, version = CampSurvivalMod.VERSION)
-public class CampSurvivalMod
+@Mod(modid = JapariCraftMod.MODID, version = JapariCraftMod.VERSION)
+public class JapariCraftMod
 {
-    public static final String MODID = "campsurvivalmod";
-    public static final String VERSION = "1.1";
+    public static final String MODID = "japaricraftmod";
+    public static final String VERSION = "1.0";
     /** Woodenframeのブロックのインスタンスを格納する */
     //Modの情報を格納する。 mcmod.infoの上位互換
     @Mod.Metadata
@@ -73,21 +73,21 @@ public class CampSurvivalMod
 
     @EventHandler
     public void Init(FMLInitializationEvent event) {
-        GameRegistry.addRecipe(new ItemStack(CampSurvivalMod.woodenframeblock),
+        GameRegistry.addRecipe(new ItemStack(JapariCraftMod.woodenframeblock),
                 "SPS",
                 "PSP",
                 "SPS",
                 'P', Items.PAPER,
                 'S', Items.STICK
         );
-        GameRegistry.addRecipe(new ItemStack(CampSurvivalMod.japariman,4),
+        GameRegistry.addRecipe(new ItemStack(JapariCraftMod.japariman,4),
                 " W ",
                 "WSW",
                 " W ",
                 'W',Items.WHEAT,
                 'S',Items.SUGAR
         );
-        GameRegistry.addRecipe(new ItemStack(CampSurvivalMod.japarimancocoa,4),
+        GameRegistry.addRecipe(new ItemStack(JapariCraftMod.japarimancocoa,4),
                 "CWC",
                 "WSW",
                 "CWC",
