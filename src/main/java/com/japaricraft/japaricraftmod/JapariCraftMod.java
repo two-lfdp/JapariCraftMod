@@ -1,5 +1,14 @@
 package com.japaricraft.japaricraftmod;
 
+import com.japaricraft.japaricraftmod.block.WoodenFrameBlock;
+import com.japaricraft.japaricraftmod.mob.AncientSkeleton;
+import com.japaricraft.japaricraftmod.render.ModelSample;
+import com.japaricraft.japaricraftmod.render.SampleEntityRender;
+import net.minecraft.client.renderer.entity.Render;
+import net.minecraft.client.renderer.entity.RenderManager;
+import net.minecraft.entity.EnumCreatureType;
+import net.minecraftforge.fml.client.registry.IRenderFactory;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.ModMetadata;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -15,7 +24,9 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
+import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraft.world.biome.Biome;
 
 @Mod(modid = JapariCraftMod.MODID, version = JapariCraftMod.VERSION)
 public class JapariCraftMod
@@ -31,44 +42,57 @@ public class JapariCraftMod
     public static Item japarimancocoa;
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        loadMeta();
+
+
+
         japariman = new ItemFood(4, 3, false)
                 .setCreativeTab(CreativeTabs.FOOD)/*クリエイティブのタブ*/
                 .setUnlocalizedName("Japariman")/*システム名の登録*/
                 .setMaxStackSize(64);/*スタックできる量。デフォルト64*/
-        //アイテムの登録
-        GameRegistry.register(japariman, new ResourceLocation(MODID, "japariman"));
 
-        //テクスチャ・モデル指定JSONファイル名の登録。
-        if (event.getSide().isClient()) {
-            //1IDで複数モデルを登録するなら、上のメソッドで登録した登録名を指定する。
-            ModelLoader.setCustomModelResourceLocation(japariman, 0, new ModelResourceLocation(japariman.getRegistryName(), "inventory"));
-        }
 
         japarimancocoa = new ItemFood(5,4,false)
                 .setCreativeTab(CreativeTabs.FOOD)/*クリエイティブのタブ*/
                 .setUnlocalizedName("JaparimanCocoa")/*システム名の登録*/
                 .setMaxStackSize(64);/*スタックできる量。デフォルト64*/
-        //アイテムの登録
-        GameRegistry.register(japarimancocoa, new ResourceLocation(MODID, "japarimancocoa"));
-
-        //テクスチャ・モデル指定JSONファイル名の登録。
-        if(event.getSide().isClient()){
-            ModelLoader.setCustomModelResourceLocation(japarimancocoa, 0, new ModelResourceLocation(japarimancocoa.getRegistryName(), "inventory"));
-        }
-
 
         woodenframeblock = new WoodenFrameBlock();
         //ブロックの登録。登録文字列はMOD内で被らなければ何でも良い。
         ResourceLocation registryName = new ResourceLocation(MODID, "woodenframeblock");
         ItemBlock woodenframeitemblock = new ItemBlock(woodenframeblock);
+
+
+
+        //登録関連
+        GameRegistry.register(japariman, new ResourceLocation(MODID, "japariman"));
+        GameRegistry.register(japarimancocoa, new ResourceLocation(MODID, "japarimancocoa"));
         GameRegistry.register(woodenframeblock, registryName);
         GameRegistry.register(woodenframeitemblock, registryName);
 
         //テクスチャ・モデル指定JSONファイル名の登録
         if(event.getSide().isClient()) {
+            ModelLoader.setCustomModelResourceLocation(japariman, 0, new ModelResourceLocation(japariman.getRegistryName(), "inventory"));
+            ModelLoader.setCustomModelResourceLocation(japarimancocoa, 0, new ModelResourceLocation(japarimancocoa.getRegistryName(), "inventory"));
             ModelLoader.setCustomModelResourceLocation(woodenframeitemblock, 0, new ModelResourceLocation(new ResourceLocation(MODID, "woodenframeblock"), "inventory"));
         }
+
+        //メタ情報の登録
+        loadMeta();
+
+        EntityRegistry.registerModEntity(AncientSkeleton.class, "AncientSkeleton", 0, this, 40, 3, true, 2243405, 7375001);
+        EntityRegistry.addSpawn(AncientSkeleton.class, 3, 1, 2, EnumCreatureType.MONSTER, Biome.getBiome(0));
+        if(event.getSide().isServer()) {
+            return;
+        }
+
+        RenderingRegistry.registerEntityRenderingHandler(AncientSkeleton.class, new IRenderFactory() {
+            @Override
+            public Render createRenderFor(RenderManager manager) {
+                return new SampleEntityRender(manager, new  ModelSample(),0);
+            }
+        });
+
+
     }
 
     @EventHandler

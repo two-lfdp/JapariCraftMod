@@ -1,4 +1,4 @@
-package com.japaricraft.japaricraftmod;
+package com.japaricraft.japaricraftmod.block;
 
 
 import net.minecraft.block.Block;
