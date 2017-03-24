@@ -1,12 +1,14 @@
 package com.japaricraft.japaricraftmod;
 
 import com.japaricraft.japaricraftmod.block.WoodenFrameBlock;
+import com.japaricraft.japaricraftmod.item.SandStarFragment;
 import com.japaricraft.japaricraftmod.mob.AncientSkeleton;
 import com.japaricraft.japaricraftmod.render.ModelSample;
 import com.japaricraft.japaricraftmod.render.SampleEntityRender;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.EnumCreatureType;
+import net.minecraft.item.*;
 import net.minecraftforge.fml.client.registry.IRenderFactory;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.ModMetadata;
@@ -14,10 +16,6 @@ import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
-import net.minecraft.item.ItemBlock;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemFood;
-import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraft.util.ResourceLocation;
@@ -27,6 +25,7 @@ import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraft.world.biome.Biome;
+
 
 @Mod(modid = JapariCraftMod.MODID, version = JapariCraftMod.VERSION)
 public class JapariCraftMod
@@ -40,8 +39,11 @@ public class JapariCraftMod
     public static Block woodenframeblock;
     public static Item japariman;
     public static Item japarimancocoa;
+    public static Item sandstarfragment;
+
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
+
 
 
 
@@ -49,14 +51,15 @@ public class JapariCraftMod
                 .setCreativeTab(CreativeTabs.FOOD)/*クリエイティブのタブ*/
                 .setUnlocalizedName("Japariman")/*システム名の登録*/
                 .setMaxStackSize(64);/*スタックできる量。デフォルト64*/
-
-
         japarimancocoa = new ItemFood(5,4,false)
                 .setCreativeTab(CreativeTabs.FOOD)/*クリエイティブのタブ*/
                 .setUnlocalizedName("JaparimanCocoa")/*システム名の登録*/
                 .setMaxStackSize(64);/*スタックできる量。デフォルト64*/
+        sandstarfragment= new SandStarFragment()
+                .setCreativeTab(CreativeTabs.MATERIALS)
+                .setUnlocalizedName("SandStarFragment");
 
-        woodenframeblock = new WoodenFrameBlock();
+                woodenframeblock = new WoodenFrameBlock();
         //ブロックの登録。登録文字列はMOD内で被らなければ何でも良い。
         ResourceLocation registryName = new ResourceLocation(MODID, "woodenframeblock");
         ItemBlock woodenframeitemblock = new ItemBlock(woodenframeblock);
@@ -68,9 +71,10 @@ public class JapariCraftMod
         GameRegistry.register(japarimancocoa, new ResourceLocation(MODID, "japarimancocoa"));
         GameRegistry.register(woodenframeblock, registryName);
         GameRegistry.register(woodenframeitemblock, registryName);
-
+        GameRegistry.register(sandstarfragment, new ResourceLocation(MODID, "sandstarfragment"));
         //テクスチャ・モデル指定JSONファイル名の登録
         if(event.getSide().isClient()) {
+            ModelLoader.setCustomModelResourceLocation(sandstarfragment, 0, new ModelResourceLocation(sandstarfragment.getRegistryName(), "inventory"));
             ModelLoader.setCustomModelResourceLocation(japariman, 0, new ModelResourceLocation(japariman.getRegistryName(), "inventory"));
             ModelLoader.setCustomModelResourceLocation(japarimancocoa, 0, new ModelResourceLocation(japarimancocoa.getRegistryName(), "inventory"));
             ModelLoader.setCustomModelResourceLocation(woodenframeitemblock, 0, new ModelResourceLocation(new ResourceLocation(MODID, "woodenframeblock"), "inventory"));
@@ -84,6 +88,8 @@ public class JapariCraftMod
         if(event.getSide().isServer()) {
             return;
         }
+
+
 
         RenderingRegistry.registerEntityRenderingHandler(AncientSkeleton.class, new IRenderFactory() {
             @Override
