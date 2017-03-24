@@ -10,8 +10,8 @@ public class WoodenFrameBlock extends Block{
         super(Material.WOOD);
         setCreativeTab(CreativeTabs.BUILDING_BLOCKS);/*クリエイティブタブの選択*/
         setUnlocalizedName("BlockWoodenFrame");/*システム名の設定*/
-        setHardness(1.0F);/*硬さ*/
-        setResistance(1.0F);/*爆破耐性*/
+        setHardness(1.2F);/*硬さ*/
+        setResistance(2.0F);/*爆破耐性*/
         setSoundType(blockSoundType.WOOD);/*ブロックの上を歩いた時の音*/
         /*setBlockUnbreakable();*//*ブロックを破壊不可に設定*/
         /*setTickRandomly(true);*//*ブロックのtick処理をランダムに。デフォルトfalse*/
