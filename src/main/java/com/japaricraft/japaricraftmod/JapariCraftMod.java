@@ -31,7 +31,7 @@ import net.minecraft.world.biome.Biome;
 public class JapariCraftMod
 {
     public static final String MODID = "japaricraftmod";
-    public static final String VERSION = "1.1";
+    public static final String VERSION = "1.2";
     /** Woodenframeのブロックのインスタンスを格納する */
     //Modの情報を格納する。 mcmod.infoの上位互換
     @Mod.Metadata
@@ -58,6 +58,7 @@ public class JapariCraftMod
         sandstarfragment= new SandStarFragment()
                 .setCreativeTab(CreativeTabs.MATERIALS)
                 .setUnlocalizedName("SandStarFragment");
+
 
                 woodenframeblock = new WoodenFrameBlock();
         //ブロックの登録。登録文字列はMOD内で被らなければ何でも良い。

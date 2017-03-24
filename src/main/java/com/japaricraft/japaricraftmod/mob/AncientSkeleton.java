@@ -1,6 +1,7 @@
 package com.japaricraft.japaricraftmod.mob;
 
 
+import com.japaricraft.japaricraftmod.JapariCraftMod;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -119,8 +120,8 @@ public class AncientSkeleton extends EntityMob {
     @Override
     protected void dropFewItems(boolean parRecentlyHit, int parLootingLevel) {
         //ほんとは確率とかで落とすものが決めれるんだと思う
-        dropItem(Items.GOLDEN_APPLE,3);
-        dropItem(Items.GOLD_INGOT,7);
+        dropItem(JapariCraftMod.sandstarfragment,3);
+        dropItem(Items.GOLD_INGOT,5);
         dropItem(Items.BONE,3);
 
     }
