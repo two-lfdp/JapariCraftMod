@@ -15,7 +15,7 @@ public class ModelSample extends ModelBiped
         this(0.0F, false);
     }
 
-    public ModelSample(float modelSize, boolean p_i46303_2_)
+    protected ModelSample(float modelSize, boolean p_i46303_2_)
     {
 
         super(modelSize, 0.0F, 64, 32);
@@ -39,6 +39,7 @@ public class ModelSample extends ModelBiped
         }
 
     }
+    @Override
     public void postRenderArm(float scale, EnumHandSide side)
     {
 

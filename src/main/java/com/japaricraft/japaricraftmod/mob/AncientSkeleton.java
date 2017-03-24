@@ -132,6 +132,6 @@ public class AncientSkeleton extends EntityMob {
         getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(40D);
         getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(120);
         getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.3);
-        getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(4);
+        getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(3);
     }
 }
