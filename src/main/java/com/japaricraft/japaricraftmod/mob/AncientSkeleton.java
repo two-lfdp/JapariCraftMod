@@ -104,7 +104,7 @@ public class AncientSkeleton extends EntityMob {
     }
 
 
-    public EnumCreatureAttribute getCreatureAttribute() { return EnumCreatureAttribute.UNDEFINED; }
+    public EnumCreatureAttribute getCreatureAttribute() { return EnumCreatureAttribute.UNDEAD; }
 
 
     public void updateAITasks(){
