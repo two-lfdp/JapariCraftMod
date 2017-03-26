@@ -28,21 +28,7 @@ public class AncientSkeleton extends EntityMob {
 
     public AncientSkeleton(World world) {
         super(world);
-        /*とりあえずこいつは後で、、
-        // うろうろ移動するAIの追加
-        this.tasks.addTask(1, new EntityAIWander(this));
-        // 見回すAIの追加
-        this.tasks.addTask(2, new EntityAILookIdle(this));
-        */
-        /*
-        tasks.addTask(7,new EntityAIWander(this,1.0D));
-        tasks.addTask(1,new EntityAISwimming(this));
-        this.tasks.addTask(8, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
-        this.tasks.addTask(8, new EntityAILookIdle(this));
-        this.tasks.addTask(2, new EntityAIZombieAttack(this, 1.0D, false));
-        targetTasks.addTask(2,new EntityAIHurtByTarget(this,false));
-        targetTasks.addTask(1,new EntityAINearestAttackableTarget(this,EntityPlayer.class,false,true));
-        */
+
 
         //this.tasks.addTask(0, new Entityattack);
         this.tasks.addTask(0, new EntityAISwimming(this));
@@ -58,7 +44,7 @@ public class AncientSkeleton extends EntityMob {
         this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityIronGolem.class, true));
 
         this.setItemStackToSlot(EntityEquipmentSlot.HEAD, new ItemStack(Items.GOLDEN_HELMET,1,rand.nextInt(1)));
-
+        this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(JapariCraftMod.sandstarsword,1,rand.nextInt(1)));
     }
 
     public boolean isAIEnabled() { return true; }
@@ -92,10 +78,7 @@ public class AncientSkeleton extends EntityMob {
         this.bossInfo.addPlayer(player);
     }
 
-    /**
-     * Removes the given player from the list of players tracking this entity. See {@link Entity#addTrackingPlayer} for
-     * more information on tracking.
-     */
+
     //敵（プレイヤー）の登録解除
     public void removeTrackingPlayer(EntityPlayerMP player)
     {
@@ -120,16 +103,15 @@ public class AncientSkeleton extends EntityMob {
     @Override
     protected void dropFewItems(boolean parRecentlyHit, int parLootingLevel) {
         //ほんとは確率とかで落とすものが決めれるんだと思う
-        dropItem(JapariCraftMod.sandstarfragment,3);
-        dropItem(Items.GOLD_INGOT,5);
-        dropItem(Items.BONE,3);
+        dropItem(JapariCraftMod.sandstarfragment,4);
+        dropItem(Items.BONE,5);
 
     }
 
 
     protected void applyEntityAttributes(){
         super.applyEntityAttributes();
-        getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(5D);
+        getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(2D);
         getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(40D);
         getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(120);
         getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.3);

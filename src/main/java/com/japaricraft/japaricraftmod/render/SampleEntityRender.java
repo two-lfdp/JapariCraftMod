@@ -1,9 +1,11 @@
 package com.japaricraft.japaricraftmod.render;
 
 import net.minecraft.client.model.ModelBase;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.entity.layers.LayerBipedArmor;
+import net.minecraft.client.renderer.entity.layers.LayerHeldItem;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 
@@ -14,6 +16,8 @@ public class SampleEntityRender extends RenderLiving {
         super(manager,model,shadow);
         LayerBipedArmor layerbipedarmor = new LayerBipedArmor(this)
         {
+            public ModelSample getItemStackFromSlot;
+
             protected void initArmor()
             {
                 this.modelLeggings = new ModelSample(0.5F, true);
@@ -21,6 +25,7 @@ public class SampleEntityRender extends RenderLiving {
             }
         };
         this.addLayer(layerbipedarmor);
+        this.addLayer(new LayerHeldItem(this));
 
     }
 
