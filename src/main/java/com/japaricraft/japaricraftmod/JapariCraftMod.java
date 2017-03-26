@@ -98,7 +98,7 @@ public class JapariCraftMod
         loadMeta();
 
         EntityRegistry.registerModEntity(AncientSkeleton.class, "AncientSkeleton", 0, this, 40, 3, true, 2243405, 7375001);
-        EntityRegistry.addSpawn(AncientSkeleton.class, 3, 1, 2, EnumCreatureType.MONSTER, Biome.getBiome(0));
+        EntityRegistry.addSpawn(AncientSkeleton.class, 3, 1, 1, EnumCreatureType.MONSTER,Biome.getBiome(2));
         if(event.getSide().isServer()) {
             return;
         }
@@ -111,6 +111,7 @@ public class JapariCraftMod
                 return new SampleEntityRender(manager, new  ModelSample(),0);
             }
         });
+
 
 
     }
