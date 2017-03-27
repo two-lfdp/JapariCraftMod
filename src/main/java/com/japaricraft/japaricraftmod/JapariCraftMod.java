@@ -34,7 +34,7 @@ import net.minecraft.world.biome.Biome;
 public class JapariCraftMod
 {
     public static final String MODID = "japaricraftmod";
-    public static final String VERSION = "1.3";
+    public static final String VERSION = "1.4";
     /** Woodenframeのブロックのインスタンスを格納する */
     //Modの情報を格納する。 mcmod.infoの上位互換
     @Mod.Metadata
@@ -46,7 +46,7 @@ public class JapariCraftMod
     public static Item sandstarfragment;
     public static ItemSword sandstarsword;
     public static Item.ToolMaterial SandStar = EnumHelper.addToolMaterial("SandStar", 3, 700, 7F, 4F, 16);
-    public static final CreativeTabs TabJapariCraft = new CreativeTabJapariCraft("JapariCraft");
+    public static final CreativeTabs JapariCraft = new CreativeTabJapariCraft("JapariCraft");
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
@@ -55,19 +55,19 @@ public class JapariCraftMod
 
 
         japariman = new ItemFood(4, 3, false)
-                .setCreativeTab(TabJapariCraft)/*クリエイティブのタブ*/
+                .setCreativeTab(JapariCraft)/*クリエイティブのタブ*/
                 .setUnlocalizedName("Japariman")/*システム名の登録*/
                 .setMaxStackSize(64);/*スタックできる量。デフォルト64*/
         japarimancocoa = new ItemFood(5,4,false)
-                .setCreativeTab(TabJapariCraft)/*クリエイティブのタブ*/
+                .setCreativeTab(JapariCraft)/*クリエイティブのタブ*/
                 .setUnlocalizedName("JaparimanCocoa")/*システム名の登録*/
                 .setMaxStackSize(64);
         sandstarfragment= new SandStarFragment()
-                .setCreativeTab(TabJapariCraft)
+                .setCreativeTab(JapariCraft)
                 .setUnlocalizedName("SandStarFragment")
                 .setMaxStackSize(64);
         sandstarsword = (ItemSword) new ItemSword(SandStar)
-                .setCreativeTab(TabJapariCraft)
+                .setCreativeTab(JapariCraft)
                 .setUnlocalizedName("SandStarSword");
             //アイテムの登録。
 
