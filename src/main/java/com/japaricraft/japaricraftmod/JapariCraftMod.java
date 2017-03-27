@@ -46,6 +46,8 @@ public class JapariCraftMod
     public static Item sandstarfragment;
     public static ItemSword sandstarsword;
     public static Item.ToolMaterial SandStar = EnumHelper.addToolMaterial("SandStar", 3, 700, 7F, 4F, 16);
+    public static final CreativeTabs TabJapariCraft = new CreativeTabJapariCraft("JapariCraft");
+
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
 
@@ -53,19 +55,19 @@ public class JapariCraftMod
 
 
         japariman = new ItemFood(4, 3, false)
-                .setCreativeTab(CreativeTabs.FOOD)/*クリエイティブのタブ*/
+                .setCreativeTab(TabJapariCraft)/*クリエイティブのタブ*/
                 .setUnlocalizedName("Japariman")/*システム名の登録*/
                 .setMaxStackSize(64);/*スタックできる量。デフォルト64*/
         japarimancocoa = new ItemFood(5,4,false)
-                .setCreativeTab(CreativeTabs.FOOD)/*クリエイティブのタブ*/
+                .setCreativeTab(TabJapariCraft)/*クリエイティブのタブ*/
                 .setUnlocalizedName("JaparimanCocoa")/*システム名の登録*/
                 .setMaxStackSize(64);
         sandstarfragment= new SandStarFragment()
-                .setCreativeTab(CreativeTabs.MATERIALS)
+                .setCreativeTab(TabJapariCraft)
                 .setUnlocalizedName("SandStarFragment")
                 .setMaxStackSize(64);
         sandstarsword = (ItemSword) new ItemSword(SandStar)
-                .setCreativeTab(CreativeTabs.COMBAT)
+                .setCreativeTab(TabJapariCraft)
                 .setUnlocalizedName("SandStarSword");
             //アイテムの登録。
 

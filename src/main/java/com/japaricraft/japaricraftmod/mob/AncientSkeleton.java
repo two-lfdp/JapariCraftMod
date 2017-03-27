@@ -21,6 +21,7 @@ import net.minecraft.world.BossInfo;
 import net.minecraft.world.BossInfoServer;
 import net.minecraft.world.World;
 
+
 public class AncientSkeleton extends EntityMob {
 
     private final BossInfoServer bossInfo = (BossInfoServer)(new BossInfoServer(this.getDisplayName(), BossInfo.Color.YELLOW, BossInfo.Overlay.PROGRESS)).setDarkenSky(true);
@@ -102,7 +103,7 @@ public class AncientSkeleton extends EntityMob {
     @Override
     protected void dropFewItems(boolean parRecentlyHit, int parLootingLevel) {
         //ほんとは確率とかで落とすものが決めれるんだと思う
-        dropItem(JapariCraftMod.sandstarfragment,4);
+        dropItem(JapariCraftMod.sandstarfragment,6);
         dropItem(Items.BONE,5);
 
     }
