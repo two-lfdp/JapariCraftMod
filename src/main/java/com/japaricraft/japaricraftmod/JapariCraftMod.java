@@ -10,13 +10,10 @@ import com.japaricraft.japaricraftmod.profession.ItemCareer;
 import com.japaricraft.japaricraftmod.profession.JapalarProfession;
 import com.japaricraft.japaricraftmod.render.ModelSample;
 import com.japaricraft.japaricraftmod.render.SampleEntityRender;
-import net.minecraft.client.renderer.entity.Render;
-import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.item.*;
 import net.minecraftforge.common.util.EnumHelper;
-import net.minecraftforge.fml.client.registry.IRenderFactory;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.ModMetadata;
 import net.minecraft.block.Block;
@@ -32,7 +29,6 @@ import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraft.world.biome.Biome;
-import net.minecraftforge.fml.common.registry.VillagerRegistry;
 
 
 @Mod(modid = JapariCraftMod.MODID, name = JapariCraftMod.MODNAME, version = JapariCraftMod.VERSION, useMetadata = true)

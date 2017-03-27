@@ -1,6 +1,7 @@
 package com.japaricraft.japaricraftmod;
 
 import net.minecraft.item.ItemSword;
+
 public class SandStarSword extends ItemSword {
 
     public SandStarSword(ToolMaterial SandStar){
