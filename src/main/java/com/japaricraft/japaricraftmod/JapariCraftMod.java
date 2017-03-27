@@ -59,7 +59,7 @@ public class JapariCraftMod {
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        japalarprofession = new JapalarProfession();
+        japalarprofession =new JapalarProfession();
         sandstarsword = new SandStarSword(SandStar);
 
 

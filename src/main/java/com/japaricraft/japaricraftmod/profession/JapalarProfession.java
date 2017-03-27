@@ -25,6 +25,7 @@ public class JapalarProfession extends IForgeRegistryEntry.Impl<VillagerRegistry
         this.zombie = new ResourceLocation(zombie);
         this.setRegistryName(this.name);
     }
+
     public ResourceLocation getSkin() { return this.texture; }
     public ResourceLocation getZombieSkin() { return this.zombie; }
 
