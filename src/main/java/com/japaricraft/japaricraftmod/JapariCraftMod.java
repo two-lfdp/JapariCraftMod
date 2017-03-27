@@ -35,10 +35,11 @@ import net.minecraft.world.biome.Biome;
 import net.minecraftforge.fml.common.registry.VillagerRegistry;
 
 
-@Mod(modid = JapariCraftMod.MODID, version = JapariCraftMod.VERSION)
+@Mod(modid = JapariCraftMod.MODID, name = JapariCraftMod.MODNAME, version = JapariCraftMod.VERSION, useMetadata = true)
 public class JapariCraftMod {
     public static final String MODID = "japaricraftmod";
     public static final String VERSION = "1.4";
+    public static final String MODNAME = "JapariCraftMod";
     /**
      * Woodenframeのブロックのインスタンスを格納する
      */
@@ -64,9 +65,10 @@ public class JapariCraftMod {
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         //Memo:なぜここで初期化したし
-        japalarprofession =  new JapalarProfession();
+        //→どうやらForgeのRegistryの関係上こっちで初期化しないと死ぬっぽい
+        japalarprofession = new JapalarProfession();
         //コンストラクタ呼び出し時にregisterされるはず
-        //うーん、ダメだった
+        //→動作確認
         new ItemCareer(japalarprofession, "japalar",
                 new EntityVillager.ITradeList[][]{
                         {
@@ -102,9 +104,15 @@ public class JapariCraftMod {
         GameRegistry.register(sandStarFragment, new ResourceLocation(MODID, "sandStarFragment"));
         GameRegistry.register(sandStarSword, new ResourceLocation(MODID, "sandStarSword"));
 
-
-        //GameRegistry.
+        //ここでResourceLocationを引数に入れるとregister()内でsetRegistryName()が呼ばれてエラー
         GameRegistry.register(japalarprofession/*, new ResourceLocation(MODID, "Japalar")*/);
+
+        //蔵鯖共通処理終わらせてからクライアントのみの処理書いたほうが見やすい
+        //メタ情報の登録
+        loadMeta();
+
+        EntityRegistry.registerModEntity(AncientSkeleton.class, "AncientSkeleton", 0, this, 40, 3, true, 2243405, 7375001);
+        EntityRegistry.addSpawn(AncientSkeleton.class, 3, 1, 1, EnumCreatureType.MONSTER, Biome.getBiome(2));
 
         //テクスチャ・モデル指定JSONファイル名の登録
         if (event.getSide().isClient()) {
@@ -114,21 +122,9 @@ public class JapariCraftMod {
             ModelLoader.setCustomModelResourceLocation(japarimanCocoa, 0, new ModelResourceLocation(japarimanCocoa.getRegistryName(), "inventory"));
             ModelLoader.setCustomModelResourceLocation(woodenframeitemblock, 0, new ModelResourceLocation(new ResourceLocation(MODID, "woodenFrameBlock"), "inventory"));
             ModelLoader.setCustomModelResourceLocation(sandstaritemblock, 0, new ModelResourceLocation(new ResourceLocation(MODID, "sandStarBlock"), "inventory"));
+            //Memo: Render関連は全部クライアントサイドで
+            RenderingRegistry.registerEntityRenderingHandler(AncientSkeleton.class, manager -> new SampleEntityRender<>(manager, new ModelSample(), 0));
         }
-
-        //メタ情報の登録
-        loadMeta();
-
-        EntityRegistry.registerModEntity(AncientSkeleton.class, "AncientSkeleton", 0, this, 40, 3, true, 2243405, 7375001);
-        EntityRegistry.addSpawn(AncientSkeleton.class, 3, 1, 1, EnumCreatureType.MONSTER, Biome.getBiome(2));
-        if (event.getSide().isServer()) {
-            return;
-        }
-
-
-        RenderingRegistry.registerEntityRenderingHandler(AncientSkeleton.class, manager -> new SampleEntityRender<>(manager, new ModelSample(), 0));
-
-
     }
 
     @EventHandler
@@ -181,7 +177,7 @@ public class JapariCraftMod {
     private void loadMeta() {
         metadata.authorList.add("bagu_chan");
         metadata.modId = MODID;
-        metadata.name = MODID;
+        metadata.name = MODNAME;
         metadata.version = VERSION;
         // Modのアップデートをチェックする為のJson 詳細は、 https://mcforge.readthedocs.io/en/latest/gettingstarted/autoupdate/ 参照
         // metadata.updateJSON
