@@ -3,7 +3,6 @@ package com.japaricraft.japaricraftmod.block;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
 
 public class SandStarBlock extends Block {
     public SandStarBlock()
@@ -14,7 +13,6 @@ public class SandStarBlock extends Block {
         setHardness(4.0F);/*硬さ*/
         setResistance(30.0F);/*爆破耐性*/
         setSoundType(blockSoundType.GLASS);
-        setLightOpacity(1);
         setLightLevel(10);
         setHarvestLevel("pickaxe",1);
     }

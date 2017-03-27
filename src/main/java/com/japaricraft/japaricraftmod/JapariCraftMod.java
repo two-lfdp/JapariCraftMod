@@ -62,7 +62,8 @@ public class JapariCraftMod
                 .setMaxStackSize(64);
         sandstarfragment= new SandStarFragment()
                 .setCreativeTab(CreativeTabs.MATERIALS)
-                .setUnlocalizedName("SandStarFragment");
+                .setUnlocalizedName("SandStarFragment")
+                .setMaxStackSize(64);
         sandstarsword = (ItemSword) new ItemSword(SandStar)
                 .setCreativeTab(CreativeTabs.COMBAT)
                 .setUnlocalizedName("SandStarSword");
@@ -155,12 +156,17 @@ public class JapariCraftMod
                 'F',JapariCraftMod.sandstarfragment,
                 'S',Items.STICK
         );
-        GameRegistry.addRecipe(new ItemStack(JapariCraftMod.sandstarblock),
+        GameRegistry.addRecipe(new ItemStack(JapariCraftMod.sandstarblock,1),
                 "SSS",
                 "SSS",
                 "SSS",
-                "S",JapariCraftMod.sandstarfragment
+                'S',JapariCraftMod.sandstarfragment
+
         );
+        GameRegistry.addShapelessRecipe(new ItemStack(JapariCraftMod.sandstarfragment,9),
+                JapariCraftMod.sandstarblock
+        );
+
 
     }
     private void loadMeta() {
