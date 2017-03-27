@@ -44,7 +44,7 @@ public class AncientSkeleton extends EntityMob {
         this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityIronGolem.class, true));
 
         this.setItemStackToSlot(EntityEquipmentSlot.HEAD, new ItemStack(Items.GOLDEN_HELMET,1,rand.nextInt(1)));
-        this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(JapariCraftMod.sandstarsword,1,rand.nextInt(1)));
+        this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(JapariCraftMod.sandStarSword,1,rand.nextInt(1)));
     }
 
     public boolean isAIEnabled() { return true; }
@@ -103,7 +103,7 @@ public class AncientSkeleton extends EntityMob {
     @Override
     protected void dropFewItems(boolean parRecentlyHit, int parLootingLevel) {
         //ほんとは確率とかで落とすものが決めれるんだと思う
-        dropItem(JapariCraftMod.sandstarfragment,6);
+        dropItem(JapariCraftMod.sandStarFragment,6);
         dropItem(Items.BONE,5);
 
     }

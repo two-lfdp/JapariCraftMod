@@ -5,7 +5,7 @@ public class SandStarSword extends ItemSword {
 
     public SandStarSword(ToolMaterial SandStar){
         super(SandStar);
-        this.setCreativeTab(JapariCraftMod.JapariCraft);
+        this.setCreativeTab(JapariCraftMod.tabJapariCraft);
         this.setUnlocalizedName("SandStarSword");
     }
 }
