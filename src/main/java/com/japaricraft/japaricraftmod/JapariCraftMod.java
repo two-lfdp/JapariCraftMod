@@ -1,5 +1,6 @@
 package com.japaricraft.japaricraftmod;
 
+import com.japaricraft.japaricraftmod.block.SandStarBlock;
 import com.japaricraft.japaricraftmod.block.WoodenFrameBlock;
 import com.japaricraft.japaricraftmod.item.SandStarFragment;
 import com.japaricraft.japaricraftmod.mob.AncientSkeleton;
@@ -28,6 +29,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraft.world.biome.Biome;
 
 
+
 @Mod(modid = JapariCraftMod.MODID, version = JapariCraftMod.VERSION)
 public class JapariCraftMod
 {
@@ -38,6 +40,7 @@ public class JapariCraftMod
     @Mod.Metadata
     public static ModMetadata metadata;
     public static Block woodenframeblock;
+    public static Block sandstarblock;
     public static Item japariman;
     public static Item japarimancocoa;
     public static Item sandstarfragment;
@@ -66,14 +69,16 @@ public class JapariCraftMod
             //アイテムの登録。
 
                 woodenframeblock = new WoodenFrameBlock();
+                sandstarblock = new SandStarBlock();
 
         //ブロックの登録。
-        ResourceLocation registryName = new ResourceLocation(MODID, "woodenframeblock");
+        ResourceLocation woodenframeblocklocation = new ResourceLocation(MODID, "woodenframeblock");//これはウッデンフレームブロックのテクスチャ指定。
         ItemBlock woodenframeitemblock = new ItemBlock(woodenframeblock);
 
 
 
-
+        ResourceLocation sandstarlocation = new ResourceLocation(MODID, "sandstarblock");
+        ItemBlock sandstaritemblock = new ItemBlock(sandstarblock);
 
 
 
@@ -81,8 +86,10 @@ public class JapariCraftMod
         //登録関連
         GameRegistry.register(japariman, new ResourceLocation(MODID, "japariman"));
         GameRegistry.register(japarimancocoa, new ResourceLocation(MODID, "japarimancocoa"));
-        GameRegistry.register(woodenframeblock, registryName);
-        GameRegistry.register(woodenframeitemblock, registryName);
+        GameRegistry.register(woodenframeblock, woodenframeblocklocation);
+        GameRegistry.register(woodenframeitemblock, woodenframeblocklocation);
+        GameRegistry.register(sandstarblock,sandstarlocation);
+        GameRegistry.register(sandstaritemblock,sandstarlocation);
         GameRegistry.register(sandstarfragment, new ResourceLocation(MODID, "sandstarfragment"));
         GameRegistry.register(sandstarsword, new ResourceLocation(MODID, "sandstarsword"));
         //テクスチャ・モデル指定JSONファイル名の登録
@@ -92,6 +99,7 @@ public class JapariCraftMod
             ModelLoader.setCustomModelResourceLocation(japariman, 0, new ModelResourceLocation(japariman.getRegistryName(), "inventory"));
             ModelLoader.setCustomModelResourceLocation(japarimancocoa, 0, new ModelResourceLocation(japarimancocoa.getRegistryName(), "inventory"));
             ModelLoader.setCustomModelResourceLocation(woodenframeitemblock, 0, new ModelResourceLocation(new ResourceLocation(MODID, "woodenframeblock"), "inventory"));
+            ModelLoader.setCustomModelResourceLocation(sandstaritemblock,0,new ModelResourceLocation(new ResourceLocation(MODID,"sandstarblock"),"inventory"));
         }
 
         //メタ情報の登録
@@ -146,6 +154,12 @@ public class JapariCraftMod
                 "S",
                 'F',JapariCraftMod.sandstarfragment,
                 'S',Items.STICK
+        );
+        GameRegistry.addRecipe(new ItemStack(JapariCraftMod.sandstarblock),
+                "SSS",
+                "SSS",
+                "SSS",
+                "S",JapariCraftMod.sandstarfragment
         );
 
     }

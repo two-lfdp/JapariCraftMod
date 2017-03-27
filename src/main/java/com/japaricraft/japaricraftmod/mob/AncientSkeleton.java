@@ -2,7 +2,6 @@ package com.japaricraft.japaricraftmod.mob;
 
 
 import com.japaricraft.japaricraftmod.JapariCraftMod;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
