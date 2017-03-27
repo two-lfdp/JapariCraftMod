@@ -6,6 +6,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 
 public class WoodenFrameBlock extends Block{
+
     public WoodenFrameBlock() {
         super(Material.WOOD);
         setCreativeTab(CreativeTabs.BUILDING_BLOCKS);/*クリエイティブタブの選択*/
