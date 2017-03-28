@@ -21,6 +21,7 @@ import net.minecraft.world.BossInfo;
 import net.minecraft.world.BossInfoServer;
 import net.minecraft.world.World;
 
+
 public class AncientSkeleton extends EntityMob {
 
     private final BossInfoServer bossInfo = (BossInfoServer)(new BossInfoServer(this.getDisplayName(), BossInfo.Color.YELLOW, BossInfo.Overlay.PROGRESS)).setDarkenSky(true);
@@ -37,13 +38,13 @@ public class AncientSkeleton extends EntityMob {
         this.tasks.addTask(8, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
         this.tasks.addTask(8, new EntityAILookIdle(this));
         this.tasks.addTask(6, new EntityAIMoveThroughVillage(this, 1.0D, false));
-        this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true, EntityPigZombie.class));
-        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, true));
-        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget<>(this, EntityVillager.class, false));
-        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget<>(this, EntityIronGolem.class, true));
+        this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true, new Class[] {EntityPigZombie.class}));
+        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
+        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityVillager.class, false));
+        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityIronGolem.class, true));
 
         this.setItemStackToSlot(EntityEquipmentSlot.HEAD, new ItemStack(Items.GOLDEN_HELMET,1,rand.nextInt(1)));
-        this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(JapariCraftMod.sandStarSword,1,rand.nextInt(1)));
+        this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(JapariCraftMod.sandstarsword,1,rand.nextInt(1)));
     }
 
     public boolean isAIEnabled() { return true; }
@@ -102,7 +103,7 @@ public class AncientSkeleton extends EntityMob {
     @Override
     protected void dropFewItems(boolean parRecentlyHit, int parLootingLevel) {
         //ほんとは確率とかで落とすものが決めれるんだと思う
-        dropItem(JapariCraftMod.sandStarFragment,6);
+        dropItem(JapariCraftMod.sandstarfragment,6);
         dropItem(Items.BONE,5);
 
     }
