@@ -1,16 +1,15 @@
 package com.japaricraft.japaricraftmod.item;
 
-import com.japaricraft.japaricraftmod.item.SandStarFragment;
 import net.minecraft.item.Item;
 
-import static com.japaricraft.japaricraftmod.JapariCraftMod.JapariCraft;
+import static com.japaricraft.japaricraftmod.JapariCraftMod.tabJapariCraft;
 
 
 public class ItemSandStarFragment extends Item {
     public ItemSandStarFragment()
     {
 
-        this.setCreativeTab(JapariCraft);
+        this.setCreativeTab(tabJapariCraft);
         this.setUnlocalizedName("SandStarFragment");
         this.setMaxStackSize(64);
     }
