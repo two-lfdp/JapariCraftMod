@@ -7,10 +7,9 @@ import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.entity.layers.LayerBipedArmor;
 import net.minecraft.client.renderer.entity.layers.LayerHeldItem;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.ResourceLocation;
 
-public class SampleEntityRender<T extends EntityLiving> extends RenderLiving<T> {
+public class SampleEntityRender extends RenderLiving {
     public static final ResourceLocation texture = new ResourceLocation("JapariCraftMod:textures/entity/ancientskeleton.png");
 
     public SampleEntityRender(RenderManager manager, ModelBase model, float shadow) {
@@ -31,7 +30,7 @@ public class SampleEntityRender<T extends EntityLiving> extends RenderLiving<T> 
     }
 
     @Override
-    protected ResourceLocation getEntityTexture(T entity) {
+    protected ResourceLocation getEntityTexture(Entity entity) {
         return texture;
     }
 }

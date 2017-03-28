@@ -22,7 +22,7 @@ public class CreativeTabJapariCraft extends CreativeTabs {
     @SideOnly(Side.CLIENT)
     public String getTranslatedTabLabel()
     {
-        return "tabJapariCraft";
+        return "JapariCraft";
     }
 
 }
