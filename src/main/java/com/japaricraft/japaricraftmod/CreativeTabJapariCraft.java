@@ -11,6 +11,7 @@ public class CreativeTabJapariCraft extends CreativeTabs {
         super(label);
     }
 
+
     @Override
     @SideOnly(Side.CLIENT)
     public Item getTabIconItem()
@@ -22,7 +23,7 @@ public class CreativeTabJapariCraft extends CreativeTabs {
     @SideOnly(Side.CLIENT)
     public String getTranslatedTabLabel()
     {
-        return "JapariCraft";
+        return "tabJapariCraft";
     }
 
 }

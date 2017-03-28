@@ -1,6 +1,5 @@
 package com.japaricraft.japaricraftmod.block;
 
-
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;

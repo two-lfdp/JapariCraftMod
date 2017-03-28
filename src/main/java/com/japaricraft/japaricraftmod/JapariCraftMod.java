@@ -10,13 +10,10 @@ import com.japaricraft.japaricraftmod.profession.ItemCareer;
 import com.japaricraft.japaricraftmod.profession.JapalarProfession;
 import com.japaricraft.japaricraftmod.render.ModelSample;
 import com.japaricraft.japaricraftmod.render.SampleEntityRender;
-import net.minecraft.client.renderer.entity.Render;
-import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.item.*;
 import net.minecraftforge.common.util.EnumHelper;
-import net.minecraftforge.fml.client.registry.IRenderFactory;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.ModMetadata;
 import net.minecraft.block.Block;
@@ -32,13 +29,13 @@ import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraft.world.biome.Biome;
-import net.minecraftforge.fml.common.registry.VillagerRegistry;
 
 
-@Mod(modid = JapariCraftMod.MODID, version = JapariCraftMod.VERSION)
+@Mod(modid = JapariCraftMod.MODID, name = JapariCraftMod.MODNAME, version = JapariCraftMod.VERSION, useMetadata = true)
 public class JapariCraftMod {
     public static final String MODID = "japaricraftmod";
     public static final String VERSION = "1.4";
+    public static final String MODNAME = "JapariCraftMod";
     /**
      * Woodenframeのブロックのインスタンスを格納する
      */
@@ -46,41 +43,43 @@ public class JapariCraftMod {
     @Mod.Metadata
     public static ModMetadata metadata;
 
-    public static Block woodenframeblock = new WoodenFrameBlock();
-    public static Block sandstarblock = new SandStarBlock();
-    public static Item japariman = new Japariman();
-    public static Item japarimancocoa = new JaparimanCocoa();
-    public static Item sandstarfragment = new ItemSandStarFragment();
-    public static Item sandstarsword;
-
     public static Item.ToolMaterial SandStar = EnumHelper.addToolMaterial("SandStar", 3, 700, 7F, 4F, 16);
-    public static VillagerRegistry.VillagerProfession japalarprofession;
-    public static final CreativeTabs JapariCraft = new CreativeTabJapariCraft("JapariCraft");
+
+    //Memo:変数の命名規則は守りましょう
+    //Memo: 変更する予定のないフィールドはfinalつけておきましょう
+    public static final Block woodenframeblock = new WoodenFrameBlock();
+    public static final Block sandstarblock = new SandStarBlock();
+    public static final Item japariman = new Japariman();
+    public static final Item japarimancocoa = new JaparimanCocoa();
+    public static final Item sandstarfragment = new ItemSandStarFragment();
+    public static final Item sandstarsword = new SandStarSword(SandStar);
+
+    public static JapalarProfession japalarprofession;
+    //Memo: 変数名は型のクラスがわかり易い名前にしましょう
+    public static final CreativeTabs tabJapariCraft = new CreativeTabJapariCraft("tabJapariCraft");
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        japalarprofession =new JapalarProfession();
-        sandstarsword = new SandStarSword(SandStar);
+        //Memo:なぜここで初期化したし
+        //→どうやらForgeのRegistryの関係上こっちで初期化しないと死ぬっぽい
+        japalarprofession = new JapalarProfession();
+        //コンストラクタ呼び出し時にregisterされるはず
+        //→動作確認
+        new ItemCareer(japalarprofession, "japalar",
+                new EntityVillager.ITradeList[][]{
+                        {
+                                new EntityVillager.EmeraldForItems(Items.WHEAT, new EntityVillager.PriceInfo(16, 18)),
+                                new EntityVillager.EmeraldForItems(Items.SUGAR, new EntityVillager.PriceInfo(15, 19)),
+                                new EntityVillager.ListItemForEmeralds(JapariCraftMod.japariman, new EntityVillager.PriceInfo(-16, -18)),
+                                new EntityVillager.ListItemForEmeralds(JapariCraftMod.japarimancocoa, new EntityVillager.PriceInfo(-16, -18))
+                        },
 
-
-        ((JapalarProfession)japalarprofession).init(
-                new ItemCareer(japalarprofession, "japalar",
-                        new EntityVillager.ITradeList[][]{
-                                {
-                                        new EntityVillager.EmeraldForItems(Items.WHEAT, new EntityVillager.PriceInfo(16, 18)),
-                                        new EntityVillager.EmeraldForItems(Items.SUGAR, new EntityVillager.PriceInfo(15, 19)),
-                                        new EntityVillager.ListItemForEmeralds(JapariCraftMod.japariman, new EntityVillager.PriceInfo(-16, -18)),
-                                        new EntityVillager.ListItemForEmeralds(JapariCraftMod.japarimancocoa, new EntityVillager.PriceInfo(-4, -2))
-                                },
-
-                                {
-                                        new EntityVillager.EmeraldForItems(Items.CARROT, new EntityVillager.PriceInfo(7, 12)),
-                                        new EntityVillager.ListItemForEmeralds(JapariCraftMod.sandstarfragment, new EntityVillager.PriceInfo(-5, -7))
-                                }
+                        {
+                                new EntityVillager.EmeraldForItems(Items.CARROT, new EntityVillager.PriceInfo(14, 16)),
+                                new EntityVillager.ListItemForEmeralds(JapariCraftMod.sandstarfragment, new EntityVillager.PriceInfo(-1, -2))
                         }
-                )
+                }
         );
-
 
         //ブロックの登録。
         ResourceLocation woodenframeblocklocation = new ResourceLocation(MODID, "woodenframeblock");//これはウッデンフレームブロックのテクスチャ指定。
@@ -101,9 +100,16 @@ public class JapariCraftMod {
         GameRegistry.register(sandstarfragment, new ResourceLocation(MODID, "sandstarfragment"));
         GameRegistry.register(sandstarsword, new ResourceLocation(MODID, "sandstarsword"));
 
+        //ここでResourceLocationを引数に入れるとregister()内でsetRegistryName()が呼ばれてエラー
+        GameRegistry.register(japalarprofession/*, new ResourceLocation(MODID, "Japalar")*/);
 
-        //GameRegistry.
-        GameRegistry.register(japalarprofession);
+        //蔵鯖共通処理終わらせてからクライアントのみの処理書いたほうが見やすい
+        //メタ情報の登録
+        loadMeta();
+
+        EntityRegistry.registerModEntity(AncientSkeleton.class, "AncientSkeleton", 0, this, 40, 3, true, 2243405, 7375001);
+        EntityRegistry.addSpawn(AncientSkeleton.class, 3, 1, 1, EnumCreatureType.MONSTER, Biome.getBiome(2));
+
         //テクスチャ・モデル指定JSONファイル名の登録
         if (event.getSide().isClient()) {
             ModelLoader.setCustomModelResourceLocation(sandstarsword, 0, new ModelResourceLocation(sandstarsword.getRegistryName(), "inventory"));
@@ -112,26 +118,9 @@ public class JapariCraftMod {
             ModelLoader.setCustomModelResourceLocation(japarimancocoa, 0, new ModelResourceLocation(japarimancocoa.getRegistryName(), "inventory"));
             ModelLoader.setCustomModelResourceLocation(woodenframeitemblock, 0, new ModelResourceLocation(new ResourceLocation(MODID, "woodenframeblock"), "inventory"));
             ModelLoader.setCustomModelResourceLocation(sandstaritemblock, 0, new ModelResourceLocation(new ResourceLocation(MODID, "sandstarblock"), "inventory"));
+            //Memo: Render関連は全部クライアントサイドで
+            RenderingRegistry.registerEntityRenderingHandler(AncientSkeleton.class, manager -> new SampleEntityRender<>(manager, new ModelSample(), 0));
         }
-
-        //メタ情報の登録
-        loadMeta();
-
-        EntityRegistry.registerModEntity(AncientSkeleton.class, "AncientSkeleton", 0, this, 40, 3, true, 2243405, 7375001);
-        EntityRegistry.addSpawn(AncientSkeleton.class, 3, 1, 1, EnumCreatureType.MONSTER, Biome.getBiome(2));
-        if (event.getSide().isServer()) {
-            return;
-        }
-
-
-        RenderingRegistry.registerEntityRenderingHandler(AncientSkeleton.class, new IRenderFactory() {
-            @Override
-            public Render createRenderFor(RenderManager manager) {
-                return new SampleEntityRender(manager, new ModelSample(), 0);
-            }
-        });
-
-
     }
 
     @EventHandler
@@ -178,14 +167,14 @@ public class JapariCraftMod {
                 JapariCraftMod.sandstarblock
         );
 
-    }
 
+    }
 
 
     private void loadMeta() {
         metadata.authorList.add("bagu_chan");
         metadata.modId = MODID;
-        metadata.name = MODID;
+        metadata.name = MODNAME;
         metadata.version = VERSION;
         // Modのアップデートをチェックする為のJson 詳細は、 https://mcforge.readthedocs.io/en/latest/gettingstarted/autoupdate/ 参照
         // metadata.updateJSON

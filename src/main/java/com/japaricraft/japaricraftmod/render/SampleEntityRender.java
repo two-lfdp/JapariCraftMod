@@ -1,15 +1,14 @@
 package com.japaricraft.japaricraftmod.render;
 
 import net.minecraft.client.model.ModelBase;
-import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.entity.layers.LayerBipedArmor;
 import net.minecraft.client.renderer.entity.layers.LayerHeldItem;
-import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.ResourceLocation;
 
-public class SampleEntityRender extends RenderLiving {
+public class SampleEntityRender<T extends EntityLiving> extends RenderLiving<T> {
     public static final ResourceLocation texture = new ResourceLocation("JapariCraftMod:textures/entity/ancientskeleton.png");
 
     public SampleEntityRender(RenderManager manager, ModelBase model, float shadow) {
@@ -30,7 +29,7 @@ public class SampleEntityRender extends RenderLiving {
     }
 
     @Override
-    protected ResourceLocation getEntityTexture(Entity entity) {
+    protected ResourceLocation getEntityTexture(T entity) {
         return texture;
     }
 }
