@@ -45,7 +45,6 @@ public class JapariCraftMod {
 
     public static Item.ToolMaterial SandStar = EnumHelper.addToolMaterial("SandStar", 3, 700, 7F, 4F, 16);
 
-    //Memo:変数の命名規則は守りましょう
     //Memo: 変更する予定のないフィールドはfinalつけておきましょう
     public static final Block woodenframeblock = new WoodenFrameBlock();
     public static final Block sandstarblock = new SandStarBlock();
@@ -54,9 +53,9 @@ public class JapariCraftMod {
     public static final Item sandstarfragment = new ItemSandStarFragment();
     public static final Item sandstarsword = new SandStarSword(SandStar);
 
+    public static  CreativeTabs tabJapariCraft = new TabJapariCraft("JapariCraftTab");
     public static JapalarProfession japalarprofession;
     //Memo: 変数名は型のクラスがわかり易い名前にしましょう
-    public static final CreativeTabs tabJapariCraft = new CreativeTabJapariCraft("tabJapariCraft");
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
@@ -166,7 +165,6 @@ public class JapariCraftMod {
         GameRegistry.addShapelessRecipe(new ItemStack(JapariCraftMod.sandstarfragment, 9),
                 JapariCraftMod.sandstarblock
         );
-
 
     }
 
