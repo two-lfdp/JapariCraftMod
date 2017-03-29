@@ -1,6 +1,7 @@
 package com.japaricraft.japaricraftmod.item;
 
 import com.japaricraft.japaricraftmod.JapariCraftMod;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemFood;
 
 

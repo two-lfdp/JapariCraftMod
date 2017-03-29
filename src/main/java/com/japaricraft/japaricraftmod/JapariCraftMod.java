@@ -46,6 +46,7 @@ public class JapariCraftMod {
     public static Item.ToolMaterial SandStar = EnumHelper.addToolMaterial("SandStar", 3, 700, 7F, 4F, 16);
 
     //Memo: 変更する予定のないフィールドはfinalつけておきましょう
+    public static final CreativeTabs tabJapariCraft = new TabJapariCraft("JapariCraftTab");
     public static final Block woodenframeblock = new WoodenFrameBlock();
     public static final Block sandstarblock = new SandStarBlock();
     public static final Item japariman = new Japariman();
@@ -53,7 +54,7 @@ public class JapariCraftMod {
     public static final Item sandstarfragment = new ItemSandStarFragment();
     public static final Item sandstarsword = new SandStarSword(SandStar);
 
-    public static  CreativeTabs tabJapariCraft = new TabJapariCraft("JapariCraftTab");
+
     public static JapalarProfession japalarprofession;
     //Memo: 変数名は型のクラスがわかり易い名前にしましょう
 

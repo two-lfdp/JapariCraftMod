@@ -1,5 +1,6 @@
 package com.japaricraft.japaricraftmod;
 
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemSword;
 
 import static com.japaricraft.japaricraftmod.JapariCraftMod.tabJapariCraft;

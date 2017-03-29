@@ -2,13 +2,13 @@
 {
   "modid": "japaricraftmod",
   "name": "JapariCraftMod",
-  "description": "add survivalItem",
+  "description": "add kemohureItem",
   "version": "0.1",
   "mcversion": "1.10.2",
   "url": "",
   "updateUrl": "",
   "authorList": ["bagu_chan"],
-  "credits": "By bagu_chan",
+  "credits": "SpcialThanks:Cocoa",
   "logoFile": "",
   "screenshots": [],
   "dependencies": []
