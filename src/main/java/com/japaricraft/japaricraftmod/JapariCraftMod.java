@@ -5,6 +5,7 @@ import com.japaricraft.japaricraftmod.block.WoodenFrameBlock;
 import com.japaricraft.japaricraftmod.item.ItemSandStarFragment;
 import com.japaricraft.japaricraftmod.item.Japariman;
 import com.japaricraft.japaricraftmod.item.JaparimanCocoa;
+import com.japaricraft.japaricraftmod.item.StarJapariman;
 import com.japaricraft.japaricraftmod.mob.AncientSkeleton;
 import com.japaricraft.japaricraftmod.profession.ItemCareer;
 import com.japaricraft.japaricraftmod.profession.JapalarProfession;
@@ -53,7 +54,7 @@ public class JapariCraftMod {
     public static final Item japarimancocoa = new JaparimanCocoa();
     public static final Item sandstarfragment = new ItemSandStarFragment();
     public static final Item sandstarsword = new SandStarSword(SandStar);
-
+    public static final Item starjapariman = new StarJapariman();
 
     public static JapalarProfession japalarprofession;
     //Memo: 変数名は型のクラスがわかり易い名前にしましょう
@@ -76,7 +77,8 @@ public class JapariCraftMod {
 
                         {
                                 new EntityVillager.EmeraldForItems(Items.CARROT, new EntityVillager.PriceInfo(14, 16)),
-                                new EntityVillager.ListItemForEmeralds(JapariCraftMod.sandstarfragment, new EntityVillager.PriceInfo(-1, -2))
+                                new EntityVillager.ListItemForEmeralds(JapariCraftMod.sandstarfragment, new EntityVillager.PriceInfo(4, 6)),
+                                new EntityVillager.ListItemForEmeralds(JapariCraftMod.starjapariman, new EntityVillager.PriceInfo(4, 7))
                         }
                 }
         );
@@ -99,6 +101,7 @@ public class JapariCraftMod {
         GameRegistry.register(sandstaritemblock, sandstarlocation);
         GameRegistry.register(sandstarfragment, new ResourceLocation(MODID, "sandstarfragment"));
         GameRegistry.register(sandstarsword, new ResourceLocation(MODID, "sandstarsword"));
+        GameRegistry.register(starjapariman,new ResourceLocation(MODID,"starjapariman"));
 
         //ここでResourceLocationを引数に入れるとregister()内でsetRegistryName()が呼ばれてエラー
         GameRegistry.register(japalarprofession/*, new ResourceLocation(MODID, "Japalar")*/);
@@ -118,6 +121,7 @@ public class JapariCraftMod {
             ModelLoader.setCustomModelResourceLocation(japarimancocoa, 0, new ModelResourceLocation(japarimancocoa.getRegistryName(), "inventory"));
             ModelLoader.setCustomModelResourceLocation(woodenframeitemblock, 0, new ModelResourceLocation(new ResourceLocation(MODID, "woodenframeblock"), "inventory"));
             ModelLoader.setCustomModelResourceLocation(sandstaritemblock, 0, new ModelResourceLocation(new ResourceLocation(MODID, "sandstarblock"), "inventory"));
+            ModelLoader.setCustomModelResourceLocation(starjapariman,0,new ModelResourceLocation(new ResourceLocation(MODID, "starjapariman"),"inventory"));
             //Memo: Render関連は全部クライアントサイドで
             RenderingRegistry.registerEntityRenderingHandler(AncientSkeleton.class, manager -> new SampleEntityRender<>(manager, new ModelSample(), 0));
         }

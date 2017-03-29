@@ -15,7 +15,7 @@ public class TabJapariCraft extends CreativeTabs {
     @Override
     public Item getTabIconItem()
     {
-        return JapariCraftMod.japariman;
+        return JapariCraftMod.starjapariman;
     }
 
 
