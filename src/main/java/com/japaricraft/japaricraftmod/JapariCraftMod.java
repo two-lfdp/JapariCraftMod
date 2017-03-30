@@ -7,10 +7,8 @@ import com.japaricraft.japaricraftmod.item.Japariman;
 import com.japaricraft.japaricraftmod.item.JaparimanCocoa;
 import com.japaricraft.japaricraftmod.item.StarJapariman;
 import com.japaricraft.japaricraftmod.mob.AncientSkeleton;
-import com.japaricraft.japaricraftmod.profession.ComponentVillageSampleHouse;
 import com.japaricraft.japaricraftmod.profession.ItemCareer;
 import com.japaricraft.japaricraftmod.profession.JapalarProfession;
-import com.japaricraft.japaricraftmod.profession.VillageCreationHandleSampleHouse;
 import com.japaricraft.japaricraftmod.render.ModelSample;
 import com.japaricraft.japaricraftmod.render.SampleEntityRender;
 import net.minecraft.client.renderer.entity.Render;
@@ -18,7 +16,6 @@ import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.item.*;
-import net.minecraft.world.gen.structure.MapGenStructureIO;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.client.registry.IRenderFactory;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
@@ -36,12 +33,12 @@ import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraft.world.biome.Biome;
-import net.minecraftforge.fml.common.registry.VillagerRegistry;
+
 
 
 @Mod(modid = JapariCraftMod.MODID, name = JapariCraftMod.MODNAME, version = JapariCraftMod.VERSION, useMetadata = true)
 public class JapariCraftMod {
-  //  @SidedProxy(clientSide = "japaricraftmod.ClientProxy", serverSide = "japaricraftmod.ServerProxy")
+    //@SidedProxy(clientSide = "japaricraftmod.ClientProxy", serverSide = "japaricraftmod.ServerProxy")
 
     public static final String MODID = "japaricraftmod";
     public static final String VERSION = "1.4";
@@ -186,9 +183,10 @@ public class JapariCraftMod {
                 JapariCraftMod.sandstarblock
         );
 
-        VillagerRegistry.instance().registerVillageCreationHandler(new VillageCreationHandleSampleHouse());
-        MapGenStructureIO.registerStructure(ComponentVillageSampleHouse, "VJH");
+
     }
+
+
 
 
     private void loadMeta() {
@@ -196,6 +194,7 @@ public class JapariCraftMod {
         metadata.modId = MODID;
         metadata.name = MODNAME;
         metadata.version = VERSION;
+        metadata.description = ("けもフレ関連のアイテムを追加します");
         // Modのアップデートをチェックする為のJson 詳細は、 https://mcforge.readthedocs.io/en/latest/gettingstarted/autoupdate/ 参照
         // metadata.updateJSON
         //これをfalseにしておかないと、ModMetadataが読み込まれない
