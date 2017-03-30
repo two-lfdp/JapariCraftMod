@@ -17,11 +17,7 @@ import java.util.Random;
 
 public class ComponentVillageSampleHouse extends StructureVillagePieces.Village {
 
-    public static void registerVillagePieces()
-    {
-        MapGenStructureIO.registerStructure(ComponentVillageSampleHouse.class, "VJH");
 
-    }
     protected ComponentVillageSampleHouse(
             StructureVillagePieces.Start par1ComponentVillageStartPiece, int par2) {
         super(par1ComponentVillageStartPiece, par2);
@@ -30,6 +26,17 @@ public class ComponentVillageSampleHouse extends StructureVillagePieces.Village 
 		 * ComponentVillageのサブクラスを参照のこと
 		 */
     }
+
+    @Override
+    public boolean addComponentParts(World worldIn, Random randomIn, StructureBoundingBox structureBoundingBoxIn) {
+        return false;
+    }
+
+    public static Object buildComponent(StructureVillagePieces.Start startPiece, List pieces, Random random, int p1, int p2, int p3, int p4, int p5) {
+        
+
+    }
+
 
     public static class Hall extends StructureVillagePieces.Village {
         public Hall() {
