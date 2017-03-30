@@ -33,8 +33,8 @@ public class ComponentVillageSampleHouse extends StructureVillagePieces.Village 
     }
 
     public static Object buildComponent(StructureVillagePieces.Start startPiece, List pieces, Random random, int p1, int p2, int p3, int p4, int p5) {
-        
 
+        return true;
     }
 
 
