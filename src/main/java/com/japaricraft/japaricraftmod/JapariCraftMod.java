@@ -27,7 +27,6 @@ import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
-import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraft.util.ResourceLocation;
@@ -188,7 +187,7 @@ public class JapariCraftMod {
         );
 
         VillagerRegistry.instance().registerVillageCreationHandler(new VillageCreationHandleSampleHouse());
-        MapGenStructureIO.registerStructure(ComponentVillageSampleHouse.class, "VJH");
+        MapGenStructureIO.registerStructure(ComponentVillageSampleHouse, "VJH");
     }
 
 
