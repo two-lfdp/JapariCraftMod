@@ -7,16 +7,18 @@ import com.japaricraft.japaricraftmod.item.Japariman;
 import com.japaricraft.japaricraftmod.item.JaparimanCocoa;
 import com.japaricraft.japaricraftmod.item.StarJapariman;
 import com.japaricraft.japaricraftmod.mob.AncientSkeleton;
+import com.japaricraft.japaricraftmod.profession.ComponentVillageSampleHouse;
 import com.japaricraft.japaricraftmod.profession.ItemCareer;
 import com.japaricraft.japaricraftmod.profession.JapalarProfession;
+import com.japaricraft.japaricraftmod.profession.VillageCreationHandleSampleHouse;
 import com.japaricraft.japaricraftmod.render.ModelSample;
 import com.japaricraft.japaricraftmod.render.SampleEntityRender;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.item.*;
+import net.minecraft.world.gen.structure.MapGenStructureIO;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.client.registry.IRenderFactory;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
@@ -35,6 +37,7 @@ import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraft.world.biome.Biome;
+import net.minecraftforge.fml.common.registry.VillagerRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -53,7 +56,6 @@ public class JapariCraftMod {
     @Mod.Metadata
     public static ModMetadata metadata;
 
-   // public static CommonProxy proxy;
 
     public static Item.ToolMaterial SandStar = EnumHelper.addToolMaterial("SandStar", 3, 700, 7F, 4F, 16);
 
@@ -187,9 +189,8 @@ public class JapariCraftMod {
                 JapariCraftMod.sandstarblock
         );
 
-
-        //proxy.registerRender();
-
+        VillagerRegistry.instance().registerVillageCreationHandler(new VillageCreationHandleSampleHouse());
+        MapGenStructureIO.registerStructure(ComponentVillageSampleHouse.class, "VJH");
     }
 
 
