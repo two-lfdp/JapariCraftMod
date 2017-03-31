@@ -10,10 +10,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class ModelKouteiPengin extends ModelBiped{
-    public ModelRenderer bipedLeftArmwear;
-    public ModelRenderer bipedRightArmwear;
-    public ModelRenderer bipedLeftLegwear;
-    public ModelRenderer bipedRightLegwear;
+    
     public ModelRenderer bipedBodyWear;
 
 
