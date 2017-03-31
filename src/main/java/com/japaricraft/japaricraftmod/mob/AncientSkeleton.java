@@ -104,7 +104,7 @@ public class AncientSkeleton extends EntityMob {
         //ほんとは確率とかで落とすものが決めれるんだと思う
         dropItem(JapariCraftMod.sandstarfragment,6);
         dropItem(Items.BONE,5);
-
+        dropItem(JapariCraftMod.sugarstar,3);
     }
 
 

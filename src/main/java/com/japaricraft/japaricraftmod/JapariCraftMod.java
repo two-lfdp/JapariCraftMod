@@ -2,22 +2,19 @@ package com.japaricraft.japaricraftmod;
 
 import com.japaricraft.japaricraftmod.block.SandStarBlock;
 import com.japaricraft.japaricraftmod.block.WoodenFrameBlock;
-import com.japaricraft.japaricraftmod.item.ItemSandStarFragment;
-import com.japaricraft.japaricraftmod.item.Japariman;
-import com.japaricraft.japaricraftmod.item.JaparimanCocoa;
-import com.japaricraft.japaricraftmod.item.StarJapariman;
+import com.japaricraft.japaricraftmod.item.*;
 import com.japaricraft.japaricraftmod.mob.AncientSkeleton;
+import com.japaricraft.japaricraftmod.mob.KouteiPenguin;
 import com.japaricraft.japaricraftmod.profession.ItemCareer;
 import com.japaricraft.japaricraftmod.profession.JapalarProfession;
+import com.japaricraft.japaricraftmod.render.KouteiPenginEntityRender;
+import com.japaricraft.japaricraftmod.render.ModelKouteiPengin;
 import com.japaricraft.japaricraftmod.render.ModelSample;
 import com.japaricraft.japaricraftmod.render.SampleEntityRender;
-import net.minecraft.client.renderer.entity.Render;
-import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.item.*;
 import net.minecraftforge.common.util.EnumHelper;
-import net.minecraftforge.fml.client.registry.IRenderFactory;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.ModMetadata;
 import net.minecraft.block.Block;
@@ -60,8 +57,9 @@ public class JapariCraftMod {
     public static final Item japariman = new Japariman();
     public static final Item japarimancocoa = new JaparimanCocoa();
     public static final Item sandstarfragment = new ItemSandStarFragment();
-    public static final Item sandstarsword = new SandStarSword(SandStar);
     public static final Item starjapariman = new StarJapariman();
+    public static final Item sugarstar = new SugarStar();
+    public static final Item sandstarsword = new SandStarSword(SandStar);
 
     public static JapalarProfession japalarprofession;
     //Memo: 変数名は型のクラスがわかり易い名前にしましょう
@@ -108,6 +106,7 @@ public class JapariCraftMod {
         GameRegistry.register(sandstarfragment, new ResourceLocation(MODID, "sandstarfragment"));
         GameRegistry.register(sandstarsword, new ResourceLocation(MODID, "sandstarsword"));
         GameRegistry.register(starjapariman,new ResourceLocation(MODID,"starjapariman"));
+        GameRegistry.register(sugarstar,new ResourceLocation(MODID,"sugarstar"));
 
         //ここでResourceLocationを引数に入れるとregister()内でsetRegistryName()が呼ばれてエラー
         GameRegistry.register(japalarprofession/*, new ResourceLocation(MODID, "Japalar")*/);
@@ -116,9 +115,10 @@ public class JapariCraftMod {
         //メタ情報の登録
         loadMeta();
 
-        EntityRegistry.registerModEntity(AncientSkeleton.class, "AncientSkeleton", 0, this, 40, 3, true, 2243405, 7375001);
+        EntityRegistry.registerModEntity(AncientSkeleton.class, "AncientSkeleton", 0, this, 40, 3, true, 4243405, 7375001);
         EntityRegistry.addSpawn(AncientSkeleton.class, 3, 1, 1, EnumCreatureType.MONSTER, Biome.getBiome(2));
-
+        EntityRegistry.registerModEntity(KouteiPenguin.class, "KouteiPenguin", 1, this, 30, 3, true, 2243405, 7375001);
+        EntityRegistry.addSpawn(KouteiPenguin.class, 6, 1, 2, EnumCreatureType.CREATURE, Biome.getBiome(12), Biome.getBiome(140));
         //テクスチャ・モデル指定JSONファイル名の登録
 
         if (event.getSide().isClient()) {
@@ -129,13 +129,10 @@ public class JapariCraftMod {
             ModelLoader.setCustomModelResourceLocation(woodenframeitemblock, 0, new ModelResourceLocation(new ResourceLocation(MODID, "woodenframeblock"), "inventory"));
             ModelLoader.setCustomModelResourceLocation(sandstaritemblock, 0, new ModelResourceLocation(new ResourceLocation(MODID, "sandstarblock"), "inventory"));
             ModelLoader.setCustomModelResourceLocation(starjapariman,0,new ModelResourceLocation(new ResourceLocation(MODID, "starjapariman"),"inventory"));
+            ModelLoader.setCustomModelResourceLocation(sugarstar,0,new ModelResourceLocation(new ResourceLocation(MODID, "sugarstar"),"inventory"));
             //Memo: Render関連は全部クライアントサイドで
-            RenderingRegistry.registerEntityRenderingHandler(AncientSkeleton.class, new IRenderFactory(){
-                @Override
-                public Render createRenderFor(RenderManager manager) {
-                    return new SampleEntityRender(manager,new ModelSample(),0);
-                }
-            });
+            RenderingRegistry.registerEntityRenderingHandler(AncientSkeleton.class, manager -> new SampleEntityRender<>(manager, new ModelSample(), 0));
+            RenderingRegistry.registerEntityRenderingHandler(KouteiPenguin.class, manager -> new KouteiPenginEntityRender<>(manager, new ModelKouteiPengin(), 0));
         }
     }
 
@@ -177,6 +174,15 @@ public class JapariCraftMod {
                 'S', JapariCraftMod.sandstarfragment
 
         );
+        GameRegistry.addRecipe(new ItemStack(JapariCraftMod.starjapariman, 4),
+                "SWS",
+                "WSW",
+                "SWS",
+                'S', JapariCraftMod.sugarstar,
+                'W', Items.WHEAT
+
+        );
+
 
 
         GameRegistry.addShapelessRecipe(new ItemStack(JapariCraftMod.sandstarfragment, 9),
