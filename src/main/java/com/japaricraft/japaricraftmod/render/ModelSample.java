@@ -3,11 +3,9 @@ package com.japaricraft.japaricraftmod.render;
 
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
-import net.minecraft.util.EnumHandSide;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
-@SideOnly(Side.CLIENT)
+
+
 public class ModelSample extends ModelBiped
 {
     public ModelSample()
@@ -15,7 +13,7 @@ public class ModelSample extends ModelBiped
         this(0.0F, false);
     }
 
-    protected ModelSample(float modelSize, boolean p_i46303_2_)
+    ModelSample(float modelSize, boolean p_i46303_2_)
     {
 
         super(modelSize, 0.0F, 64, 32);

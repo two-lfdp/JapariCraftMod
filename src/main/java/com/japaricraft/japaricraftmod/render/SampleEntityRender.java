@@ -9,7 +9,7 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.ResourceLocation;
 
 public class SampleEntityRender<T extends EntityLiving> extends RenderLiving<T> {
-    public static final ResourceLocation texture = new ResourceLocation("JapariCraftMod:textures/entity/ancientskeleton.png");
+    private static final ResourceLocation texture = new ResourceLocation("JapariCraftMod:textures/entity/ancientskeleton.png");
 
     public SampleEntityRender(RenderManager manager, ModelBase model, float shadow) {
         super(manager,model,shadow);
