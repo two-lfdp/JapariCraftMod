@@ -17,6 +17,7 @@ public class KouteiPenginEntityRender<T extends EntityLiving> extends RenderLivi
     }
 
 
+
     public ResourceLocation getEntityTexture(EntityLiving entity) { return texture; }
 
 }

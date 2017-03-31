@@ -38,7 +38,7 @@ public class JapariCraftMod {
     //@SidedProxy(clientSide = "japaricraftmod.ClientProxy", serverSide = "japaricraftmod.ServerProxy")
 
     public static final String MODID = "japaricraftmod";
-    public static final String VERSION = "1.4";
+    public static final String VERSION = "1.5";
     public static final String MODNAME = "JapariCraftMod";
     /**
      * Woodenframeのブロックのインスタンスを格納する
@@ -60,6 +60,7 @@ public class JapariCraftMod {
     public static final Item starjapariman = new StarJapariman();
     public static final Item sugarstar = new SugarStar();
     public static final Item sandstarsword = new SandStarSword(SandStar);
+    public static final Item wildliberationsource = new WildLiberationSource();
 
     public static JapalarProfession japalarprofession;
     //Memo: 変数名は型のクラスがわかり易い名前にしましょう
@@ -81,9 +82,13 @@ public class JapariCraftMod {
                         },
 
                         {
-                                new EntityVillager.EmeraldForItems(Items.CARROT, new EntityVillager.PriceInfo(14, 16)),
-                                new EntityVillager.ListItemForEmeralds(JapariCraftMod.sandstarfragment, new EntityVillager.PriceInfo(4, 6)),
-                                new EntityVillager.ListItemForEmeralds(JapariCraftMod.starjapariman, new EntityVillager.PriceInfo(4, 7))
+                                new EntityVillager.EmeraldForItems(Items.CARROT, new EntityVillager.PriceInfo(14, 17)),
+                                new EntityVillager.ListItemForEmeralds(JapariCraftMod.sandstarfragment, new EntityVillager.PriceInfo(6, 10)),
+                                new EntityVillager.ListItemForEmeralds(JapariCraftMod.starjapariman, new EntityVillager.PriceInfo(7, 10))
+                        },
+                        {
+                                new EntityVillager.EmeraldForItems(Items.SLIME_BALL, new EntityVillager.PriceInfo(13, 17)),
+                            new EntityVillager.ListItemForEmeralds(JapariCraftMod.wildliberationsource,new EntityVillager.PriceInfo(9,15))
                         }
                 }
         );
@@ -107,6 +112,7 @@ public class JapariCraftMod {
         GameRegistry.register(sandstarsword, new ResourceLocation(MODID, "sandstarsword"));
         GameRegistry.register(starjapariman,new ResourceLocation(MODID,"starjapariman"));
         GameRegistry.register(sugarstar,new ResourceLocation(MODID,"sugarstar"));
+        GameRegistry.register(wildliberationsource,new ResourceLocation(MODID,"wildliberationsource"));
 
         //ここでResourceLocationを引数に入れるとregister()内でsetRegistryName()が呼ばれてエラー
         GameRegistry.register(japalarprofession/*, new ResourceLocation(MODID, "Japalar")*/);
@@ -130,6 +136,7 @@ public class JapariCraftMod {
             ModelLoader.setCustomModelResourceLocation(sandstaritemblock, 0, new ModelResourceLocation(new ResourceLocation(MODID, "sandstarblock"), "inventory"));
             ModelLoader.setCustomModelResourceLocation(starjapariman,0,new ModelResourceLocation(new ResourceLocation(MODID, "starjapariman"),"inventory"));
             ModelLoader.setCustomModelResourceLocation(sugarstar,0,new ModelResourceLocation(new ResourceLocation(MODID, "sugarstar"),"inventory"));
+            ModelLoader.setCustomModelResourceLocation(wildliberationsource,0,new ModelResourceLocation(new ResourceLocation(MODID, "wildliberationsource"),"inventory"));
             //Memo: Render関連は全部クライアントサイドで
             RenderingRegistry.registerEntityRenderingHandler(AncientSkeleton.class, manager -> new SampleEntityRender<>(manager, new ModelSample(), 0));
             RenderingRegistry.registerEntityRenderingHandler(KouteiPenguin.class, manager -> new KouteiPenginEntityRender<>(manager, new ModelKouteiPengin(), 0));
@@ -174,15 +181,15 @@ public class JapariCraftMod {
                 'S', JapariCraftMod.sandstarfragment
 
         );
-        GameRegistry.addRecipe(new ItemStack(JapariCraftMod.starjapariman, 4),
-                "SWS",
-                "WSW",
-                "SWS",
+        GameRegistry.addRecipe(new ItemStack(JapariCraftMod.wildliberationsource, 1),
+                "SNS",
+                "NBN",
+                "SNS",
                 'S', JapariCraftMod.sugarstar,
-                'W', Items.WHEAT
+                'N', Items.SUGAR,
+                'B', Items.SLIME_BALL
 
         );
-
 
 
         GameRegistry.addShapelessRecipe(new ItemStack(JapariCraftMod.sandstarfragment, 9),
