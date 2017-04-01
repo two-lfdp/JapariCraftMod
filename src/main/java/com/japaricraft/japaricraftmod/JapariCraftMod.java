@@ -21,7 +21,6 @@ import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
-import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraft.util.ResourceLocation;
@@ -36,7 +35,7 @@ import net.minecraft.world.biome.Biome;
 
 @Mod(modid = JapariCraftMod.MODID, name = JapariCraftMod.MODNAME, version = JapariCraftMod.VERSION, useMetadata = true)
 public class JapariCraftMod {
-    @SidedProxy(clientSide = "japaricraftmod.ClientProxy", serverSide = "japaricraftmod.ServerProxy")
+    //@SidedProxy(clientSide = "japaricraftmod.ClientProxy", serverSide = "japaricraftmod.ServerProxy")
 
     public static final String MODID = "japaricraftmod";
     public static final String VERSION = "1.5";
@@ -139,6 +138,9 @@ public class JapariCraftMod {
             ModelLoader.setCustomModelResourceLocation(sugarstar,0,new ModelResourceLocation(new ResourceLocation(MODID, "sugarstar"),"inventory"));
             ModelLoader.setCustomModelResourceLocation(wildliberationsource,0,new ModelResourceLocation(new ResourceLocation(MODID, "wildliberationsource"),"inventory"));
             //Memo: Render関連は全部クライアントサイドで
+
+            RenderingRegistry.registerEntityRenderingHandler(AncientSkeleton.class, manager -> new SampleEntityRender<>(manager, new ModelSample(), 0));
+            RenderingRegistry.registerEntityRenderingHandler(KouteiPenguin.class, manager -> new KouteiPenginEntityRender<>(manager, new ModelKouteiPengin(), 0));
         }
     }
 

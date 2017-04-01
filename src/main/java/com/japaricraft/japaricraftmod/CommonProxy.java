@@ -3,7 +3,7 @@ package com.japaricraft.japaricraftmod;
 
 public class CommonProxy{
 
-    public void IRenderFactory() {
+    public void registerRenderers() {
 
 
 
