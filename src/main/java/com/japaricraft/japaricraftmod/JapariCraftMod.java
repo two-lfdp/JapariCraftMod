@@ -21,6 +21,7 @@ import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
+import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraft.util.ResourceLocation;
@@ -35,7 +36,7 @@ import net.minecraft.world.biome.Biome;
 
 @Mod(modid = JapariCraftMod.MODID, name = JapariCraftMod.MODNAME, version = JapariCraftMod.VERSION, useMetadata = true)
 public class JapariCraftMod {
-    //@SidedProxy(clientSide = "japaricraftmod.ClientProxy", serverSide = "japaricraftmod.ServerProxy")
+    @SidedProxy(clientSide = "japaricraftmod.ClientProxy", serverSide = "japaricraftmod.ServerProxy")
 
     public static final String MODID = "japaricraftmod";
     public static final String VERSION = "1.5.2";
@@ -47,6 +48,7 @@ public class JapariCraftMod {
     @Mod.Metadata
     public static ModMetadata metadata;
 
+    public static CommonProxy proxy;
 
     public static Item.ToolMaterial SandStar = EnumHelper.addToolMaterial("SandStar", 3, 700, 7F, 4F, 16);
 
@@ -126,7 +128,6 @@ public class JapariCraftMod {
         EntityRegistry.registerModEntity(KouteiPenguin.class, "KouteiPenguin", 1, this, 30, 3, true, 2243405, 7375001);
         EntityRegistry.addSpawn(KouteiPenguin.class, 6, 1, 2, EnumCreatureType.CREATURE, Biome.getBiome(12), Biome.getBiome(140));
         //テクスチャ・モデル指定JSONファイル名の登録
-
         if (event.getSide().isClient()) {
             ModelLoader.setCustomModelResourceLocation(sandstarsword, 0, new ModelResourceLocation(sandstarsword.getRegistryName(), "inventory"));
             ModelLoader.setCustomModelResourceLocation(sandstarfragment, 0, new ModelResourceLocation(sandstarfragment.getRegistryName(), "inventory"));
@@ -139,8 +140,6 @@ public class JapariCraftMod {
             ModelLoader.setCustomModelResourceLocation(wildliberationsource,0,new ModelResourceLocation(new ResourceLocation(MODID, "wildliberationsource"),"inventory"));
             //Memo: Render関連は全部クライアントサイドで
 
-            RenderingRegistry.registerEntityRenderingHandler(AncientSkeleton.class, manager -> new SampleEntityRender<>(manager, new ModelSample(), 0));
-            RenderingRegistry.registerEntityRenderingHandler(KouteiPenguin.class, manager -> new KouteiPenginEntityRender<>(manager, new ModelKouteiPengin(), 0));
         }
     }
 
@@ -197,7 +196,7 @@ public class JapariCraftMod {
                 JapariCraftMod.sandstarblock
         );
 
-
+        proxy.registerRender();
     }
 
 

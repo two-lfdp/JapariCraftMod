@@ -1,12 +1,11 @@
 package com.japaricraft.japaricraftmod;
 
 
+
+
 public class CommonProxy{
 
-    public void registerRenderers() {
-
-
-
+    public void registerRender() {
 
     }
 }

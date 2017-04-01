@@ -3,11 +3,9 @@ package com.japaricraft.japaricraftmod.render;
 
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
-import net.minecraft.entity.Entity;
 import net.minecraft.util.EnumHandSide;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
 
 @SideOnly(Side.CLIENT)
 public class ModelSample extends ModelBiped
@@ -17,7 +15,7 @@ public class ModelSample extends ModelBiped
         this(0.0F, false);
     }
 
-    ModelSample(float modelSize, boolean p_i46303_2_)
+    protected ModelSample(float modelSize, boolean p_i46303_2_)
     {
 
         super(modelSize, 0.0F, 64, 32);
@@ -42,18 +40,6 @@ public class ModelSample extends ModelBiped
 
     }
     @Override
-    public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
-        // 描画
-        bipedLeftArm.render(f5);
-        bipedRightArm.render(f5);
-        bipedHead.render(f5);
-        bipedBody.render(f5);
-        bipedRightLeg.render(f5);
-        bipedLeftLeg.render(f5);
-
-
-    }
-    @Override
     public void postRenderArm(float scale, EnumHandSide side)
     {
 
@@ -64,5 +50,4 @@ public class ModelSample extends ModelBiped
         modelrenderer.rotationPointX -= f;
 
     }
-
 }
