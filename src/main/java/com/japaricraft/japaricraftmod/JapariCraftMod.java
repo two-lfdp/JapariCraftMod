@@ -47,7 +47,7 @@ public class JapariCraftMod {
     @Mod.Metadata
     public static ModMetadata metadata;
 
-    @SidedProxy(clientSide = "japaricraftmod.ClientProxy", serverSide = "japaricraftmod.ServerProxy")
+    @SidedProxy(clientSide = "com.japaricraft.japaricraftmod.ClientProxy", serverSide = "com.japaricraft.japaricraftmod.ServerProxy")
     public static CommonProxy proxy;
 
     public static Item.ToolMaterial SandStar = EnumHelper.addToolMaterial("SandStar", 3, 700, 7F, 4F, 16);
