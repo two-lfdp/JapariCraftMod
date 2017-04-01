@@ -122,7 +122,7 @@ public class JapariCraftMod {
         EntityRegistry.registerModEntity(AncientSkeleton.class, "AncientSkeleton", 0, this, 40, 3, true, 4243405, 7375001);
         EntityRegistry.addSpawn(AncientSkeleton.class, 3, 1, 1, EnumCreatureType.MONSTER, Biome.getBiome(2));
         EntityRegistry.registerModEntity(KouteiPenguin.class, "KouteiPenguin", 1, this, 30, 3, true, 2243405, 7375001);
-        EntityRegistry.addSpawn(KouteiPenguin.class, 6, 1, 2, EnumCreatureType.CREATURE, Biome.getBiome(12), Biome.getBiome(140));
+        EntityRegistry.addSpawn(KouteiPenguin.class, 5, 1, 2, EnumCreatureType.CREATURE, Biome.getBiome(12), Biome.getBiome(140));
         //テクスチャ・モデル指定JSONファイル名の登録
         if (event.getSide().isClient()) {
             ModelLoader.setCustomModelResourceLocation(sandstarsword, 0, new ModelResourceLocation(sandstarsword.getRegistryName(), "inventory"));

@@ -95,17 +95,23 @@ public class AncientSkeleton extends EntityMob {
 
     public Item getDropItem () {
 
-        return null;//なにも落とさない
-        //return (new ItemStack(Items.GOLDEN_APPLE));
-        //return(new ItemStack(Items.GOLDEN_APPLE));
+        return JapariCraftMod.sandstarfragment;
     }
     @Override
-    protected void dropFewItems(boolean parRecentlyHit, int parLootingLevel) {
-        //ほんとは確率とかで落とすものが決めれるんだと思う
-        dropItem(JapariCraftMod.sandstarfragment,6);
-        dropItem(Items.BONE,5);
-        dropItem(JapariCraftMod.sugarstar,3);
+    protected void dropFewItems(boolean parRecentlyHit, int parLootingLevel)
+    {
+        int j = rand.nextInt(3) + rand.nextInt(1 + parLootingLevel);
+        int k;
+
+        dropItem(getDropItem(), 3);
+
+        for (k = 0; k < j; ++k)
+        {
+            dropItem(JapariCraftMod.sugarstar,4);
+        }
     }
+
+
 
 
     protected void applyEntityAttributes(){
