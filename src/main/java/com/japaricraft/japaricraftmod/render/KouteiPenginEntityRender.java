@@ -8,7 +8,7 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.ResourceLocation;
 
 public class KouteiPenginEntityRender<T extends EntityLiving> extends RenderLiving<T> {
-    public static final ResourceLocation texture = new ResourceLocation("JapariCraftMod:textures/entity/kouteipenguin.png");
+    private static final ResourceLocation texture = new ResourceLocation("JapariCraftMod:textures/entity/kouteipenguin.png");
 
 
 

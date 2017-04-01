@@ -10,7 +10,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class ModelKouteiPengin extends ModelBiped{
-    
+
     public ModelRenderer bipedBodyWear;
 
 

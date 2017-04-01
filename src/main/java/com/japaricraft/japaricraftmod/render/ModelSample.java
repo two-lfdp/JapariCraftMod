@@ -3,9 +3,11 @@ package com.japaricraft.japaricraftmod.render;
 
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 
-
+@SideOnly(Side.CLIENT)
 public class ModelSample extends ModelBiped
 {
     public ModelSample()
