@@ -7,10 +7,6 @@ import com.japaricraft.japaricraftmod.mob.AncientSkeleton;
 import com.japaricraft.japaricraftmod.mob.KouteiPenguin;
 import com.japaricraft.japaricraftmod.profession.ItemCareer;
 import com.japaricraft.japaricraftmod.profession.JapalarProfession;
-import com.japaricraft.japaricraftmod.render.KouteiPenginEntityRender;
-import com.japaricraft.japaricraftmod.render.ModelKouteiPengin;
-import com.japaricraft.japaricraftmod.render.ModelSample;
-import com.japaricraft.japaricraftmod.render.SampleEntityRender;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.item.*;
@@ -139,7 +135,7 @@ public class JapariCraftMod {
             ModelLoader.setCustomModelResourceLocation(sugarstar,0,new ModelResourceLocation(new ResourceLocation(MODID, "sugarstar"),"inventory"));
             ModelLoader.setCustomModelResourceLocation(wildliberationsource,0,new ModelResourceLocation(new ResourceLocation(MODID, "wildliberationsource"),"inventory"));
             //Memo: Render関連は全部クライアントサイドで
-
+            proxy.registerRender();
         }
     }
 
@@ -196,7 +192,7 @@ public class JapariCraftMod {
                 JapariCraftMod.sandstarblock
         );
 
-        proxy.registerRender();
+
     }
 
 
