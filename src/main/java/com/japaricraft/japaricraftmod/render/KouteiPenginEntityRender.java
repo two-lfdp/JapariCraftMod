@@ -6,7 +6,10 @@ import net.minecraft.client.renderer.entity.RenderManager;
 
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
+@SideOnly(Side.CLIENT)
 public class KouteiPenginEntityRender<T extends EntityLiving> extends RenderLiving<T> {
     private static final ResourceLocation texture = new ResourceLocation("JapariCraftMod:textures/entity/kouteipenguin.png");
 
