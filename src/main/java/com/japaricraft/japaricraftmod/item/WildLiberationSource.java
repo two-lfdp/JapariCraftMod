@@ -15,6 +15,8 @@ public class WildLiberationSource extends ItemFood {
         super(2,1,false);
         this.setCreativeTab(JapariCraftMod.tabJapariCraft);
         this.setUnlocalizedName("WildLiberationSource");
+        this.setAlwaysEdible();
+
     }
 
     protected void onFoodEaten(ItemStack stack, World worldIn, EntityPlayer player)
