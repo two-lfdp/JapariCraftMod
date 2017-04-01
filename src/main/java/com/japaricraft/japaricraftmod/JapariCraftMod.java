@@ -36,7 +36,6 @@ import net.minecraft.world.biome.Biome;
 
 @Mod(modid = JapariCraftMod.MODID, name = JapariCraftMod.MODNAME, version = JapariCraftMod.VERSION, useMetadata = true)
 public class JapariCraftMod {
-    @SidedProxy(clientSide = "japaricraftmod.ClientProxy", serverSide = "japaricraftmod.ServerProxy")
 
     public static final String MODID = "japaricraftmod";
     public static final String VERSION = "1.5.2";
@@ -48,6 +47,7 @@ public class JapariCraftMod {
     @Mod.Metadata
     public static ModMetadata metadata;
 
+    @SidedProxy(clientSide = "japaricraftmod.ClientProxy", serverSide = "japaricraftmod.ServerProxy")
     public static CommonProxy proxy;
 
     public static Item.ToolMaterial SandStar = EnumHelper.addToolMaterial("SandStar", 3, 700, 7F, 4F, 16);
