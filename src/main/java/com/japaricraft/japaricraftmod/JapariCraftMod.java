@@ -4,6 +4,7 @@ import com.japaricraft.japaricraftmod.block.SandStarBlock;
 import com.japaricraft.japaricraftmod.block.WoodenFrameBlock;
 import com.japaricraft.japaricraftmod.item.*;
 import com.japaricraft.japaricraftmod.mob.AncientSkeleton;
+import com.japaricraft.japaricraftmod.mob.Cerulean;
 import com.japaricraft.japaricraftmod.mob.KouteiPenguin;
 import com.japaricraft.japaricraftmod.profession.ItemCareer;
 import com.japaricraft.japaricraftmod.profession.JapalarProfession;
@@ -118,10 +119,12 @@ public class JapariCraftMod {
         //メタ情報の登録
         loadMeta();
 
-        EntityRegistry.registerModEntity(AncientSkeleton.class, "AncientSkeleton", 0, this, 40, 3, true, 4243405, 7375001);
+        EntityRegistry.registerModEntity(AncientSkeleton.class, "AncientSkeleton", 0, this, 40, 3, true, 5243405, 7375001);
         EntityRegistry.addSpawn(AncientSkeleton.class, 3, 1, 1, EnumCreatureType.MONSTER, Biome.getBiome(2));
         EntityRegistry.registerModEntity(KouteiPenguin.class, "KouteiPenguin", 1, this, 30, 3, true, 2243405, 7375001);
         EntityRegistry.addSpawn(KouteiPenguin.class, 5, 1, 2, EnumCreatureType.CREATURE, Biome.getBiome(12), Biome.getBiome(140));
+        EntityRegistry.registerModEntity(Cerulean.class, "Cerulean", 0, this, 40, 3, true, 4243405, 7375001);
+        EntityRegistry.addSpawn(Cerulean.class, 3, 1, 1, EnumCreatureType.MONSTER, Biome.getBiome(1));
         //テクスチャ・モデル指定JSONファイル名の登録
         if (event.getSide().isClient()) {
             ModelLoader.setCustomModelResourceLocation(sandstarsword, 0, new ModelResourceLocation(sandstarsword.getRegistryName(), "inventory"));
