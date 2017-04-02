@@ -10,23 +10,18 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class ModelCerulean extends ModelBase {
 
+
     ModelRenderer slimeBodies;
     ModelRenderer slimeMouth;
 
-    private ModelCerulean(int p_i1157_1_) {
-
-
-        {
-            this.slimeBodies = new ModelRenderer(this, 0,p_i1157_1_);
+    public ModelCerulean(int p_i1157_1_) {
+        if (p_i1157_1_ > 0) {
+            this.slimeBodies = new ModelRenderer(this, 0, p_i1157_1_);
             this.slimeBodies.addBox(-3.0F, 17.0F, -3.0F, 6, 6, 6);
-            this.slimeMouth = new ModelRenderer(this, 32, 8);
             this.slimeMouth.addBox(0.0F, 21.0F, -3.5F, 1, 1, 1);
         }
     }
 
-    public ModelCerulean() {
-
-    }
 
 
     @Override
