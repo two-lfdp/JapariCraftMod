@@ -7,15 +7,14 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.ResourceLocation;
 
 
-public class CeruleanRender <T extends EntityLiving> extends RenderLiving<T> {
-    private static final ResourceLocation texture = new ResourceLocation("JapariCraftMod:textures/entity/cerulean.png");
+public class ServalEntityRender<T extends EntityLiving> extends RenderLiving<T> {
+    private static final ResourceLocation texture = new ResourceLocation("JapariCraftMod:textures/entity/serval.png");
 
 
 
-    public CeruleanRender(RenderManager rendermanagerIn, ModelBase modelbaseIn, float shadowsizeIn) {
+    public ServalEntityRender(RenderManager rendermanagerIn, ModelBase modelbaseIn, float shadowsizeIn) {
         super(rendermanagerIn, modelbaseIn, shadowsizeIn);
     }
-
 
 
 

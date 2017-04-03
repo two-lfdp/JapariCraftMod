@@ -6,6 +6,7 @@ import com.japaricraft.japaricraftmod.item.*;
 import com.japaricraft.japaricraftmod.mob.AncientSkeleton;
 import com.japaricraft.japaricraftmod.mob.Cerulean;
 import com.japaricraft.japaricraftmod.mob.KouteiPenguin;
+import com.japaricraft.japaricraftmod.mob.Serval;
 import com.japaricraft.japaricraftmod.profession.ItemCareer;
 import com.japaricraft.japaricraftmod.profession.JapalarProfession;
 import net.minecraft.entity.EnumCreatureType;
@@ -34,7 +35,7 @@ import net.minecraft.world.biome.Biome;
 public class JapariCraftMod {
 
     public static final String MODID = "japaricraftmod";
-    public static final String VERSION = "1.5.2";
+    public static final String VERSION = "1.6";
     public static final String MODNAME = "JapariCraftMod";
     /**
      * Woodenframeのブロックのインスタンスを格納する
@@ -122,9 +123,11 @@ public class JapariCraftMod {
         EntityRegistry.registerModEntity(AncientSkeleton.class, "AncientSkeleton", 0, this, 40, 3, true, 5243405, 7375001);
         EntityRegistry.addSpawn(AncientSkeleton.class, 3, 1, 1, EnumCreatureType.MONSTER, Biome.getBiome(2));
         EntityRegistry.registerModEntity(KouteiPenguin.class, "KouteiPenguin", 1, this, 30, 3, true, 2243405, 7375001);
-        EntityRegistry.addSpawn(KouteiPenguin.class, 5, 1, 2, EnumCreatureType.CREATURE, Biome.getBiome(12), Biome.getBiome(140));
+        EntityRegistry.addSpawn(KouteiPenguin.class, 5, 2, 4, EnumCreatureType.CREATURE, Biome.getBiome(12), Biome.getBiome(140));
         EntityRegistry.registerModEntity(Cerulean.class, "Cerulean", 2, this, 35, 3, true, 4243405, 7375001);
-        EntityRegistry.addSpawn(Cerulean.class, 3, 1, 1, EnumCreatureType.MONSTER, Biome.getBiome(1),Biome.getBiome(4),Biome.getBiome(29));
+        EntityRegistry.addSpawn(Cerulean.class, 5, 2, 4, EnumCreatureType.MONSTER, Biome.getBiome(1),Biome.getBiome(4),Biome.getBiome(29));
+        EntityRegistry.registerModEntity(Serval.class, "Serval", 3, this, 35, 3, true, 16703405, 6375001);
+        EntityRegistry.addSpawn(Serval.class, 5, 2, 4, EnumCreatureType.CREATURE, Biome.getBiome(35));
         //テクスチャ・モデル指定JSONファイル名の登録
         if (event.getSide().isClient()) {
             ModelLoader.setCustomModelResourceLocation(sandstarsword, 0, new ModelResourceLocation(sandstarsword.getRegistryName(), "inventory"));

@@ -19,8 +19,13 @@ import net.minecraft.world.World;
 public class Cerulean extends EntityMob {
 
 
-    public Cerulean(World world) {
-        super(world);
+    public Cerulean(World worldIn)
+    {
+        super(worldIn);
+        this.setSize(0.6F, 0.6F);
+    }
+
+    protected void initEntityAI(){
 
 
         //this.tasks.addTask(0, new Entityattack);
@@ -35,9 +40,13 @@ public class Cerulean extends EntityMob {
         this.targetTasks.addTask(3, new EntityAINearestAttackableTarget<>(this, EntityVillager.class, false));
         this.targetTasks.addTask(3, new EntityAINearestAttackableTarget<>(this, EntityIronGolem.class, true));
         this.targetTasks.addTask(4,new EntityAINearestAttackableTarget<>(this, KouteiPenguin.class,true));
+        this.targetTasks.addTask(4,new EntityAINearestAttackableTarget<>(this, Serval.class,true));
+
     }
 
     public boolean isAIEnabled() { return true; }
+
+
 
     @Override
     protected SoundEvent getDeathSound()
@@ -52,7 +61,7 @@ public class Cerulean extends EntityMob {
     @Override
     protected SoundEvent getAmbientSound()
     {
-        return SoundEvents.ENTITY_SMALL_SLIME_SQUISH;
+        return SoundEvents.ENTITY_SLIME_SQUISH;
     }
 
 
@@ -84,7 +93,7 @@ public class Cerulean extends EntityMob {
     protected void dropFewItems(boolean parRecentlyHit, int parLootingLevel) {
         //ほんとは確率とかで落とすものが決めれるんだと思う
         {
-            this.entityDropItem(new ItemStack(Items.FEATHER, 4, 0), 0.0F);
+            this.entityDropItem(new ItemStack(Items.SLIME_BALL, 1, 0), 0.0F);
 
         }
     }
@@ -92,10 +101,10 @@ public class Cerulean extends EntityMob {
 
     protected void applyEntityAttributes(){
         super.applyEntityAttributes();
-        getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(2D);
+        getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(1D);
         getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(25D);
-        getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(10);
+        getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(6);
         getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.23D);
-        getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(3);
+        getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(1);
     }
 }

@@ -1,8 +1,8 @@
 package com.japaricraft.japaricraftmod.render;
 
 import net.minecraft.client.model.ModelBase;
-import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -12,26 +12,27 @@ public class ModelCerulean extends ModelBase {
 
 
     ModelRenderer slimeBodies;
-    ModelRenderer slimeMouth;
+    /** The slime's right eye */
 
-    public ModelCerulean(int p_i1157_1_) {
-        if (p_i1157_1_ > 0) {
-            this.slimeBodies = new ModelRenderer(this, 0, p_i1157_1_);
-            this.slimeBodies.addBox(-3.0F, 17.0F, -3.0F, 6, 6, 6);
-            this.slimeMouth.addBox(0.0F, 21.0F, -3.5F, 1, 1, 1);
+
+    public ModelCerulean(int render)
+    {
+        if (render > 0)
+        {
+            this.slimeBodies = new ModelRenderer(this, 0, render);
+            this.slimeBodies.addBox(-4.0F, 16.0F, -4.0F, 8, 8, 8);
         }
     }
 
 
-
-    @Override
-    public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
-        // 描画
-        slimeBodies.render(f5);
-        slimeMouth.render(f5);
-
-
+    /**
+     * Sets the models various rotation angles then renders the model.
+     */
+    public void render(Entity entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale)
+    {
+        this.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale, entityIn);
+        GlStateManager.translate(0.0F, 0.001F, 0.0F);
+        this.slimeBodies.render(scale);
     }
-
 
 }

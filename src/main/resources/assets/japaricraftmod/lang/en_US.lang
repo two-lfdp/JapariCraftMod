@@ -10,5 +10,7 @@ item.SugarStar.name=SugarStar
 item.WildLiberationSource.name=WildLiberationSource
 entity.japaricraftmod.AncientSkeleton.name=AncientSkeleton
 entity.japaricraftmod.KouteiPenguin.name=EmperorPenguins
+entity.japaricraftmod.Serval.name=Serval
+entity.japaricraftmod.Cerulean.name=Cerulean
 entity.Villager.japalar=JapariStaff
 itemGroup.JapariCraftTab=JapariCraft

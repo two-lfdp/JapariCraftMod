@@ -86,6 +86,7 @@ public class AncientSkeleton extends EntityMob {
     }
 
 
+    @Override
     public EnumCreatureAttribute getCreatureAttribute() { return EnumCreatureAttribute.UNDEAD; }
 
 
@@ -110,8 +111,6 @@ public class AncientSkeleton extends EntityMob {
             dropItem(JapariCraftMod.sugarstar,4);
         }
     }
-
-
 
 
     protected void applyEntityAttributes(){

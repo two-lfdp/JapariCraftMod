@@ -12,49 +12,56 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 
-public class KouteiPenguin extends EntityCreature {
-    public KouteiPenguin(World world) {
-        super(world);
+public class Serval extends EntityCreature {
+    public Serval(World worldIn)
+    {
+        super(worldIn);
+        this.setSize(0.6F, 1.8F);
+    }
 
 
-        //this.tasks.addTask(0, new Entityattack);
-        this.tasks.addTask(1, new EntityAISwimming(this));
+
+    protected void initEntityAI()
+    {
+        super.initEntityAI();
+        this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(1,new EntityAIPanic(this,1.2D));
         this.tasks.addTask(6, new EntityAIWander(this, 1.0D));
         this.tasks.addTask(7, new EntityAILookIdle(this));
         this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
 
-
+    }
+    protected void applyEntityAttributes(){
+        super.applyEntityAttributes();
+        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(24);
+        this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.25D);
+        this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(30D);
     }
 
-    public boolean isAIEnabled() { return true; }
+
 
 
     @Override
     protected SoundEvent getDeathSound()
     {
-        return SoundEvents.ENTITY_PLAYER_DEATH;
+        return SoundEvents.ENTITY_CAT_DEATH;
     }
     @Override
     protected SoundEvent getHurtSound()
     {
-        return SoundEvents.ENTITY_PLAYER_HURT;
+        return SoundEvents.ENTITY_CAT_HURT;
+    }
+    @Override
+    protected SoundEvent getAmbientSound()
+    {
+        return SoundEvents.ENTITY_CAT_AMBIENT;
     }
 
     public EnumCreatureAttribute getCreatureAttribute() { return EnumCreatureAttribute.UNDEFINED; }
 
-
     public Item getDropItem () {
 
         return null;//なにも落とさない
-    }
-    @Override
-    protected void dropFewItems(boolean parRecentlyHit, int parLootingLevel) {
-        //ほんとは確率とかで落とすものが決めれるんだと思う
-        {
-            this.entityDropItem(new ItemStack(Items.FEATHER, 4, 0), 0.0F);
-
-        }
     }
 
     @Override
@@ -63,10 +70,5 @@ public class KouteiPenguin extends EntityCreature {
         return false;
     }
 
-    protected void applyEntityAttributes(){
-        super.applyEntityAttributes();
-        getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(24);
-        getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.25D);
-    }
 
 }
