@@ -11,6 +11,7 @@ import com.japaricraft.japaricraftmod.profession.ItemCareer;
 import com.japaricraft.japaricraftmod.profession.JapalarProfession;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.entity.passive.EntityVillager;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.*;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.ModMetadata;
@@ -60,6 +61,8 @@ public class JapariCraftMod {
     public static final Item sugarstar = new SugarStar();
     public static final Item sandstarsword = new SandStarSword(SandStar);
     public static final Item wildliberationsource = new WildLiberationSource();
+    public static final Item wildliberationpotion = new WildLiberationPotion();
+    public static final Item pumpkinsoup =new PumpkinSoup();
 
     public static JapalarProfession japalarprofession;
     //Memo: 変数名は型のクラスがわかり易い名前にしましょう
@@ -87,7 +90,6 @@ public class JapariCraftMod {
                         },
                         {
                                 new EntityVillager.EmeraldForItems(Items.SLIME_BALL, new EntityVillager.PriceInfo(13, 17)),
-                            new EntityVillager.ListItemForEmeralds(JapariCraftMod.wildliberationsource,new EntityVillager.PriceInfo(9,15))
                         }
                 }
         );
@@ -112,6 +114,8 @@ public class JapariCraftMod {
         GameRegistry.register(starjapariman,new ResourceLocation(MODID,"starjapariman"));
         GameRegistry.register(sugarstar,new ResourceLocation(MODID,"sugarstar"));
         GameRegistry.register(wildliberationsource,new ResourceLocation(MODID,"wildliberationsource"));
+        GameRegistry.register(wildliberationpotion,new ResourceLocation(MODID,"wildliberationpotion"));
+        GameRegistry.register(pumpkinsoup,new ResourceLocation(MODID,"pumpkinsoup"));
 
         //ここでResourceLocationを引数に入れるとregister()内でsetRegistryName()が呼ばれてエラー
         GameRegistry.register(japalarprofession/*, new ResourceLocation(MODID, "Japalar")*/);
@@ -123,11 +127,11 @@ public class JapariCraftMod {
         EntityRegistry.registerModEntity(AncientSkeleton.class, "AncientSkeleton", 0, this, 40, 3, true, 5243405, 7375001);
         EntityRegistry.addSpawn(AncientSkeleton.class, 3, 1, 1, EnumCreatureType.MONSTER, Biome.getBiome(2));
         EntityRegistry.registerModEntity(KouteiPenguin.class, "KouteiPenguin", 1, this, 30, 3, true, 2243405, 7375001);
-        EntityRegistry.addSpawn(KouteiPenguin.class, 5, 2, 4, EnumCreatureType.CREATURE, Biome.getBiome(12), Biome.getBiome(140));
+        EntityRegistry.addSpawn(KouteiPenguin.class, 6, 2, 4, EnumCreatureType.CREATURE, Biome.getBiome(12), Biome.getBiome(140));
         EntityRegistry.registerModEntity(Cerulean.class, "Cerulean", 2, this, 35, 3, true, 4243405, 7375001);
-        EntityRegistry.addSpawn(Cerulean.class, 5, 2, 4, EnumCreatureType.MONSTER, Biome.getBiome(1),Biome.getBiome(4),Biome.getBiome(29));
+        EntityRegistry.addSpawn(Cerulean.class, 7, 2, 4, EnumCreatureType.MONSTER, Biome.getBiome(1),Biome.getBiome(4),Biome.getBiome(35));
         EntityRegistry.registerModEntity(Serval.class, "Serval", 3, this, 35, 3, true, 16703405, 6375001);
-        EntityRegistry.addSpawn(Serval.class, 5, 2, 4, EnumCreatureType.CREATURE, Biome.getBiome(35));
+        EntityRegistry.addSpawn(Serval.class, 6, 2, 4, EnumCreatureType.CREATURE, Biome.getBiome(35));
         //テクスチャ・モデル指定JSONファイル名の登録
         if (event.getSide().isClient()) {
             ModelLoader.setCustomModelResourceLocation(sandstarsword, 0, new ModelResourceLocation(sandstarsword.getRegistryName(), "inventory"));
@@ -139,6 +143,8 @@ public class JapariCraftMod {
             ModelLoader.setCustomModelResourceLocation(starjapariman,0,new ModelResourceLocation(new ResourceLocation(MODID, "starjapariman"),"inventory"));
             ModelLoader.setCustomModelResourceLocation(sugarstar,0,new ModelResourceLocation(new ResourceLocation(MODID, "sugarstar"),"inventory"));
             ModelLoader.setCustomModelResourceLocation(wildliberationsource,0,new ModelResourceLocation(new ResourceLocation(MODID, "wildliberationsource"),"inventory"));
+            ModelLoader.setCustomModelResourceLocation(wildliberationpotion,0,new ModelResourceLocation(new ResourceLocation(MODID, "wildliberationpotion"),"inventory"));
+            ModelLoader.setCustomModelResourceLocation(pumpkinsoup,0,new ModelResourceLocation(new ResourceLocation(MODID, "pumpkinsoup"),"inventory"));
             //Memo: Render関連は全部クライアントサイドで
             proxy.registerRender();
         }
@@ -191,8 +197,23 @@ public class JapariCraftMod {
                 'B', Items.SLIME_BALL
 
         );
+        GameRegistry.addRecipe(new ItemStack(JapariCraftMod.wildliberationpotion, 1),
+                " A ",
+                "SWS",
+                " G ",
+                'S', JapariCraftMod.sugarstar,
+                'W', JapariCraftMod.wildliberationsource,
+                'A', Items.GOLDEN_APPLE,
+                'G', Items.GLASS_BOTTLE
 
+        );
+        GameRegistry.addRecipe(new ItemStack(JapariCraftMod.pumpkinsoup, 1),
+                "P",
+                "B",
+                'P', Blocks.PUMPKIN,
+                'B', Items.BOWL
 
+        );
         GameRegistry.addShapelessRecipe(new ItemStack(JapariCraftMod.sandstarfragment, 9),
                 JapariCraftMod.sandstarblock
         );

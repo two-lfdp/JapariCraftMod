@@ -25,11 +25,9 @@ public class WildLiberationSource extends ItemFood {
         {
 
             {
-                player.addPotionEffect(new PotionEffect(MobEffects.SPEED,2400,1));
-                player.addPotionEffect(new PotionEffect(MobEffects.ABSORPTION, 2400, 1));
-                player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 2400, 1));
-                player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 1200, 0));
-
+                player.addPotionEffect(new PotionEffect(MobEffects.ABSORPTION, 320, 1));
+                player.addPotionEffect(new PotionEffect(MobEffects.HUNGER,160,0));
+                player.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS,160,0));
             }
         }
     }

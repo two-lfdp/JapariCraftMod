@@ -10,10 +10,9 @@ import net.minecraft.item.ItemFood;
 
 public class JaparimanCocoa extends ItemFood {
     public JaparimanCocoa() {
-        super(5,4,false);
+        super(5,3,false);
         this.setCreativeTab(JapariCraftMod.tabJapariCraft);
         this.setUnlocalizedName("JaparimanCocoa");
         this.setMaxStackSize(64);
-
     }
 }
