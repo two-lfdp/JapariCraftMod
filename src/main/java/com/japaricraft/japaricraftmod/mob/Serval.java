@@ -1,16 +1,11 @@
 package com.japaricraft.japaricraftmod.mob;
 
-import com.google.common.base.Predicate;
-import com.japaricraft.japaricraftmod.JapariCraftMod;
 import net.minecraft.entity.EntityAgeable;
-import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
-import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.util.SoundEvent;
@@ -18,7 +13,6 @@ import net.minecraft.world.World;
 
 public class Serval extends EntityTameable {
 
-    private EntityAITempt aiTempt;
 
     public Serval(World worldIn) {
         super(worldIn);

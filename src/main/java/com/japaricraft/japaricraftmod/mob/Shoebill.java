@@ -1,38 +1,56 @@
 package com.japaricraft.japaricraftmod.mob;
 
 import com.japaricraft.japaricraftmod.JapariCraftMod;
-import net.minecraft.entity.EntityCreature;
-import net.minecraft.entity.EnumCreatureAttribute;
-import net.minecraft.entity.SharedMonsterAttributes;
+import com.japaricraft.japaricraftmod.item.Japariman;
+import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
+import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.datasync.DataParameter;
+import net.minecraft.network.datasync.DataSerializers;
+import net.minecraft.network.datasync.EntityDataManager;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 
-public class Shoebill extends EntityCreature {
-    public Shoebill(World world) {
-        super(world);
+import javax.annotation.Nullable;
+
+public class Shoebill extends EntityTameable {
+
+    private static final DataParameter<Float> DATA_HEALTH_ID = EntityDataManager.<Float>createKey(Shoebill.class, DataSerializers.FLOAT);
+
+    public Shoebill(World worldIn)
+    {
+        super(worldIn);
+        this.setSize(0.6F, 0.85F);
+        this.setTamed(false);
+    }
+
+    protected void initEntityAI() {
+
 
 
         //this.tasks.addTask(0, new Entityattack);
         this.tasks.addTask(0, new EntityAISwimming(this));
-        this.tasks.addTask(1,new EntityAIPanic(this,1.2D));
-        this.tasks.addTask(4, new EntityAITempt(this, 1.2D, JapariCraftMod.japariman, false));
+        this.tasks.addTask(4, new EntityAIAttackMelee(this, 1.0D, true));
+        this.tasks.addTask(5, new EntityAIFollowOwner(this, 1.0D, 10.0F, 2.0F));
         this.tasks.addTask(6, new EntityAIWander(this, 1.0D));
         this.tasks.addTask(7, new EntityAILookIdle(this));
         this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
-
+        this.targetTasks.addTask(5, new EntityAINearestAttackableTarget<>(this, Cerulean.class, false));
 
     }
 
-
-    public boolean isAIEnabled() { return true; }
-
-
+    @Override
+    public EntityAgeable createChild(EntityAgeable ageable) {
+        return null;
+    }
 
     @Override
     protected SoundEvent getDeathSound()
@@ -42,8 +60,88 @@ public class Shoebill extends EntityCreature {
     @Override
     protected SoundEvent getHurtSound()
     {
-        return SoundEvents.ENTITY_PLAYER_HURT;
+        return SoundEvents.ENTITY_PLAYER_HURT;}
+
+    protected void applyEntityAttributes(){
+        super.applyEntityAttributes();
+        getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(20.0D);
+        getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.25D);
+        this.getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(3.0D);
     }
+    protected void updateAITasks()
+    {
+        this.dataManager.set(DATA_HEALTH_ID, Float.valueOf(this.getHealth()));
+    }
+
+    protected void entityInit()
+    {
+        super.entityInit();
+        this.dataManager.register(DATA_HEALTH_ID, Float.valueOf(this.getHealth()));
+    }
+
+    public boolean isAIEnabled() { return true; }
+
+
+    public boolean processInteract(EntityPlayer player, EnumHand hand, @Nullable ItemStack stack)
+    {
+
+        if (this.isTamed()) {
+
+
+            if (stack != null)
+            {
+                if (stack.getItem() instanceof Japariman)
+                {
+                    Japariman friend = (Japariman) stack.getItem();
+
+                    if (Japariman.isFriends() && ((Float)this.dataManager.get(DATA_HEALTH_ID)).floatValue() < 20.0F)
+                    {
+                        if (!player.capabilities.isCreativeMode)
+                        {
+                            --stack.stackSize;
+                        }
+
+                        this.heal((float)friend.getHealAmount(stack));
+                        return true;
+                    }
+                }
+            }
+            if (this.isOwner(player) && !this.worldObj.isRemote && !this.isBreedingItem(stack))
+            {
+                this.isJumping = false;
+                this.navigator.clearPathEntity();
+            }
+        }
+        if (stack != null && stack.getItem() == Items.FISH )
+        {
+            if (!player.capabilities.isCreativeMode)
+            {
+                --stack.stackSize;
+            }
+
+            if (!this.worldObj.isRemote)
+            {
+                if (this.rand.nextInt(3) == 0)
+                {
+                    this.setTamed(true);
+                    this.navigator.clearPathEntity();
+                    this.setOwnerId(player.getUniqueID());
+                    this.playTameEffect(true);
+                    this.worldObj.setEntityState(this, (byte)7);
+                }
+                else
+                {
+                    this.playTameEffect(true);
+                    this.worldObj.setEntityState(this, (byte)6);
+                }
+            }
+
+            return true;
+        }
+
+        return super.processInteract(player, hand, stack);
+    }
+
 
     public EnumCreatureAttribute getCreatureAttribute() { return EnumCreatureAttribute.UNDEFINED; }
 
@@ -70,10 +168,6 @@ public class Shoebill extends EntityCreature {
         return false;
     }
 
-    protected void applyEntityAttributes(){
-        super.applyEntityAttributes();
-        getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(20);
-        getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.25D);
-    }
+
 
 }
