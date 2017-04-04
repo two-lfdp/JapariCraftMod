@@ -13,14 +13,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.server.management.PreYggdrasilConverter;
-import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
-
-import javax.annotation.Nullable;
 
 public class Serval extends EntityTameable {
 
@@ -39,14 +33,12 @@ public class Serval extends EntityTameable {
 
     protected void initEntityAI() {
         super.initEntityAI();
-        this.aiTempt = new EntityAITempt(this, 0.8D, JapariCraftMod.japariman, false);
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(1, new EntityAIPanic(this, 1.2D));
-        this.tasks.addTask(3, this.aiTempt);
-        this.tasks.addTask(5, new EntityAIFollowOwner(this, 1.0D, 10.0F, 5.0F));
         this.tasks.addTask(6, new EntityAIWander(this, 1.0D));
         this.tasks.addTask(7, new EntityAILookIdle(this));
         this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
+
     }
 
     protected void applyEntityAttributes() {
@@ -82,6 +74,7 @@ public class Serval extends EntityTameable {
         return null;//なにも落とさない
     }
 
+
     public void fall(float distance, float damageMultiplier)
     {
     }
@@ -90,39 +83,6 @@ public class Serval extends EntityTameable {
     {
         return false;
     }
-
-    public boolean processInteract(EntityPlayer player, EnumHand hand, @Nullable ItemStack stack)
-    {
-         if ((this.aiTempt == null || this.aiTempt.isRunning()) && stack != null && stack.getItem() == Items.FISH && player.getDistanceSqToEntity(this) < 9.0D)
-        {
-            if (!player.capabilities.isCreativeMode)
-            {
-                --stack.stackSize;
-            }
-
-            if (!this.worldObj.isRemote)
-            {
-                if (this.rand.nextInt(3) == 0)
-                {
-                    this.setTamed(true);
-                    this.setOwnerId(player.getUniqueID());
-                    this.playTameEffect(true);
-                    this.aiSit.setSitting(true);
-                    this.worldObj.setEntityState(this, (byte)7);
-                }
-                else
-                {
-                    this.playTameEffect(false);
-                    this.worldObj.setEntityState(this, (byte)6);
-                }
-            }
-
-            return true;
-        }
-
-        return super.processInteract(player, hand, stack);
-    }
-
 
 
 }

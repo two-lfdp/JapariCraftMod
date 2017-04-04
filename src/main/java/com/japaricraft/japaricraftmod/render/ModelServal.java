@@ -7,16 +7,14 @@ import net.minecraft.util.EnumHandSide;
 
 public class ModelServal extends ModelBiped {
 
-    public ModelRenderer bipedLeftLegwear;
-    public ModelRenderer bipedRightLegwear;
-    public ModelRenderer bipedBodyWear;
+    private ModelRenderer bipedBodyWear;
 
 
     public ModelServal()
     {
         this(0.0F);
     }
-    protected ModelServal(float modelSize) {
+    private ModelServal(float modelSize) {
 
         super(modelSize, 0.0F, 64, 64);
         {
@@ -26,12 +24,12 @@ public class ModelServal extends ModelBiped {
             this.bipedLeftLeg = new ModelRenderer(this, 16, 48);
             this.bipedLeftLeg.addBox(-2.0F, 0.0F, -2.0F, 4, 12, 4, modelSize);
             this.bipedLeftLeg.setRotationPoint(1.9F, 12.0F, 0.0F);
-            this.bipedLeftLegwear = new ModelRenderer(this, 0, 48);
-            this.bipedLeftLegwear.addBox(-2.0F, 0.0F, -2.0F, 4, 12, 4, modelSize + 0.25F);
-            this.bipedLeftLegwear.setRotationPoint(1.9F, 12.0F, 0.0F);
-            this.bipedRightLegwear = new ModelRenderer(this, 0, 32);
-            this.bipedRightLegwear.addBox(-2.0F, 0.0F, -2.0F, 4, 12, 4, modelSize + 0.25F);
-            this.bipedRightLegwear.setRotationPoint(-1.9F, 12.0F, 0.0F);
+            ModelRenderer bipedLeftLegwear = new ModelRenderer(this, 0, 48);
+            bipedLeftLegwear.addBox(-2.0F, 0.0F, -2.0F, 4, 12, 4, modelSize + 0.25F);
+            bipedLeftLegwear.setRotationPoint(1.9F, 12.0F, 0.0F);
+            ModelRenderer bipedRightLegwear = new ModelRenderer(this, 0, 32);
+            bipedRightLegwear.addBox(-2.0F, 0.0F, -2.0F, 4, 12, 4, modelSize + 0.25F);
+            bipedRightLegwear.setRotationPoint(-1.9F, 12.0F, 0.0F);
             this.bipedBodyWear = new ModelRenderer(this, 16, 32);
             this.bipedBodyWear.addBox(-4.0F, 0.0F, -2.0F, 8, 12, 4, modelSize + 0.25F);
             this.bipedBodyWear.setRotationPoint(0.0F, 0.0F, 0.0F);
