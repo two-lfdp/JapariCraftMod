@@ -13,6 +13,8 @@ import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.*;
+import net.minecraft.stats.Achievement;
+import net.minecraftforge.common.AchievementPage;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.ModMetadata;
 import net.minecraft.block.Block;
@@ -63,6 +65,28 @@ public class JapariCraftMod {
     public static final Item wildliberationsource = new WildLiberationSource();
     public static final Item wildliberationpotion = new WildLiberationPotion();
     public static final Item pumpkinsoup =new PumpkinSoup();
+    public static final Achievement achievement_woodframe =
+            new Achievement("achievement." + MODID + ":woodframe", MODID + ".woodframe",
+                    0, 2, Items.STICK, null).registerStat();
+    public static final Achievement achievement_japariman =
+            new Achievement("achievement." + MODID + ":craft_japariman", MODID + ".craft_japariman",
+                    0, 0, JapariCraftMod.japariman, null).registerStat();
+    public static final Achievement achievement_japarimancocoa =
+            new Achievement("achievement." + MODID + ":craft_japarimancocoa", MODID + ".craft_japarimancocoa",
+                    2, 0, JapariCraftMod.japarimancocoa, achievement_japariman).registerStat();
+    public static final Achievement achievement_starjapariman =
+            new Achievement("achievement." + MODID + ":eat_starjapariman", MODID + ".eat_starjapariman",
+                    -6, 0, JapariCraftMod.starjapariman, null).registerStat().setSpecial();
+    public static final Achievement achievement_wild =
+            new Achievement("achievement." + MODID + ":drink_wildpotion", MODID + ".drink_wildpotion",
+                    -6, 2, JapariCraftMod.wildliberationpotion, null).registerStat().setSpecial();
+    public static final AchievementPage achievement_page_japaricraft = new AchievementPage("Japari Craft",
+            achievement_japariman,
+            achievement_japarimancocoa,
+            achievement_starjapariman,
+            achievement_wild,
+            achievement_woodframe
+    );
 
     public static JapalarProfession japalarprofession;
     //Memo: 変数名は型のクラスがわかり易い名前にしましょう
@@ -92,7 +116,9 @@ public class JapariCraftMod {
                                 new EntityVillager.EmeraldForItems(Items.SLIME_BALL, new EntityVillager.PriceInfo(13, 17)),
                         }
                 }
+
         );
+        AchievementPage.registerAchievementPage(achievement_page_japaricraft);
 
         //ブロックの登録。
         ResourceLocation woodenframeblocklocation = new ResourceLocation(MODID, "woodenframeblock");//これはウッデンフレームブロックのテクスチャ指定。

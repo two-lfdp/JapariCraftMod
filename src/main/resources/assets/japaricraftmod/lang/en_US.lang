@@ -1,4 +1,14 @@
 #
+achievement.japaricraftmod.woodframe=CraftEasyBlock
+achievement.japaricraftmod.woodframe.desc=It`sEasy!
+achievement.japaricraftmod.craft_japariman=FastFood
+achievement.japaricraftmod.craft_japariman.desc=Is This Manju?
+achievement.japaricraftmod.craft_japarimancocoa=CocoaFastFood
+achievement.japaricraftmod.craft_japarimancocoa.desc=More delicious
+achievement.japaricraftmod.eat_starjapariman=SuperJapariman
+achievement.japaricraftmod.eat_starjapariman.desc=SandStarPower
+achievement.japaricraftmod.drink_wildpotion=WildPower
+achievement.japaricraftmod.drink_wildpotion.desc=You can drink it.
 tile.BlockWoodenFrame.name=WoodenFrame
 tile.SandStarBlock.name=SandStarBlock
 item.Japariman.name=Japariman
