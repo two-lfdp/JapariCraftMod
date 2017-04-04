@@ -3,7 +3,6 @@ package com.japaricraft.japaricraftmod.block;
 import com.japaricraft.japaricraftmod.JapariCraftMod;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.creativetab.CreativeTabs;
 
 
 public class SandStarBlock extends Block {
