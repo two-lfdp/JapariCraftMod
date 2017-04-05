@@ -11,11 +11,9 @@ import net.minecraft.world.World;
 public class Japariman extends ItemFood {
 
 
-    private final boolean isFriends;
 
-    public Japariman(boolean isFriendFood){
+    public Japariman(){
         super(4,3,false);
-        this.isFriends = isFriendFood;
         this.setCreativeTab(JapariCraftMod.tabJapariCraft);
         this.setUnlocalizedName("Japariman");
         this.setMaxStackSize(64);
@@ -28,9 +26,6 @@ public class Japariman extends ItemFood {
             playerIn.addStat(JapariCraftMod.achievement_japariman);
         }
     }
-    public static boolean isFriends()
-    {
-        return isFriends();
-    }
+
 
 }

@@ -77,12 +77,16 @@ public class JapariCraftMod {
     public static final Achievement achievement_wild =
             new Achievement("achievement." + MODID + ":drink_wildpotion", MODID + ".drink_wildpotion",
                     -6, 2, JapariCraftMod.wildliberationpotion, null).registerStat().setSpecial();
+    public static final Achievement achievement_firstfriend =
+            new Achievement("achievement." + MODID + ":firstfriend", MODID + ".firstfriend",
+                    0, -2, JapariCraftMod.sandstarfragment, achievement_japariman).registerStat().setSpecial();
     public static final AchievementPage achievement_page_japaricraft = new AchievementPage("Japari Craft",
             achievement_japariman,
             achievement_japarimancocoa,
             achievement_starjapariman,
             achievement_wild,
-            achievement_woodframe
+            achievement_woodframe,
+            achievement_firstfriend
     );
 
     public static JapalarProfession japalarprofession;

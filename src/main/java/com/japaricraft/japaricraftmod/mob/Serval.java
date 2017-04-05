@@ -1,17 +1,16 @@
 package com.japaricraft.japaricraftmod.mob;
 
-import net.minecraft.entity.EntityAgeable;
-import net.minecraft.entity.EnumCreatureAttribute;
-import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 
-public class Serval extends EntityTameable {
+public class Serval extends EntityCreature {
 
 
     public Serval(World worldIn) {
@@ -19,20 +18,17 @@ public class Serval extends EntityTameable {
         this.setSize(0.6F, 1.9F);
     }
 
-    @Override
-    public EntityAgeable createChild(EntityAgeable ageable) {
-        return null;
-    }
+
 
 
     protected void initEntityAI() {
         super.initEntityAI();
         this.tasks.addTask(0, new EntityAISwimming(this));
-        this.tasks.addTask(1, new EntityAIPanic(this, 1.2D));
+        this.tasks.addTask(4, new EntityAIAttackMelee(this, 1.0D, true));
         this.tasks.addTask(6, new EntityAIWander(this, 1.0D));
         this.tasks.addTask(7, new EntityAILookIdle(this));
         this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
-
+        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget<>(this, Cerulean.class, false));
     }
 
     protected void applyEntityAttributes() {
@@ -40,8 +36,8 @@ public class Serval extends EntityTameable {
         this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(24);
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.25D);
         this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(30D);
+        this.getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(4.0D);
     }
-
 
 
     @Override
@@ -66,6 +62,25 @@ public class Serval extends EntityTameable {
     public Item getDropItem() {
 
         return null;//なにも落とさない
+    }
+
+    public boolean attackEntityAsMob(Entity entityIn)
+    {
+        boolean flag = entityIn.attackEntityFrom(DamageSource.causeMobDamage(this), (float)((int)this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue()));
+
+        if (flag)
+        {
+            this.applyEnchantments(this, entityIn);
+        }
+
+        return flag;
+    }
+
+    public void onLivingUpdate(){
+        if (this.ticksExisted % 5 == 0 && this.getHealth() < this.getMaxHealth())
+        {
+            this.setHealth(this.getHealth() + 0.1F);
+        }
     }
 
 
