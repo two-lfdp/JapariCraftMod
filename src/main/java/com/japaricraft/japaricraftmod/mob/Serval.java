@@ -2,7 +2,6 @@ package com.japaricraft.japaricraftmod.mob;
 
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
-import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
@@ -76,12 +75,6 @@ public class Serval extends EntityCreature {
         return flag;
     }
 
-    public void onLivingUpdate(){
-        if (this.ticksExisted % 5 == 0 && this.getHealth() < this.getMaxHealth())
-        {
-            this.setHealth(this.getHealth() + 0.1F);
-        }
-    }
 
 
     public void fall(float distance, float damageMultiplier)
