@@ -156,7 +156,7 @@ public class JapariCraftMod {
         EntityRegistry.registerModEntity(Serval.class, "Serval", 3, this, 35, 3, true, 16703405, 6375001);
         EntityRegistry.addSpawn(Serval.class, 7, 2, 3, EnumCreatureType.CREATURE, Biome.getBiome(35),Biome.getBiome(36),Biome.getBiome(163));
         EntityRegistry.registerModEntity(Kawauso.class, "Kawauso", 4, this, 35, 3, true, 2240000, 7375001);
-        EntityRegistry.addSpawn(Kawauso.class, 0, 2, 3, EnumCreatureType.CREATURE, Biome.getBiome(6),Biome.getBiome(16),Biome.getBiome(134));
+        EntityRegistry.addSpawn(Kawauso.class, 1, 2, 3, EnumCreatureType.CREATURE, Biome.getBiome(6),Biome.getBiome(16),Biome.getBiome(134));
         EntityRegistry.registerModEntity(Shoebill.class, "Shoebill", 5, this, 35, 3, true, 7375001, 10000);
         EntityRegistry.addSpawn(Shoebill.class, 7, 2, 3, EnumCreatureType.CREATURE, Biome.getBiome(1),Biome.getBiome(4));
 

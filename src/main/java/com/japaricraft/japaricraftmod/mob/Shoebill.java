@@ -3,7 +3,6 @@ package com.japaricraft.japaricraftmod.mob;
 import com.japaricraft.japaricraftmod.JapariCraftMod;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
-import net.minecraft.entity.item.EntityEnderCrystal;
 import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -16,7 +15,6 @@ import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
-import java.util.List;
 
 public class Shoebill extends EntityTameable {
 
@@ -29,7 +27,7 @@ public class Shoebill extends EntityTameable {
         this.setTamed(false);
     }
 
-    protected void initEntityAI() {
+    protected void initEntityAI()  {
 
 
 
@@ -37,11 +35,11 @@ public class Shoebill extends EntityTameable {
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(4, new EntityAIAttackMelee(this, 1.0D, true));
         this.tasks.addTask(5, new EntityAIFollowOwner(this, 1.0D, 10.0F, 2.0F));
+        this.tasks.addTask(6, new EntityAIMate(this, 1.0D));
         this.tasks.addTask(6, new EntityAIWander(this, 1.0D));
         this.tasks.addTask(7, new EntityAILookIdle(this));
         this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
         this.targetTasks.addTask(2, new EntityAIOwnerHurtTarget(this));
-        this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
         this.targetTasks.addTask(4, new EntityAINearestAttackableTarget<>(this, Cerulean.class, false));
 
 
@@ -52,7 +50,13 @@ public class Shoebill extends EntityTameable {
     }
 
 
-
+    protected void updateAITasks()
+    {
+        if (this.ticksExisted % 5 == 0)
+        {
+            this.heal(0.1F);
+        }
+    }
     @Override
     protected SoundEvent getDeathSound()
     {
@@ -90,7 +94,7 @@ public class Shoebill extends EntityTameable {
         {
             if (this.isOwner(player) && !this.worldObj.isRemote && !this.isBreedingItem(stack))
             {
-                this.playTameEffect(true);
+                return true;
             }
         }
         else if ( stack != null && stack.getItem() == JapariCraftMod.japariman && player.getDistanceSqToEntity(this) < 22.0D)
@@ -154,6 +158,8 @@ public class Shoebill extends EntityTameable {
 
         }
     }
+
+
 
     public boolean canDespawn()
     {
