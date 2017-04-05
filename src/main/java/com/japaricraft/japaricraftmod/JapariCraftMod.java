@@ -150,15 +150,15 @@ public class JapariCraftMod {
         EntityRegistry.registerModEntity(AncientSkeleton.class, "AncientSkeleton", 0, this, 40, 3, true, 5243405, 7375001);
         EntityRegistry.addSpawn(AncientSkeleton.class, 3, 1, 1, EnumCreatureType.MONSTER, Biome.getBiome(2),Biome.getBiome(130));
         EntityRegistry.registerModEntity(KouteiPenguin.class, "KouteiPenguin", 1, this, 30, 3, true, 2243405, 7375001);
-        EntityRegistry.addSpawn(KouteiPenguin.class, 6, 2, 3, EnumCreatureType.CREATURE, Biome.getBiome(12), Biome.getBiome(140));
+        EntityRegistry.addSpawn(KouteiPenguin.class, 7, 2, 3, EnumCreatureType.CREATURE, Biome.getBiome(12), Biome.getBiome(140));
         EntityRegistry.registerModEntity(Cerulean.class, "Cerulean", 2, this, 35, 3, true, 4243405, 7375001);
-        EntityRegistry.addSpawn(Cerulean.class, 11, 3, 5, EnumCreatureType.MONSTER, Biome.getBiome(1),Biome.getBiome(4),Biome.getBiome(35),Biome.getBiome(155));
+        EntityRegistry.addSpawn(Cerulean.class, 12, 3, 5, EnumCreatureType.MONSTER, Biome.getBiome(1),Biome.getBiome(4),Biome.getBiome(35),Biome.getBiome(155));
         EntityRegistry.registerModEntity(Serval.class, "Serval", 3, this, 35, 3, true, 16703405, 6375001);
-        EntityRegistry.addSpawn(Serval.class, 7, 2, 3, EnumCreatureType.CREATURE, Biome.getBiome(35),Biome.getBiome(36),Biome.getBiome(163));
+        EntityRegistry.addSpawn(Serval.class, 10, 2, 3, EnumCreatureType.CREATURE, Biome.getBiome(35),Biome.getBiome(36),Biome.getBiome(163));
         EntityRegistry.registerModEntity(Kawauso.class, "Kawauso", 4, this, 35, 3, true, 2240000, 7375001);
         EntityRegistry.addSpawn(Kawauso.class, 1, 2, 3, EnumCreatureType.CREATURE, Biome.getBiome(6),Biome.getBiome(16),Biome.getBiome(134));
         EntityRegistry.registerModEntity(Shoebill.class, "Shoebill", 5, this, 35, 3, true, 7375001, 10000);
-        EntityRegistry.addSpawn(Shoebill.class, 7, 2, 3, EnumCreatureType.CREATURE, Biome.getBiome(1),Biome.getBiome(4));
+        EntityRegistry.addSpawn(Shoebill.class, 11, 2, 3, EnumCreatureType.CREATURE, Biome.getBiome(1),Biome.getBiome(4));
 
         //テクスチャ・モデル指定JSONファイル名の登録
         if (event.getSide().isClient()) {
@@ -258,6 +258,8 @@ public class JapariCraftMod {
         metadata.name = MODNAME;
         metadata.version = VERSION;
         metadata.description = ("けもフレ関連のアイテムを追加します");
+        metadata.credits = ("制作者:bagu_chan model支援:thotslayer");
+        metadata.logoFile = ("assets/japaricraftmod/textures/logo.png");
         // Modのアップデートをチェックする為のJson 詳細は、 https://mcforge.readthedocs.io/en/latest/gettingstarted/autoupdate/ 参照
         // metadata.updateJSON
         //これをfalseにしておかないと、ModMetadataが読み込まれない

@@ -23,7 +23,7 @@ public class Shoebill extends EntityTameable {
     public Shoebill(World worldIn)
     {
         super(worldIn);
-        this.setSize(0.6F, 0.85F);
+        this.setSize(0.6F, 1.6F);
         this.setTamed(false);
     }
 
@@ -40,6 +40,7 @@ public class Shoebill extends EntityTameable {
         this.tasks.addTask(7, new EntityAILookIdle(this));
         this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
         this.targetTasks.addTask(2, new EntityAIOwnerHurtTarget(this));
+        this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, false));
         this.targetTasks.addTask(4, new EntityAINearestAttackableTarget<>(this, Cerulean.class, false));
 
 
@@ -81,7 +82,7 @@ public class Shoebill extends EntityTameable {
             this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(16.0D);
         }
 
-        this.getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(3.0D);
+        this.getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(4.0D);
     }
 
 
