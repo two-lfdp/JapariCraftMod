@@ -145,7 +145,6 @@ public class Shoebill extends EntityTameable {
     }
     @Override
     protected void dropFewItems(boolean parRecentlyHit, int parLootingLevel) {
-        //ほんとは確率とかで落とすものが決めれるんだと思う
         {
             this.entityDropItem(new ItemStack(Items.FEATHER, 2, 0), 0.0F);
 
