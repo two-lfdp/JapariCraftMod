@@ -15,7 +15,7 @@ tasks.withType(Jar) {
     compileJava.options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
 }
 
-version = "Beta1.7"
+version = "1.8"
 group= "com.japaricraft.japaricraftmod" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "japaricraftmod"
 
@@ -25,10 +25,10 @@ compileJava {
 }
 
 minecraft {
-    version = "1.10.2-12.18.3.2254"
+    version = "1.11.2-13.20.0.2228"
     runDir = "run"
 
-    mappings = "snapshot_20161111"
+    mappings = "snapshot_20170406"
 }
 
 dependencies {

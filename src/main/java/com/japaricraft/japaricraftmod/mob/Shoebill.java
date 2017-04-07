@@ -14,7 +14,6 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 
-import javax.annotation.Nullable;
 
 public class Shoebill extends EntityTameable {
 
@@ -81,11 +80,13 @@ public class Shoebill extends EntityTameable {
 
 
     @Override
-    public boolean processInteract(EntityPlayer player, EnumHand hand, @Nullable ItemStack stack)
+    public boolean processInteract(EntityPlayer player, EnumHand hand)
     {
+        ItemStack stack = player.getHeldItem(hand);
+
         if (this.isTamed())
         {
-            if (this.isOwner(player) && !this.worldObj.isRemote && !this.isBreedingItem(stack))
+            if (this.isOwner(player) && !this.world.isRemote && !this.isBreedingItem(stack))
             {
                 return true;
             }
@@ -94,23 +95,22 @@ public class Shoebill extends EntityTameable {
         {
             if (!player.capabilities.isCreativeMode)
             {
-                --stack.stackSize;
+                stack.setCount(stack.getCount()-1);
             }
 
-            if (!this.worldObj.isRemote)
+            if (!this.world.isRemote)
             {
                 if (this.rand.nextInt(3) == 0)
                 {
                     this.setTamed(true);
                     this.setOwnerId(player.getUniqueID());
                     this.playTameEffect(true);
-                    this.worldObj.setEntityState(this, (byte)7);
+                    this.world.setEntityState(this, (byte)7);
                 }
                 else
                 {
                     this.playTameEffect(false);
-                    this.worldObj.setEntityState(this, (byte)6);
-
+                    this.world.setEntityState(this, (byte)6);
                 }
 
 
@@ -119,7 +119,7 @@ public class Shoebill extends EntityTameable {
             return true;
         }
 
-        return super.processInteract(player, hand, stack);
+        return super.processInteract(player, hand);
     }
     @Override
     public boolean attackEntityAsMob(Entity entityIn)
