@@ -1,6 +1,7 @@
 package com.japaricraft.japaricraftmod.mob;
 
 import com.japaricraft.japaricraftmod.JapariCraftMod;
+import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.passive.EntityTameable;
@@ -15,9 +16,10 @@ import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 
 
+
 public class Shoebill extends EntityTameable {
 
-
+    private EntityPlayerSP player;
 
     public Shoebill(World worldIn)
     {
@@ -88,6 +90,7 @@ public class Shoebill extends EntityTameable {
         {
             if (this.isOwner(player) && !this.world.isRemote && !this.isBreedingItem(stack))
             {
+                player.addStat(JapariCraftMod.achievement_friend);
                 return true;
             }
         }
@@ -150,8 +153,6 @@ public class Shoebill extends EntityTameable {
 
         }
     }
-
-
 
     public boolean canDespawn()
     {

@@ -1,6 +1,8 @@
 package com.japaricraft.japaricraftmod.mob;
 
 
+import com.japaricraft.japaricraftmod.JapariCraftMod;
+import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.passive.EntityTameable;
@@ -12,22 +14,24 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundEvent;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
+
 
 
 public class WhiteOwl extends EntityTameable {
 
-    private float heightOffset = 0.5F;
-    private int heightOffsetUpdateTime;
+
+    private EntityPlayerSP player;
     private float flapLength = 0.0F;
     private float flapIntensity = 0.0F;
-    private float flapSpeed = 1.0F;;
+    private float lastFlapIntensity;
+    private float lastFlapLength;
+    private float flapSpeed = 1.0F;
 
     public WhiteOwl(World worldIn)
     {
         super(worldIn);
-        this.setSize(0.6F, 1.7F);
+        this.setSize(0.6F, 1.6F);
         this.setTamed(false);
     }
 
@@ -45,7 +49,7 @@ public class WhiteOwl extends EntityTameable {
         this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
         this.targetTasks.addTask(1, new EntityAIOwnerHurtByTarget(this));
         this.targetTasks.addTask(2, new EntityAIOwnerHurtTarget(this));
-        this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true, new Class[0]));
+        this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
         this.targetTasks.addTask(4, new EntityAINearestAttackableTarget<>(this, Cerulean.class, false));
 
 
@@ -62,25 +66,6 @@ public class WhiteOwl extends EntityTameable {
         {
             this.heal(0.1F);
         }
-
-        --this.heightOffsetUpdateTime;
-
-        if (this.heightOffsetUpdateTime <= 0)
-        {
-            this.heightOffsetUpdateTime = 100;
-            this.heightOffset = 0.5F + (float)this.rand.nextGaussian() * 3.0F;
-        }
-
-        EntityLivingBase entitylivingbase = this.getAttackTarget();
-
-        if (entitylivingbase != null && entitylivingbase.posY + (double)entitylivingbase.getEyeHeight() > this.posY + (double)this.getEyeHeight() + (double)this.heightOffset)
-        {
-            this.motionY += (0.35000001192092896D - this.motionY) * 0.35000001192092896D;
-            this.motionX +=(0.25D - this.motionX)*0.25D;
-            this.motionZ +=(0.25D - this.motionZ)*0.25D;
-            this.isAirBorne = true;
-        }
-        super.updateAITasks();
     }
     @Override
     protected SoundEvent getDeathSound()
@@ -97,60 +82,10 @@ public class WhiteOwl extends EntityTameable {
         super.applyEntityAttributes();
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.29D);
         this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(30.0D);
-        this.getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(2.0D);
-        this.getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(4.0D);
+        this.getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(5.0D);
     }
 
-    public void onUpdate()
-    {
-        super.onUpdate();
 
-        if (this.world.isRemote)
-        {
-            float f = this.renderYawOffset * 0.017453292F + MathHelper.cos((float)this.ticksExisted * 0.6662F) * 0.25F;
-        }
-    }
-
-    @Override
-    public void onLivingUpdate() {
-        super.onLivingUpdate();
-        float lastFlapIntensity;
-        lastFlapIntensity = this.flapIntensity;
-
-        if (this.flapIntensity < 0.0F)
-        {
-            this.flapIntensity = 0.0F;
-        }
-
-        if (this.flapIntensity > 1.0F)
-        {
-            this.flapIntensity = 1.0F;
-        }
-
-        if (!this.onGround && this.flapSpeed < 1.0F)
-        {
-            this.flapSpeed = 1.0F;
-        }
-
-        this.flapSpeed = (float)(this.flapSpeed * 0.9D);
-
-
-        if (!this.onGround && this.motionY < 0.0D)
-        {
-            this.motionY *= 0.6D;
-        }
-        if (!this.onGround && this.motionX < 0.0D)
-        {
-            this.motionX *= 0.4D;
-        }
-        if (!this.onGround && this.motionZ < 0.0D)
-        {
-            this.motionZ *= 0.4D;
-        }
-
-
-        this.flapLength += this.flapSpeed * 2.0F;
-    }
 
 
     @Override
@@ -162,6 +97,7 @@ public class WhiteOwl extends EntityTameable {
         {
             if (this.isOwner(player) && !this.world.isRemote && !this.isBreedingItem(stack))
             {
+                player.addStat(JapariCraftMod.achievement_friend);
                 return true;
             }
         }
@@ -188,6 +124,7 @@ public class WhiteOwl extends EntityTameable {
                 }
 
 
+
             }
 
             return true;
@@ -208,6 +145,39 @@ public class WhiteOwl extends EntityTameable {
         return flag;
     }
 
+    @Override
+    public void onLivingUpdate() {
+        super.onLivingUpdate();
+        this.lastFlapLength = this.flapLength;
+        this.lastFlapIntensity = this.flapIntensity;
+        this.flapIntensity = (float)(this.flapIntensity + (this.onGround ? -1 : 4) * 0.3D);
+        //ゆっくり下降するためのAI
+        if (this.flapIntensity < 0.0F)
+        {
+            this.flapIntensity = 0.0F;
+        }
+
+        if (this.flapIntensity > 1.0F)
+        {
+            this.flapIntensity = 1.0F;
+        }
+
+        if (!this.onGround && this.flapSpeed < 1.0F)
+        {
+            this.flapSpeed = 1.0F;
+        }
+
+        this.flapSpeed = (float)(this.flapSpeed * 0.9D);
+
+        // don't fall as fast
+        if (!this.onGround && this.motionY < 0.0D)
+        {
+            this.motionY *= 0.6D;
+        }
+
+        this.flapLength += this.flapSpeed * 2.0F;
+
+    }
     public void fall(float distance, float damageMultiplier)
     {
     }
@@ -236,5 +206,3 @@ public class WhiteOwl extends EntityTameable {
     }
 
 }
-
-
