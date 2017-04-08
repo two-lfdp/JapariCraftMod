@@ -1,0 +1,203 @@
+package com.japaricraft.japaricraftmod.render;
+
+
+import net.minecraft.client.model.ModelBase;
+import net.minecraft.client.model.ModelRenderer;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.util.math.MathHelper;
+
+public class ModelWhiteOwl extends ModelBase {
+    public ModelRenderer body;
+    public ModelRenderer handL;
+    public ModelRenderer handR;
+    public ModelRenderer skirt1;
+    public ModelRenderer neckA;
+    public ModelRenderer head;
+    public ModelRenderer handA_L;
+    public ModelRenderer handA_R;
+    public ModelRenderer legR;
+    public ModelRenderer legL;
+    public ModelRenderer neck;
+    public ModelRenderer hair1;
+    public ModelRenderer hairA1;
+    public ModelRenderer hairA2;
+    public ModelRenderer hairA_R;
+    public ModelRenderer hairA_L;
+    public ModelRenderer wing1;
+    public ModelRenderer wing2;
+    public ModelRenderer hairA_R01;
+    public ModelRenderer hairA_R01_1;
+
+    public ModelWhiteOwl() {
+        this.textureWidth = 128;
+        this.textureHeight = 64;
+        this.body = new ModelRenderer(this, 40, 0);
+        this.body.setRotationPoint(0.0F, 0.0F, 0.0F);
+        this.body.addBox(-2.5F, 0.0F, -2.5F, 5, 8, 5, 0.0F);
+        this.hairA1 = new ModelRenderer(this, 0, 28);
+        this.hairA1.setRotationPoint(-2.7F, 0.6F, 0.2F);
+        this.hairA1.addBox(-0.4F, -2.7F, 0.0F, 1, 3, 1, 0.0F);
+        this.setRotateAngle(hairA1, 0.0F, 0.0F, -1.0471975511965976F);
+        this.handA_L = new ModelRenderer(this, 28, 0);
+        this.handA_L.setRotationPoint(2.1F, 1.2F, -0.5F);
+        this.handA_L.addBox(0.0F, -0.8F, -1.0F, 3, 8, 3, 0.0F);
+        this.setRotateAngle(handA_L, 0.0F, 0.0F, -0.15707963267948966F);
+        this.handA_R = new ModelRenderer(this, 15, 0);
+        this.handA_R.setRotationPoint(-5.1F, 0.6F, -0.5F);
+        this.handA_R.addBox(0.0F, -0.8F, -1.0F, 3, 8, 3, 0.0F);
+        this.setRotateAngle(handA_R, 0.0F, 0.0F, 0.15707963267948966F);
+        this.wing2 = new ModelRenderer(this, 28, 20);
+        this.wing2.setRotationPoint(-4.0F, -0.98F, -3.6F);
+        this.wing2.addBox(-1.1F, -0.5F, -2.5F, 1, 5, 5, 0.0F);
+        this.setRotateAngle(wing2, 0.0F, 0.0F, 0.3186971214141647F);
+        this.hairA2 = new ModelRenderer(this, 5, 28);
+        this.hairA2.setRotationPoint(2.5F, 0.6F, 0.2F);
+        this.hairA2.addBox(-0.4F, -2.7F, 0.0F, 1, 3, 1, 0.0F);
+        this.setRotateAngle(hairA2, 0.0F, 0.0F, 1.0471975511965976F);
+        this.handL = new ModelRenderer(this, 65, 0);
+        this.handL.setRotationPoint(2.6F, 1.2F, 0.0F);
+        this.handL.addBox(0.0F, -0.8F, -1.0F, 2, 10, 2, 0.0F);
+        this.setRotateAngle(handL, 0.0F, 0.0F, -0.15707963267948966F);
+        this.handR = new ModelRenderer(this, 65, 0);
+        this.handR.setRotationPoint(-2.6F, 1.0F, 0.0F);
+        this.handR.addBox(-2.0F, -0.8F, -1.0F, 2, 10, 2, 0.0F);
+        this.setRotateAngle(handR, 0.0F, 0.0F, 0.15707963267948966F);
+        this.legR = new ModelRenderer(this, 80, 0);
+        this.legR.setRotationPoint(-1.3F, -1.0F, 0.0F);
+        this.legR.addBox(-1.0F, 4.3F, -1.0F, 2, 8, 2, 0.0F);
+        this.hairA_R = new ModelRenderer(this, 28, 32);
+        this.hairA_R.setRotationPoint(3.6F, 3.1F, -2.0F);
+        this.hairA_R.addBox(-0.2F, -2.5F, 0.0F, 1, 5, 3, 0.0F);
+        this.setRotateAngle(hairA_R, 0.0F, 0.0F, -0.1668534764906579F);
+        this.neckA = new ModelRenderer(this, 90, 0);
+        this.neckA.setRotationPoint(-0.1F, -0.8F, 0.0F);
+        this.neckA.addBox(-3.0F, 0.0F, -3.0F, 6, 1, 6, 0.0F);
+        this.neck = new ModelRenderer(this, 0, 58);
+        this.neck.setRotationPoint(0.0F, 1.2F, 0.0F);
+        this.neck.addBox(-1.5F, 0.0F, -1.0F, 3, 2, 2, 0.0F);
+        this.skirt1 = new ModelRenderer(this, 0, 40);
+        this.skirt1.setRotationPoint(0.0F, 8.0F, 0.0F);
+        this.skirt1.addBox(-3.0F, 0.0F, -3.0F, 6, 6, 6, 0.0F);
+        this.hairA_L = new ModelRenderer(this, 28, 32);
+        this.hairA_L.setRotationPoint(-4.2F, 3.1F, -2.0F);
+        this.hairA_L.addBox(-0.2F, -2.5F, 0.0F, 1, 5, 3, 0.0F);
+        this.setRotateAngle(hairA_L, 0.0F, 0.0F, 0.1668534764906579F);
+        this.head = new ModelRenderer(this, 40, 14);
+        this.head.setRotationPoint(0.0F, -2.7F, 0.0F);
+        this.head.addBox(-4.0F, -6.6F, -4.0F, 8, 8, 8, 0.0F);
+        this.hair1 = new ModelRenderer(this, 0, 33);
+        this.hair1.setRotationPoint(0.0F, -5.1F, -3.8F);
+        this.hair1.addBox(-4.0F, -1.5F, 0.0F, 8, 4, 1, 0.0F);
+        this.setRotateAngle(hair1, 0.0F, 3.141592653589793F, 0.0F);
+        this.wing1 = new ModelRenderer(this, 28, 20);
+        this.wing1.setRotationPoint(3.9F, -0.94F, -3.5F);
+        this.wing1.addBox(0.0F, -0.5F, -2.5F, 1, 5, 5, 0.0F);
+        this.setRotateAngle(wing1, 0.0F, 0.0F, -0.31869712141416456F);
+        this.hairA_R01_1 = new ModelRenderer(this, 0, 0);
+        this.hairA_R01_1.setRotationPoint(-4.0F, 4.2F, -2.1F);
+        this.hairA_R01_1.addBox(-0.8F, -2.5F, -1.5F, 1, 5, 3, 0.0F);
+        this.setRotateAngle(hairA_R01_1, 0.0F, 0.0F, 0.27314402793711257F);
+        this.legL = new ModelRenderer(this, 80, 0);
+        this.legL.setRotationPoint(1.4F, -1.0F, 0.0F);
+        this.legL.addBox(-1.0F, 4.3F, -1.0F, 2, 8, 2, 0.0F);
+        this.hairA_R01 = new ModelRenderer(this, 0, 0);
+        this.hairA_R01.setRotationPoint(4.0F, 4.2F, -2.1F);
+        this.hairA_R01.addBox(-0.2F, -2.5F, -1.5F, 1, 5, 3, 0.0F);
+        this.setRotateAngle(hairA_R01, 0.0F, 0.0F, -0.27314402793711257F);
+        this.hair1.addChild(this.hairA1);
+        this.body.addChild(this.handA_L);
+        this.body.addChild(this.handA_R);
+        this.hair1.addChild(this.wing2);
+        this.hair1.addChild(this.hairA2);
+        this.body.addChild(this.handL);
+        this.body.addChild(this.handR);
+        this.skirt1.addChild(this.legR);
+        this.hair1.addChild(this.hairA_R);
+        this.body.addChild(this.neckA);
+        this.head.addChild(this.neck);
+        this.body.addChild(this.skirt1);
+        this.hair1.addChild(this.hairA_L);
+        this.body.addChild(this.head);
+        this.head.addChild(this.hair1);
+        this.hair1.addChild(this.wing1);
+        this.hair1.addChild(this.hairA_R01_1);
+        this.skirt1.addChild(this.legL);
+        this.hair1.addChild(this.hairA_R01);
+    }
+
+    @Override
+    public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+        this.body.render(f5);
+    }
+
+    //下は特殊なモデルを動かすのに必須
+    public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entityIn)
+    {
+        boolean flag = entityIn instanceof EntityLivingBase && ((EntityLivingBase)entityIn).getTicksElytraFlying() > 4;
+        this.head.rotateAngleY = netHeadYaw * 0.017453292F;
+
+        if (flag)
+        {
+            this.head.rotateAngleX = -((float)Math.PI / 4F);
+        }
+        else
+        {
+            this.head.rotateAngleX = headPitch * 0.017453292F;
+        }
+
+        this.body.rotateAngleY = 0.0F;
+        float f = 1.0F;
+
+        if (flag)
+        {
+            f = (float)(entityIn.motionX * entityIn.motionX + entityIn.motionY * entityIn.motionY + entityIn.motionZ * entityIn.motionZ);
+            f = f / 0.2F;
+            f = f * f * f;
+        }
+
+        if (f < 1.0F)
+        {
+            f = 1.0F;
+        }
+
+        this.handA_R.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 2.0F * limbSwingAmount * 0.5F / f;
+        this.handA_L.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 2.0F * limbSwingAmount * 0.5F / f;
+        this.handA_R.rotateAngleZ = 0.0F;
+        this.handA_L.rotateAngleZ = 0.0F;
+        this.legR.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount / f;
+        this.legL.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount / f;
+        this.legR.rotateAngleY = 0.0F;
+        this.legL.rotateAngleY = 0.0F;
+        this.legR.rotateAngleZ = 0.0F;
+        this.legL.rotateAngleZ = 0.0F;
+
+        if (this.isRiding)
+        {
+            this.legR.rotateAngleX = -1.4137167F;
+            this.legR.rotateAngleY = ((float)Math.PI / 10F);
+            this.legR.rotateAngleZ = 0.07853982F;
+            this.legL.rotateAngleX = -1.4137167F;
+            this.legL.rotateAngleY = -((float)Math.PI / 10F);
+            this.legL.rotateAngleZ = -0.07853982F;
+        }
+
+        this.handA_R.rotateAngleY = 0.0F;
+        this.handA_R.rotateAngleZ = 0.0F;
+
+
+
+        this.handA_R.rotateAngleZ += MathHelper.cos(ageInTicks * 0.09F) * 0.05F + 0.05F;
+        this.handA_L.rotateAngleZ -= MathHelper.cos(ageInTicks * 0.09F) * 0.05F + 0.05F;
+        this.handA_R.rotateAngleX += MathHelper.sin(ageInTicks * 0.067F) * 0.05F;
+        this.handA_L.rotateAngleX -= MathHelper.sin(ageInTicks * 0.067F) * 0.05F;
+
+
+    }
+
+    private void setRotateAngle(ModelRenderer modelRenderer, float x, float y, float z) {
+        modelRenderer.rotateAngleX = x;
+        modelRenderer.rotateAngleY = y;
+        modelRenderer.rotateAngleZ = z;
+    }
+}
