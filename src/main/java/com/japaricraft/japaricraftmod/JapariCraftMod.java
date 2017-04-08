@@ -79,7 +79,7 @@ public class JapariCraftMod {
                     -6, 2, JapariCraftMod.wildliberationpotion, null).registerStat().setSpecial();
     public static final Achievement achievement_friend =
             new Achievement("achievement." + MODID + ":friend", MODID + ".friend",
-                    -6, 3, JapariCraftMod.sandstarfragment, null).registerStat().setSpecial();
+                    -6, 1, JapariCraftMod.sandstarfragment, null).registerStat().setSpecial();
     public static final AchievementPage achievement_page_japaricraft = new AchievementPage("Japari Craft",
             achievement_japariman,
             achievement_japarimancocoa,
