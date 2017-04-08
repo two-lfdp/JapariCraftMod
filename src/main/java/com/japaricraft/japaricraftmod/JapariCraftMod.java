@@ -62,6 +62,7 @@ public class JapariCraftMod {
     public static final Item wildliberationsource = new WildLiberationSource();
     public static final Item wildliberationpotion = new WildLiberationPotion();
     public static final Item pumpkinsoup =new PumpkinSoup();
+    public static final Item bosscore =new BossCore();
     public static final Achievement achievement_woodframe =
             new Achievement("achievement." + MODID + ":woodframe", MODID + ".woodframe",
                     0, 2, Items.STICK, null).registerStat();
@@ -80,13 +81,17 @@ public class JapariCraftMod {
     public static final Achievement achievement_friend =
             new Achievement("achievement." + MODID + ":friend", MODID + ".friend",
                     -6, 1, JapariCraftMod.sandstarfragment, null).registerStat().setSpecial();
+    public static final Achievement achievement_bosscore =
+            new Achievement("achievement." + MODID + ":bosscore", MODID + ".bosscore",
+                    0, -2, JapariCraftMod.bosscore, achievement_japariman).registerStat();
     public static final AchievementPage achievement_page_japaricraft = new AchievementPage("Japari Craft",
             achievement_japariman,
             achievement_japarimancocoa,
             achievement_starjapariman,
             achievement_wild,
             achievement_woodframe,
-            achievement_friend
+            achievement_friend,
+            achievement_bosscore
     );
 
     public static JapalarProfession japalarprofession;
@@ -132,6 +137,7 @@ public class JapariCraftMod {
         //登録関連
         GameRegistry.register(japariman, new ResourceLocation(MODID, "japariman"));
         GameRegistry.register(japarimancocoa, new ResourceLocation(MODID, "japarimancocoa"));
+        GameRegistry.register(pumpkinsoup,new ResourceLocation(MODID,"pumpkinsoup"));
         GameRegistry.register(woodenframeblock, woodenframeblocklocation);
         GameRegistry.register(woodenframeitemblock, woodenframeblocklocation);
         GameRegistry.register(sandstarblock, sandstarlocation);
@@ -142,7 +148,7 @@ public class JapariCraftMod {
         GameRegistry.register(sugarstar,new ResourceLocation(MODID,"sugarstar"));
         GameRegistry.register(wildliberationsource,new ResourceLocation(MODID,"wildliberationsource"));
         GameRegistry.register(wildliberationpotion,new ResourceLocation(MODID,"wildliberationpotion"));
-        GameRegistry.register(pumpkinsoup,new ResourceLocation(MODID,"pumpkinsoup"));
+        GameRegistry.register(bosscore,new ResourceLocation(MODID,"bosscore"));
 
         //ここでResourceLocationを引数に入れるとregister()内でsetRegistryName()が呼ばれてエラー
         GameRegistry.register(japalarprofession/*, new ResourceLocation(MODID, "Japalar")*/);
@@ -182,6 +188,7 @@ public class JapariCraftMod {
             ModelLoader.setCustomModelResourceLocation(wildliberationsource,0,new ModelResourceLocation(new ResourceLocation(MODID, "wildliberationsource"),"inventory"));
             ModelLoader.setCustomModelResourceLocation(wildliberationpotion,0,new ModelResourceLocation(new ResourceLocation(MODID, "wildliberationpotion"),"inventory"));
             ModelLoader.setCustomModelResourceLocation(pumpkinsoup,0,new ModelResourceLocation(new ResourceLocation(MODID, "pumpkinsoup"),"inventory"));
+            ModelLoader.setCustomModelResourceLocation(bosscore,0,new ModelResourceLocation(new ResourceLocation(MODID, "bosscore"),"inventory"));
             //Memo: Render関連は全部クライアントサイドで
             proxy.registerRender();
         }
@@ -250,6 +257,15 @@ public class JapariCraftMod {
                 'P', Blocks.PUMPKIN,
                 'B', Items.BOWL
 
+        );
+        GameRegistry.addRecipe(new ItemStack(JapariCraftMod.bosscore,1),
+                "IRI",
+                "LBL",
+                "IRI",
+                'R',Items.REDSTONE,
+                'B',Blocks.REDSTONE_BLOCK,
+                'L',Items.REPEATER,
+                'I',Items.IRON_INGOT
         );
         GameRegistry.addShapelessRecipe(new ItemStack(JapariCraftMod.sandstarfragment, 9),
                 JapariCraftMod.sandstarblock
