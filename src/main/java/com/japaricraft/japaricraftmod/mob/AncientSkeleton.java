@@ -23,6 +23,7 @@ import net.minecraft.world.World;
 
 public class AncientSkeleton extends EntityMob {
 
+
     private final BossInfoServer bossInfo = (BossInfoServer)(new BossInfoServer(this.getDisplayName(), BossInfo.Color.YELLOW, BossInfo.Overlay.PROGRESS)).setDarkenSky(true);
 
     public AncientSkeleton(World world) {
@@ -46,7 +47,6 @@ public class AncientSkeleton extends EntityMob {
         this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(JapariCraftMod.sandstarsword,1,rand.nextInt(1)));
     }
 
-    public boolean isAIEnabled() { return true; }
 
     @Override
     protected SoundEvent getDeathSound()
@@ -70,6 +70,7 @@ public class AncientSkeleton extends EntityMob {
     */
 
 
+
     //てき（プレイヤーの登録っぽい
     public void addTrackingPlayer(EntityPlayerMP player)
     {
@@ -84,6 +85,7 @@ public class AncientSkeleton extends EntityMob {
         super.removeTrackingPlayer(player);
         this.bossInfo.removePlayer(player);
     }
+
 
 
     @Override
@@ -113,6 +115,9 @@ public class AncientSkeleton extends EntityMob {
     }
 
 
+
+
+
     protected void applyEntityAttributes(){
         super.applyEntityAttributes();
         getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(2D);
@@ -121,4 +126,8 @@ public class AncientSkeleton extends EntityMob {
         getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.3);
         getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(3);
     }
+
+
+
+    
 }
