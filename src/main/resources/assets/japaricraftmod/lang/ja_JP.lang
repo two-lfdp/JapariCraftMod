@@ -28,5 +28,7 @@ entity.Cerulean.name=セルリアン
 entity.Serval.name=サーバル
 entity.Kawauso.name=カワウソ(WIP)
 entity.Shoebill.name=ハシビロコウ
+entity.WhiteOwl.name=ふくろう(白色)
+entity.BrownOwl.name=ふくろう(茶色)
 entity.Villager.japalar=じゃぱりぱーくの飼育員
 itemGroup.JapariCraftTab=ジャパリクラフト

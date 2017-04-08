@@ -1,9 +1,11 @@
 package com.japaricraft.japaricraftmod.mob;
 
-
 import com.japaricraft.japaricraftmod.JapariCraftMod;
 import net.minecraft.client.entity.EntityPlayerSP;
-import net.minecraft.entity.*;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityAgeable;
+import net.minecraft.entity.EnumCreatureAttribute;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
@@ -16,9 +18,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 
-
-
-public class WhiteOwl extends EntityTameable {
+public class BrownOwl extends EntityTameable {
 
 
     private EntityPlayerSP player;
@@ -28,7 +28,7 @@ public class WhiteOwl extends EntityTameable {
     private float lastFlapLength;
     private float flapSpeed = 1.0F;
 
-    public WhiteOwl(World worldIn)
+    public BrownOwl(World worldIn)
     {
         super(worldIn);
         this.setSize(0.6F, 1.7F);
@@ -81,9 +81,9 @@ public class WhiteOwl extends EntityTameable {
     {
         super.applyEntityAttributes();
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.29D);
-        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(30.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(26.0D);
         this.getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(1.0D);
-        this.getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(5.0D);
+        this.getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(4.0D);
     }
 
 

@@ -28,5 +28,7 @@ entity.Serval.name=Serval Cat
 entity.Cerulean.name=Cerulean
 entity.Kawauso.name=Otter(WIP)
 entity.Shoebill.name=Shoebill
+entity.WhiteOwl.name=WhiteOwl
+entity.BrownOwl.name=BrownOwl
 entity.Villager.japalar=Japari Staff
 itemGroup.JapariCraftTab=JapariCraft
