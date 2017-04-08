@@ -31,7 +31,7 @@ public class BrownOwl extends EntityTameable {
     public BrownOwl(World worldIn)
     {
         super(worldIn);
-        this.setSize(0.6F, 1.7F);
+        this.setSize(0.6F, 1.9F);
         this.setTamed(false);
     }
 
