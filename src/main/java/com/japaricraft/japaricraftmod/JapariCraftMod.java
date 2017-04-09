@@ -61,8 +61,9 @@ public class JapariCraftMod {
     public static final Item sandstarsword = new SandStarSword(SandStar);
     public static final Item wildliberationsource = new WildLiberationSource();
     public static final Item wildliberationpotion = new WildLiberationPotion();
-    public static final Item pumpkinsoup =new PumpkinSoup();
-    public static final Item bosscore =new BossCore();
+    public static final Item pumpkinsoup = new PumpkinSoup();
+    public static final Item bosscore = new BossCore();
+    public static final Item summonlucky = new SummonLucky();
     public static final Achievement achievement_woodframe =
             new Achievement("achievement." + MODID + ":woodframe", MODID + ".woodframe",
                     0, 2, Items.STICK, null).registerStat();
@@ -149,6 +150,7 @@ public class JapariCraftMod {
         GameRegistry.register(wildliberationsource,new ResourceLocation(MODID,"wildliberationsource"));
         GameRegistry.register(wildliberationpotion,new ResourceLocation(MODID,"wildliberationpotion"));
         GameRegistry.register(bosscore,new ResourceLocation(MODID,"bosscore"));
+        GameRegistry.register(summonlucky,new ResourceLocation(MODID,"summonlucky"));
 
         //ここでResourceLocationを引数に入れるとregister()内でsetRegistryName()が呼ばれてエラー
         GameRegistry.register(japalarprofession/*, new ResourceLocation(MODID, "Japalar")*/);
@@ -173,6 +175,8 @@ public class JapariCraftMod {
         EntityRegistry.addSpawn(WhiteOwl.class, 9, 2, 3, EnumCreatureType.CREATURE, Biome.getBiome(4),Biome.getBiome(27),Biome.getBiome(29),Biome.getBiome(157));
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.BrownOwl"), BrownOwl.class, "BrownOwl", 7, this, 35, 3, true, 5243410, 5243405);
         EntityRegistry.addSpawn(BrownOwl.class, 9, 2, 3, EnumCreatureType.CREATURE, Biome.getBiome(4),Biome.getBiome(27),Biome.getBiome(29),Biome.getBiome(157));
+        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.LuckyBeast"), LuckyBeast.class, "LuckyBeast", 8, this, 35, 3, true, 100, 100);
+        EntityRegistry.addSpawn(LuckyBeast.class, 0, 1, 2, EnumCreatureType.CREATURE);
 
 
         //テクスチャ・モデル指定JSONファイル名の登録
@@ -189,6 +193,7 @@ public class JapariCraftMod {
             ModelLoader.setCustomModelResourceLocation(wildliberationpotion,0,new ModelResourceLocation(new ResourceLocation(MODID, "wildliberationpotion"),"inventory"));
             ModelLoader.setCustomModelResourceLocation(pumpkinsoup,0,new ModelResourceLocation(new ResourceLocation(MODID, "pumpkinsoup"),"inventory"));
             ModelLoader.setCustomModelResourceLocation(bosscore,0,new ModelResourceLocation(new ResourceLocation(MODID, "bosscore"),"inventory"));
+            ModelLoader.setCustomModelResourceLocation(summonlucky,0,new ModelResourceLocation(new ResourceLocation(MODID, "summonlucky"),"inventory"));
             //Memo: Render関連は全部クライアントサイドで
             proxy.registerRender();
         }
