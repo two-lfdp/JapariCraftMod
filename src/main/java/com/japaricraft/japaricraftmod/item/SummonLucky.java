@@ -19,27 +19,21 @@ public class SummonLucky extends Item {
         this.setUnlocalizedName("Summonluckybeast");
         this.setMaxStackSize(1);
     }
-    public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn)
-    {
+    @Override
+    public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer playerIn, EnumHand handIn) {
         ItemStack itemstack = playerIn.getHeldItem(handIn);
 
-        if (!playerIn.capabilities.isCreativeMode)
-        {
-            itemstack.shrink(1);
+            if (!playerIn.capabilities.isCreativeMode) {
+                itemstack.shrink(1);
+            }
+
+            world.playSound(null, playerIn.posX, playerIn.posY, playerIn.posZ, SoundEvents.ENTITY_EGG_THROW, SoundCategory.PLAYERS, 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
+
+            if (!world.isRemote) {
+                LuckyBeast beast = new LuckyBeast(world);
+                world.spawnEntity(beast);
+            }
+            playerIn.addStat(StatList.getObjectUseStats(this));
+            return new ActionResult<>(EnumActionResult.SUCCESS, itemstack);
         }
-
-        worldIn.playSound(null, playerIn.posX, playerIn.posY, playerIn.posZ, SoundEvents.ENTITY_EGG_THROW, SoundCategory.PLAYERS, 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
-
-
-        if (!worldIn.isRemote)
-        {
-            LuckyBeast beast = new LuckyBeast(worldIn);
-            worldIn.spawnEntity(beast);
-        }
-
-        playerIn.addStat(StatList.getObjectUseStats(this));
-        return new ActionResult<>(EnumActionResult.SUCCESS, itemstack);
     }
-}
-
-
