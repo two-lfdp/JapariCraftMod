@@ -31,6 +31,7 @@ public class SummonLucky extends Item {
 
             if (!world.isRemote) {
                 LuckyBeast beast = new LuckyBeast(world);
+                beast.setLocationAndAngles(playerIn.posX, playerIn.posY, playerIn.posZ, playerIn.rotationYaw, 0.0F);
                 world.spawnEntity(beast);
             }
             playerIn.addStat(StatList.getObjectUseStats(this));
