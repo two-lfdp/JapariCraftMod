@@ -1,8 +1,8 @@
 package com.japaricraft.japaricraftmod.item;
 
 import com.japaricraft.japaricraftmod.JapariCraftMod;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.init.Items;
+import com.japaricraft.japaricraftmod.mob.LuckyBeast;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
@@ -13,11 +13,13 @@ public class SummonLucky extends Item {
         this.setUnlocalizedName("Summonluckybeast");
         this.setMaxStackSize(1);
     }
-
-
-    public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityLivingBase entityLiving)
+    public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int par4, int par5, int par6, int par7, float par8, float par9, float par10)
     {
-        super.onItemUseFinish(stack, worldIn, entityLiving);
-        return new ItemStack(Items.REDSTONE);
+        LuckyBeast entity = new LuckyBeast(par3World, par4, par5, par6);
+        par3World.spawnEntityInWorld(entity);
+
+        return true;
     }
 }
+
+
