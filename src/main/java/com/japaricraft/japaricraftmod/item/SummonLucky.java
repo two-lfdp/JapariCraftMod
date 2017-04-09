@@ -3,8 +3,14 @@ package com.japaricraft.japaricraftmod.item;
 import com.japaricraft.japaricraftmod.JapariCraftMod;
 import com.japaricraft.japaricraftmod.mob.LuckyBeast;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.stats.StatList;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
 
 public class SummonLucky extends Item {
@@ -13,12 +19,26 @@ public class SummonLucky extends Item {
         this.setUnlocalizedName("Summonluckybeast");
         this.setMaxStackSize(1);
     }
-    public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int par4, int par5, int par6, int par7, float par8, float par9, float par10)
+    public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn)
     {
-        LuckyBeast entity = new LuckyBeast(par3World, par4, par5, par6);
-        par3World.spawnEntityInWorld(entity);
+        ItemStack itemstack = playerIn.getHeldItem(handIn);
 
-        return true;
+        if (!playerIn.capabilities.isCreativeMode)
+        {
+            itemstack.shrink(1);
+        }
+
+        worldIn.playSound(null, playerIn.posX, playerIn.posY, playerIn.posZ, SoundEvents.ENTITY_EGG_THROW, SoundCategory.PLAYERS, 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
+
+
+        if (!worldIn.isRemote)
+        {
+            LuckyBeast beast = new LuckyBeast(worldIn);
+            worldIn.spawnEntity(beast);
+        }
+
+        playerIn.addStat(StatList.getObjectUseStats(this));
+        return new ActionResult<>(EnumActionResult.SUCCESS, itemstack);
     }
 }
 
