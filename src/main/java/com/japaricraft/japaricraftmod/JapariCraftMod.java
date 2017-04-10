@@ -85,6 +85,9 @@ public class JapariCraftMod {
     public static final Achievement achievement_bosscore =
             new Achievement("achievement." + MODID + ":bosscore", MODID + ".bosscore",
                     0, -2, JapariCraftMod.bosscore, achievement_japariman).registerStat();
+    public static final Achievement achievement_boss =
+            new Achievement("achievement." + MODID + ":summonlucky", MODID + ".summonlucky",
+                    0, -4, JapariCraftMod.summonlucky, achievement_bosscore).registerStat().setSpecial();
     public static final AchievementPage achievement_page_japaricraft = new AchievementPage("Japari Craft",
             achievement_japariman,
             achievement_japarimancocoa,
@@ -92,7 +95,8 @@ public class JapariCraftMod {
             achievement_wild,
             achievement_woodframe,
             achievement_friend,
-            achievement_bosscore
+            achievement_bosscore,
+            achievement_boss
     );
 
     public static JapalarProfession japalarprofession;
@@ -270,6 +274,14 @@ public class JapariCraftMod {
                 'R',Items.REDSTONE,
                 'B',Blocks.REDSTONE_BLOCK,
                 'L',Items.REPEATER,
+                'I',Items.IRON_INGOT
+        );
+        GameRegistry.addRecipe(new ItemStack(JapariCraftMod.summonlucky,1),
+                "IRI",
+                "RCR",
+                "IRI",
+                'R',Items.REDSTONE,
+                'C',JapariCraftMod.bosscore,
                 'I',Items.IRON_INGOT
         );
         GameRegistry.addShapelessRecipe(new ItemStack(JapariCraftMod.sandstarfragment, 9),
