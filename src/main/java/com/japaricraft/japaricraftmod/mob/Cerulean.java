@@ -38,10 +38,10 @@ public class Cerulean extends EntityMob {
         this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true, EntityPigZombie.class));
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, true));
         this.targetTasks.addTask(3, new EntityAINearestAttackableTarget<>(this, EntityVillager.class, false));
-        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget<>(this, EntityIronGolem.class, true));
         this.targetTasks.addTask(3,new EntityAINearestAttackableTarget<>(this, KouteiPenguin.class,true));
         this.targetTasks.addTask(3,new EntityAINearestAttackableTarget<>(this, Serval.class,true));
-
+        this.targetTasks.addTask(3,new EntityAINearestAttackableTarget<>(this, WhiteOwl.class,true));
+        this.targetTasks.addTask(3,new EntityAINearestAttackableTarget<>(this, BrownOwl.class,true));
     }
 
     public boolean isAIEnabled() { return true; }

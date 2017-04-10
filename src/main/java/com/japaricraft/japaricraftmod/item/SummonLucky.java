@@ -33,6 +33,7 @@ public class SummonLucky extends Item {
                 LuckyBeast beast = new LuckyBeast(world);
                 beast.setLocationAndAngles(playerIn.posX, playerIn.posY, playerIn.posZ, playerIn.rotationYaw, 0.0F);
                 world.spawnEntity(beast);
+
             }
             playerIn.addStat(StatList.getObjectUseStats(this));
             return new ActionResult<>(EnumActionResult.SUCCESS, itemstack);

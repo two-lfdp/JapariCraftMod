@@ -1,28 +1,28 @@
 package com.japaricraft.japaricraftmod.mob;
 
-import com.google.common.base.Predicate;
 import com.japaricraft.japaricraftmod.JapariCraftMod;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
-import net.minecraft.entity.monster.EntityCreeper;
-import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.DamageSource;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundEvent;
+import net.minecraft.util.datafix.DataFixer;
 import net.minecraft.world.World;
 
-import javax.annotation.Nullable;
+
 
 public class LuckyBeast extends EntityTameable {
 
     private EntityPlayerSP player;
+    private IInventory beastChest;
 
     public LuckyBeast(World worldIn)
     {
@@ -30,28 +30,17 @@ public class LuckyBeast extends EntityTameable {
         this.setSize(0.6F, 1.0F);
         this.setTamed(false);
     }
-
     protected void initEntityAI()  {
 
 
 
 
         this.tasks.addTask(0, new EntityAISwimming(this));
-        this.tasks.addTask(4, new EntityAIAttackMelee(this, 1.0D, true));
         this.tasks.addTask(5, new EntityAIFollowOwner(this, 1.0D, 10.0F, 2.0F));
         this.tasks.addTask(6, new EntityAIMate(this, 1.0D));
         this.tasks.addTask(6, new EntityAIWander(this, 1.0D));
         this.tasks.addTask(7, new EntityAILookIdle(this));
         this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
-        this.targetTasks.addTask(1, new EntityAIOwnerHurtByTarget(this));
-        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget<>(this, EntityLiving.class, 10, false, true, new Predicate<EntityLiving>()
-        {
-            public boolean apply(@Nullable EntityLiving p_apply_1_)
-            {
-                return p_apply_1_ != null && IMob.VISIBLE_MOB_SELECTOR.apply(p_apply_1_) && !(p_apply_1_ instanceof EntityCreeper);
-
-            }
-        }));
         this.targetTasks.addTask(4, new EntityAINearestAttackableTarget<>(this, Cerulean.class, true));
     }
 
@@ -89,6 +78,7 @@ public class LuckyBeast extends EntityTameable {
 
 
 
+
     @Override
     public boolean processInteract(EntityPlayer player, EnumHand hand)
     {
@@ -99,6 +89,7 @@ public class LuckyBeast extends EntityTameable {
             if (this.isOwner(player) && !this.world.isRemote && !this.isBreedingItem(stack))
             {
                 player.addStat(JapariCraftMod.achievement_boss);
+
                 return true;
             }
         }
@@ -132,22 +123,15 @@ public class LuckyBeast extends EntityTameable {
 
         return super.processInteract(player, hand);
     }
-    @Override
-    public boolean attackEntityAsMob(Entity entityIn)
-    {
-        boolean flag = entityIn.attackEntityFrom(DamageSource.causeMobDamage(this), (float)((int)this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue()));
 
-        if (flag)
-        {
-            this.applyEnchantments(this, entityIn);
-        }
 
-        return flag;
-    }
+
+
 
 
     @Override
     public EnumCreatureAttribute getCreatureAttribute() { return EnumCreatureAttribute.UNDEFINED; }
+
 
 
     public Item getDropItem () {
@@ -159,7 +143,11 @@ public class LuckyBeast extends EntityTameable {
         {
             this.entityDropItem(new ItemStack(Items.IRON_INGOT, 6, 0), 0.0F);
             this.entityDropItem(new ItemStack(JapariCraftMod.bosscore, 1, 0), 0.0F);
+            this.entityDropItem(new ItemStack(Items.REDSTONE,10,0),0.0F);
         }
+    }
+    public void fall(float distance, float damageMultiplier)
+    {
     }
 
     public boolean canDespawn()
