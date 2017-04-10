@@ -8,13 +8,10 @@ import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundEvent;
-import net.minecraft.util.datafix.DataFixer;
 import net.minecraft.world.World;
 
 
@@ -22,7 +19,6 @@ import net.minecraft.world.World;
 public class LuckyBeast extends EntityTameable {
 
     private EntityPlayerSP player;
-    private IInventory beastChest;
 
     public LuckyBeast(World worldIn)
     {
