@@ -14,7 +14,7 @@ public class InventoryLucky  extends InventoryBasic
 {
 
 
-    private static final int INVENTORY_SIZE = (3 * 4);
+    private static final int INVENTORY_SIZE = (4 * 4);
 
     private LuckyBeast entityLucky;
 
@@ -24,7 +24,6 @@ public class InventoryLucky  extends InventoryBasic
 
         this.entityLucky = entityLucky;
     }
-
 
     public void readInventoryFromNBT(NBTTagList nbtList)
     {

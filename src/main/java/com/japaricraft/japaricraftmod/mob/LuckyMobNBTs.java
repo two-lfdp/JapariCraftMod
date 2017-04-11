@@ -1,10 +1,12 @@
 package com.japaricraft.japaricraftmod.mob;
 
-import com.japaricraft.japaricraftmod.mob.LuckyBeast;
+import com.japaricraft.japaricraftmod.JapariCraftMod;
 
 public class LuckyMobNBTs {
 
+        private static final String TAG = JapariCraftMod.MODID + ".";
 
-        public static final String ENTITY_LUCKY_INVENTORY ="inventory";
+        private static final String ENTITY_LUCKY = TAG + "entity.lucky" + ".";
+        static final String ENTITY_LUCKY_INVENTORY = ENTITY_LUCKY + "inventory";
 
 }

@@ -16,34 +16,34 @@ public class ModelLuckyBeast extends ModelBase {
     public ModelLuckyBeast() {
         this.textureWidth = 64;
         this.textureHeight = 32;
-        this.body = new ModelRenderer(this, 0, 0);
-        this.body.setRotationPoint(0.0F, 0.0F, 0.0F);
-        this.body.addBox(-4.0F, 10.7F, -5.0F, 9, 10, 9, 0.0F);
-        this.LegL = new ModelRenderer(this, 36, 8);
-        this.LegL.setRotationPoint(5.0F, 9.6F, 3.0F);
-        this.LegL.addBox(-4.0F, 12.0F, -5.0F, 4, 2, 6, 0.0F);
-        this.chest = new ModelRenderer(this, 0, 19);
-        this.chest.setRotationPoint(0.0F, 0.0F, 0.0F);
-        this.chest.addBox(5.0F, 17.4F, -2.0F, 1, 3, 5, 0.0F);
-        this.earR = new ModelRenderer(this, 56, 4);
-        this.earR.setRotationPoint(0.0F, -3.0F, 0.0F);
-        this.earR.addBox(-4.0F, 10.7F, 0.0F, 3, 3, 1, 0.0F);
-        this.earL = new ModelRenderer(this, 56, 0);
-        this.earL.setRotationPoint(6.0F, -3.0F, 0.0F);
-        this.earL.addBox(-4.0F, 10.7F, 0.0F, 3, 3, 1, 0.0F);
         this.legR = new ModelRenderer(this, 36, 0);
-        this.legR.setRotationPoint(0.0F, 9.6F, 3.0F);
-        this.legR.addBox(-4.0F, 12.0F, -5.0F, 4, 2, 6, 0.0F);
+        this.legR.setRotationPoint(0.0F, 20.6F, 3.0F);
+        this.legR.addBox(-4.0F, 0.8F, -5.0F, 4, 2, 6, 0.0F);
+        this.earL = new ModelRenderer(this, 56, 0);
+        this.earL.setRotationPoint(6.0F, 8.0F, -5.0F);
+        this.earL.addBox(-4.0F, 0.0F, 0.0F, 3, 3, 1, 0.0F);
+        this.chest = new ModelRenderer(this, 0, 19);
+        this.chest.setRotationPoint(0.0F, 11.0F, 0.0F);
+        this.chest.addBox(5.0F, 6.0F, -2.0F, 1, 3, 5, 0.0F);
+        this.LegL = new ModelRenderer(this, 36, 8);
+        this.LegL.setRotationPoint(5.0F, 20.6F, 3.0F);
+        this.LegL.addBox(-4.0F, 0.8F, -5.0F, 4, 2, 6, 0.0F);
+        this.earR = new ModelRenderer(this, 56, 4);
+        this.earR.setRotationPoint(0.0F, 8.0F, -5.0F);
+        this.earR.addBox(-4.0F, 0.0F, 0.0F, 3, 3, 1, 0.0F);
+        this.body = new ModelRenderer(this, 0, 0);
+        this.body.setRotationPoint(0.0F, 11.0F, 0.0F);
+        this.body.addBox(-4.0F, 0.0F, -5.0F, 9, 10, 9, 0.0F);
     }
 
     @Override
     public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
-        this.body.render(f5);
-        this.LegL.render(f5);
-        this.chest.render(f5);
-        this.earR.render(f5);
-        this.earL.render(f5);
         this.legR.render(f5);
+        this.earL.render(f5);
+        this.chest.render(f5);
+        this.LegL.render(f5);
+        this.earR.render(f5);
+        this.body.render(f5);
     }
 
     public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entityIn)

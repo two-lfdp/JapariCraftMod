@@ -11,11 +11,8 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.server.management.PreYggdrasilConverter;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundEvent;
-import net.minecraft.util.text.TextComponentTranslation;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 
 
@@ -71,7 +68,7 @@ public class LuckyBeast extends EntityTameable {
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.29D);
+        this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.28D);
         this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(40.0D);
         this.getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(8.0D);
         this.getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(5.0D);
@@ -108,6 +105,7 @@ public class LuckyBeast extends EntityTameable {
             if (this.isOwner(player) && !this.world.isRemote && !this.isBreedingItem(stack))
             {
                 player.addStat(JapariCraftMod.achievement_boss);
+                player.displayGUIChest(this.getInventoryLucky());
                 return true;
             }
         }
@@ -142,7 +140,7 @@ public class LuckyBeast extends EntityTameable {
         return super.processInteract(player, hand);
     }
 
-    public InventoryLucky getInventoryLucky()
+    private InventoryLucky getInventoryLucky()
     {
         return this.inventorylucky;
     }
