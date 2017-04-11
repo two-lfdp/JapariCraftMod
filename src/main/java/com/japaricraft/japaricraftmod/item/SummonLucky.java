@@ -28,7 +28,7 @@ public class SummonLucky extends Item {
             }
 
             world.playSound(null, playerIn.posX, playerIn.posY, playerIn.posZ, SoundEvents.BLOCK_NOTE_HAT, SoundCategory.PLAYERS, 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
-
+            playerIn.getCooldownTracker().setCooldown(this, 50);
             if (!world.isRemote) {
                 LuckyBeast beast = new LuckyBeast(world);
                 beast.setLocationAndAngles(playerIn.posX, playerIn.posY, playerIn.posZ, playerIn.rotationYaw, 0.0F);

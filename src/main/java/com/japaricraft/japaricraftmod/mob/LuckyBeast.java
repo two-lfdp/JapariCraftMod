@@ -10,8 +10,12 @@ import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.server.management.PreYggdrasilConverter;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundEvent;
+import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 
 
@@ -19,12 +23,14 @@ import net.minecraft.world.World;
 public class LuckyBeast extends EntityTameable {
 
     private EntityPlayerSP player;
+    private InventoryLucky inventorylucky;
 
     public LuckyBeast(World worldIn)
     {
         super(worldIn);
         this.setSize(0.6F, 1.0F);
         this.setTamed(false);
+        this.inventorylucky = new InventoryLucky(this);
     }
     protected void initEntityAI()  {
 
@@ -73,6 +79,23 @@ public class LuckyBeast extends EntityTameable {
 
 
 
+    @Override
+    public void writeEntityToNBT(NBTTagCompound compound)
+    {
+        super.writeEntityToNBT(compound);
+
+        compound.setTag(LuckyMobNBTs.ENTITY_LUCKY_INVENTORY, this.getInventoryLucky().writeInventoryToNBT());
+
+    }
+
+    @Override
+    public void readEntityFromNBT(NBTTagCompound compound)
+    {
+        super.readEntityFromNBT(compound);
+
+        this.getInventoryLucky().readInventoryFromNBT(compound.getTagList(LuckyMobNBTs.ENTITY_LUCKY_INVENTORY, 10));
+
+    }
 
 
     @Override
@@ -85,7 +108,6 @@ public class LuckyBeast extends EntityTameable {
             if (this.isOwner(player) && !this.world.isRemote && !this.isBreedingItem(stack))
             {
                 player.addStat(JapariCraftMod.achievement_boss);
-
                 return true;
             }
         }
@@ -120,10 +142,10 @@ public class LuckyBeast extends EntityTameable {
         return super.processInteract(player, hand);
     }
 
-
-
-
-
+    public InventoryLucky getInventoryLucky()
+    {
+        return this.inventorylucky;
+    }
 
     @Override
     public EnumCreatureAttribute getCreatureAttribute() { return EnumCreatureAttribute.UNDEFINED; }
