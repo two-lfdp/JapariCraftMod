@@ -278,11 +278,12 @@ public class JapariCraftMod {
         );
         GameRegistry.addRecipe(new ItemStack(JapariCraftMod.summonlucky,1),
                 "IRI",
-                "RCR",
+                "RCM",
                 "IRI",
                 'R',Items.REDSTONE,
                 'C',JapariCraftMod.bosscore,
-                'I',Items.IRON_INGOT
+                'I',Items.IRON_INGOT,
+                'M',Blocks.CHEST
         );
         GameRegistry.addShapelessRecipe(new ItemStack(JapariCraftMod.sandstarfragment, 9),
                 JapariCraftMod.sandstarblock

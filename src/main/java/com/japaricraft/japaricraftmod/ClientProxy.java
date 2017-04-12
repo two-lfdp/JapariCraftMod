@@ -3,6 +3,7 @@ package com.japaricraft.japaricraftmod;
 
 import com.japaricraft.japaricraftmod.mob.*;
 import com.japaricraft.japaricraftmod.render.*;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 
 public class ClientProxy extends CommonProxy{
