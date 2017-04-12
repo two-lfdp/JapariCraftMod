@@ -11,6 +11,7 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.IInventoryChangedListener;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
@@ -27,7 +28,7 @@ public class LuckyBeast extends EntityTameable {
         super(worldIn);
         this.setSize(0.6F, 1.0F);
         this.setTamed(false);
-        this.initBeastChest();
+        this.inventorylucky = new InventoryLucky(this);
     }
 
     protected void initEntityAI() {
@@ -72,28 +73,26 @@ public class LuckyBeast extends EntityTameable {
     }
 
 
-    protected int getInventorySize() {
-        return 2;
+
+
+
+    @Override
+    public void writeEntityToNBT(NBTTagCompound compound)
+    {
+        super.writeEntityToNBT(compound);
+
+        compound.setTag(LuckyMobNBTs.ENTITY_LUCKY_INVENTORY, this.getInventoryLucky().writeInventoryToNBT());
+
     }
 
-    protected void initBeastChest() {
-        InventoryLucky beastchest = this.inventorylucky;
-        this.inventorylucky = new InventoryLucky("BeastChest", this.getInventorySize());
-        this.inventorylucky.setCustomName(this.getName());
+    @Override
+    public void readEntityFromNBT(NBTTagCompound compound)
+    {
+        super.readEntityFromNBT(compound);
 
-        if (beastchest != null) {
-            beastchest.removeInventoryChangeListener((IInventoryChangedListener) this);
-            int i = Math.min(beastchest.getSizeInventory(), this.inventorylucky.getSizeInventory());
+        this.getInventoryLucky().readInventoryFromNBT(compound.getTagList(LuckyMobNBTs.ENTITY_LUCKY_INVENTORY, 10));
 
-            for (int j = 0; j < i; ++j) {
-                ItemStack itemstack = inventorylucky.getStackInSlot(j);
 
-                if (!itemstack.isEmpty()) {
-                    this.inventorylucky.setInventorySlotContents(j, itemstack.copy());
-                }
-            }
-        }
-        this.itemHandler = new net.minecraftforge.items.wrapper.InvWrapper(this.inventorylucky);
     }
 
     @Override
