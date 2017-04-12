@@ -19,5 +19,7 @@ public class InventoryLucky  extends InventoryBasic
     public InventoryLucky(ITextComponent inventoryTitle, int slotCount)
     {
         super(inventoryTitle, slotCount);
+
     }
+
 }
