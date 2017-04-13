@@ -35,7 +35,7 @@ import net.minecraft.world.biome.Biome;
 public class JapariCraftMod {
 
     public static final String MODID = "japaricraftmod";
-    public static final String VERSION = "1.9.1";
+    public static final String VERSION = "beta2.0";
     public static final String MODNAME = "JapariCraftMod";
     /**
      * Woodenframeのブロックのインスタンスを格納する
@@ -181,7 +181,8 @@ public class JapariCraftMod {
         EntityRegistry.addSpawn(BrownOwl.class, 9, 2, 3, EnumCreatureType.CREATURE, Biome.getBiome(4),Biome.getBiome(27),Biome.getBiome(29),Biome.getBiome(157));
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.LuckyBeast"), LuckyBeast.class, "LuckyBeast", 8, this, 35, 3, true, 100, 100);
         EntityRegistry.addSpawn(LuckyBeast.class, 0, 1, 2, EnumCreatureType.CREATURE);
-
+        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.SavannaNamekuji"), SavannaNamekuji.class, "SavannaNamekuji", 9, this, 35, 3, true, 7375001, 6375001);
+        EntityRegistry.addSpawn(SavannaNamekuji.class, 7, 1, 2, EnumCreatureType.CREATURE, Biome.getBiome(35),Biome.getBiome(36),Biome.getBiome(163));
 
         //テクスチャ・モデル指定JSONファイル名の登録
         if (event.getSide().isClient()) {
@@ -301,7 +302,7 @@ public class JapariCraftMod {
         metadata.name = MODNAME;
         metadata.version = VERSION;
         metadata.description = ("けもフレ関連のアイテムを追加します");
-        metadata.credits = ("制作者:bagu_chan model支援:thotslayer");
+        metadata.credits = ("制作者:bagu_chan");
         metadata.logoFile = ("assets/japaricraftmod/textures/logo.png");
         // Modのアップデートをチェックする為のJson 詳細は、 https://mcforge.readthedocs.io/en/latest/gettingstarted/autoupdate/ 参照
         // metadata.updateJSON
