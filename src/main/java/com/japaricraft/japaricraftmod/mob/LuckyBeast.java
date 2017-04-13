@@ -22,13 +22,11 @@ import javax.annotation.Nullable;
 public class LuckyBeast extends EntityTameable {
 
     private EntityPlayerSP player;
-    private InventoryLucky inventorylucky;
 
     public LuckyBeast(World worldIn) {
         super(worldIn);
         this.setSize(0.6F, 1.0F);
         this.setTamed(false);
-        this.inventorylucky = new InventoryLucky(this);
     }
 
     protected void initEntityAI() {
@@ -76,24 +74,6 @@ public class LuckyBeast extends EntityTameable {
 
 
 
-    @Override
-    public void writeEntityToNBT(NBTTagCompound compound)
-    {
-        super.writeEntityToNBT(compound);
-
-        compound.setTag(LuckyMobNBTs.ENTITY_LUCKY_INVENTORY, this.getInventoryLucky().writeInventoryToNBT());
-
-    }
-
-    @Override
-    public void readEntityFromNBT(NBTTagCompound compound)
-    {
-        super.readEntityFromNBT(compound);
-
-        this.getInventoryLucky().readInventoryFromNBT(compound.getTagList(LuckyMobNBTs.ENTITY_LUCKY_INVENTORY, 10));
-
-
-    }
 
     @Override
     public boolean processInteract(EntityPlayer player, EnumHand hand) {
@@ -102,7 +82,6 @@ public class LuckyBeast extends EntityTameable {
         if (this.isTamed()) {
             if (this.isOwner(player) && !this.world.isRemote && !this.isBreedingItem(stack)) {
                 player.addStat(JapariCraftMod.achievement_boss);
-                player.displayGUIChest(this.getInventoryLucky());
                 return true;
             }
         } else if (stack != null && stack.getItem() == Items.REDSTONE && player.getDistanceSqToEntity(this) < 22.0D) {
@@ -128,27 +107,6 @@ public class LuckyBeast extends EntityTameable {
         }
 
         return super.processInteract(player, hand);
-    }
-
-    public boolean replaceItemInInventory(int inventorySlot, ItemStack itemStackIn) {
-        int i = inventorySlot - 400;
-
-        if (i >= 0 && i < 2 && i < this.inventorylucky.getSizeInventory()) {
-            int j = inventorySlot - 500 + 2;
-
-            if (j >= 2 && j < this.inventorylucky.getSizeInventory()) {
-                this.inventorylucky.setInventorySlotContents(j, itemStackIn);
-                return true;
-            } else {
-                return false;
-            }
-        }
-        return false;
-    }
-
-    private InventoryLucky getInventoryLucky()
-    {
-        return this.inventorylucky;
     }
 
     @Override

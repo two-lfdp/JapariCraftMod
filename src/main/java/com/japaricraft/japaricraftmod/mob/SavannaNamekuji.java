@@ -6,6 +6,7 @@ import net.minecraft.world.World;
 public class SavannaNamekuji extends EntityHorse {
     public SavannaNamekuji(World worldIn) {
         super(worldIn);
-        this.setSize(0.5F, 0.5F);
+        this.setSize(0.8F, 0.6F);
     }
 }
+
