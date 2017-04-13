@@ -5,10 +5,10 @@ import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
 public class ModelSavannaNamekuji extends ModelBase {
-    public ModelRenderer body;
-    public ModelRenderer head;
-    public ModelRenderer earL;
-    public ModelRenderer earR;
+    private ModelRenderer body;
+    private ModelRenderer head;
+    private ModelRenderer earL;
+    private ModelRenderer earR;
 
     public ModelSavannaNamekuji() {
         this.textureWidth = 64;
@@ -38,7 +38,7 @@ public class ModelSavannaNamekuji extends ModelBase {
         this.head.render(f5);
     }
 
-    public void setRotateAngle(ModelRenderer modelRenderer, float x, float y, float z) {
+    private void setRotateAngle(ModelRenderer modelRenderer, float x, float y, float z) {
         modelRenderer.rotateAngleX = x;
         modelRenderer.rotateAngleY = y;
         modelRenderer.rotateAngleZ = z;
