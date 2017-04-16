@@ -26,6 +26,4 @@ public class Japariman extends ItemFood {
             playerIn.addStat(JapariCraftMod.achievement_japariman);
         }
     }
-
-
 }
