@@ -42,6 +42,8 @@ public class JapariCraftMod {
     /**
      * Woodenframeのブロックのインスタンスを格納する
      */
+    @Mod.Instance(JapariCraftMod.MODID)
+    public static JapariCraftMod instance;
     //Modの情報を格納する。 mcmod.infoの上位互換
     @Mod.Metadata
     public static ModMetadata metadata;

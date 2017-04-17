@@ -1,8 +1,7 @@
 package com.japaricraft.japaricraftmod.mob;
 
 import com.japaricraft.japaricraftmod.JapariCraftMod;
-import com.japaricraft.japaricraftmod.gui.BeastNBTs;
-import com.japaricraft.japaricraftmod.gui.InventoryBeastMain;
+import com.japaricraft.japaricraftmod.gui.*;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
@@ -28,6 +27,7 @@ public class LuckyBeast extends EntityTameable {
         super(worldIn);
         this.setSize(0.6F, 1.0F);
         this.setTamed(false);
+        this.inventoryBeastMain = new InventoryBeastMain(this);
     }
 
     protected void initEntityAI() {
@@ -45,54 +45,6 @@ public class LuckyBeast extends EntityTameable {
     public EntityAgeable createChild(EntityAgeable ageable) {
         return null;
     }
-
-
-    protected void updateAITasks() {
-        if (this.ticksExisted % 5 == 0) {
-            this.heal(0.1F);
-        }
-    }
-
-    @Override
-    public void writeEntityToNBT(NBTTagCompound compound)
-    {
-        super.writeEntityToNBT(compound);
-
-        compound.setTag(BeastNBTs.ENTITY_Beast_INVENTORY, this.getInventoryBeastMain().writeInventoryToNBT());
-
-    }
-    //NTBで情報を保存してる
-    @Override
-    public void readEntityFromNBT(NBTTagCompound compound)
-    {
-        super.readEntityFromNBT(compound);
-
-        this.getInventoryBeastMain().readInventoryFromNBT(compound.getTagList(BeastNBTs.ENTITY_Beast_INVENTORY, 10));
-
-    }
-
-    @Override
-    protected SoundEvent getDeathSound() {
-        return SoundEvents.BLOCK_GLASS_BREAK;
-    }
-
-    @Override
-    protected SoundEvent getHurtSound() {
-        return SoundEvents.ENTITY_PLAYER_HURT;
-    }
-
-    protected void applyEntityAttributes() {
-        super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.28D);
-        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(40.0D);
-        this.getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(8.0D);
-        this.getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(5.0D);
-    }
-
-
-
-
-
 
     @Override
     public boolean processInteract(EntityPlayer player, EnumHand hand) {
@@ -121,18 +73,64 @@ public class LuckyBeast extends EntityTameable {
 
 
             }
-
-            return true;
         }
-
-        return super.processInteract(player, hand);
+        return true;
     }
+
+    protected void updateAITasks() {
+        if (this.ticksExisted % 5 == 0) {
+            this.heal(0.1F);
+        }
+    }
+
+    @Override
+    public void writeEntityToNBT(NBTTagCompound compound)
+    {
+        super.writeEntityToNBT(compound);
+
+        compound.setTag(BeastNBTs.ENTITY_Beast_INVENTORY, this.getInventoryBeastMain().writeInventoryToNBT());
+
+    }
+    //NTBで情報を保存してる
+    @Override
+    public void readEntityFromNBT(NBTTagCompound compound)
+    {
+        super.readEntityFromNBT(compound);
+
+        this.getInventoryBeastMain().readInventoryFromNBT(compound.getTagList(BeastNBTs.ENTITY_Beast_INVENTORY, 10));
+
+    }
+
+
+    @Override
+    protected SoundEvent getDeathSound() {
+        return SoundEvents.BLOCK_GLASS_BREAK;
+    }
+
+    @Override
+    protected SoundEvent getHurtSound() {
+        return SoundEvents.ENTITY_PLAYER_HURT;
+    }
+
+    protected void applyEntityAttributes() {
+        super.applyEntityAttributes();
+        this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.28D);
+        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(40.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(8.0D);
+        this.getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(5.0D);
+    }
+
+
+
+
+
+
     //下はインベントリを持ってくるコード
-    private InventoryBeastMain getInventoryBeastMain()
+    public InventoryBeastMain getInventoryBeastMain()
     {
         if (this.inventoryBeastMain == null)
         {
-            this.inventoryBeastMain = new inventoryBeastMain(this);
+            this.inventoryBeastMain = new InventoryBeastMain(this);
         }
 
         return this.inventoryBeastMain;
