@@ -2,6 +2,7 @@ package com.japaricraft.japaricraftmod;
 
 import com.japaricraft.japaricraftmod.block.SandStarBlock;
 import com.japaricraft.japaricraftmod.block.WoodenFrameBlock;
+import com.japaricraft.japaricraftmod.gui.BeastGuiHandler;
 import com.japaricraft.japaricraftmod.item.*;
 import com.japaricraft.japaricraftmod.mob.*;
 import com.japaricraft.japaricraftmod.profession.ItemCareer;
@@ -26,6 +27,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraft.world.biome.Biome;
@@ -210,6 +212,7 @@ public class JapariCraftMod {
 
     @EventHandler
     public void Init(FMLInitializationEvent event) {
+        NetworkRegistry.INSTANCE.registerGuiHandler(instance, new BeastGuiHandler());
         GameRegistry.addRecipe(new ItemStack(JapariCraftMod.woodenframeblock),
                 "SPS",
                 "PSP",
