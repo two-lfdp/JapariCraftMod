@@ -13,6 +13,7 @@ import net.minecraft.item.*;
 import net.minecraft.stats.Achievement;
 import net.minecraftforge.common.AchievementPage;
 import net.minecraftforge.common.util.EnumHelper;
+import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.fml.common.ModMetadata;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -28,6 +29,7 @@ import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraft.world.biome.Biome;
+import net.minecraftforge.common.DungeonHooks;
 
 
 
@@ -134,7 +136,7 @@ public class JapariCraftMod {
         //ブロックの登録。
         ResourceLocation woodenframeblocklocation = new ResourceLocation(MODID, "woodenframeblock");//これはウッデンフレームブロックのテクスチャ指定。
         ItemBlock woodenframeitemblock = new ItemBlock(woodenframeblock);
-
+        
 
         ResourceLocation sandstarlocation = new ResourceLocation(MODID, "sandstarblock");
         ItemBlock sandstaritemblock = new ItemBlock(sandstarblock);
@@ -268,28 +270,27 @@ public class JapariCraftMod {
                 'B', Items.BOWL
 
         );
-        GameRegistry.addRecipe(new ItemStack(JapariCraftMod.bosscore,1),
+        GameRegistry.addRecipe(new ItemStack(JapariCraftMod.bosscore, 1),
                 "IRI",
                 "LBL",
                 "IRI",
-                'R',Items.REDSTONE,
-                'B',Blocks.REDSTONE_BLOCK,
-                'L',Items.REPEATER,
-                'I',Items.IRON_INGOT
+                'R', Items.REDSTONE,
+                'B', Blocks.REDSTONE_BLOCK,
+                'L', Items.REPEATER,
+                'I', Items.IRON_INGOT
         );
-        GameRegistry.addRecipe(new ItemStack(JapariCraftMod.summonlucky,1),
+        GameRegistry.addRecipe(new ItemStack(JapariCraftMod.summonlucky, 1),
                 "IRI",
                 "RCM",
                 "IRI",
-                'R',Items.REDSTONE,
-                'C',JapariCraftMod.bosscore,
-                'I',Items.IRON_INGOT,
-                'M',Blocks.CHEST
+                'R', Items.REDSTONE,
+                'C', JapariCraftMod.bosscore,
+                'I', Items.IRON_INGOT,
+                'M', Blocks.CHEST
         );
         GameRegistry.addShapelessRecipe(new ItemStack(JapariCraftMod.sandstarfragment, 9),
                 JapariCraftMod.sandstarblock
         );
-
 
     }
 

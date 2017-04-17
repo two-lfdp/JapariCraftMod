@@ -10,15 +10,10 @@ public class BeastMobHelper {
 
     public static boolean isNotEmptyItemStack(ItemStack stack)
     {
-        return (stack != null);
+        return !stack.isEmpty();
     }
 
-    public static ItemStack getEmptyItemStack()
-    {
-        return (ItemStack) null;
-    }
-
-    public static boolean canStoreInventory(IInventory inventory, @Nullable ItemStack stack)
+    public static boolean canStoreInventory(IInventory inventory, ItemStack stack)
     {
         boolean hasEmptySlot = (getFirstEmptySlot(inventory) != -1);
 
@@ -41,11 +36,13 @@ public class BeastMobHelper {
         }
     }
 
-    public static int getFirstEmptySlot(IInventory inventory)
+    // TODO /* ======================================== MOD START =====================================*/
+
+    private static int getFirstEmptySlot(IInventory inventory)
     {
         for (int slot = 0; slot < inventory.getSizeInventory(); ++slot)
         {
-            if (!isNotEmptyItemStack(inventory.getStackInSlot(slot)))
+            if (inventory.getStackInSlot(slot).isEmpty())
             {
                 return slot;
             }
@@ -54,16 +51,16 @@ public class BeastMobHelper {
         return -1;
     }
 
-    public static int getCanStoreSlot(IInventory inventory, ItemStack stack)
+    private static int getCanStoreSlot(IInventory inventory, ItemStack stack)
     {
         for (int slot = 0; slot < inventory.getSizeInventory(); ++slot)
         {
-            ItemStack stackInv = inventory.getStackInSlot(slot);
+            ItemStack stackSlot = inventory.getStackInSlot(slot);
 
-            if (isNotEmptyItemStack(stackInv))
+            if (!stackSlot.isEmpty())
             {
-                boolean isItemEqual = (stackInv.getItem().equals(stack.getItem()) && (!stackInv.getHasSubtypes() || stackInv.getItemDamage() == stack.getItemDamage()) && ItemStack.areItemStackTagsEqual(stackInv, stack));
-                boolean isStackSizeEqual = (stackInv.isStackable() && (stackInv.getCount() < stackInv.getMaxStackSize()) && (stackInv.getCount() < inventory.getInventoryStackLimit()));
+                boolean isItemEqual = (stackSlot.getItem() == stack.getItem() && (!stackSlot.getHasSubtypes() || stackSlot.getItemDamage() == stack.getItemDamage()) && ItemStack.areItemStackTagsEqual(stackSlot, stack));
+                boolean isStackSizeEqual = (stackSlot.isStackable() && (stackSlot.getCount() < stackSlot.getMaxStackSize()) && (stackSlot.getCount() < inventory.getInventoryStackLimit()));
 
                 if (isItemEqual && isStackSizeEqual)
                 {
@@ -74,6 +71,5 @@ public class BeastMobHelper {
 
         return -1;
     }
-
 
 }

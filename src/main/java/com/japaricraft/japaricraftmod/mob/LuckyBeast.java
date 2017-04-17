@@ -1,6 +1,8 @@
 package com.japaricraft.japaricraftmod.mob;
 
 import com.japaricraft.japaricraftmod.JapariCraftMod;
+import com.japaricraft.japaricraftmod.gui.BeastNBTs;
+import com.japaricraft.japaricraftmod.gui.InventoryBeastMain;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
@@ -8,7 +10,6 @@ import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.inventory.IInventoryChangedListener;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -22,7 +23,7 @@ import javax.annotation.Nullable;
 public class LuckyBeast extends EntityTameable {
 
     private EntityPlayerSP player;
-
+    private InventoryBeastMain inventoryBeastMain;
     public LuckyBeast(World worldIn) {
         super(worldIn);
         this.setSize(0.6F, 1.0F);
@@ -50,6 +51,24 @@ public class LuckyBeast extends EntityTameable {
         if (this.ticksExisted % 5 == 0) {
             this.heal(0.1F);
         }
+    }
+
+    @Override
+    public void writeEntityToNBT(NBTTagCompound compound)
+    {
+        super.writeEntityToNBT(compound);
+
+        compound.setTag(BeastNBTs.ENTITY_Beast_INVENTORY, this.getInventoryBeastMain().writeInventoryToNBT());
+
+    }
+    //NTBで情報を保存してる
+    @Override
+    public void readEntityFromNBT(NBTTagCompound compound)
+    {
+        super.readEntityFromNBT(compound);
+
+        this.getInventoryBeastMain().readInventoryFromNBT(compound.getTagList(BeastNBTs.ENTITY_Beast_INVENTORY, 10));
+
     }
 
     @Override
@@ -108,7 +127,16 @@ public class LuckyBeast extends EntityTameable {
 
         return super.processInteract(player, hand);
     }
+    //下はインベントリを持ってくるコード
+    private InventoryBeastMain getInventoryBeastMain()
+    {
+        if (this.inventoryBeastMain == null)
+        {
+            this.inventoryBeastMain = new inventoryBeastMain(this);
+        }
 
+        return this.inventoryBeastMain;
+    }
     @Override
     public EnumCreatureAttribute getCreatureAttribute() { return EnumCreatureAttribute.UNDEFINED; }
 
