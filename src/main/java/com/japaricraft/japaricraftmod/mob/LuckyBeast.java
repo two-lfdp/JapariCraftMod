@@ -53,6 +53,7 @@ public class LuckyBeast extends EntityTameable {
         if (this.isTamed()) {
             if (this.isOwner(player) && !this.world.isRemote && !this.isBreedingItem(stack)) {
                 player.addStat(JapariCraftMod.achievement_boss);
+                player.openGui(JapariCraftMod.instance,8,world,(int)posX,(int)posY,(int)posZ);
                 return true;
             }
         } else if (stack != null && stack.getItem() == Items.REDSTONE && player.getDistanceSqToEntity(this) < 22.0D) {
