@@ -1,7 +1,6 @@
 package com.japaricraft.japaricraftmod.mob;
 
 import com.japaricraft.japaricraftmod.JapariCraftMod;
-import com.japaricraft.japaricraftmod.gui.*;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
@@ -11,7 +10,6 @@ import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
@@ -22,12 +20,11 @@ import javax.annotation.Nullable;
 public class LuckyBeast extends EntityTameable {
 
     private EntityPlayerSP player;
-    private InventoryBeastMain inventoryBeastMain;
+
     public LuckyBeast(World worldIn) {
         super(worldIn);
         this.setSize(0.6F, 1.0F);
         this.setTamed(false);
-        this.inventoryBeastMain = new InventoryBeastMain(this);
     }
 
     protected void initEntityAI() {
@@ -47,13 +44,12 @@ public class LuckyBeast extends EntityTameable {
     }
 
     @Override
-    public boolean processInteract(EntityPlayer player, EnumHand hand) {
+    public boolean processInteract(EntityPlayer player, EnumHand hand ) {
         ItemStack stack = player.getHeldItem(hand);
 
         if (this.isTamed()) {
             if (this.isOwner(player) && !this.world.isRemote && !this.isBreedingItem(stack)) {
                 player.addStat(JapariCraftMod.achievement_boss);
-                player.openGui(JapariCraftMod.instance,8,world,(int)posX,(int)posY,(int)posZ);
                 return true;
             }
         } else if (stack != null && stack.getItem() == Items.REDSTONE && player.getDistanceSqToEntity(this) < 22.0D) {
@@ -84,23 +80,6 @@ public class LuckyBeast extends EntityTameable {
         }
     }
 
-    @Override
-    public void writeEntityToNBT(NBTTagCompound compound)
-    {
-        super.writeEntityToNBT(compound);
-
-        compound.setTag(BeastNBTs.ENTITY_Beast_INVENTORY, this.getInventoryBeastMain().writeInventoryToNBT());
-
-    }
-    //NTBで情報を保存してる
-    @Override
-    public void readEntityFromNBT(NBTTagCompound compound)
-    {
-        super.readEntityFromNBT(compound);
-
-        this.getInventoryBeastMain().readInventoryFromNBT(compound.getTagList(BeastNBTs.ENTITY_Beast_INVENTORY, 10));
-
-    }
 
 
     @Override
@@ -126,16 +105,7 @@ public class LuckyBeast extends EntityTameable {
 
 
 
-    //下はインベントリを持ってくるコード
-    public InventoryBeastMain getInventoryBeastMain()
-    {
-        if (this.inventoryBeastMain == null)
-        {
-            this.inventoryBeastMain = new InventoryBeastMain(this);
-        }
 
-        return this.inventoryBeastMain;
-    }
     @Override
     public EnumCreatureAttribute getCreatureAttribute() { return EnumCreatureAttribute.UNDEFINED; }
 
