@@ -15,6 +15,8 @@ public class JaparimanCocoa extends ItemFood {
         this.setCreativeTab(JapariCraftMod.tabJapariCraft);
         this.setUnlocalizedName("JaparimanCocoa");
         this.setMaxStackSize(64);
+        this.setMaxDamage(1);
+        this.setHasSubtypes(true);
     }
     public void onCreated(ItemStack stack, World worldIn, EntityPlayer playerIn){
         if (!worldIn.isRemote)

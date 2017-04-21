@@ -37,6 +37,7 @@ entity.Shoebill.name=ハシビロコウ
 entity.WhiteOwl.name=ふくろう(白色)
 entity.BrownOwl.name=ふくろう(茶色)
 entity.LuckyBeast.name=ラッキービースト
+entity.SafeguardLuckyBeast.name=守護のラッキービースト
 entity.SavannaNamekuji.name=サバンナシマウマオオナメクジ
 entity.Villager.japalar=じゃぱりぱーくの飼育員
 itemGroup.JapariCraftTab=ジャパリクラフト

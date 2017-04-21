@@ -2,7 +2,6 @@ package com.japaricraft.japaricraftmod;
 
 import com.japaricraft.japaricraftmod.block.SandStarBlock;
 import com.japaricraft.japaricraftmod.block.WoodenFrameBlock;
-import com.japaricraft.japaricraftmod.gui.BeastGuiHandler;
 import com.japaricraft.japaricraftmod.item.*;
 import com.japaricraft.japaricraftmod.mob.*;
 import com.japaricraft.japaricraftmod.profession.ItemCareer;
@@ -14,7 +13,6 @@ import net.minecraft.item.*;
 import net.minecraft.stats.Achievement;
 import net.minecraftforge.common.AchievementPage;
 import net.minecraftforge.common.util.EnumHelper;
-import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.fml.common.ModMetadata;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -27,7 +25,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
-import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraft.world.biome.Biome;
@@ -188,6 +185,8 @@ public class JapariCraftMod {
         EntityRegistry.addSpawn(LuckyBeast.class, 0, 1, 2, EnumCreatureType.CREATURE);
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.SavannaNamekuji"), SavannaNamekuji.class, "SavannaNamekuji", 9, this, 35, 3, true, 7375001, 6375001);
         EntityRegistry.addSpawn(SavannaNamekuji.class, 7, 1, 2, EnumCreatureType.CREATURE, Biome.getBiome(35),Biome.getBiome(36),Biome.getBiome(163));
+        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.SafeguardLuckyBeast"), SafeguardLuckyBeast.class, "SafeguardLuckyBeast", 10, this, 35, 3, true, 100, 100);
+        EntityRegistry.addSpawn(SafeguardLuckyBeast.class, 0, 1, 2, EnumCreatureType.CREATURE);
 
         //テクスチャ・モデル指定JSONファイル名の登録
         if (event.getSide().isClient()) {
@@ -211,7 +210,6 @@ public class JapariCraftMod {
 
     @EventHandler
     public void Init(FMLInitializationEvent event) {
-        NetworkRegistry.INSTANCE.registerGuiHandler(instance, new BeastGuiHandler());
         GameRegistry.addRecipe(new ItemStack(JapariCraftMod.woodenframeblock),
                 "SPS",
                 "PSP",
@@ -285,12 +283,11 @@ public class JapariCraftMod {
         );
         GameRegistry.addRecipe(new ItemStack(JapariCraftMod.summonlucky, 1),
                 "IRI",
-                "RCM",
+                "RCR",
                 "IRI",
                 'R', Items.REDSTONE,
                 'C', JapariCraftMod.bosscore,
-                'I', Items.IRON_INGOT,
-                'M', Blocks.CHEST
+                'I', Items.IRON_INGOT
         );
         GameRegistry.addShapelessRecipe(new ItemStack(JapariCraftMod.sandstarfragment, 9),
                 JapariCraftMod.sandstarblock
