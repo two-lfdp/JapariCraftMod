@@ -66,6 +66,7 @@ public class JapariCraftMod {
     public static final Item pumpkinsoup = new PumpkinSoup();
     public static final Item bosscore = new BossCore();
     public static final Item summonlucky = new SummonLucky();
+    public static final Item summonguardlucky = new SummonGuardLucky();
     public static final Achievement achievement_woodframe =
             new Achievement("achievement." + MODID + ":woodframe", MODID + ".woodframe",
                     0, 2, Items.STICK, null).registerStat();
@@ -157,6 +158,7 @@ public class JapariCraftMod {
         GameRegistry.register(wildliberationpotion,new ResourceLocation(MODID,"wildliberationpotion"));
         GameRegistry.register(bosscore,new ResourceLocation(MODID,"bosscore"));
         GameRegistry.register(summonlucky,new ResourceLocation(MODID,"summonlucky"));
+        GameRegistry.register(summonguardlucky,new ResourceLocation(MODID,"summonguardlucky"));
 
         //ここでResourceLocationを引数に入れるとregister()内でsetRegistryName()が呼ばれてエラー
         GameRegistry.register(japalarprofession/*, new ResourceLocation(MODID, "Japalar")*/);
@@ -203,6 +205,7 @@ public class JapariCraftMod {
             ModelLoader.setCustomModelResourceLocation(pumpkinsoup,0,new ModelResourceLocation(new ResourceLocation(MODID, "pumpkinsoup"),"inventory"));
             ModelLoader.setCustomModelResourceLocation(bosscore,0,new ModelResourceLocation(new ResourceLocation(MODID, "bosscore"),"inventory"));
             ModelLoader.setCustomModelResourceLocation(summonlucky,0,new ModelResourceLocation(new ResourceLocation(MODID, "summonlucky"),"inventory"));
+            ModelLoader.setCustomModelResourceLocation(summonguardlucky,0,new ModelResourceLocation(new ResourceLocation(MODID, "summonguardlucky"),"inventory"));
             //Memo: Render関連は全部クライアントサイドで
             proxy.registerRender();
         }
@@ -289,6 +292,16 @@ public class JapariCraftMod {
                 'C', JapariCraftMod.bosscore,
                 'I', Items.IRON_INGOT
         );
+        GameRegistry.addRecipe(new ItemStack(JapariCraftMod.summonlucky, 1),
+                "ICI",
+                "RLR",
+                "IRI",
+                'R', Items.REDSTONE,
+                'C', JapariCraftMod.bosscore,
+                'L',JapariCraftMod.summonlucky,
+                'I', Items.IRON_INGOT
+        );
+
         GameRegistry.addShapelessRecipe(new ItemStack(JapariCraftMod.sandstarfragment, 9),
                 JapariCraftMod.sandstarblock
         );

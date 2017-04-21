@@ -28,6 +28,7 @@ item.WildLiberationSource.name=Source of Liberation of Wildness
 item.WildLiberationPotion.name=Potion of Liberation of Wildness
 item.LuckyBeastCore.name=LuckyBeastCore
 item.Summonluckybeast.name=SummonLuckyBeast
+item.SummonGuardLuckyBeast.name=SummonGuardLuckyBeast
 entity.AncientSkeleton.name=Ancient Skeleton
 entity.KouteiPenguin.name=Emperor Penguins
 entity.Serval.name=Serval Cat

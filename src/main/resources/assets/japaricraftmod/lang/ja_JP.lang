@@ -28,6 +28,7 @@ item.PumpkinSoup.name=かぼちゃのスープ
 item.WildLiberationPotion.name=野生解放のポーション
 item.LuckyBeastCore.name=ラッキービーストコア
 item.Summonluckybeast.name=ラッキービースト
+item.SummonGuardLuckyBeast.name=守りのラッキービースト
 entity.AncientSkeleton.name=古代スケルトン
 entity.KouteiPenguin.name=皇帝ペンギン
 entity.Cerulean.name=セルリアン
