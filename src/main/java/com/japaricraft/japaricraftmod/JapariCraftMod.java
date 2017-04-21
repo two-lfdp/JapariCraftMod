@@ -292,7 +292,7 @@ public class JapariCraftMod {
                 'C', JapariCraftMod.bosscore,
                 'I', Items.IRON_INGOT
         );
-        GameRegistry.addRecipe(new ItemStack(JapariCraftMod.summonlucky, 1),
+        GameRegistry.addRecipe(new ItemStack(JapariCraftMod.summonguardlucky, 1),
                 "ICI",
                 "RLR",
                 "IRI",
