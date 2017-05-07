@@ -50,7 +50,7 @@ public class JapariCraftMod {
     @SidedProxy(clientSide = "com.japaricraft.japaricraftmod.ClientProxy", serverSide = "com.japaricraft.japaricraftmod.ServerProxy")
     public static CommonProxy proxy;
 
-    public static Item.ToolMaterial SandStar = EnumHelper.addToolMaterial("SandStar", 3, 700, 7F, 4F, 16);
+    private static Item.ToolMaterial SandStar = EnumHelper.addToolMaterial("SandStar", 3, 700, 7F, 4F, 16);
 
     //Memo: 変更する予定のないフィールドはfinalつけておきましょう
     public static final CreativeTabs tabJapariCraft = new TabJapariCraft("JapariCraftTab");
@@ -59,16 +59,16 @@ public class JapariCraftMod {
     public static final Item japariman = new Japariman();
     public static final Item japarimancocoa = new JaparimanCocoa();
     public static final Item sandstarfragment = new ItemSandStarFragment();
-    public static final Item starjapariman = new StarJapariman();
+    static final Item starjapariman = new StarJapariman();
     public static final Item sugarstar = new SugarStar();
     public static final Item sandstarsword = new SandStarSword(SandStar);
-    public static final Item wildliberationsource = new WildLiberationSource();
-    public static final Item wildliberationpotion = new WildLiberationPotion();
-    public static final Item pumpkinsoup = new PumpkinSoup();
-    public static final Item bosscore = new BossCore();
+    private static final Item wildliberationsource = new WildLiberationSource();
+    private static final Item wildliberationpotion = new WildLiberationPotion();
+    private static final Item pumpkinsoup = new PumpkinSoup();
+    private static final Item bosscore = new BossCore();
     public static final Item summonlucky = new SummonLucky();
-    public static final Item summonguardlucky = new SummonGuardLucky();
-    public static final Achievement achievement_woodframe =
+    private static final Item summonguardlucky = new SummonGuardLucky();
+    private static final Achievement achievement_woodframe =
             new Achievement("achievement." + MODID + ":woodframe", MODID + ".woodframe",
                     0, 2, Items.STICK, null).registerStat();
     public static final Achievement achievement_japariman =
