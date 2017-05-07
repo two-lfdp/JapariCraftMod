@@ -93,7 +93,7 @@ public class Cerulean extends EntityMob {
     protected void dropFewItems(boolean parRecentlyHit, int parLootingLevel) {
         //ほんとは確率とかで落とすものが決めれるんだと思う
         {
-            this.entityDropItem(new ItemStack(Items.SLIME_BALL, 1, 0), 0.0F);
+            this.entityDropItem(new ItemStack(Items.SLIME_BALL, 2, 0), 0.0F);
 
         }
     }
@@ -101,10 +101,10 @@ public class Cerulean extends EntityMob {
 
     protected void applyEntityAttributes(){
         super.applyEntityAttributes();
-        getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(1D);
+        getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(2D);
         getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(25D);
-        getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(6);
+        getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(12);
         getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.23D);
-        getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(1);
+        getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(2);
     }
 }

@@ -11,6 +11,7 @@ import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.*;
 import net.minecraft.stats.Achievement;
+import net.minecraft.world.DimensionType;
 import net.minecraftforge.common.AchievementPage;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.ModMetadata;
@@ -103,10 +104,13 @@ public class JapariCraftMod {
     );
 
     public static JapalarProfession japalarprofession;
+
+    public static DimensionType JAPARI_DIMENSION;;
     //Memo: 変数名は型のクラスがわかり易い名前にしましょう
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
+
         //Memo:なぜここで初期化したし
         //→どうやらForgeのRegistryの関係上こっちで初期化しないと死ぬっぽい
         japalarprofession = new JapalarProfession();
@@ -142,6 +146,7 @@ public class JapariCraftMod {
         ResourceLocation sandstarlocation = new ResourceLocation(MODID, "sandstarblock");
         ItemBlock sandstaritemblock = new ItemBlock(sandstarblock);
 
+        ResourceLocation japariportallocation = new ResourceLocation(MODID, "japariportal");
         //登録関連
         GameRegistry.register(japariman, new ResourceLocation(MODID, "japariman"));
         GameRegistry.register(japarimancocoa, new ResourceLocation(MODID, "japarimancocoa"));

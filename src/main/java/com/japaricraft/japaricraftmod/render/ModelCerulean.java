@@ -9,30 +9,27 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class ModelCerulean extends ModelBase {
+    public ModelRenderer shape1;
 
-
-    ModelRenderer slimeBodies;
-    /** The slime's right eye */
-
-
-    public ModelCerulean(int render)
-    {
-        if (render > 0)
-        {
-            this.slimeBodies = new ModelRenderer(this, 0, render);
-            this.slimeBodies.addBox(-4.0F, 16.0F, -4.0F, 8, 8, 8);
-        }
+    public ModelCerulean(int pentan) {
+        this.textureWidth = 64;
+        this.textureHeight = 32;
+        this.shape1 = new ModelRenderer(this, 0, 0);
+        this.shape1.setRotationPoint(-7.5F, 8.5F, -8.0F);
+        this.shape1.addBox(0.0F, 0.0F, 0.0F, 15, 15, 15, 0.0F);
     }
 
+    @Override
+    public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+        this.shape1.render(f5);
+    }
 
     /**
-     * Sets the models various rotation angles then renders the model.
+     * This is a helper function from Tabula to set the rotation of model parts
      */
-    public void render(Entity entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale)
-    {
-        this.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale, entityIn);
-        GlStateManager.translate(0.0F, 0.001F, 0.0F);
-        this.slimeBodies.render(scale);
+    public void setRotateAngle(ModelRenderer modelRenderer, float x, float y, float z) {
+        modelRenderer.rotateAngleX = x;
+        modelRenderer.rotateAngleY = y;
+        modelRenderer.rotateAngleZ = z;
     }
-
 }
