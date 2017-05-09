@@ -41,7 +41,7 @@ public class SafeguardLuckyBeast extends EntityTameable {
         this.tasks.addTask(6, new EntityAIMate(this, 1.0D));
         this.tasks.addTask(6, new EntityAIWander(this, 1.0D));
         this.tasks.addTask(7, new EntityAILookIdle(this));
-        this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
+        this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityPlayer.class, 4.0F));
         this.targetTasks.addTask(3, new EntityAINearestAttackableTarget<>(this, Cerulean.class, true));
         this.targetTasks.addTask(3, new EntityAINearestAttackableTarget<>(this, EntityLiving.class, 10, false, true, new Predicate<EntityLiving>() {
             public boolean apply(@Nullable EntityLiving p_apply_1_) {

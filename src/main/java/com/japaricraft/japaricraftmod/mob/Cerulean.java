@@ -22,7 +22,7 @@ public class Cerulean extends EntityMob {
     public Cerulean(World worldIn)
     {
         super(worldIn);
-        this.setSize(0.9F, 0.9F);
+        this.setSize(1.0F, 1.0F);
     }
 
     protected void initEntityAI(){

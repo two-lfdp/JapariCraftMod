@@ -9,9 +9,10 @@ import com.japaricraft.japaricraftmod.profession.JapalarProfession;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.SoundEvents;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.*;
 import net.minecraft.stats.Achievement;
-import net.minecraft.world.DimensionType;
 import net.minecraftforge.common.AchievementPage;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.ModMetadata;
@@ -51,6 +52,8 @@ public class JapariCraftMod {
     public static CommonProxy proxy;
 
     private static Item.ToolMaterial SandStar = EnumHelper.addToolMaterial("SandStar", 3, 700, 7F, 4F, 16);
+    public static final ItemArmor.ArmorMaterial KabanHatMaterial = EnumHelper.addArmorMaterial("kabanhatmaterial", MODID +":"+"textures/models/armor/kabanhat_layer_1.png", 70, new int[]{2,0,0,2}, 30, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0);
+
 
     //Memo: 変更する予定のないフィールドはfinalつけておきましょう
     public static final CreativeTabs tabJapariCraft = new TabJapariCraft("JapariCraftTab");
@@ -105,7 +108,8 @@ public class JapariCraftMod {
 
     public static JapalarProfession japalarprofession;
 
-    public static DimensionType JAPARI_DIMENSION;;
+    private static Item kabanhat;
+
     //Memo: 変数名は型のクラスがわかり易い名前にしましょう
 
     @EventHandler
@@ -138,6 +142,8 @@ public class JapariCraftMod {
         );
         AchievementPage.registerAchievementPage(achievement_page_japaricraft);
 
+        kabanhat = new ItemKabanHat(KabanHatMaterial, 0, EntityEquipmentSlot.HEAD);
+
         //ブロックの登録。
         ResourceLocation woodenframeblocklocation = new ResourceLocation(MODID, "woodenframeblock");//これはウッデンフレームブロックのテクスチャ指定。
         ItemBlock woodenframeitemblock = new ItemBlock(woodenframeblock);
@@ -146,7 +152,6 @@ public class JapariCraftMod {
         ResourceLocation sandstarlocation = new ResourceLocation(MODID, "sandstarblock");
         ItemBlock sandstaritemblock = new ItemBlock(sandstarblock);
 
-        ResourceLocation japariportallocation = new ResourceLocation(MODID, "japariportal");
         //登録関連
         GameRegistry.register(japariman, new ResourceLocation(MODID, "japariman"));
         GameRegistry.register(japarimancocoa, new ResourceLocation(MODID, "japarimancocoa"));
@@ -164,6 +169,7 @@ public class JapariCraftMod {
         GameRegistry.register(bosscore,new ResourceLocation(MODID,"bosscore"));
         GameRegistry.register(summonlucky,new ResourceLocation(MODID,"summonlucky"));
         GameRegistry.register(summonguardlucky,new ResourceLocation(MODID,"summonguardlucky"));
+        GameRegistry.register(kabanhat,new ResourceLocation(MODID,"kabanhat"));
 
         //ここでResourceLocationを引数に入れるとregister()内でsetRegistryName()が呼ばれてエラー
         GameRegistry.register(japalarprofession/*, new ResourceLocation(MODID, "Japalar")*/);
@@ -181,7 +187,7 @@ public class JapariCraftMod {
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.Serval"), Serval.class, "Serval", 3, this, 35, 3, true, 16703405, 6375001);
         EntityRegistry.addSpawn(Serval.class, 10, 2, 3, EnumCreatureType.CREATURE, Biome.getBiome(35),Biome.getBiome(36),Biome.getBiome(163));
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.Kawauso"), Kawauso.class, "Kawauso", 4, this, 35, 3, true, 2240000, 7375001);
-        EntityRegistry.addSpawn(Kawauso.class, 1, 2, 3, EnumCreatureType.CREATURE, Biome.getBiome(6),Biome.getBiome(16),Biome.getBiome(134));
+        EntityRegistry.addSpawn(Kawauso.class, 0, 1, 2, EnumCreatureType.CREATURE, Biome.getBiome(6),Biome.getBiome(16),Biome.getBiome(134));
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.Shoebill"), Shoebill.class, "Shoebill", 5, this, 35, 3, true, 7375001, 10000);
         EntityRegistry.addSpawn(Shoebill.class, 11, 2, 3, EnumCreatureType.CREATURE, Biome.getBiome(1),Biome.getBiome(4));
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.WhiteOwl"), WhiteOwl.class, "WhiteOwl", 6, this, 35, 3, true, 7375001, 7375001);
@@ -194,6 +200,8 @@ public class JapariCraftMod {
         EntityRegistry.addSpawn(SavannaNamekuji.class, 7, 1, 2, EnumCreatureType.CREATURE, Biome.getBiome(35),Biome.getBiome(36),Biome.getBiome(163));
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.SafeguardLuckyBeast"), SafeguardLuckyBeast.class, "SafeguardLuckyBeast", 10, this, 35, 3, true, 100, 100);
         EntityRegistry.addSpawn(SafeguardLuckyBeast.class, 0, 1, 2, EnumCreatureType.CREATURE);
+        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.Guide"), Guide.class, "Guide", 11, this, 35, 3, true, 16703405, 4243405);
+        EntityRegistry.addSpawn(Guide.class, 0, 1, 2, EnumCreatureType.CREATURE);
 
         //テクスチャ・モデル指定JSONファイル名の登録
         if (event.getSide().isClient()) {
@@ -211,6 +219,7 @@ public class JapariCraftMod {
             ModelLoader.setCustomModelResourceLocation(bosscore,0,new ModelResourceLocation(new ResourceLocation(MODID, "bosscore"),"inventory"));
             ModelLoader.setCustomModelResourceLocation(summonlucky,0,new ModelResourceLocation(new ResourceLocation(MODID, "summonlucky"),"inventory"));
             ModelLoader.setCustomModelResourceLocation(summonguardlucky,0,new ModelResourceLocation(new ResourceLocation(MODID, "summonguardlucky"),"inventory"));
+            ModelLoader.setCustomModelResourceLocation(kabanhat,0,new ModelResourceLocation(new ResourceLocation(MODID, "kabanhat"),"inventory"));
             //Memo: Render関連は全部クライアントサイドで
             proxy.registerRender();
         }

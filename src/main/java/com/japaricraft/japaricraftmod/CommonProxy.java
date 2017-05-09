@@ -8,6 +8,9 @@ public class CommonProxy{
     public void registerRender() {
 
     }
+    public void init(){
+
+    }
     public void registerClientInfo(){}
 
     public ModelTranslator getArmorModel(int index) {

@@ -26,7 +26,7 @@ public class Serval extends EntityCreature {
         this.tasks.addTask(4, new EntityAIAttackMelee(this, 1.0D, true));
         this.tasks.addTask(6, new EntityAIWander(this, 1.0D));
         this.tasks.addTask(7, new EntityAILookIdle(this));
-        this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
+        this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityPlayer.class, 3.0F));
         this.targetTasks.addTask(3, new EntityAINearestAttackableTarget<>(this, Cerulean.class, false));
     }
 
