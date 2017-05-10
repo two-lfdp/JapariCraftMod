@@ -13,7 +13,4 @@ public class CommonProxy{
     }
     public void registerClientInfo(){}
 
-    public ModelTranslator getArmorModel(int index) {
-        return null;
-    }
 }

@@ -37,7 +37,7 @@ import net.minecraft.world.biome.Biome;
 public class JapariCraftMod {
 
     public static final String MODID = "japaricraftmod";
-    public static final String VERSION = "2.0";
+    public static final String VERSION = "2.1";
     public static final String MODNAME = "JapariCraftMod";
     /**
      * Woodenframeのブロックのインスタンスを格納する
@@ -315,11 +315,16 @@ public class JapariCraftMod {
                 'L',JapariCraftMod.summonlucky,
                 'I', Items.IRON_INGOT
         );
-
+        GameRegistry.addRecipe(new ItemStack(JapariCraftMod.kabanhat, 1),
+                "FLF",
+                "LSL",
+                'L', Items.LEATHER,
+                'S',Items.STRING,
+                'F',Items.FEATHER
+        );
         GameRegistry.addShapelessRecipe(new ItemStack(JapariCraftMod.sandstarfragment, 9),
                 JapariCraftMod.sandstarblock
         );
-
     }
 
 

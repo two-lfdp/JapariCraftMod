@@ -41,6 +41,6 @@ entity.BrownOwl.name=BrownOwl
 entity.LuckyBeast.name=LuckyBeast
 entity.SafeguardLuckyBeast.name=LuckyBeastGuard
 entity.SavannaNamekuji.name=SavannaNamekuji
-entity.Guide.name=Guide
+entity.Guide.name=Alice
 entity.Villager.japalar=Japari Staff
 itemGroup.JapariCraftTab=JapariCraft

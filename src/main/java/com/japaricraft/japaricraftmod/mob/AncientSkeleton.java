@@ -98,19 +98,13 @@ public class AncientSkeleton extends EntityMob {
 
     public Item getDropItem () {
 
-        return JapariCraftMod.sandstarfragment;
+        return null;//なにも落とさない
     }
     @Override
-    protected void dropFewItems(boolean parRecentlyHit, int parLootingLevel)
-    {
-        int j = rand.nextInt(3) + rand.nextInt(1 + parLootingLevel);
-        int k;
-
-        dropItem(getDropItem(), 3);
-
-        for (k = 0; k < j; ++k)
+    protected void dropFewItems(boolean parRecentlyHit, int parLootingLevel) {
         {
-            dropItem(JapariCraftMod.sugarstar,4);
+            this.entityDropItem(new ItemStack(JapariCraftMod.sandstarfragment, 2, 0), 0.0F);
+            this.entityDropItem(new ItemStack(JapariCraftMod.sugarstar, 3, 0), 0.0F);
         }
     }
 
@@ -129,5 +123,6 @@ public class AncientSkeleton extends EntityMob {
 
 
 
-    
+
+
 }
