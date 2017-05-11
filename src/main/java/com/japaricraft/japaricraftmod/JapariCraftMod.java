@@ -52,7 +52,7 @@ public class JapariCraftMod {
     public static CommonProxy proxy;
 
     private static Item.ToolMaterial SandStar = EnumHelper.addToolMaterial("SandStar", 3, 700, 7F, 4F, 16);
-    public static final ItemArmor.ArmorMaterial KabanHatMaterial = EnumHelper.addArmorMaterial("kabanhatmaterial", MODID +":"+"textures/models/armor/kabanhat_layer_1.png", 70, new int[]{2,0,0,2}, 30, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0);
+    public static final ItemArmor.ArmorMaterial KabanHatMaterial = EnumHelper.addArmorMaterial("kabanhatmaterial", MODID +":"+"textures/models/armor/kabanhat_layer_1.png", 8, new int[]{2,0,0,2}, 30, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0);
 
 
     //Memo: 変更する予定のないフィールドはfinalつけておきましょう
@@ -61,8 +61,9 @@ public class JapariCraftMod {
     public static final Block sandstarblock = new SandStarBlock();
     public static final Item japariman = new Japariman();
     public static final Item japarimancocoa = new JaparimanCocoa();
-    public static final Item sandstarfragment = new ItemSandStarFragment();
+    private static final Item japarimanapple = new JaparimanApple();
     static final Item starjapariman = new StarJapariman();
+    public static final Item sandstarfragment = new ItemSandStarFragment();
     public static final Item sugarstar = new SugarStar();
     public static final Item sandstarsword = new SandStarSword(SandStar);
     private static final Item wildliberationsource = new WildLiberationSource();
@@ -170,6 +171,7 @@ public class JapariCraftMod {
         GameRegistry.register(summonlucky,new ResourceLocation(MODID,"summonlucky"));
         GameRegistry.register(summonguardlucky,new ResourceLocation(MODID,"summonguardlucky"));
         GameRegistry.register(kabanhat,new ResourceLocation(MODID,"kabanhat"));
+        GameRegistry.register(japarimanapple,new ResourceLocation(MODID,"japarimanapple"));
 
         //ここでResourceLocationを引数に入れるとregister()内でsetRegistryName()が呼ばれてエラー
         GameRegistry.register(japalarprofession/*, new ResourceLocation(MODID, "Japalar")*/);
@@ -220,6 +222,7 @@ public class JapariCraftMod {
             ModelLoader.setCustomModelResourceLocation(summonlucky,0,new ModelResourceLocation(new ResourceLocation(MODID, "summonlucky"),"inventory"));
             ModelLoader.setCustomModelResourceLocation(summonguardlucky,0,new ModelResourceLocation(new ResourceLocation(MODID, "summonguardlucky"),"inventory"));
             ModelLoader.setCustomModelResourceLocation(kabanhat,0,new ModelResourceLocation(new ResourceLocation(MODID, "kabanhat"),"inventory"));
+            ModelLoader.setCustomModelResourceLocation(japarimanapple,0,new ModelResourceLocation(new ResourceLocation(MODID, "japarimanapple"),"inventory"));
             //Memo: Render関連は全部クライアントサイドで
             proxy.registerRender();
         }
@@ -321,6 +324,13 @@ public class JapariCraftMod {
                 'L', Items.LEATHER,
                 'S',Items.STRING,
                 'F',Items.FEATHER
+        );
+        GameRegistry.addRecipe(new ItemStack(JapariCraftMod.japarimanapple, 4),
+                " W ",
+                "WAW",
+                " W ",
+                'W',Items.WHEAT,
+                'A',Items.APPLE
         );
         GameRegistry.addShapelessRecipe(new ItemStack(JapariCraftMod.sandstarfragment, 9),
                 JapariCraftMod.sandstarblock

@@ -11,7 +11,7 @@ import net.minecraft.world.World;
 public class Japariman extends ItemFood {
 
     public Japariman(){
-        super(4,3,false);
+        super(4,2,false);
         this.setCreativeTab(JapariCraftMod.tabJapariCraft);
         this.setUnlocalizedName("Japariman");
         this.setMaxStackSize(64);
