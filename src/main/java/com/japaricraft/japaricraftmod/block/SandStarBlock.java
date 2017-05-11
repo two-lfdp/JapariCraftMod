@@ -27,4 +27,19 @@ public class SandStarBlock extends Block {
     {
         return BlockRenderLayer.TRANSLUCENT;
     }
+    @Override
+    public boolean isOpaqueCube(IBlockState state)
+    {
+        return true;
+    }
+
+    
+
+    //これで前面に同じテクスチャをはる
+    @Override
+    public boolean isFullCube(IBlockState state)
+    {
+        return true;
+    }
+
 }
