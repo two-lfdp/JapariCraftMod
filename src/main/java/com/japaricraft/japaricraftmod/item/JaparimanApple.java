@@ -10,7 +10,7 @@ public class JaparimanApple extends ItemFood {
     public JaparimanApple() {
         super(5, 3, false);
         this.setCreativeTab(JapariCraftMod.tabJapariCraft);
-        this.setUnlocalizedName("Japariman");
+        this.setUnlocalizedName("JaparimanApple");
         this.setMaxStackSize(64);
         this.setMaxDamage(0);
         this.setHasSubtypes(true);
