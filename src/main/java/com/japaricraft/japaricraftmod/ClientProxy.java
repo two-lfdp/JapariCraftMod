@@ -17,7 +17,6 @@ public class ClientProxy extends CommonProxy{
         RenderingRegistry.registerEntityRenderingHandler(WhiteOwl.class, manager -> new WhiteOwlEntityRender<>(manager, new ModelWhiteOwl(), 0));
         RenderingRegistry.registerEntityRenderingHandler(BrownOwl.class, manager -> new BrownOwlEntityRender<>(manager, new ModelBrownOwl(), 0));
         RenderingRegistry.registerEntityRenderingHandler(LuckyBeast.class, manager -> new LuckyBeastEntityRender<>(manager, new ModelLuckyBeast(), 0));
-        RenderingRegistry.registerEntityRenderingHandler(SavannaNamekuji.class, manager -> new SavannaNamekujiEntityRender<>(manager, new ModelSavannaNamekuji(), 0));
         RenderingRegistry.registerEntityRenderingHandler(SafeguardLuckyBeast.class, manager -> new LuckyBeastEntityRender<>(manager, new ModelLuckyBeast(), 0));
         RenderingRegistry.registerEntityRenderingHandler(Guide.class, manager -> new GuideRender<>(manager, new ModelGuide(), 0));
         int pentan = 1;

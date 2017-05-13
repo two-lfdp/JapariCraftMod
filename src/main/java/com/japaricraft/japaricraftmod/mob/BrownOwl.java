@@ -16,17 +16,18 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundEvent;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
 public class BrownOwl extends EntityTameable {
 
 
     private EntityPlayerSP player;
-    private float flapLength = 0.0F;
-    private float flapIntensity = 0.0F;
-    private float lastFlapIntensity;
-    private float lastFlapLength;
-    private float flapSpeed = 1.0F;
+    private float wingRotation;
+    private float destPos;
+    private float oFlapSpeed;
+    private float oFlap;
+    private float wingRotDelta = 1.0F;
 
     public BrownOwl(World worldIn)
     {
@@ -146,37 +147,27 @@ public class BrownOwl extends EntityTameable {
     }
 
     @Override
-    public void onLivingUpdate() {
+    public void onLivingUpdate()
+    {
         super.onLivingUpdate();
-        this.lastFlapLength = this.flapLength;
-        this.lastFlapIntensity = this.flapIntensity;
-        this.flapIntensity = (float)(this.flapIntensity + (this.onGround ? -1 : 4) * 0.3D);
-        //ゆっくり下降するためのAI
-        if (this.flapIntensity < 0.0F)
+        this.oFlap = this.wingRotation;
+        this.oFlapSpeed = this.destPos;
+        this.destPos = (float)((double)this.destPos + (double)(this.onGround ? -1 : 4) * 0.3D);
+        this.destPos = MathHelper.clamp(this.destPos, 0.0F, 1.0F);
+
+        if (!this.onGround && this.wingRotDelta < 1.0F)
         {
-            this.flapIntensity = 0.0F;
+            this.wingRotDelta = 1.0F;
         }
 
-        if (this.flapIntensity > 1.0F)
-        {
-            this.flapIntensity = 1.0F;
-        }
+        this.wingRotDelta = (float)((double)this.wingRotDelta * 0.9D);
 
-        if (!this.onGround && this.flapSpeed < 1.0F)
-        {
-            this.flapSpeed = 1.0F;
-        }
-
-        this.flapSpeed = (float)(this.flapSpeed * 0.9D);
-
-        // don't fall as fast
         if (!this.onGround && this.motionY < 0.0D)
         {
             this.motionY *= 0.6D;
         }
 
-        this.flapLength += this.flapSpeed * 2.0F;
-
+        this.wingRotation += this.wingRotDelta * 2.0F;
     }
     public void fall(float distance, float damageMultiplier)
     {

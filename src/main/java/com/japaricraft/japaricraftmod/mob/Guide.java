@@ -1,5 +1,6 @@
 package com.japaricraft.japaricraftmod.mob;
 
+import com.japaricraft.japaricraftmod.JapariCraftMod;
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EnumCreatureAttribute;
@@ -10,6 +11,8 @@ import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 
@@ -40,6 +43,9 @@ public class Guide extends EntityCreature {
         this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(30);
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.29D);
     }
+
+
+    
 
 
     @Override
