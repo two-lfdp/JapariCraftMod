@@ -2,26 +2,33 @@ package com.japaricraft.japaricraftmod.mob;
 
 
 import com.japaricraft.japaricraftmod.JapariCraftMod;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
+import net.minecraft.entity.IRangedAttackMob;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
+import net.minecraft.entity.monster.AbstractSkeleton;
 import net.minecraft.entity.monster.EntityIronGolem;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.monster.EntityPigZombie;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.entity.projectile.*;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.SoundEvent;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.BossInfo;
 import net.minecraft.world.BossInfoServer;
 import net.minecraft.world.World;
+import net.minecraftforge.event.entity.living.LivingDropsEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-public class AncientSkeleton extends EntityMob {
+public class AncientSkeleton extends EntityMob{
 
 
     private final BossInfoServer bossInfo = (BossInfoServer)(new BossInfoServer(this.getDisplayName(), BossInfo.Color.YELLOW, BossInfo.Overlay.PROGRESS)).setDarkenSky(true);
@@ -32,7 +39,7 @@ public class AncientSkeleton extends EntityMob {
 
         //this.tasks.addTask(0, new Entityattack);
         this.tasks.addTask(0, new EntityAISwimming(this));
-        this.tasks.addTask(2, new EntityAIAttackMelee(this, 1.0D, false));
+        this.tasks.addTask(1, new EntityAIAttackMelee(this, 1.0D, false));
         this.tasks.addTask(5, new EntityAIMoveTowardsRestriction(this, 1.0D));
         this.tasks.addTask(7, new EntityAIWander(this, 1.0D));
         this.tasks.addTask(8, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
@@ -57,11 +64,6 @@ public class AncientSkeleton extends EntityMob {
     protected SoundEvent getHurtSound()
     {
         return SoundEvents.ENTITY_WITHER_SKELETON_HURT;
-    }
-    @Override
-    protected SoundEvent getAmbientSound()
-    {
-        return SoundEvents.ENTITY_HUSK_AMBIENT;
     }
 
     /*
@@ -111,18 +113,13 @@ public class AncientSkeleton extends EntityMob {
 
 
 
-
     protected void applyEntityAttributes(){
         super.applyEntityAttributes();
         getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(2D);
         getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(40D);
         getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(120);
-        getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.3);
+        getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.28);
         getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(3);
     }
-
-
-
-
 
 }

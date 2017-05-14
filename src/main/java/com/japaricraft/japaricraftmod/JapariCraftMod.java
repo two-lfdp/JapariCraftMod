@@ -15,6 +15,7 @@ import net.minecraft.item.*;
 import net.minecraft.stats.Achievement;
 import net.minecraftforge.common.AchievementPage;
 import net.minecraftforge.common.util.EnumHelper;
+import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.fml.common.ModMetadata;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -180,12 +181,12 @@ public class JapariCraftMod {
         //メタ情報の登録
         loadMeta();
 
-        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.AncientSkeleton"),  AncientSkeleton.class,"AncientSkeleton",0, this, 40, 3, true, 5243405, 7375001);
+        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.AncientSkeleton"),  AncientSkeleton.class,"AncientSkeleton",0, this, 40, 3, true, 10092543, 16776960);
         EntityRegistry.addSpawn(AncientSkeleton.class, 3, 1, 1, EnumCreatureType.MONSTER, Biome.getBiome(2),Biome.getBiome(130));
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.KouteiPenguin"), KouteiPenguin.class, "KouteiPenguin", 1, this, 30, 3, true, 2243405, 7375001);
         EntityRegistry.addSpawn(KouteiPenguin.class, 7, 2, 3, EnumCreatureType.CREATURE, Biome.getBiome(12), Biome.getBiome(140));
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.Cerulean"), Cerulean.class, "Cerulean", 2, this, 35, 3, true, 4243405, 7375001);
-        EntityRegistry.addSpawn(Cerulean.class, 15, 3, 5, EnumCreatureType.MONSTER, Biome.getBiome(1),Biome.getBiome(4),Biome.getBiome(35),Biome.getBiome(155));
+        EntityRegistry.addSpawn(Cerulean.class, 17, 3, 5, EnumCreatureType.MONSTER, Biome.getBiome(1),Biome.getBiome(4),Biome.getBiome(35),Biome.getBiome(155));
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.Serval"), Serval.class, "Serval", 3, this, 35, 3, true, 16703405, 6375001);
         EntityRegistry.addSpawn(Serval.class, 12, 2, 3, EnumCreatureType.CREATURE, Biome.getBiome(35),Biome.getBiome(36),Biome.getBiome(163));
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.Kawauso"), Kawauso.class, "Kawauso", 4, this, 35, 3, true, 2240000, 7375001);
@@ -196,9 +197,10 @@ public class JapariCraftMod {
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.BrownOwl"), BrownOwl.class, "BrownOwl", 7, this, 35, 3, true, 5243410, 5243405);
         EntityRegistry.addSpawn(BrownOwl.class, 13, 2, 3, EnumCreatureType.CREATURE, Biome.getBiome(4),Biome.getBiome(27),Biome.getBiome(29),Biome.getBiome(157));
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.LuckyBeast"), LuckyBeast.class, "LuckyBeast", 8, this, 35, 3, true, 100, 100);
-        EntityRegistry.addSpawn(LuckyBeast.class, 0, 1, 2, EnumCreatureType.CREATURE);
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.SafeguardLuckyBeast"), SafeguardLuckyBeast.class, "SafeguardLuckyBeast", 10, this, 35, 3, true, 100, 100);
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.Guide"), Guide.class, "Guide", 11, this, 35, 3, true, 16703405, 4243405);
+        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.BlackMiniCerulean"), BlackMiniCerulean.class, "BlackMiniCerulean", 12, this, 35, 3, true, 0, 8421504);
+        EntityRegistry.addSpawn(BlackMiniCerulean.class, 16, 3, 5, EnumCreatureType.MONSTER, Biome.getBiome(1),Biome.getBiome(4),Biome.getBiome(35),Biome.getBiome(155));
 
         //テクスチャ・モデル指定JSONファイル名の登録
         if (event.getSide().isClient()) {

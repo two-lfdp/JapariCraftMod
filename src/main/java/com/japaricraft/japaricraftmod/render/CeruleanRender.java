@@ -8,7 +8,7 @@ import net.minecraft.util.ResourceLocation;
 
 
 public class CeruleanRender <T extends EntityLiving> extends RenderLiving<T> {
-    private static final ResourceLocation texture = new ResourceLocation("JapariCraftMod:textures/entity/cerulean.png");
+    private static final ResourceLocation texture = new ResourceLocation("JapariCraftMod:textures/entity/cerulean/cerulean.png");
 
 
 

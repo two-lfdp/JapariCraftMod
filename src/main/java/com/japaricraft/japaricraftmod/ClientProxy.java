@@ -3,7 +3,8 @@ package com.japaricraft.japaricraftmod;
 
 import com.japaricraft.japaricraftmod.mob.*;
 import com.japaricraft.japaricraftmod.render.*;
-import net.minecraftforge.fml.client.registry.ClientRegistry;
+import net.minecraft.client.model.ModelCow;
+import net.minecraft.client.model.ModelQuadruped;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 
 public class ClientProxy extends CommonProxy{
@@ -19,6 +20,7 @@ public class ClientProxy extends CommonProxy{
         RenderingRegistry.registerEntityRenderingHandler(LuckyBeast.class, manager -> new LuckyBeastEntityRender<>(manager, new ModelLuckyBeast(), 0));
         RenderingRegistry.registerEntityRenderingHandler(SafeguardLuckyBeast.class, manager -> new LuckyBeastEntityRender<>(manager, new ModelLuckyBeast(), 0));
         RenderingRegistry.registerEntityRenderingHandler(Guide.class, manager -> new GuideRender<>(manager, new ModelGuide(), 0));
+        RenderingRegistry.registerEntityRenderingHandler(BlackMiniCerulean.class, manager -> new BlackMiniCeruleanRender<>(manager, new ModelCow(), 0));
         int pentan = 1;
         RenderingRegistry.registerEntityRenderingHandler(Cerulean.class, manager -> new CeruleanRender<>(manager, new ModelCerulean (pentan), 0));
     }
