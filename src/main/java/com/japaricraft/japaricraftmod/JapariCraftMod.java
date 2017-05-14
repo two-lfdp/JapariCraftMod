@@ -199,8 +199,6 @@ public class JapariCraftMod {
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.LuckyBeast"), LuckyBeast.class, "LuckyBeast", 8, this, 35, 3, true, 100, 100);
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.SafeguardLuckyBeast"), SafeguardLuckyBeast.class, "SafeguardLuckyBeast", 10, this, 35, 3, true, 100, 100);
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.Guide"), Guide.class, "Guide", 11, this, 35, 3, true, 16703405, 4243405);
-        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.BlackMiniCerulean"), BlackMiniCerulean.class, "BlackMiniCerulean", 12, this, 35, 3, true, 0, 8421504);
-        EntityRegistry.addSpawn(BlackMiniCerulean.class, 16, 3, 5, EnumCreatureType.MONSTER, Biome.getBiome(1),Biome.getBiome(4),Biome.getBiome(35),Biome.getBiome(155));
 
         //テクスチャ・モデル指定JSONファイル名の登録
         if (event.getSide().isClient()) {
