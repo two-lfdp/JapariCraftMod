@@ -1,6 +1,7 @@
 package com.japaricraft.japaricraftmod.mob;
 
 
+import com.japaricraft.japaricraftmod.JapariCraftMod;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
@@ -104,6 +105,9 @@ public class Cerulean extends EntityMob {
         {
             this.entityDropItem(new ItemStack(Items.SLIME_BALL, 2, 0), 0.0F);
 
+            if (this.rand.nextInt(6) == 0) {
+                this.entityDropItem(new ItemStack(JapariCraftMod.record_Farewell, 1, 0), 0.0F);
+            }
         }
     }
 

@@ -13,9 +13,11 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.*;
 import net.minecraft.stats.Achievement;
+import net.minecraft.util.SoundEvent;
 import net.minecraftforge.common.AchievementPage;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.EnumHelper;
-import net.minecraftforge.event.LootTableLoadEvent;
+import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.ModMetadata;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -28,10 +30,13 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraft.world.biome.Biome;
 
+import java.util.HashMap;
+import java.util.Map;
 
 
 @Mod(modid = JapariCraftMod.MODID, name = JapariCraftMod.MODNAME, version = JapariCraftMod.VERSION, useMetadata = true)
@@ -53,7 +58,7 @@ public class JapariCraftMod {
     public static CommonProxy proxy;
 
     private static Item.ToolMaterial SandStar = EnumHelper.addToolMaterial("SandStar", 3, 700, 7F, 4F, 16);
-    public static final ItemArmor.ArmorMaterial KabanHatMaterial = EnumHelper.addArmorMaterial("kabanhatmaterial", MODID +":"+"textures/models/armor/kabanhat_layer_1.png", 8, new int[]{2,0,0,2}, 30, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0);
+    public static final ItemArmor.ArmorMaterial KabanHatMaterial = EnumHelper.addArmorMaterial("kabanhatmaterial", MODID +":"+"textures/models/armor/kabanhat_layer_1.png", 8, new int[]{2,0,0,2}, 30, net.minecraft.init.SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,0);
 
 
     //Memo: 変更する予定のないフィールドはfinalつけておきましょう
@@ -112,6 +117,12 @@ public class JapariCraftMod {
 
     private static Item kabanhat;
 
+    public static Item record_Farewell;
+
+    @GameRegistry.ObjectHolder(MODID)
+    public static class SoundEvents {
+        public static final SoundEvent farewell = null;
+    }
     //Memo: 変数名は型のクラスがわかり易い名前にしましょう
 
     @EventHandler
@@ -145,7 +156,7 @@ public class JapariCraftMod {
         AchievementPage.registerAchievementPage(achievement_page_japaricraft);
 
         kabanhat = new ItemKabanHat(KabanHatMaterial, 0, EntityEquipmentSlot.HEAD);
-
+        record_Farewell = new MusicFriendDisc("farewell").setCreativeTab(JapariCraftMod.tabJapariCraft);
         //ブロックの登録。
         ResourceLocation woodenframeblocklocation = new ResourceLocation(MODID, "woodenframeblock");//これはウッデンフレームブロックのテクスチャ指定。
         ItemBlock woodenframeitemblock = new ItemBlock(woodenframeblock);
@@ -173,6 +184,7 @@ public class JapariCraftMod {
         GameRegistry.register(summonlucky,new ResourceLocation(MODID,"summonlucky"));
         GameRegistry.register(summonguardlucky,new ResourceLocation(MODID,"summonguardlucky"));
         GameRegistry.register(kabanhat,new ResourceLocation(MODID,"kabanhat"));
+        GameRegistry.register(record_Farewell,new ResourceLocation(MODID,"record_farewell"));
 
         //ここでResourceLocationを引数に入れるとregister()内でsetRegistryName()が呼ばれてエラー
         GameRegistry.register(japalarprofession/*, new ResourceLocation(MODID, "Japalar")*/);
@@ -217,9 +229,24 @@ public class JapariCraftMod {
             ModelLoader.setCustomModelResourceLocation(summonlucky,0,new ModelResourceLocation(new ResourceLocation(MODID, "summonlucky"),"inventory"));
             ModelLoader.setCustomModelResourceLocation(summonguardlucky,0,new ModelResourceLocation(new ResourceLocation(MODID, "summonguardlucky"),"inventory"));
             ModelLoader.setCustomModelResourceLocation(kabanhat,0,new ModelResourceLocation(new ResourceLocation(MODID, "kabanhat"),"inventory"));
+            ModelLoader.setCustomModelResourceLocation(record_Farewell,0,new ModelResourceLocation(new ResourceLocation(MODID, "farewell"),"inventory"));
             ModelLoader.setCustomModelResourceLocation(japarimanapple,0,new ModelResourceLocation(new ResourceLocation(MODID, "japarimanapple"),"inventory"));
             //Memo: Render関連は全部クライアントサイドで
             proxy.registerRender();
+        }
+
+    }
+    @Mod.EventBusSubscriber
+    public static class Registration {
+
+
+        @SubscribeEvent
+        protected static void registerSoundEvents(RegistryEvent.Register<SoundEvent> event) {
+            ResourceLocation disc_farewell = new ResourceLocation(MODID, "farewell");
+
+            event.getRegistry().registerAll(
+                    new SoundEvent(disc_farewell).setRegistryName(disc_farewell)
+            );
         }
     }
 
@@ -330,6 +357,7 @@ public class JapariCraftMod {
         GameRegistry.addShapelessRecipe(new ItemStack(JapariCraftMod.sandstarfragment, 9),
                 JapariCraftMod.sandstarblock
         );
+        MinecraftForge.EVENT_BUS.register(new JAPARILoot());
     }
 
 
