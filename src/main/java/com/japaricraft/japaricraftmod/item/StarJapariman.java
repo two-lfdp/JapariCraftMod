@@ -15,7 +15,6 @@ public class StarJapariman extends ItemFood {
         super(4, 3, false);
         this.setCreativeTab(JapariCraftMod.tabJapariCraft);
         this.setUnlocalizedName("StarJapariman");
-        this.setMaxStackSize(64);
         this.setAlwaysEdible();
     }
     protected void onFoodEaten(ItemStack stack, World worldIn, EntityPlayer player)

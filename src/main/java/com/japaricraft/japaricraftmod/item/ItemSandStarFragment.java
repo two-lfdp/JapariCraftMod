@@ -10,7 +10,6 @@ public class ItemSandStarFragment extends Item {
 
         this.setCreativeTab(JapariCraftMod.tabJapariCraft);
         this.setUnlocalizedName("SandStarFragment");
-        this.setMaxStackSize(64);
 
 
     }

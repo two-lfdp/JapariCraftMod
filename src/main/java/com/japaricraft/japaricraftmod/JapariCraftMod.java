@@ -57,7 +57,8 @@ public class JapariCraftMod {
     @SidedProxy(clientSide = "com.japaricraft.japaricraftmod.ClientProxy", serverSide = "com.japaricraft.japaricraftmod.ServerProxy")
     public static CommonProxy proxy;
 
-    private static Item.ToolMaterial SandStar = EnumHelper.addToolMaterial("SandStar", 3, 700, 7F, 4F, 16);
+    private static Item.ToolMaterial SandStar = EnumHelper.addToolMaterial("SandStar", 3, 700, 7F, 4F, 16).setRepairItem(new ItemStack(JapariCraftMod.sandstarfragment));
+    private static Item.ToolMaterial Bearstick = EnumHelper.addToolMaterial("Bearstick", 1, 100, 4F, 2F, 12).setRepairItem(new ItemStack(Blocks.PLANKS));
     public static final ItemArmor.ArmorMaterial KabanHatMaterial = EnumHelper.addArmorMaterial("kabanhatmaterial", MODID +":"+"textures/models/armor/kabanhat_layer_1.png", 8, new int[]{2,0,0,2}, 30, net.minecraft.init.SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,0);
 
 
@@ -68,14 +69,16 @@ public class JapariCraftMod {
     public static final Item japariman = new Japariman();
     public static final Item japarimancocoa = new JaparimanCocoa();
     private static final Item japarimanapple = new JaparimanApple();
+    public static final Item curry = new Curry();
     static final Item starjapariman = new StarJapariman();
     public static final Item sandstarfragment = new ItemSandStarFragment();
     public static final Item sugarstar = new SugarStar();
     public static final Item sandstarsword = new SandStarSword(SandStar);
     private static final Item wildliberationsource = new WildLiberationSource();
-    private static final Item wildliberationpotion = new WildLiberationPotion();
+    public static final Item wildliberationpotion = new WildLiberationPotion();
     private static final Item pumpkinsoup = new PumpkinSoup();
     private static final Item bosscore = new BossCore();
+    public static final Item bearstick = new BearStick(Bearstick);
     public static final Item summonlucky = new SummonLucky();
     private static final Item summonguardlucky = new SummonGuardLucky();
     private static final Achievement achievement_woodframe =
@@ -115,7 +118,7 @@ public class JapariCraftMod {
 
     public static JapalarProfession japalarprofession;
 
-    private static Item kabanhat;
+    public static Item kabanhat;
 
     public static Item record_Farewell;
 
@@ -145,10 +148,14 @@ public class JapariCraftMod {
                         {
                                 new EntityVillager.EmeraldForItems(Items.CARROT, new EntityVillager.PriceInfo(14, 17)),
                                 new EntityVillager.ListItemForEmeralds(JapariCraftMod.sandstarfragment, new EntityVillager.PriceInfo(6, 10)),
-                                new EntityVillager.ListItemForEmeralds(JapariCraftMod.starjapariman, new EntityVillager.PriceInfo(7, 10))
+                                new EntityVillager.ListItemForEmeralds(JapariCraftMod.starjapariman, new EntityVillager.PriceInfo(7, 10)),
+                                new EntityVillager.ListItemForEmeralds(JapariCraftMod.japarimanapple, new EntityVillager.PriceInfo(-15, -18))
                         },
                         {
                                 new EntityVillager.EmeraldForItems(Items.SLIME_BALL, new EntityVillager.PriceInfo(13, 17)),
+                                new EntityVillager.ListItemForEmeralds(JapariCraftMod.kabanhat, new EntityVillager.PriceInfo(1, 2)),
+                                new EntityVillager.ListItemForEmeralds(JapariCraftMod.record_Farewell, new EntityVillager.PriceInfo(7, 12))
+
                         }
                 }
 
@@ -170,6 +177,7 @@ public class JapariCraftMod {
         GameRegistry.register(japarimancocoa, new ResourceLocation(MODID, "japarimancocoa"));
         GameRegistry.register(japarimanapple,new ResourceLocation(MODID,"japarimanapple"));
         GameRegistry.register(pumpkinsoup,new ResourceLocation(MODID,"pumpkinsoup"));
+        GameRegistry.register(curry,new ResourceLocation(MODID,"curry"));
         GameRegistry.register(woodenframeblock, woodenframeblocklocation);
         GameRegistry.register(woodenframeitemblock, woodenframeblocklocation);
         GameRegistry.register(sandstarblock, sandstarlocation);
@@ -185,6 +193,7 @@ public class JapariCraftMod {
         GameRegistry.register(summonguardlucky,new ResourceLocation(MODID,"summonguardlucky"));
         GameRegistry.register(kabanhat,new ResourceLocation(MODID,"kabanhat"));
         GameRegistry.register(record_Farewell,new ResourceLocation(MODID,"record_farewell"));
+        GameRegistry.register(bearstick,new ResourceLocation(MODID,"bearstick"));
 
         //ここでResourceLocationを引数に入れるとregister()内でsetRegistryName()が呼ばれてエラー
         GameRegistry.register(japalarprofession/*, new ResourceLocation(MODID, "Japalar")*/);
@@ -231,6 +240,8 @@ public class JapariCraftMod {
             ModelLoader.setCustomModelResourceLocation(kabanhat,0,new ModelResourceLocation(new ResourceLocation(MODID, "kabanhat"),"inventory"));
             ModelLoader.setCustomModelResourceLocation(record_Farewell,0,new ModelResourceLocation(new ResourceLocation(MODID, "farewell"),"inventory"));
             ModelLoader.setCustomModelResourceLocation(japarimanapple,0,new ModelResourceLocation(new ResourceLocation(MODID, "japarimanapple"),"inventory"));
+            ModelLoader.setCustomModelResourceLocation(bearstick,0,new ModelResourceLocation(new ResourceLocation(MODID, "bearstick"),"inventory"));
+            ModelLoader.setCustomModelResourceLocation(curry,0,new ModelResourceLocation(new ResourceLocation(MODID, "curry"),"inventory"));
             //Memo: Render関連は全部クライアントサイドで
             proxy.registerRender();
         }
@@ -356,6 +367,9 @@ public class JapariCraftMod {
         );
         GameRegistry.addShapelessRecipe(new ItemStack(JapariCraftMod.sandstarfragment, 9),
                 JapariCraftMod.sandstarblock
+        );
+        GameRegistry.addShapelessRecipe(new ItemStack(JapariCraftMod.curry, 1),
+                Items.BOWL,Items.WHEAT,Items.CARROT,Items.POTATO,Items.POTIONITEM
         );
         MinecraftForge.EVENT_BUS.register(new JAPARILoot());
     }

@@ -104,10 +104,6 @@ public class Cerulean extends EntityMob {
         //ほんとは確率とかで落とすものが決めれるんだと思う
         {
             this.entityDropItem(new ItemStack(Items.SLIME_BALL, 2, 0), 0.0F);
-
-            if (this.rand.nextInt(6) == 0) {
-                this.entityDropItem(new ItemStack(JapariCraftMod.record_Farewell, 1, 0), 0.0F);
-            }
         }
     }
 

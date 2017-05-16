@@ -9,7 +9,6 @@ public class SugarStar extends Item {
     {
         this.setCreativeTab(JapariCraftMod.tabJapariCraft);
         this.setUnlocalizedName("SugarStar");
-        this.setMaxStackSize(64);
 
     }
     public boolean hasEffect(ItemStack stack) {

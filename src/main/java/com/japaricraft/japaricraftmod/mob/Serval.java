@@ -1,29 +1,40 @@
 package com.japaricraft.japaricraftmod.mob;
 
+import com.japaricraft.japaricraftmod.JapariCraftMod;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
+import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 
-public class Serval extends EntityCreature {
+import javax.annotation.Nullable;
+
+public class Serval extends EntityTameable {
 
 
     public Serval(World worldIn) {
         super(worldIn);
         this.setSize(0.6F, 1.9F);
+        this.setTamed(false);
     }
 
 
+    public EntityAgeable createChild(EntityAgeable ageable) {
+        return null;
+    }
 
 
     protected void initEntityAI() {
         super.initEntityAI();
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(4, new EntityAIAttackMelee(this, 1.0D, true));
+        this.tasks.addTask(5, new EntityAIFollowOwner(this, 1.0D, 10.0F, 2.0F));
         this.tasks.addTask(6, new EntityAIWander(this, 1.0D));
         this.tasks.addTask(7, new EntityAILookIdle(this));
         this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityPlayer.class, 3.0F));
@@ -75,6 +86,49 @@ public class Serval extends EntityCreature {
         return flag;
     }
 
+    @Override
+    public boolean processInteract(EntityPlayer player, EnumHand hand)
+    {
+        ItemStack stack = player.getHeldItem(hand);
+
+        if (this.isTamed())
+        {
+            if (this.isOwner(player) && !this.world.isRemote && !this.isBreedingItem(stack))
+            {
+                return true;
+            }
+        }
+        else if ( stack != null && stack.getItem() == JapariCraftMod.japariman && player.getDistanceSqToEntity(this) < 22.0D)
+        {
+            if (!player.capabilities.isCreativeMode)
+            {
+                stack.setCount(stack.getCount()-1);
+            }
+
+            if (!this.world.isRemote)
+            {
+                if (this.rand.nextInt(3) == 0)
+                {
+                    player.addStat(JapariCraftMod.achievement_friend);
+                    this.setTamed(true);
+                    this.setOwnerId(player.getUniqueID());
+                    this.playTameEffect(true);
+                    this.world.setEntityState(this, (byte)7);
+                }
+                else
+                {
+                    this.playTameEffect(false);
+                    this.world.setEntityState(this, (byte)6);
+                }
+
+
+            }
+
+            return true;
+        }
+
+        return super.processInteract(player, hand);
+    }
 
 
     public void fall(float distance, float damageMultiplier)

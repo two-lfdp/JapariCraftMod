@@ -90,7 +90,6 @@ public class Shoebill extends EntityTameable {
         {
             if (this.isOwner(player) && !this.world.isRemote && !this.isBreedingItem(stack))
             {
-                player.addStat(JapariCraftMod.achievement_friend);
                 return true;
             }
         }
@@ -105,6 +104,7 @@ public class Shoebill extends EntityTameable {
             {
                 if (this.rand.nextInt(3) == 0)
                 {
+                    player.addStat(JapariCraftMod.achievement_friend);
                     this.setTamed(true);
                     this.setOwnerId(player.getUniqueID());
                     this.playTameEffect(true);
