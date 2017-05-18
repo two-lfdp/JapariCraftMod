@@ -20,8 +20,8 @@ public class JAPARILoot {
         LootPool lootPool = new LootPool(new LootEntry[0], new LootCondition[0], rvr(1, 3), rvr(0), JapariCraftMod.MODID);
 
         if(event.getName().equals(LootTableList.CHESTS_ABANDONED_MINESHAFT)){
-            lootPool.addEntry(createLootEntry(JapariCraftMod.record_Farewell, 0.07F));
-            lootPool.addEntry(createLootEntry(JapariCraftMod.starjapariman, 0.07F));
+            lootPool.addEntry(createLootEntry(JapariCraftMod.record_Farewell, 0.06F));
+            lootPool.addEntry(createLootEntry(JapariCraftMod.starjapariman, 0.05F));
 
         }
         if(event.getName().equals(LootTableList.CHESTS_SPAWN_BONUS_CHEST)){
