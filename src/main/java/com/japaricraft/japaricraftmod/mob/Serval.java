@@ -11,9 +11,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundEvent;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 
-import javax.annotation.Nullable;
 
 public class Serval extends EntityTameable {
 
@@ -32,7 +32,10 @@ public class Serval extends EntityTameable {
 
     protected void initEntityAI() {
         super.initEntityAI();
+        this.aiSit = new EntityAISit(this);
+
         this.tasks.addTask(0, new EntityAISwimming(this));
+        this.tasks.addTask(2, this.aiSit);
         this.tasks.addTask(4, new EntityAIAttackMelee(this, 1.0D, true));
         this.tasks.addTask(5, new EntityAIFollowOwner(this, 1.0D, 10.0F, 2.0F));
         this.tasks.addTask(6, new EntityAIWander(this, 1.0D));
@@ -74,6 +77,7 @@ public class Serval extends EntityTameable {
         return null;//なにも落とさない
     }
 
+    @Override
     public boolean attackEntityAsMob(Entity entityIn)
     {
         boolean flag = entityIn.attackEntityFrom(DamageSource.causeMobDamage(this), (float)((int)this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue()));
@@ -86,6 +90,7 @@ public class Serval extends EntityTameable {
         return flag;
     }
 
+
     @Override
     public boolean processInteract(EntityPlayer player, EnumHand hand)
     {
@@ -95,6 +100,8 @@ public class Serval extends EntityTameable {
         {
             if (this.isOwner(player) && !this.world.isRemote && !this.isBreedingItem(stack))
             {
+                player.sendStatusMessage(new TextComponentTranslation("entity.Shoebill.changemode"), true);
+                this.aiSit.setSitting(!this.isSitting());
                 return true;
             }
         }
@@ -130,6 +137,13 @@ public class Serval extends EntityTameable {
         return super.processInteract(player, hand);
     }
 
+    protected void updateAITasks()
+    {
+        if (this.ticksExisted % 5 == 0)
+        {
+            this.heal(0.1F);
+        }
+    }
 
     public void fall(float distance, float damageMultiplier)
     {

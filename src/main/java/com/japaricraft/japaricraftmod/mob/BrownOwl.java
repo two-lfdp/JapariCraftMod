@@ -9,14 +9,17 @@ import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 
 public class BrownOwl extends EntityTameable {
@@ -37,11 +40,10 @@ public class BrownOwl extends EntityTameable {
     }
 
     protected void initEntityAI()  {
-
-
-
+        this.aiSit = new EntityAISit(this);
 
         this.tasks.addTask(0, new EntityAISwimming(this));
+        this.tasks.addTask(2, this.aiSit);
         this.tasks.addTask(4, new EntityAIAttackMelee(this, 1.0D, true));
         this.tasks.addTask(5, new EntityAIFollowOwner(this, 1.0D, 10.0F, 2.0F));
         this.tasks.addTask(6, new EntityAIMate(this, 1.0D));
@@ -98,10 +100,13 @@ public class BrownOwl extends EntityTameable {
         {
             if (this.isOwner(player) && !this.world.isRemote && !this.isBreedingItem(stack))
             {
+
+                player.sendStatusMessage(new TextComponentTranslation("entity.BrownOwl.changemode"), true);
+                this.aiSit.setSitting(!this.isSitting());
                 return true;
             }
         }
-        else if ( stack != null && stack.getItem() == JapariCraftMod.curry && player.getDistanceSqToEntity(this) < 22.0D)
+        else if ( stack != null && stack.getItem() == JapariCraftMod.curry && player.getDistanceSqToEntity(this) < 28.0D)
         {
             if (!player.capabilities.isCreativeMode)
             {
@@ -133,6 +138,8 @@ public class BrownOwl extends EntityTameable {
 
         return super.processInteract(player, hand);
     }
+
+
     @Override
     public boolean attackEntityAsMob(Entity entityIn)
     {

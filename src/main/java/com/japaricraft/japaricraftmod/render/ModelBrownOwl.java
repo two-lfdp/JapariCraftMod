@@ -178,9 +178,14 @@ public class ModelBrownOwl extends ModelBase {
 
 
     }
+
+
     public void setRotateAngle(ModelRenderer modelRenderer, float x, float y, float z) {
         modelRenderer.rotateAngleX = x;
         modelRenderer.rotateAngleY = y;
         modelRenderer.rotateAngleZ = z;
     }
+
+
+
 }
