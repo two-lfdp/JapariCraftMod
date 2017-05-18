@@ -40,7 +40,7 @@ import net.minecraft.world.biome.Biome;
 public class JapariCraftMod {
 
     public static final String MODID = "japaricraftmod";
-    public static final String VERSION = "2.2.1";
+    public static final String VERSION = "2.2.2";
     public static final String MODNAME = "JapariCraftMod";
     /**
      * Woodenframeのブロックのインスタンスを格納する
@@ -366,8 +366,8 @@ public class JapariCraftMod {
                 JapariCraftMod.sandstarblock
         );
         GameRegistry.addShapelessRecipe(new ItemStack(JapariCraftMod.curry, 1),
-                Items.BOWL,Items.WHEAT,Items.CARROT,Items.POTATO,Items.POTIONITEM
-        );
+                Items.BOWL,Items.WHEAT,Items.CARROT,Items.POTATO,(new ItemStack(Items.POTIONITEM, 1,0)
+        ));
         MinecraftForge.EVENT_BUS.register(new JAPARILoot());
     }
 
