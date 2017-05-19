@@ -5,13 +5,13 @@ import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.passive.EntityWolf;
 import net.minecraft.util.EnumHandSide;
 import net.minecraft.util.math.MathHelper;
 
 public class ModelServal extends ModelBiped {
 
     private ModelRenderer bipedBodyWear;
+    private ModelRenderer bipedRightLegwear;
 
 
     public ModelServal()
@@ -54,6 +54,83 @@ public class ModelServal extends ModelBiped {
         bipedLeftLeg.render(f5);
         bipedHeadwear.render(f5);
 
+
+    }
+    //下は特殊なモデルを動かすのに必須
+    public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entityIn)
+    {
+        if (!(entityIn instanceof Serval))
+        {
+            return;
+        }
+        boolean flag = entityIn instanceof EntityLivingBase && ((EntityLivingBase)entityIn).getTicksElytraFlying() > 4;
+        Serval entityowl = (Serval) entityIn;
+        this.bipedHead.rotateAngleY = netHeadYaw * 0.017453292F;
+        this.bipedHeadwear.rotateAngleY = netHeadYaw * 0.017453292F;
+
+        if (flag)
+        {
+            this.bipedHead.rotateAngleX = -((float)Math.PI / 4F);
+            this.bipedHeadwear.rotateAngleX = -((float)Math.PI / 4F);
+        }
+        else
+        {
+            this.bipedHead.rotateAngleX = headPitch * 0.017453292F;
+            this.bipedHeadwear.rotateAngleX = headPitch * 0.017453292F;
+        }
+
+        this.bipedBody.rotateAngleY = 0.0F;
+        this.bipedRightArm.rotationPointZ = 0.0F;
+        this.bipedRightArm.rotationPointX = -5.0F;
+        this.bipedLeftArm.rotationPointZ = 0.0F;
+        this.bipedLeftArm.rotationPointX = 5.0F;
+        float f = 1.0F;
+
+        if (flag)
+        {
+            f = (float)(entityIn.motionX * entityIn.motionX + entityIn.motionY * entityIn.motionY + entityIn.motionZ * entityIn.motionZ);
+            f = f / 0.2F;
+            f = f * f * f;
+        }
+
+        if (f < 1.0F)
+        {
+            f = 1.0F;
+        }
+
+        this.bipedRightArm.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 2.0F * limbSwingAmount * 0.5F / f;
+        this.bipedLeftArm.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 2.0F * limbSwingAmount * 0.5F / f;
+        this.bipedRightArm.rotateAngleZ = 0.0F;
+        this.bipedLeftArm.rotateAngleZ = 0.0F;
+        this.bipedRightLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount / f;
+        this.bipedLeftLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount / f;
+        this.bipedRightLeg.rotateAngleY = 0.0F;
+        this.bipedLeftLeg.rotateAngleY = 0.0F;
+        this.bipedRightLeg.rotateAngleZ = 0.0F;
+        this.bipedLeftLeg.rotateAngleZ = 0.0F;
+
+        if (entityowl.isSitting()||this.isRiding)
+        {
+            this.bipedRightArm.rotateAngleX += -((float)Math.PI / 5F);
+            this.bipedLeftArm.rotateAngleX += -((float)Math.PI / 5F);
+            this.bipedRightLeg.rotateAngleX = -1.4137167F;
+            this.bipedRightLeg.rotateAngleY = ((float)Math.PI / 10F);
+            this.bipedRightLeg.rotateAngleZ = 0.07853982F;
+            this.bipedLeftLeg.rotateAngleX = -1.4137167F;
+            this.bipedLeftLeg.rotateAngleY = -((float)Math.PI / 10F);
+            this.bipedLeftLeg.rotateAngleZ = -0.07853982F;
+        }
+        else {
+            this.bipedRightLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount / f;
+            this.bipedLeftLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount / f;
+            this.bipedRightLeg.rotateAngleY = 0.0F;
+            this.bipedLeftLeg.rotateAngleY = 0.0F;
+            this.bipedRightLeg.rotateAngleZ = 0.0F;
+            this.bipedLeftLeg.rotateAngleZ = 0.0F;
+        }
+
+        this.bipedRightArm.rotateAngleY = 0.0F;
+        this.bipedRightArm.rotateAngleZ = 0.0F;
 
     }
     @Override

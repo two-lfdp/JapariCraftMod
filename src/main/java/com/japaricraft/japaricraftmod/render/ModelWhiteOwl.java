@@ -1,6 +1,7 @@
 package com.japaricraft.japaricraftmod.render;
 
 
+import com.japaricraft.japaricraftmod.mob.WhiteOwl;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
@@ -14,6 +15,7 @@ public class ModelWhiteOwl extends ModelBase {
     private ModelRenderer head;
     private ModelRenderer legR;
     private ModelRenderer legL;
+
 
     public ModelWhiteOwl() {
         this.textureWidth = 128;
@@ -120,6 +122,12 @@ public class ModelWhiteOwl extends ModelBase {
     //下は特殊なモデルを動かすのに必須
     public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entityIn)
     {
+        if (!(entityIn instanceof WhiteOwl))
+        {
+            return;
+        }
+
+        WhiteOwl entityowl = (WhiteOwl) entityIn;
         boolean flag = entityIn instanceof EntityLivingBase && ((EntityLivingBase)entityIn).getTicksElytraFlying() > 4;
         this.head.rotateAngleY = netHeadYaw * 0.017453292F;
 
@@ -158,7 +166,7 @@ public class ModelWhiteOwl extends ModelBase {
         this.legR.rotateAngleZ = 0.0F;
         this.legL.rotateAngleZ = 0.0F;
 
-        if (this.isRiding)
+        if (entityowl.isSitting()||this.isRiding)
         {
             this.legR.rotateAngleX = -1.4137167F;
             this.legR.rotateAngleY = ((float)Math.PI / 10F);
@@ -166,6 +174,15 @@ public class ModelWhiteOwl extends ModelBase {
             this.legL.rotateAngleX = -1.4137167F;
             this.legL.rotateAngleY = -((float)Math.PI / 10F);
             this.legL.rotateAngleZ = -0.07853982F;
+        }
+        else
+        {
+            this.legR.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount / f;
+            this.legL.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount / f;
+            this.legR.rotateAngleY = 0.0F;
+            this.legL.rotateAngleY = 0.0F;
+            this.legR.rotateAngleZ = 0.0F;
+            this.legL.rotateAngleZ = 0.0F;
         }
         this.handR.rotateAngleY = 0.0F;
         this.handR.rotateAngleZ = 0.0F;

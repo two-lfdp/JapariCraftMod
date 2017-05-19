@@ -1,5 +1,7 @@
 package com.japaricraft.japaricraftmod.render;
 
+import com.japaricraft.japaricraftmod.mob.LuckyBeast;
+import com.japaricraft.japaricraftmod.mob.Serval;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
@@ -49,6 +51,13 @@ public class ModelLuckyBeast extends ModelBase {
     public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entityIn)
     {
 
+        if (!(entityIn instanceof LuckyBeast))
+        {
+            return;
+        }
+
+        LuckyBeast entitylucky = (LuckyBeast) entityIn;
+
         this.body.rotateAngleY = 0.0F;
         float f = 1.0F;
 
@@ -60,7 +69,7 @@ public class ModelLuckyBeast extends ModelBase {
         this.legR.rotateAngleZ = 0.0F;
         this.LegL.rotateAngleZ = 0.0F;
 
-        if (this.isRiding)
+        if (entitylucky.isSitting()||this.isRiding)
         {
             this.legR.rotateAngleX = -1.4137167F;
             this.legR.rotateAngleY = ((float)Math.PI / 10F);
@@ -68,6 +77,15 @@ public class ModelLuckyBeast extends ModelBase {
             this.LegL.rotateAngleX = -1.4137167F;
             this.LegL.rotateAngleY = -((float)Math.PI / 10F);
             this.LegL.rotateAngleZ = -0.07853982F;
+        }
+        else
+        {
+            this.legR.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount / f;
+            this.LegL.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount / f;
+            this.legR.rotateAngleY = 0.0F;
+            this.LegL.rotateAngleY = 0.0F;
+            this.legR.rotateAngleZ = 0.0F;
+            this.LegL.rotateAngleZ = 0.0F;
         }
 
 

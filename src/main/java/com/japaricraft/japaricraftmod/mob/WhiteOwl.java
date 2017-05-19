@@ -98,7 +98,6 @@ public class WhiteOwl extends EntityTameable {
         {
             if (this.isOwner(player) && !this.world.isRemote && !this.isBreedingItem(stack))
             {
-                player.sendStatusMessage(new TextComponentTranslation("entity.BrownOwl.changemode"), true);
                 this.aiSit.setSitting(!this.isSitting());
                 return true;
             }

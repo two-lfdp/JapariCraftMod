@@ -7,7 +7,9 @@ import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
+import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.EntityTameable;
+import net.minecraft.entity.passive.EntityWolf;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.init.Items;
@@ -100,13 +102,11 @@ public class BrownOwl extends EntityTameable {
         {
             if (this.isOwner(player) && !this.world.isRemote && !this.isBreedingItem(stack))
             {
-
-                player.sendStatusMessage(new TextComponentTranslation("entity.BrownOwl.changemode"), true);
                 this.aiSit.setSitting(!this.isSitting());
                 return true;
             }
         }
-        else if ( stack != null && stack.getItem() == JapariCraftMod.curry && player.getDistanceSqToEntity(this) < 28.0D)
+        else if ( stack != null && stack.getItem() == JapariCraftMod.curry && player.getDistanceSqToEntity(this) < 26.0D)
         {
             if (!player.capabilities.isCreativeMode)
             {
@@ -121,6 +121,7 @@ public class BrownOwl extends EntityTameable {
                     this.setTamed(true);
                     this.setOwnerId(player.getUniqueID());
                     this.playTameEffect(true);
+                    this.aiSit.setSitting(true);
                     this.world.setEntityState(this, (byte)7);
                 }
                 else

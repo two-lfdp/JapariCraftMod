@@ -40,7 +40,7 @@ import net.minecraft.world.biome.Biome;
 public class JapariCraftMod {
 
     public static final String MODID = "japaricraftmod";
-    public static final String VERSION = "2.2.2";
+    public static final String VERSION = "2.2.3";
     public static final String MODNAME = "JapariCraftMod";
     /**
      * Woodenframeのブロックのインスタンスを格納する
