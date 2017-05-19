@@ -44,12 +44,7 @@ public class SafeguardLuckyBeast extends EntityTameable {
         this.tasks.addTask(7, new EntityAILookIdle(this));
         this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityPlayer.class, 4.0F));
         this.targetTasks.addTask(3, new EntityAINearestAttackableTarget<>(this, Cerulean.class, true));
-        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget<>(this, EntityLiving.class, 10, false, true, new Predicate<EntityLiving>() {
-            public boolean apply(@Nullable EntityLiving p_apply_1_) {
-                return p_apply_1_ != null && IMob.VISIBLE_MOB_SELECTOR.apply(p_apply_1_) && !(p_apply_1_ instanceof EntityCreeper);
-            }
-
-        }));
+        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget<>(this, EntityLiving.class, 10, false, true, p_apply_1_ -> p_apply_1_ != null && IMob.VISIBLE_MOB_SELECTOR.apply(p_apply_1_) && !(p_apply_1_ instanceof EntityCreeper)));
     }
     public EntityAgeable createChild(EntityAgeable ageable) {
         return null;

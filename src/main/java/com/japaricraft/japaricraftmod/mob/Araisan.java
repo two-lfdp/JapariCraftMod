@@ -1,7 +1,10 @@
 package com.japaricraft.japaricraftmod.mob;
 
 import com.japaricraft.japaricraftmod.JapariCraftMod;
-import net.minecraft.entity.*;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityAgeable;
+import net.minecraft.entity.EnumCreatureAttribute;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
@@ -11,14 +14,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundEvent;
-import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 
+public class Araisan extends EntityTameable {
 
-public class Serval extends EntityTameable {
 
-
-    public Serval(World worldIn) {
+    public Araisan(World worldIn) {
         super(worldIn);
         this.setSize(0.6F, 1.9F);
         this.setTamed(false);
@@ -42,7 +43,10 @@ public class Serval extends EntityTameable {
         this.tasks.addTask(6, new EntityAIWander(this, 1.0D));
         this.tasks.addTask(7, new EntityAILookIdle(this));
         this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityPlayer.class, 3.0F));
-        this.targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, Cerulean.class, false));
+        this.targetTasks.addTask(1, new EntityAIOwnerHurtByTarget(this));
+        this.targetTasks.addTask(2, new EntityAIOwnerHurtTarget(this));
+        this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
+        this.targetTasks.addTask(4, new EntityAINearestAttackableTarget<>(this, Cerulean.class, false));
     }
 
     protected void applyEntityAttributes() {
@@ -50,24 +54,20 @@ public class Serval extends EntityTameable {
         this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(24D);
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.25D);
         this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(30D);
-        this.getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(4.0D);
+        this.getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(3.0D);
     }
 
 
     @Override
     protected SoundEvent getDeathSound() {
-        return SoundEvents.ENTITY_CAT_DEATH;
+        return SoundEvents.ENTITY_PLAYER_DEATH;
     }
 
     @Override
     protected SoundEvent getHurtSound() {
-        return SoundEvents.ENTITY_CAT_HURT;
+        return SoundEvents.ENTITY_PLAYER_HURT;
     }
 
-    @Override
-    protected SoundEvent getAmbientSound() {
-        return SoundEvents.ENTITY_CAT_AMBIENT;
-    }
 
     public EnumCreatureAttribute getCreatureAttribute() {
         return EnumCreatureAttribute.UNDEFINED;
@@ -141,7 +141,7 @@ public class Serval extends EntityTameable {
     {
         if (this.ticksExisted % 5 == 0)
         {
-            this.heal(0.1F);
+            this.heal(0.12F);
         }
     }
 

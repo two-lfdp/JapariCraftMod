@@ -48,6 +48,7 @@ entity.SafeguardLuckyBeast.name=LuckyBeastGuard
 entity.SavannaNamekuji.name=SavannaNamekuji
 entity.Guide.name=Alice
 entity.Villager.japalar=Japari Staff
+entity.Araisan.name=Araisan
 itemGroup.JapariCraftTab=JapariCraft
 entity.BrownOwl.changemode=You change Owl`s Mode
 entity.Shoebill.changemode=You change Friend`s Mode

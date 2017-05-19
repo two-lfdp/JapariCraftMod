@@ -8,12 +8,12 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.math.MathHelper;
 
 public class ModelLuckyBeast extends ModelBase {
-    public ModelRenderer body;
-    public ModelRenderer legR;
-    public ModelRenderer LegL;
-    public ModelRenderer earR;
-    public ModelRenderer earL;
-    public ModelRenderer chest;
+    private ModelRenderer body;
+    private ModelRenderer legR;
+    private ModelRenderer LegL;
+    private ModelRenderer earR;
+    private ModelRenderer earL;
+    private ModelRenderer chest;
 
     public ModelLuckyBeast() {
         this.textureWidth = 64;

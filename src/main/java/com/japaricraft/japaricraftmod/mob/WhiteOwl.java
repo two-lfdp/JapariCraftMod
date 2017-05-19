@@ -102,7 +102,7 @@ public class WhiteOwl extends EntityTameable {
                 return true;
             }
         }
-        else if ( stack != null && stack.getItem() == JapariCraftMod.curry && player.getDistanceSqToEntity(this) < 32.0D)
+        else if ( stack != null && stack.getItem() == JapariCraftMod.curry && player.getDistanceSqToEntity(this) < 30.0D)
         {
             if (!player.capabilities.isCreativeMode)
             {

@@ -94,7 +94,7 @@ public class Shoebill extends EntityTameable {
                 return true;
             }
         }
-        else if ( stack != null && stack.getItem() == JapariCraftMod.japariman && player.getDistanceSqToEntity(this) < 24.0D)
+        else if ( stack != null && stack.getItem() == JapariCraftMod.japariman && player.getDistanceSqToEntity(this) < 22.0D)
         {
             if (!player.capabilities.isCreativeMode)
             {
