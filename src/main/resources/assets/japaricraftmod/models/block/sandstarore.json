@@ -1,0 +1,7 @@
+{
+  "parent": "japaricraftmod:block/ore",
+  "textures": {
+    "base": "blocks/stone",
+    "ore": "japaricraftmod:blocks/sandstarore"
+  }
+}

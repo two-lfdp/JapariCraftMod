@@ -1,11 +1,13 @@
 package com.japaricraft.japaricraftmod;
 
 import com.japaricraft.japaricraftmod.block.SandStarBlock;
+import com.japaricraft.japaricraftmod.block.SandStarORE;
 import com.japaricraft.japaricraftmod.block.WoodenFrameBlock;
 import com.japaricraft.japaricraftmod.item.*;
 import com.japaricraft.japaricraftmod.mob.*;
 import com.japaricraft.japaricraftmod.profession.ItemCareer;
 import com.japaricraft.japaricraftmod.profession.JapalarProfession;
+import com.japaricraft.japaricraftmod.world.StarOreGenerator;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.init.Biomes;
@@ -64,6 +66,7 @@ public class JapariCraftMod {
     public static final CreativeTabs tabJapariCraft = new TabJapariCraft("JapariCraftTab");
     public static final Block woodenframeblock = new WoodenFrameBlock();
     public static final Block sandstarblock = new SandStarBlock();
+    public static final Block sandstarore = new SandStarORE();
     public static final Item japariman = new Japariman();
     public static final Item japarimancocoa = new JaparimanCocoa();
     private static final Item japarimanapple = new JaparimanApple();
@@ -170,6 +173,8 @@ public class JapariCraftMod {
         ResourceLocation sandstarlocation = new ResourceLocation(MODID, "sandstarblock");
         ItemBlock sandstaritemblock = new ItemBlock(sandstarblock);
 
+        ResourceLocation sandstarorelocation = new ResourceLocation(MODID, "sandstarore");
+        ItemBlock sandstaroreitemblock = new ItemBlock(sandstarore);
         //登録関連
         GameRegistry.register(japariman, new ResourceLocation(MODID, "japariman"));
         GameRegistry.register(japarimancocoa, new ResourceLocation(MODID, "japarimancocoa"));
@@ -192,6 +197,8 @@ public class JapariCraftMod {
         GameRegistry.register(kabanhat,new ResourceLocation(MODID,"kabanhat"));
         GameRegistry.register(record_Farewell,new ResourceLocation(MODID,"record_farewell"));
         GameRegistry.register(bearstick,new ResourceLocation(MODID,"bearstick"));
+        GameRegistry.register(sandstarore, sandstarorelocation);
+        GameRegistry.register(sandstaroreitemblock, sandstarorelocation);
 
         //ここでResourceLocationを引数に入れるとregister()内でsetRegistryName()が呼ばれてエラー
         GameRegistry.register(japalarprofession/*, new ResourceLocation(MODID, "Japalar")*/);
@@ -242,6 +249,7 @@ public class JapariCraftMod {
             ModelLoader.setCustomModelResourceLocation(japarimanapple,0,new ModelResourceLocation(new ResourceLocation(MODID, "japarimanapple"),"inventory"));
             ModelLoader.setCustomModelResourceLocation(bearstick,0,new ModelResourceLocation(new ResourceLocation(MODID, "bearstick"),"inventory"));
             ModelLoader.setCustomModelResourceLocation(curry,0,new ModelResourceLocation(new ResourceLocation(MODID, "curry"),"inventory"));
+            ModelLoader.setCustomModelResourceLocation(sandstaroreitemblock, 0, new ModelResourceLocation(new ResourceLocation(MODID, "sandstarore"), "inventory"));
             //Memo: Render関連は全部クライアントサイドで
             proxy.registerRender();
         }
@@ -263,6 +271,7 @@ public class JapariCraftMod {
 
     @EventHandler
     public void Init(FMLInitializationEvent event) {
+        GameRegistry.registerWorldGenerator(new StarOreGenerator(), 0);
         GameRegistry.addRecipe(new ItemStack(JapariCraftMod.woodenframeblock),
                 "SPS",
                 "PSP",
