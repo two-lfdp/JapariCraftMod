@@ -1,7 +1,7 @@
 package com.japaricraft.japaricraftmod;
 
 import com.japaricraft.japaricraftmod.block.SandStarBlock;
-import com.japaricraft.japaricraftmod.block.SandStarORE;
+import com.japaricraft.japaricraftmod.block.SandStarOre;
 import com.japaricraft.japaricraftmod.block.WoodenFrameBlock;
 import com.japaricraft.japaricraftmod.item.*;
 import com.japaricraft.japaricraftmod.mob.*;
@@ -66,7 +66,7 @@ public class JapariCraftMod {
     public static final CreativeTabs tabJapariCraft = new TabJapariCraft("JapariCraftTab");
     public static final Block woodenframeblock = new WoodenFrameBlock();
     public static final Block sandstarblock = new SandStarBlock();
-    public static final Block sandstarore = new SandStarORE();
+    public static final Block sandstarore = new SandStarOre();
     public static final Item japariman = new Japariman();
     public static final Item japarimancocoa = new JaparimanCocoa();
     private static final Item japarimanapple = new JaparimanApple();
