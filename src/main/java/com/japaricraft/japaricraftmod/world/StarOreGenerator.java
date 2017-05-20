@@ -18,12 +18,6 @@ import java.util.Random;
 
 public class StarOreGenerator implements IWorldGenerator {
 
-    private int maxHeight;
-    private int minHeight;
-    public StarOreGenerator() {
-        this.maxHeight = maxHeight;
-        this.minHeight = minHeight;
-    }
     @Override
     public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
         if (world.provider instanceof WorldProviderSurface) {
@@ -31,10 +25,10 @@ public class StarOreGenerator implements IWorldGenerator {
         }
     }
 
-    public void generateOre(World world, Random random, int x, int z) {
+    private void generateOre(World world, Random random, int x, int z) {
             int genX = x + random.nextInt(16);
             int genZ = z + random.nextInt(16);
-            int genY = random.nextInt(16) + 10;
+            int genY = random.nextInt(16) + 8;
             new WorldGenMinable(JapariCraftMod.sandstarore.getDefaultState(),8, BlockMatcher.forBlock(Blocks.STONE)).generate(world, random,new BlockPos(genX,genY,genZ));
 
     }
