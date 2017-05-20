@@ -26,7 +26,6 @@ public class StarJapariman extends ItemFood {
                 player.addStat(JapariCraftMod.achievement_starjapariman);
                 player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 600, 0));
                 player.addPotionEffect(new PotionEffect(MobEffects.ABSORPTION, 2400, 1));
-                player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 1200, 0));
 
             }
         }

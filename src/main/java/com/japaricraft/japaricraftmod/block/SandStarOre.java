@@ -28,7 +28,7 @@ public class SandStarOre extends Block {
         setResistance(17.0F);/*爆破耐性*/
         setSoundType(SoundType.STONE);
         setLightLevel(10);
-        setHarvestLevel("pickaxe",1);
+        setHarvestLevel("pickaxe",3);
     }
 
     @Override

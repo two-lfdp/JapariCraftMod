@@ -29,7 +29,7 @@ public class StarOreGenerator implements IWorldGenerator {
             int genX = x + random.nextInt(16);
             int genZ = z + random.nextInt(16);
             int genY = random.nextInt(16) + 8;
-            new WorldGenMinable(JapariCraftMod.sandstarore.getDefaultState(),8, BlockMatcher.forBlock(Blocks.STONE)).generate(world, random,new BlockPos(genX,genY,genZ));
+            new WorldGenMinable(JapariCraftMod.sandstarore.getDefaultState(),5, BlockMatcher.forBlock(Blocks.STONE)).generate(world, random,new BlockPos(genX,genY,genZ));
 
     }
 

@@ -7,6 +7,8 @@ import com.japaricraft.japaricraftmod.item.*;
 import com.japaricraft.japaricraftmod.mob.*;
 import com.japaricraft.japaricraftmod.profession.ItemCareer;
 import com.japaricraft.japaricraftmod.profession.JapalarProfession;
+import com.japaricraft.japaricraftmod.tool.SandStarPickaxe;
+import com.japaricraft.japaricraftmod.tool.SandStarShovel;
 import com.japaricraft.japaricraftmod.world.StarOreGenerator;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.entity.passive.EntityVillager;
@@ -43,7 +45,7 @@ import net.minecraft.world.biome.Biome;
 public class JapariCraftMod {
 
     public static final String MODID = "japaricraftmod";
-    public static final String VERSION = "2.2.4";
+    public static final String VERSION = "2.3.0";
     public static final String MODNAME = "JapariCraftMod";
     /**
      * Woodenframeのブロックのインスタンスを格納する
@@ -57,7 +59,7 @@ public class JapariCraftMod {
     @SidedProxy(clientSide = "com.japaricraft.japaricraftmod.ClientProxy", serverSide = "com.japaricraft.japaricraftmod.ServerProxy")
     public static CommonProxy proxy;
 
-    private static Item.ToolMaterial SandStar = EnumHelper.addToolMaterial("SandStar", 3, 700, 7F, 4F, 16).setRepairItem(new ItemStack(JapariCraftMod.sandstarfragment));
+    private static Item.ToolMaterial SandStar = EnumHelper.addToolMaterial("SandStar", 3, 700, 6F, 4F, 16).setRepairItem(new ItemStack(JapariCraftMod.sandstarfragment));
     private static Item.ToolMaterial Bearstick = EnumHelper.addToolMaterial("Bearstick", 1, 100, 4F, 2F, 12).setRepairItem(new ItemStack(Blocks.PLANKS));
     public static final ItemArmor.ArmorMaterial KabanHatMaterial = EnumHelper.addArmorMaterial("kabanhatmaterial", MODID +":"+"textures/models/armor/kabanhat_layer_1.png", 8, new int[]{2,0,0,2}, 30, net.minecraft.init.SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,0);
 
@@ -75,6 +77,8 @@ public class JapariCraftMod {
     public static final Item sandstarfragment = new ItemSandStarFragment();
     public static final Item sugarstar = new SugarStar();
     public static final Item sandstarsword = new SandStarSword(SandStar);
+    public static final Item sandstarshovel = new SandStarShovel(SandStar);
+    public static final Item sandstarpickaxe = new SandStarPickaxe(SandStar);
     private static final Item wildliberationsource = new WildLiberationSource();
     public static final Item wildliberationpotion = new WildLiberationPotion();
     private static final Item pumpkinsoup = new PumpkinSoup();
@@ -82,9 +86,6 @@ public class JapariCraftMod {
     public static final Item bearstick = new BearStick(Bearstick);
     public static final Item summonlucky = new SummonLucky();
     private static final Item summonguardlucky = new SummonGuardLucky();
-    private static final Achievement achievement_woodframe =
-            new Achievement("achievement." + MODID + ":woodframe", MODID + ".woodframe",
-                    0, 2, Items.STICK, null).registerStat();
     public static final Achievement achievement_japariman =
             new Achievement("achievement." + MODID + ":craft_japariman", MODID + ".craft_japariman",
                     0, 0, JapariCraftMod.japariman, null).registerStat();
@@ -111,7 +112,6 @@ public class JapariCraftMod {
             achievement_japarimancocoa,
             achievement_starjapariman,
             achievement_wild,
-            achievement_woodframe,
             achievement_friend,
             achievement_bosscore,
             achievement_boss
@@ -177,20 +177,22 @@ public class JapariCraftMod {
         ItemBlock sandstaroreitemblock = new ItemBlock(sandstarore);
         //登録関連
         GameRegistry.register(japariman, new ResourceLocation(MODID, "japariman"));
-        GameRegistry.register(japarimancocoa, new ResourceLocation(MODID, "japarimancocoa"));
-        GameRegistry.register(japarimanapple,new ResourceLocation(MODID,"japarimanapple"));
-        GameRegistry.register(pumpkinsoup,new ResourceLocation(MODID,"pumpkinsoup"));
+        GameRegistry.register(japarimancocoa, new ResourceLocation(MODID, "japariman_cocoa"));
+        GameRegistry.register(japarimanapple,new ResourceLocation(MODID,"japariman_apple"));
+        GameRegistry.register(pumpkinsoup,new ResourceLocation(MODID,"pumpkin_soup"));
         GameRegistry.register(curry,new ResourceLocation(MODID,"curry"));
         GameRegistry.register(woodenframeblock, woodenframeblocklocation);
         GameRegistry.register(woodenframeitemblock, woodenframeblocklocation);
         GameRegistry.register(sandstarblock, sandstarlocation);
         GameRegistry.register(sandstaritemblock, sandstarlocation);
-        GameRegistry.register(sandstarfragment, new ResourceLocation(MODID, "sandstarfragment"));
-        GameRegistry.register(sandstarsword, new ResourceLocation(MODID, "sandstarsword"));
-        GameRegistry.register(starjapariman,new ResourceLocation(MODID,"starjapariman"));
+        GameRegistry.register(sandstarfragment, new ResourceLocation(MODID, "sandstar_fragment"));
+        GameRegistry.register(sandstarsword, new ResourceLocation(MODID, "sandstar_sword"));
+        GameRegistry.register(sandstarshovel, new ResourceLocation(MODID, "sandstar_shovel"));
+        GameRegistry.register(sandstarpickaxe, new ResourceLocation(MODID, "sandstar_pickaxe"));
+        GameRegistry.register(starjapariman,new ResourceLocation(MODID,"star_japariman"));
         GameRegistry.register(sugarstar,new ResourceLocation(MODID,"sugarstar"));
-        GameRegistry.register(wildliberationsource,new ResourceLocation(MODID,"wildliberationsource"));
-        GameRegistry.register(wildliberationpotion,new ResourceLocation(MODID,"wildliberationpotion"));
+        GameRegistry.register(wildliberationsource,new ResourceLocation(MODID,"wildliberation_source"));
+        GameRegistry.register(wildliberationpotion,new ResourceLocation(MODID,"wildliberation_potion"));
         GameRegistry.register(bosscore,new ResourceLocation(MODID,"bosscore"));
         GameRegistry.register(summonlucky,new ResourceLocation(MODID,"summonlucky"));
         GameRegistry.register(summonguardlucky,new ResourceLocation(MODID,"summonguardlucky"));
@@ -236,20 +238,22 @@ public class JapariCraftMod {
             ModelLoader.setCustomModelResourceLocation(japarimancocoa, 0, new ModelResourceLocation(japarimancocoa.getRegistryName(), "inventory"));
             ModelLoader.setCustomModelResourceLocation(woodenframeitemblock, 0, new ModelResourceLocation(new ResourceLocation(MODID, "woodenframeblock"), "inventory"));
             ModelLoader.setCustomModelResourceLocation(sandstaritemblock, 0, new ModelResourceLocation(new ResourceLocation(MODID, "sandstarblock"), "inventory"));
-            ModelLoader.setCustomModelResourceLocation(starjapariman,0,new ModelResourceLocation(new ResourceLocation(MODID, "starjapariman"),"inventory"));
+            ModelLoader.setCustomModelResourceLocation(starjapariman,0,new ModelResourceLocation(new ResourceLocation(MODID, "star_japariman"),"inventory"));
             ModelLoader.setCustomModelResourceLocation(sugarstar,0,new ModelResourceLocation(new ResourceLocation(MODID, "sugarstar"),"inventory"));
-            ModelLoader.setCustomModelResourceLocation(wildliberationsource,0,new ModelResourceLocation(new ResourceLocation(MODID, "wildliberationsource"),"inventory"));
-            ModelLoader.setCustomModelResourceLocation(wildliberationpotion,0,new ModelResourceLocation(new ResourceLocation(MODID, "wildliberationpotion"),"inventory"));
-            ModelLoader.setCustomModelResourceLocation(pumpkinsoup,0,new ModelResourceLocation(new ResourceLocation(MODID, "pumpkinsoup"),"inventory"));
+            ModelLoader.setCustomModelResourceLocation(wildliberationsource,0,new ModelResourceLocation(new ResourceLocation(MODID, "wildliberation_source"),"inventory"));
+            ModelLoader.setCustomModelResourceLocation(wildliberationpotion,0,new ModelResourceLocation(new ResourceLocation(MODID, "wildliberation_potion"),"inventory"));
+            ModelLoader.setCustomModelResourceLocation(pumpkinsoup,0,new ModelResourceLocation(new ResourceLocation(MODID, "pumpkin_soup"),"inventory"));
             ModelLoader.setCustomModelResourceLocation(bosscore,0,new ModelResourceLocation(new ResourceLocation(MODID, "bosscore"),"inventory"));
             ModelLoader.setCustomModelResourceLocation(summonlucky,0,new ModelResourceLocation(new ResourceLocation(MODID, "summonlucky"),"inventory"));
             ModelLoader.setCustomModelResourceLocation(summonguardlucky,0,new ModelResourceLocation(new ResourceLocation(MODID, "summonguardlucky"),"inventory"));
             ModelLoader.setCustomModelResourceLocation(kabanhat,0,new ModelResourceLocation(new ResourceLocation(MODID, "kabanhat"),"inventory"));
             ModelLoader.setCustomModelResourceLocation(record_Farewell,0,new ModelResourceLocation(new ResourceLocation(MODID, "farewell"),"inventory"));
-            ModelLoader.setCustomModelResourceLocation(japarimanapple,0,new ModelResourceLocation(new ResourceLocation(MODID, "japarimanapple"),"inventory"));
+            ModelLoader.setCustomModelResourceLocation(japarimanapple,0,new ModelResourceLocation(new ResourceLocation(MODID, "japariman_apple"),"inventory"));
             ModelLoader.setCustomModelResourceLocation(bearstick,0,new ModelResourceLocation(new ResourceLocation(MODID, "bearstick"),"inventory"));
             ModelLoader.setCustomModelResourceLocation(curry,0,new ModelResourceLocation(new ResourceLocation(MODID, "curry"),"inventory"));
             ModelLoader.setCustomModelResourceLocation(sandstaroreitemblock, 0, new ModelResourceLocation(new ResourceLocation(MODID, "sandstarore"), "inventory"));
+            ModelLoader.setCustomModelResourceLocation(sandstarshovel,0,new ModelResourceLocation(new ResourceLocation(MODID, "sandstar_shovel"),"inventory"));
+            ModelLoader.setCustomModelResourceLocation(sandstarpickaxe,0,new ModelResourceLocation(new ResourceLocation(MODID, "sandstar_pickaxe"),"inventory"));
             //Memo: Render関連は全部クライアントサイドで
             proxy.registerRender();
         }
@@ -298,6 +302,20 @@ public class JapariCraftMod {
                 "F",
                 "F",
                 "S",
+                'F', JapariCraftMod.sandstarfragment,
+                'S', Items.STICK
+        );
+        GameRegistry.addRecipe(new ItemStack(JapariCraftMod.sandstarshovel, 1),
+                "F",
+                "S",
+                "S",
+                'F', JapariCraftMod.sandstarfragment,
+                'S', Items.STICK
+        );
+        GameRegistry.addRecipe(new ItemStack(JapariCraftMod.sandstarpickaxe, 1),
+                "FFF",
+                " S ",
+                " S ",
                 'F', JapariCraftMod.sandstarfragment,
                 'S', Items.STICK
         );
@@ -373,6 +391,13 @@ public class JapariCraftMod {
                 " W ",
                 'W',Items.WHEAT,
                 'A',Items.APPLE
+        );
+        GameRegistry.addRecipe(new ItemStack(JapariCraftMod.starjapariman, 4),
+                "SWS",
+                "WSW",
+                "SWS",
+                'W',Items.WHEAT,
+                'S',JapariCraftMod.sugarstar
         );
         GameRegistry.addShapelessRecipe(new ItemStack(JapariCraftMod.sandstarfragment, 9),
                 JapariCraftMod.sandstarblock
