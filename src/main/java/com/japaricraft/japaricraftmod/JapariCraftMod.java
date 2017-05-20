@@ -39,11 +39,11 @@ import net.minecraft.world.biome.Biome;
 
 
 
-@Mod(modid = JapariCraftMod.MODID, name = JapariCraftMod.MODNAME, version = JapariCraftMod.VERSION, useMetadata = true)
+@Mod(modid = JapariCraftMod.MODID, name = JapariCraftMod.MODNAME, version = JapariCraftMod.VERSION, useMetadata = true,updateJSON = "")
 public class JapariCraftMod {
 
     public static final String MODID = "japaricraftmod";
-    public static final String VERSION = "2.2.3";
+    public static final String VERSION = "2.2.4";
     public static final String MODNAME = "JapariCraftMod";
     /**
      * Woodenframeのブロックのインスタンスを格納する
@@ -394,6 +394,7 @@ public class JapariCraftMod {
         metadata.description = ("けもフレ関連のアイテムを追加します");
         metadata.credits = ("制作者:bagu_chan");
         metadata.logoFile = ("assets/japaricraftmod/textures/logo.png");
+        metadata.useDependencyInformation = true;
 
         // Modのアップデートをチェックする為のJson 詳細は、 https://mcforge.readthedocs.io/en/latest/gettingstarted/autoupdate/ 参照
          metadata.updateJSON =("https://minecraft.curseforge.com/projects/japaricraftmod/files");
