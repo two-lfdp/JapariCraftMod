@@ -1,7 +1,6 @@
 package com.japaricraft.japaricraftmod.mob;
 
 
-import com.google.common.base.Predicate;
 import com.japaricraft.japaricraftmod.JapariCraftMod;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.*;
@@ -19,7 +18,6 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 
-import javax.annotation.Nullable;
 
 
 public class SafeguardLuckyBeast extends EntityTameable {
@@ -33,10 +31,8 @@ public class SafeguardLuckyBeast extends EntityTameable {
     }
 
     protected void initEntityAI() {
-        this.aiSit = new EntityAISit(this);
 
         this.tasks.addTask(0, new EntityAISwimming(this));
-        this.tasks.addTask(2, this.aiSit);
         this.tasks.addTask(4, new EntityAIAttackMelee(this, 1.0D, true));
         this.tasks.addTask(5, new EntityAIFollowOwner(this, 1.0D, 10.0F, 2.0F));
         this.tasks.addTask(6, new EntityAIMate(this, 1.0D));
@@ -57,7 +53,6 @@ public class SafeguardLuckyBeast extends EntityTameable {
         if (this.isTamed()) {
             if (this.isOwner(player) && !this.world.isRemote && !this.isBreedingItem(stack)) {
                 player.addStat(JapariCraftMod.achievement_boss);
-                this.aiSit.setSitting(!this.isSitting());
                 return true;
             }
         } else if (stack != null && stack.getItem() == Items.REDSTONE && player.getDistanceSqToEntity(this) < 22.0D) {
