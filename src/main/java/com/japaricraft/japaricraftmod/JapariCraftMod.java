@@ -82,6 +82,8 @@ public class JapariCraftMod {
     public static final Item bearstick = new BearStick(Bearstick);
     public static final Item summonlucky = new SummonLucky();
     public static final Item summonguardlucky = new SummonGuardLucky();
+    public static final Item kabanhat= new ItemKabanHat(KabanHatMaterial, 0, EntityEquipmentSlot.HEAD);;
+    public static final Item record_Farewell= new MusicFriendDisc("farewell").setCreativeTab(JapariCraftMod.tabJapariCraft);;
     public static final Achievement achievement_japariman =
             new Achievement("achievement." + MODID + ":craft_japariman", MODID + ".craft_japariman",
                     0, 0, JapariCraftMod.japariman, null).registerStat();
@@ -115,9 +117,7 @@ public class JapariCraftMod {
 
     public static JapalarProfession japalarprofession;
 
-    public static Item kabanhat;
 
-    public static Item record_Farewell;
 
     @GameRegistry.ObjectHolder(MODID)
     public static class SoundEvents {
@@ -159,8 +159,6 @@ public class JapariCraftMod {
         );
         AchievementPage.registerAchievementPage(achievement_page_japaricraft);
 
-        kabanhat = new ItemKabanHat(KabanHatMaterial, 0, EntityEquipmentSlot.HEAD);
-        record_Farewell = new MusicFriendDisc("farewell").setCreativeTab(JapariCraftMod.tabJapariCraft);
         //ブロックの登録。
         ResourceLocation woodenframeblocklocation = new ResourceLocation(MODID, "woodenframeblock");//これはウッデンフレームブロックのテクスチャ指定。
         ItemBlock woodenframeitemblock = new ItemBlock(woodenframeblock);
