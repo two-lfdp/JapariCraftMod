@@ -22,10 +22,10 @@ public class SandStarOre extends Block {
     public SandStarOre()
     {
         super(Material.ROCK);
-        setCreativeTab(JapariCraftMod.tabJapariCraft);/*クリエイティブタブの選択*/
-        setUnlocalizedName("SandStarOre");/*システム名の設定*/
-        setHardness(3.5F);/*硬さ*/
-        setResistance(17.0F);/*爆破耐性*/
+        setCreativeTab(JapariCraftMod.tabJapariCraft);
+        setUnlocalizedName("SandStarOre");
+        setHardness(3.5F);
+        setResistance(17.0F);
         setSoundType(SoundType.STONE);
         setLightLevel(10);
         setHarvestLevel("pickaxe",3);

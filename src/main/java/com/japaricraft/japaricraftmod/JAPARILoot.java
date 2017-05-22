@@ -62,10 +62,6 @@ public class JAPARILoot {
         return new SetCount(new LootCondition[0], rvr(min, max));
     }
 
-    private SetCount setCount(int value){
-        return new SetCount(new LootCondition[0], rvr(value));
-    }
-
     private SetDamage setDamage(Item item, int damage){
         return new SetDamage(new LootCondition[0], rvr(damage > 0 ? damage : 1, damage > 0 ? damage : item.getMaxDamage()));
     }

@@ -47,11 +47,7 @@ public class JapariCraftMod {
     public static final String MODID = "japaricraftmod";
     public static final String VERSION = "2.3.1";
     public static final String MODNAME = "JapariCraftMod";
-    /**
-     * Woodenframeのブロックのインスタンスを格納する
-     */
-    @Mod.Instance(JapariCraftMod.MODID)
-    public static JapariCraftMod instance;
+
     //Modの情報を格納する。 mcmod.infoの上位互換
     @Mod.Metadata
     public static ModMetadata metadata;
@@ -71,21 +67,21 @@ public class JapariCraftMod {
     public static final Block sandstarore = new SandStarOre();
     public static final Item japariman = new Japariman();
     public static final Item japarimancocoa = new JaparimanCocoa();
-    static final Item japarimanapple = new JaparimanApple();
+    public static final Item japarimanapple = new JaparimanApple();
     public static final Item curry = new Curry();
-    static final Item starjapariman = new StarJapariman();
+    public static final Item starjapariman = new StarJapariman();
     public static final Item sandstarfragment = new ItemSandStarFragment();
     public static final Item sugarstar = new SugarStar();
     public static final Item sandstarsword = new SandStarSword(SandStar);
     public static final Item sandstarshovel = new SandStarShovel(SandStar);
     public static final Item sandstarpickaxe = new SandStarPickaxe(SandStar);
-    static final Item wildliberationsource = new WildLiberationSource();
+    public static final Item wildliberationsource = new WildLiberationSource();
     public static final Item wildliberationpotion = new WildLiberationPotion();
-    static final Item pumpkinsoup = new PumpkinSoup();
-    static final Item bosscore = new BossCore();
+    public static final Item pumpkinsoup = new PumpkinSoup();
+    public static final Item bosscore = new BossCore();
     public static final Item bearstick = new BearStick(Bearstick);
     public static final Item summonlucky = new SummonLucky();
-    static final Item summonguardlucky = new SummonGuardLucky();
+    public static final Item summonguardlucky = new SummonGuardLucky();
     public static final Achievement achievement_japariman =
             new Achievement("achievement." + MODID + ":craft_japariman", MODID + ".craft_japariman",
                     0, 0, JapariCraftMod.japariman, null).registerStat();
