@@ -1,13 +1,13 @@
 package com.japaricraft.japaricraftmod.render;
 
 import com.japaricraft.japaricraftmod.mob.Shoebill;
-import com.japaricraft.japaricraftmod.mob.WhiteOwl;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.math.MathHelper;
 
+@SuppressWarnings("ALL")
 public class ModelShoebill extends ModelBase {
     private ModelRenderer body;
     private ModelRenderer rightH;

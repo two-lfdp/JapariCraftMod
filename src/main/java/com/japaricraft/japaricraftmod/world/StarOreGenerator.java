@@ -1,8 +1,6 @@
 package com.japaricraft.japaricraftmod.world;
 
 import com.japaricraft.japaricraftmod.JapariCraftMod;
-import net.minecraft.block.Block;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.block.state.pattern.BlockMatcher;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
@@ -28,7 +26,7 @@ public class StarOreGenerator implements IWorldGenerator {
     private void generateOre(World world, Random random, int x, int z) {
             int genX = x + random.nextInt(16);
             int genZ = z + random.nextInt(16);
-            int genY = random.nextInt(16) + 8;
+            int genY = random.nextInt(16);
             new WorldGenMinable(JapariCraftMod.sandstarore.getDefaultState(),5, BlockMatcher.forBlock(Blocks.STONE)).generate(world, random,new BlockPos(genX,genY,genZ));
 
     }

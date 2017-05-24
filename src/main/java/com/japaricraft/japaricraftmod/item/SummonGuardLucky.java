@@ -1,7 +1,6 @@
 package com.japaricraft.japaricraftmod.item;
 
 import com.japaricraft.japaricraftmod.JapariCraftMod;
-import com.japaricraft.japaricraftmod.mob.LuckyBeast;
 import com.japaricraft.japaricraftmod.mob.SafeguardLuckyBeast;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;

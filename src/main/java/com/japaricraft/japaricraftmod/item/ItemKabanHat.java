@@ -1,7 +1,6 @@
 package com.japaricraft.japaricraftmod.item;
 
 import com.japaricraft.japaricraftmod.JapariCraftMod;
-import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemArmor;

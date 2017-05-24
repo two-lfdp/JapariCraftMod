@@ -45,7 +45,7 @@ import net.minecraft.world.biome.Biome;
 public class JapariCraftMod {
 
     public static final String MODID = "japaricraftmod";
-    public static final String VERSION = "2.3.1";
+    public static final String VERSION = "2.3.2";
     public static final String MODNAME = "JapariCraftMod";
 
     //Modの情報を格納する。 mcmod.infoの上位互換
@@ -82,8 +82,8 @@ public class JapariCraftMod {
     public static final Item bearstick = new BearStick(Bearstick);
     public static final Item summonlucky = new SummonLucky();
     public static final Item summonguardlucky = new SummonGuardLucky();
-    public static final Item kabanhat= new ItemKabanHat(KabanHatMaterial, 0, EntityEquipmentSlot.HEAD);;
-    public static final Item record_Farewell= new MusicFriendDisc("farewell").setCreativeTab(JapariCraftMod.tabJapariCraft);;
+    public static final Item kabanhat= new ItemKabanHat(KabanHatMaterial, 0, EntityEquipmentSlot.HEAD);
+    public static final Item record_Farewell= new MusicFriendDisc("farewell").setCreativeTab(JapariCraftMod.tabJapariCraft);
     public static final Achievement achievement_japariman =
             new Achievement("achievement." + MODID + ":craft_japariman", MODID + ".craft_japariman",
                     0, 0, JapariCraftMod.japariman, null).registerStat();
@@ -203,8 +203,6 @@ public class JapariCraftMod {
         //メタ情報の登録
         loadMeta();
 
-        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.AncientSkeleton"),  AncientSkeleton.class,"AncientSkeleton",0, this, 40, 3, true, 10092543, 16776960);
-        EntityRegistry.addSpawn(AncientSkeleton.class, 1, 1, 1, EnumCreatureType.MONSTER, Biome.getBiome(2),Biome.getBiome(130));
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.KouteiPenguin"), KouteiPenguin.class, "KouteiPenguin", 1, this, 30, 3, true, 2243405, 7375001);
         EntityRegistry.addSpawn(KouteiPenguin.class, 10, 2, 3, EnumCreatureType.CREATURE, Biome.getBiome(12), Biome.getBiome(140));
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.Cerulean"), Cerulean.class, "Cerulean", 2, this, 35, 3, true, 4243405, 7375001);
@@ -271,7 +269,6 @@ public class JapariCraftMod {
     public void Init(FMLInitializationEvent event) {
         GameRegistry.registerWorldGenerator(new StarOreGenerator(), 0);
         JapariRecipeRegister.registry(this);
-
         MinecraftForge.EVENT_BUS.register(new JAPARILoot());
     }
 

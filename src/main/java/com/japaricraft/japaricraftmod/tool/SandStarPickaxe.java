@@ -1,7 +1,6 @@
 package com.japaricraft.japaricraftmod.tool;
 
 import com.japaricraft.japaricraftmod.JapariCraftMod;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemPickaxe;
 
 

@@ -12,6 +12,4 @@ public class BearStick extends ItemSword {
         this.setUnlocalizedName("BearStick");
     }
 
-    private void canRepair() {
-    }
 }

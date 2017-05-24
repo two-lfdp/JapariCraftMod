@@ -1,11 +1,9 @@
 package com.japaricraft.japaricraftmod.mob;
 
 
-import com.japaricraft.japaricraftmod.JapariCraftMod;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
-import net.minecraft.entity.monster.EntityIronGolem;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.monster.EntityPigZombie;
 import net.minecraft.entity.passive.EntityVillager;
@@ -45,9 +43,6 @@ public class Cerulean extends EntityMob {
         this.targetTasks.addTask(3,new EntityAINearestAttackableTarget<>(this, WhiteOwl.class,true));
         this.targetTasks.addTask(3,new EntityAINearestAttackableTarget<>(this, BrownOwl.class,true));
     }
-
-    public boolean isAIEnabled() { return true; }
-
 
 
     @Override

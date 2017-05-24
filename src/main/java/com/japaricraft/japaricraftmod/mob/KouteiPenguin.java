@@ -27,8 +27,6 @@ public class KouteiPenguin extends EntityCreature {
 
     }
 
-    public boolean isAIEnabled() { return true; }
-
 
     @Override
     protected SoundEvent getDeathSound()

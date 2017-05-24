@@ -1,7 +1,6 @@
 package com.japaricraft.japaricraftmod.render;
 
 import com.japaricraft.japaricraftmod.mob.LuckyBeast;
-import com.japaricraft.japaricraftmod.mob.Serval;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
