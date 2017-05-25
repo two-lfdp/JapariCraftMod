@@ -6,6 +6,7 @@ import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.EnumHandSide;
 
+
 public class ModelGuide extends ModelBiped {
 
     private ModelRenderer bipedBodyWear;

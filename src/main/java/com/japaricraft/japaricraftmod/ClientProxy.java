@@ -5,7 +5,10 @@ import com.japaricraft.japaricraftmod.mob.*;
 import com.japaricraft.japaricraftmod.render.*;
 
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
+@SideOnly(Side.CLIENT)
 public class ClientProxy extends CommonProxy{
 
     public void registerRender(){
@@ -19,8 +22,10 @@ public class ClientProxy extends CommonProxy{
         RenderingRegistry.registerEntityRenderingHandler(SafeguardLuckyBeast.class, manager -> new LuckyBeastEntityRender<>(manager, new ModelLuckyBeast(), 0));
         RenderingRegistry.registerEntityRenderingHandler(Guide.class, manager -> new GuideRender<>(manager, new ModelGuide(), 0));
         RenderingRegistry.registerEntityRenderingHandler(Araisan.class, manager -> new AraisanRender<>(manager, new ModelAraisan(), 0));
+
         int pentan = 1;
         RenderingRegistry.registerEntityRenderingHandler(Cerulean.class, manager -> new CeruleanRender<>(manager, new ModelCerulean (pentan), 0));
+        RenderingRegistry.registerEntityRenderingHandler(PoisonCerulean.class, manager -> new PoisonCeruleanRender<>(manager, new ModelCerulean (pentan), 0));
     }
 
     public void init(){

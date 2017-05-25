@@ -9,12 +9,12 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class CeruleanRender <T extends EntityLiving> extends RenderLiving<T> {
-    private static final ResourceLocation texture = new ResourceLocation("JapariCraftMod:textures/entity/cerulean/cerulean.png");
+public class PoisonCeruleanRender <T extends EntityLiving> extends RenderLiving<T> {
+    private static final ResourceLocation texture = new ResourceLocation("JapariCraftMod:textures/entity/cerulean/poison_cerulean.png");
 
 
 
-    public CeruleanRender(RenderManager rendermanagerIn, ModelBase modelbaseIn, float shadowsizeIn) {
+    public PoisonCeruleanRender(RenderManager rendermanagerIn, ModelBase modelbaseIn, float shadowsizeIn) {
         super(rendermanagerIn, modelbaseIn, shadowsizeIn);
     }
 

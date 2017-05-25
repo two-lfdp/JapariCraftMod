@@ -13,11 +13,7 @@ public class WoodenFrameBlock extends Block{
         setUnlocalizedName("BlockWoodenFrame");/*システム名の設定*/
         setHardness(1.2F);/*硬さ*/
         setResistance(2.0F);/*爆破耐性*/
-        setSoundType(SoundType.WOOD);/*ブロックの上を歩いた時の音*/
-        /*setBlockUnbreakable();*//*ブロックを破壊不可に設定*/
-        /*setTickRandomly(true);*//*ブロックのtick処理をランダムに。デフォルトfalse*/
-        /*disableStats();*//*ブロックの統計情報を保存しない*/
-        setLightOpacity(0);/*ブロックの透過係数。デフォルト0(不透過)*/
-        /*this.setDefaultState(getBlockState().getBaseState());*//*初期BlockStateの設定*/
+        setSoundType(SoundType.WOOD);
+
     }
 }
