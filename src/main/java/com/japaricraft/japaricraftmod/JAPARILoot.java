@@ -34,6 +34,7 @@ public class JAPARILoot {
         }
         if(event.getName().equals(LootTableList.ENTITIES_WITCH)){
             lootPool.addEntry(createLootEntry(JapariCraftMod.wildliberationpotion, 0.02F));
+            lootPool.addEntry(createLootEntry(JapariCraftMod.starcaramel, 0.06F));
         }
 
         lootTable.addPool(lootPool);

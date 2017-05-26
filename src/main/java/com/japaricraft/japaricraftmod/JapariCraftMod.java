@@ -68,10 +68,12 @@ public class JapariCraftMod {
     public static final Item japariman = new Japariman();
     public static final Item japarimancocoa = new JaparimanCocoa();
     public static final Item japarimanapple = new JaparimanApple();
+    public static final Item goldenjapariman = new GoldenJapariman();
     public static final Item curry = new Curry();
     public static final Item starjapariman = new StarJapariman();
     public static final Item sandstarfragment = new ItemSandStarFragment();
     public static final Item sugarstar = new SugarStar();
+    public static final Item starcaramel = new StarCaramel();
     public static final Item sandstarsword = new SandStarSword(SandStar);
     public static final Item sandstarshovel = new SandStarShovel(SandStar);
     public static final Item sandstarpickaxe = new SandStarPickaxe(SandStar);
@@ -173,6 +175,7 @@ public class JapariCraftMod {
         GameRegistry.register(japariman, new ResourceLocation(MODID, "japariman"));
         GameRegistry.register(japarimancocoa, new ResourceLocation(MODID, "japariman_cocoa"));
         GameRegistry.register(japarimanapple,new ResourceLocation(MODID,"japariman_apple"));
+        GameRegistry.register(goldenjapariman,new ResourceLocation(MODID,"golden_japariman"));
         GameRegistry.register(pumpkinsoup,new ResourceLocation(MODID,"pumpkin_soup"));
         GameRegistry.register(curry,new ResourceLocation(MODID,"curry"));
         GameRegistry.register(woodenframeblock, woodenframeblocklocation);
@@ -184,6 +187,7 @@ public class JapariCraftMod {
         GameRegistry.register(sandstarshovel, new ResourceLocation(MODID, "sandstar_shovel"));
         GameRegistry.register(sandstarpickaxe, new ResourceLocation(MODID, "sandstar_pickaxe"));
         GameRegistry.register(starjapariman,new ResourceLocation(MODID,"star_japariman"));
+        GameRegistry.register(starcaramel,new ResourceLocation(MODID,"star_caramel"));
         GameRegistry.register(sugarstar,new ResourceLocation(MODID,"sugarstar"));
         GameRegistry.register(wildliberationsource,new ResourceLocation(MODID,"wildliberation_source"));
         GameRegistry.register(wildliberationpotion,new ResourceLocation(MODID,"wildliberation_potion"));
@@ -230,9 +234,11 @@ public class JapariCraftMod {
             ModelLoader.setCustomModelResourceLocation(sandstarfragment, 0, new ModelResourceLocation(sandstarfragment.getRegistryName(), "inventory"));
             ModelLoader.setCustomModelResourceLocation(japariman, 0, new ModelResourceLocation(japariman.getRegistryName(), "inventory"));
             ModelLoader.setCustomModelResourceLocation(japarimancocoa, 0, new ModelResourceLocation(japarimancocoa.getRegistryName(), "inventory"));
+            ModelLoader.setCustomModelResourceLocation(goldenjapariman, 0, new ModelResourceLocation(goldenjapariman.getRegistryName(), "inventory"));
             ModelLoader.setCustomModelResourceLocation(woodenframeitemblock, 0, new ModelResourceLocation(new ResourceLocation(MODID, "woodenframeblock"), "inventory"));
             ModelLoader.setCustomModelResourceLocation(sandstaritemblock, 0, new ModelResourceLocation(new ResourceLocation(MODID, "sandstarblock"), "inventory"));
             ModelLoader.setCustomModelResourceLocation(starjapariman,0,new ModelResourceLocation(new ResourceLocation(MODID, "star_japariman"),"inventory"));
+            ModelLoader.setCustomModelResourceLocation(starcaramel,0,new ModelResourceLocation(new ResourceLocation(MODID, "star_caramel"),"inventory"));
             ModelLoader.setCustomModelResourceLocation(sugarstar,0,new ModelResourceLocation(new ResourceLocation(MODID, "sugarstar"),"inventory"));
             ModelLoader.setCustomModelResourceLocation(wildliberationsource,0,new ModelResourceLocation(new ResourceLocation(MODID, "wildliberation_source"),"inventory"));
             ModelLoader.setCustomModelResourceLocation(wildliberationpotion,0,new ModelResourceLocation(new ResourceLocation(MODID, "wildliberation_potion"),"inventory"));

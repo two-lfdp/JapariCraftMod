@@ -132,12 +132,20 @@ public class JapariRecipeRegister {
                 'W',Items.WHEAT,
                 'S',JapariCraftMod.sugarstar
         );
+        GameRegistry.addRecipe(new ItemStack(JapariCraftMod.goldenjapariman, 2),
+                " W ",
+                "WGW",
+                " W ",
+                'W',Items.WHEAT,
+                'G',Items.GOLDEN_APPLE
+        );
         GameRegistry.addShapelessRecipe(new ItemStack(JapariCraftMod.sandstarfragment, 9),
                 JapariCraftMod.sandstarblock
         );
         GameRegistry.addShapelessRecipe(new ItemStack(JapariCraftMod.curry, 1),
                 Items.BOWL,Items.WHEAT,Items.CARROT,Items.POTATO,(new ItemStack(Items.POTIONITEM, 1,0)
                 ));
+        GameRegistry.addSmelting(JapariCraftMod.sugarstar,new ItemStack(JapariCraftMod.starcaramel),0.6f);
     }
 
 }
