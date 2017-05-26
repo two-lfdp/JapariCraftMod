@@ -1,5 +1,6 @@
 package com.japaricraft.japaricraftmod.mob;
 
+import com.japaricraft.japaricraftmod.JapariCraftMod;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
@@ -15,6 +16,7 @@ import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
@@ -123,13 +125,16 @@ public class PoisonCerulean extends EntityMob  {
 
 
     @Override
-    protected void dropFewItems(boolean parRecentlyHit, int parLootingLevel) {
-        //ほんとは確率とかで落とすものが決めれるんだと思う
-        {
-            this.entityDropItem(new ItemStack(Items.SLIME_BALL, 4, 0), 0.0F);
-            this.entityDropItem(new ItemStack(Items.CLAY_BALL, 2, 0), 0.0F);
+    protected void dropLoot(boolean wasRecentlyHit, int lootingModifier, DamageSource source) {
+        super.dropLoot(wasRecentlyHit, lootingModifier, source);
+
+        this.entityDropItem(new ItemStack(Items.SLIME_BALL, 4, 0), 0.0F);
+        this.entityDropItem(new ItemStack(Items.CLAY_BALL, 2, 0), 0.0F);
+        if (rand.nextInt(10) == 0) {
+            entityDropItem(new ItemStack(JapariCraftMod.wildliberationsource), 0.5F);
         }
     }
+
 
 
     protected void applyEntityAttributes(){

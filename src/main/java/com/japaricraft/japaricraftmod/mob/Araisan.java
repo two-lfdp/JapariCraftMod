@@ -11,18 +11,29 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.datasync.DataParameter;
+import net.minecraft.network.datasync.DataSerializers;
+import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundEvent;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 
 public class Araisan extends EntityTameable {
 
+    private static final DataParameter<Boolean> HAT = EntityDataManager.createKey(Araisan.class, DataSerializers.BOOLEAN);
 
     public Araisan(World worldIn) {
         super(worldIn);
         this.setSize(0.6F, 1.9F);
         this.setTamed(false);
+        this.dataManager.register(HAT, Boolean.FALSE);
+    }
+
+    public boolean hashat()
+    {
+        return this.dataManager.get(HAT);
     }
 
 
@@ -54,6 +65,7 @@ public class Araisan extends EntityTameable {
         this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(24D);
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.25D);
         this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(30D);
+
         this.getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(3.0D);
     }
 
@@ -102,6 +114,12 @@ public class Araisan extends EntityTameable {
             if (this.isOwner(player) && !this.world.isRemote && !this.isBreedingItem(stack))
             {
                 this.aiSit.setSitting(!this.isSitting());
+                if (!this.hashat() &&  stack.getItem() == JapariCraftMod.kabanhat)
+                {
+                    player.sendStatusMessage(new TextComponentTranslation("entity.arai.friend"), true);
+
+                    this.dataManager.set(HAT,true);
+                }
                 return true;
             }
         }
@@ -136,6 +154,10 @@ public class Araisan extends EntityTameable {
 
         return super.processInteract(player, hand);
     }
+
+
+
+
 
     protected void updateAITasks()
     {

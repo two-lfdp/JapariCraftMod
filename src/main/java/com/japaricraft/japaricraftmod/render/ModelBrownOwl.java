@@ -8,6 +8,8 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.math.MathHelper;
 
 public class ModelBrownOwl extends ModelBase {
+    private ModelRenderer handA_L;
+    private ModelRenderer handA_R;
     private ModelRenderer body;
     private ModelRenderer handL;
     private ModelRenderer handR;
@@ -53,9 +55,9 @@ public class ModelBrownOwl extends ModelBase {
         this.handL.setRotationPoint(2.6F, 1.2F, 0.0F);
         this.handL.addBox(0.0F, -0.8F, -1.0F, 2, 10, 2, 0.0F);
         this.setRotateAngle(handL, 0.0F, 0.0F, -0.15707963267948966F);
-        ModelRenderer handA_R = new ModelRenderer(this, 15, 0);
-        handA_R.setRotationPoint(-5.1F, 0.6F, -0.5F);
-        handA_R.addBox(0.0F, -0.8F, -1.0F, 3, 8, 3, 0.0F);
+        this.handA_R = new ModelRenderer(this, 15, 0);
+        this.handA_R.setRotationPoint(-5.1F, 0.6F, -0.5F);
+        this.handA_R.addBox(0.0F, -0.8F, -1.0F, 3, 8, 3, 0.0F);
         this.setRotateAngle(handA_R, 0.0F, 0.0F, 0.15707963267948966F);
         ModelRenderer wing2 = new ModelRenderer(this, 28, 20);
         wing2.setRotationPoint(-4.0F, -0.98F, -3.6F);
@@ -84,9 +86,9 @@ public class ModelBrownOwl extends ModelBase {
         wing1.setRotationPoint(3.9F, -0.94F, -3.6F);
         wing1.addBox(0.0F, -0.5F, -2.5F, 1, 5, 5, 0.0F);
         this.setRotateAngle(wing1, 0.0F, 0.0F, -0.31869712141416456F);
-        ModelRenderer handA_L = new ModelRenderer(this, 28, 0);
-        handA_L.setRotationPoint(2.1F, 1.2F, -0.5F);
-        handA_L.addBox(0.0F, -0.8F, -1.0F, 3, 8, 3, 0.0F);
+        this.handA_L = new ModelRenderer(this, 28, 0);
+        this.handA_L.setRotationPoint(2.1F, 1.2F, -0.5F);
+        this.handA_L.addBox(0.0F, -0.8F, -1.0F, 3, 8, 3, 0.0F);
         this.setRotateAngle(handA_L, 0.0F, 0.0F, -0.15707963267948966F);
         ModelRenderer hairA_L = new ModelRenderer(this, 28, 32);
         hairA_L.setRotationPoint(-4.2F, 3.1F, -2.0F);
@@ -157,6 +159,10 @@ public class ModelBrownOwl extends ModelBase {
         this.handL.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 2.0F * limbSwingAmount * 0.5F / f;
         this.handR.rotateAngleZ = 0.0F;
         this.handL.rotateAngleZ = 0.0F;
+        this.handA_R.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 2.0F * limbSwingAmount * 0.5F / f;
+        this.handA_L.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 2.0F * limbSwingAmount * 0.5F / f;
+        this.handA_R.rotateAngleZ = 0.0F;
+        this.handA_L.rotateAngleZ = 0.0F;
         this.legR.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount / f;
         this.legL.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount / f;
         this.legR.rotateAngleY = 0.0F;
@@ -191,6 +197,10 @@ public class ModelBrownOwl extends ModelBase {
         this.handL.rotateAngleZ -= MathHelper.cos(ageInTicks * 0.09F) * 0.05F + 0.05F;
         this.handR.rotateAngleX += MathHelper.sin(ageInTicks * 0.067F) * 0.05F;
         this.handL.rotateAngleX -= MathHelper.sin(ageInTicks * 0.067F) * 0.05F;
+        this.handA_R.rotateAngleZ += MathHelper.cos(ageInTicks * 0.09F) * 0.05F + 0.05F;
+        this.handA_L.rotateAngleZ -= MathHelper.cos(ageInTicks * 0.09F) * 0.05F + 0.05F;
+        this.handA_R.rotateAngleX += MathHelper.sin(ageInTicks * 0.067F) * 0.05F;
+        this.handA_L.rotateAngleX -= MathHelper.sin(ageInTicks * 0.067F) * 0.05F;
 
 
     }
