@@ -138,6 +138,7 @@ public class JapariRecipeRegister {
                 " W ",
                 'W',Items.WHEAT,
                 'G',Items.GOLDEN_APPLE
+
         );
         GameRegistry.addShapelessRecipe(new ItemStack(JapariCraftMod.sandstarfragment, 9),
                 JapariCraftMod.sandstarblock

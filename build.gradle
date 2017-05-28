@@ -15,7 +15,7 @@ tasks.withType(Jar) {
     compileJava.options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
 }
 
-version = "2.4.0"
+version = "2.4.1"
 group= "com.japaricraft.japaricraftmod" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "japaricraftmod"
 
@@ -25,13 +25,13 @@ compileJava {
 }
 
 minecraft {
-    version = "1.11.2-13.20.0.2227"
+    version = "1.11.2-13.20.0.2262"
     runDir = "run"
 
     mappings = "snapshot_20161220"
 }
 
-dependencies {
+dependencies {compile fileTree(dir:'libs', include:'Cavern_1.11.2-v1.7.3.jar')
 }
 
 processResources
