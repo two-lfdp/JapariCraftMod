@@ -22,13 +22,12 @@ public class Cerulean extends EntityMob {
     public Cerulean(World worldIn)
     {
         super(worldIn);
-        this.setSize(1.0F, 1.0F);
+        this.setSize(0.95F, 0.95F);
     }
 
     protected void initEntityAI(){
 
 
-        //this.tasks.addTask(0, new Entityattack);
         this.tasks.addTask(1, new EntityAIAttackMelee(this, 1.0D, false));
         this.tasks.addTask(5, new EntityAIMoveTowardsRestriction(this, 1.0D));
         this.tasks.addTask(7, new EntityAIWander(this, 1.0D));

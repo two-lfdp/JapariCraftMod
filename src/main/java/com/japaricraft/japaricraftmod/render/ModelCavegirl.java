@@ -1,7 +1,5 @@
 package com.japaricraft.japaricraftmod.render;
 
-
-import com.japaricraft.japaricraftmod.mob.Serval;
 import com.japaricraft.japaricraftmod.mob.cavern.Cavegirl;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
@@ -9,7 +7,10 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.EnumHandSide;
 import net.minecraft.util.math.MathHelper;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
+@SideOnly(Side.CLIENT)
 public class ModelCavegirl extends ModelBiped {
 
     public ModelRenderer bipedBodyWear;
@@ -52,12 +53,11 @@ public class ModelCavegirl extends ModelBiped {
     }
     public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entityIn)
     {
-        if (!(entityIn instanceof Serval))
+        if (!(entityIn instanceof Cavegirl))
         {
             return;
         }
         boolean flag = entityIn instanceof EntityLivingBase && ((EntityLivingBase)entityIn).getTicksElytraFlying() > 4;
-        Cavegirl entityowl = (Cavegirl) entityIn;
         this.bipedHead.rotateAngleY = netHeadYaw * 0.017453292F;
         this.bipedHeadwear.rotateAngleY = netHeadYaw * 0.017453292F;
 
@@ -95,10 +95,6 @@ public class ModelCavegirl extends ModelBiped {
         this.bipedLeftArm.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 2.0F * limbSwingAmount * 0.5F / f;
         this.bipedRightArm.rotateAngleZ = 0.0F;
         this.bipedLeftArm.rotateAngleZ = 0.0F;
-        this.bipedRightArm.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 2.0F * limbSwingAmount * 0.5F / f;
-        this.bipedLeftArm.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 2.0F * limbSwingAmount * 0.5F / f;
-        this.bipedRightArm.rotateAngleZ = 0.0F;
-        this.bipedLeftArm.rotateAngleZ = 0.0F;
         this.bipedRightLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount / f;
         this.bipedLeftLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount / f;
         this.bipedRightLeg.rotateAngleY = 0.0F;
@@ -106,7 +102,7 @@ public class ModelCavegirl extends ModelBiped {
         this.bipedRightLeg.rotateAngleZ = 0.0F;
         this.bipedLeftLeg.rotateAngleZ = 0.0F;
 
-        if (entityowl.isSitting()||this.isRiding)
+        if (this.isRiding)
         {
             this.bipedRightArm.rotateAngleX += -((float)Math.PI / 5F);
             this.bipedLeftArm.rotateAngleX += -((float)Math.PI / 5F);

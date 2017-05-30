@@ -31,7 +31,7 @@ minecraft {
     mappings = "snapshot_20161220"
 }
 
-dependencies {compile fileTree(dir:'libs', include:'Cavern_1.11.2-v1.7.3.jar')
+dependencies {
 }
 
 processResources
