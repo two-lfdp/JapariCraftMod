@@ -15,7 +15,7 @@ tasks.withType(Jar) {
     compileJava.options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
 }
 
-version = "2.4.1"
+version = "2.4.2"
 group= "com.japaricraft.japaricraftmod" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "japaricraftmod"
 
@@ -34,8 +34,7 @@ minecraft {
 dependencies {
 }
 
-processResources
-        {
+processResources {
             // this will ensure that this task is redone when the versions change.
             inputs.property "version", project.version
             inputs.property "mcversion", project.minecraft.version
@@ -52,4 +51,4 @@ processResources
             from(sourceSets.main.resources.srcDirs) {
                 exclude 'mcmod.info'
             }
-        }
+}
