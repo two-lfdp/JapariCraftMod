@@ -1,13 +1,9 @@
 package com.japaricraft.japaricraftmod.render;
 
 
-import com.japaricraft.japaricraftmod.mob.Jariuma;
-import com.japaricraft.japaricraftmod.mob.Serval;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.util.math.MathHelper;
 
 public class ModelJariuma extends ModelBase {
     public ModelRenderer body;

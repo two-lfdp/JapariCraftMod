@@ -1,7 +1,7 @@
 package com.japaricraft.japaricraftmod.tool;
 
 import com.japaricraft.japaricraftmod.JapariCraftMod;
-import net.minecraft.item.*;
+import net.minecraft.item.ItemSpade;
 
 
 public class SandStarShovel extends ItemSpade{

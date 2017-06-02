@@ -1,7 +1,6 @@
 package com.japaricraft.japaricraftmod.mob.cavern;
 
 import com.japaricraft.japaricraftmod.JapariCraftMod;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;

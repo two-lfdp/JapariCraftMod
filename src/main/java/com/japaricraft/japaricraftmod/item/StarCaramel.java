@@ -3,7 +3,6 @@ package com.japaricraft.japaricraftmod.item;
 import com.japaricraft.japaricraftmod.JapariCraftMod;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;

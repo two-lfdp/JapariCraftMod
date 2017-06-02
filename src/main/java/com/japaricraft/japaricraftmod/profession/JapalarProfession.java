@@ -1,7 +1,7 @@
 package com.japaricraft.japaricraftmod.profession;
 
 import com.japaricraft.japaricraftmod.JapariCraftMod;
-import net.minecraftforge.fml.common.registry.*;
+import net.minecraftforge.fml.common.registry.VillagerRegistry;
 
 public class JapalarProfession extends VillagerRegistry.VillagerProfession {
     public JapalarProfession() {
