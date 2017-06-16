@@ -65,10 +65,7 @@ public class Cavegirl extends EntityMob{
     {
         return SoundEvents.ENTITY_SILVERFISH_DEATH;
     }
-    @Override
-    protected SoundEvent getHurtSound()
-    {
-        return SoundEvents.ENTITY_PLAYER_HURT;}
+
     @Override
     protected SoundEvent getAmbientSound()
     {
@@ -124,9 +121,6 @@ public class Cavegirl extends EntityMob{
 
         this.entityDropItem(new ItemStack(JapariCraftMod.sandstarfragment, 8, 0), 0.0F);
         this.entityDropItem(new ItemStack(Items.DIAMOND, 6, 0), 0.0F);
-        if (rand.nextInt(10) == 0) {
-            this.entityDropItem(new ItemStack(JapariCraftMod.record_Farewell, 1, 0), 0.0F);
-        }
     }
     public boolean canDespawn()
     {

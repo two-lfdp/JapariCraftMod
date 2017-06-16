@@ -48,10 +48,6 @@ public class Guide extends EntityCreature {
         return SoundEvents.ENTITY_PLAYER_DEATH;
     }
 
-    @Override
-    protected SoundEvent getHurtSound() {
-        return SoundEvents.ENTITY_PLAYER_HURT;
-    }
 
 
     public EnumCreatureAttribute getCreatureAttribute() {

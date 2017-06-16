@@ -13,10 +13,4 @@ public class JaparimanApple extends ItemFood {
         this.setUnlocalizedName("JaparimanApple");
     }
 
-    public void onCreated(ItemStack stack, World worldIn, EntityPlayer playerIn) {
-        if (!worldIn.isRemote) {
-            playerIn.addStat(JapariCraftMod.achievement_japariman);
-            playerIn.addStat(JapariCraftMod.achievement_japarimancocoa);
-        }
-    }
 }

@@ -13,7 +13,6 @@ import com.japaricraft.japaricraftmod.profession.ItemCareer;
 import com.japaricraft.japaricraftmod.profession.JapalarProfession;
 import com.japaricraft.japaricraftmod.tool.SandStarPickaxe;
 import com.japaricraft.japaricraftmod.tool.SandStarShovel;
-import com.japaricraft.japaricraftmod.world.StarOreGenerator;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
@@ -27,12 +26,10 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
-import net.minecraft.stats.Achievement;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.common.AchievementPage;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.event.RegistryEvent;
@@ -52,7 +49,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 public class JapariCraftMod {
 
     public static final String MODID = "japaricraftmod";
-    public static final String VERSION = "2.4.2";
+    public static final String VERSION = "2.5.0";
     public static final String MODNAME = "JapariCraftMod";
 
     //Modの情報を格納する。 mcmod.infoの上位互換
@@ -93,41 +90,7 @@ public class JapariCraftMod {
     public static final Item summonlucky = new SummonLucky();
     public static final Item summonguardlucky = new SummonGuardLucky();
     public static final Item kabanhat= new ItemKabanHat(KabanHatMaterial, 0, EntityEquipmentSlot.HEAD);
-    public static final Item record_Farewell= new MusicFriendDisc("farewell").setCreativeTab(JapariCraftMod.tabJapariCraft);
-    public static final Achievement achievement_japariman =
-            new Achievement("achievement." + MODID + ":craft_japariman", MODID + ".craft_japariman",
-                    0, 0, JapariCraftMod.japariman, null).registerStat();
-    public static final Achievement achievement_japarimancocoa =
-            new Achievement("achievement." + MODID + ":craft_japarimancocoa", MODID + ".craft_japarimancocoa",
-                    2, 0, JapariCraftMod.japarimancocoa, achievement_japariman).registerStat();
-    public static final Achievement achievement_starjapariman =
-            new Achievement("achievement." + MODID + ":eat_starjapariman", MODID + ".eat_starjapariman",
-                    -6, 0, JapariCraftMod.starjapariman, null).registerStat().setSpecial();
-    public static final Achievement achievement_wild =
-            new Achievement("achievement." + MODID + ":drink_wildpotion", MODID + ".drink_wildpotion",
-                    -6, 2, JapariCraftMod.wildliberationpotion, null).registerStat().setSpecial();
-    public static final Achievement achievement_friend =
-            new Achievement("achievement." + MODID + ":friend", MODID + ".friend",
-                    -6, 1, JapariCraftMod.sandstarfragment, null).registerStat();
-    public static final Achievement achievement_jari =
-            new Achievement("achievement." + MODID + ":jari", MODID + ".jari",
-                    -8, 1, Blocks.GRAVEL, JapariCraftMod.achievement_friend).registerStat().setSpecial();
-    public static final Achievement achievement_bosscore =
-            new Achievement("achievement." + MODID + ":bosscore", MODID + ".bosscore",
-                    0, -2, JapariCraftMod.bosscore, achievement_japariman).registerStat();
-    public static final Achievement achievement_boss =
-            new Achievement("achievement." + MODID + ":summonlucky", MODID + ".summonlucky",
-                    0, -4, JapariCraftMod.summonlucky, achievement_bosscore).registerStat().setSpecial();
-    public static final AchievementPage achievement_page_japaricraft = new AchievementPage("Japari Craft",
-            achievement_japariman,
-            achievement_japarimancocoa,
-            achievement_starjapariman,
-            achievement_wild,
-            achievement_friend,
-            achievement_bosscore,
-            achievement_boss,
-            achievement_jari
-    );
+
 
     public static JapalarProfession japalarprofession;
 
@@ -163,14 +126,11 @@ public class JapariCraftMod {
                         {
                                 new EntityVillager.EmeraldForItems(Items.SLIME_BALL, new EntityVillager.PriceInfo(13, 17)),
                                 new EntityVillager.ListItemForEmeralds(JapariCraftMod.kabanhat, new EntityVillager.PriceInfo(1, 2)),
-                                new EntityVillager.ListItemForEmeralds(JapariCraftMod.record_Farewell, new EntityVillager.PriceInfo(7, 12))
 
                         }
                 }
 
         );
-        AchievementPage.registerAchievementPage(achievement_page_japaricraft);
-
         //ブロックの登録。
         ResourceLocation woodenframeblocklocation = new ResourceLocation(MODID, "woodenframeblock");//これはウッデンフレームブロックのテクスチャ指定。
         ItemBlock woodenframeitemblock = new ItemBlock(woodenframeblock);
@@ -206,7 +166,6 @@ public class JapariCraftMod {
         GameRegistry.register(summonlucky,new ResourceLocation(MODID,"summonlucky"));
         GameRegistry.register(summonguardlucky,new ResourceLocation(MODID,"summonguardlucky"));
         GameRegistry.register(kabanhat,new ResourceLocation(MODID,"kabanhat"));
-        GameRegistry.register(record_Farewell,new ResourceLocation(MODID,"record_farewell"));
         GameRegistry.register(bearstick,new ResourceLocation(MODID,"bearstick"));
         GameRegistry.register(sandstarore, sandstarorelocation);
         GameRegistry.register(sandstaroreitemblock, sandstarorelocation);
@@ -235,17 +194,17 @@ public class JapariCraftMod {
         EntityRegistry.addSpawn(Araisan.class, 14, 2, 3, EnumCreatureType.CREATURE, Biomes.PLAINS,Biomes.FOREST,Biomes.FOREST_HILLS,Biomes.MUTATED_FOREST);
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.PoisonCerulean"), PoisonCerulean.class, "PoisonCerulean", 13, this, 35, 3, true, 4243405, 7375001);
         EntityRegistry.addSpawn(PoisonCerulean.class, 18, 3, 5, EnumCreatureType.MONSTER,Biomes.MUTATED_SWAMPLAND,Biomes.SWAMPLAND,Biomes.ROOFED_FOREST,Biomes.MUTATED_ROOFED_FOREST);
-        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.Cavegirl"), Cavegirl.class, "Cavegirl", 14, this, 35, 3, true, 12632256, 12632256);
-        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.Jariuma"), Jariuma.class, "Jariuma", 15, this, 35, 3, true,8421504,8421504);
+        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.Cavegirl"), Cavegirl.class, "Cavegirl", 14, this, 35, 3, true);
+        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.Jariuma"), Jariuma.class, "Jariuma", 15, this, 35, 3, true);
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.ThrowFlint"), ThrowFlint.class, "ThrowFlint", 16, this, 35, 3, true);
-        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.LuckyBeast"), LuckyBeast.class, "LuckyBeast", 8, this, 35, 3, true,13421619,16777215);
-        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.SafeguardLuckyBeast"), SafeguardLuckyBeast.class, "SafeguardLuckyBeast", 10, this, 35, 3, true,13421619,16777215);
-        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.Guide"), Guide.class, "Guide", 11, this, 35, 3, true, 16703405, 4243405);
+        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.LuckyBeast"), LuckyBeast.class, "LuckyBeast", 8, this, 35, 3, true);
+        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.SafeguardLuckyBeast"), SafeguardLuckyBeast.class, "SafeguardLuckyBeast", 10, this, 35, 3, true);
+        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.Guide"), Guide.class, "Guide", 11, this, 35, 3, true);
 
         //テクスチャ・モデル指定JSONファイル名の登録
         if (event.getSide().isClient()) {
-            ModelLoader.setCustomModelResourceLocation(sandstarsword, 0, new ModelResourceLocation(sandstarsword.getRegistryName(), "inventory"));
-            ModelLoader.setCustomModelResourceLocation(sandstarfragment, 0, new ModelResourceLocation(sandstarfragment.getRegistryName(), "inventory"));
+            ModelLoader.setCustomModelResourceLocation(sandstarsword, 0, new ModelResourceLocation(new ResourceLocation(MODID, "sandstar_sword"), "inventory"));
+            ModelLoader.setCustomModelResourceLocation(sandstarfragment, 0, new ModelResourceLocation(new ResourceLocation(MODID, "sandstar_fragment"), "inventory"));
             ModelLoader.setCustomModelResourceLocation(darksandstar, 0, new ModelResourceLocation(darksandstar.getRegistryName(), "inventory"));
             ModelLoader.setCustomModelResourceLocation(japariman, 0, new ModelResourceLocation(japariman.getRegistryName(), "inventory"));
             ModelLoader.setCustomModelResourceLocation(japarimancocoa, 0, new ModelResourceLocation(japarimancocoa.getRegistryName(), "inventory"));
@@ -262,7 +221,6 @@ public class JapariCraftMod {
             ModelLoader.setCustomModelResourceLocation(summonlucky,0,new ModelResourceLocation(new ResourceLocation(MODID, "summonlucky"),"inventory"));
             ModelLoader.setCustomModelResourceLocation(summonguardlucky,0,new ModelResourceLocation(new ResourceLocation(MODID, "summonguardlucky"),"inventory"));
             ModelLoader.setCustomModelResourceLocation(kabanhat,0,new ModelResourceLocation(new ResourceLocation(MODID, "kabanhat"),"inventory"));
-            ModelLoader.setCustomModelResourceLocation(record_Farewell,0,new ModelResourceLocation(new ResourceLocation(MODID, "farewell"),"inventory"));
             ModelLoader.setCustomModelResourceLocation(japarimanapple,0,new ModelResourceLocation(new ResourceLocation(MODID, "japariman_apple"),"inventory"));
             ModelLoader.setCustomModelResourceLocation(bearstick,0,new ModelResourceLocation(new ResourceLocation(MODID, "bearstick"),"inventory"));
             ModelLoader.setCustomModelResourceLocation(curry,0,new ModelResourceLocation(new ResourceLocation(MODID, "curry"),"inventory"));
@@ -276,24 +234,10 @@ public class JapariCraftMod {
         
 
     }
-    @Mod.EventBusSubscriber
-    public static class Registration {
 
-
-        @SubscribeEvent
-        protected static void registerSoundEvents(RegistryEvent.Register<SoundEvent> event) {
-            ResourceLocation disc_farewell = new ResourceLocation(MODID, "farewell");
-
-            event.getRegistry().registerAll(
-                    new SoundEvent(disc_farewell).setRegistryName(disc_farewell)
-            );
-        }
-    }
 
     @EventHandler
     public void Init(FMLInitializationEvent event) {
-        GameRegistry.registerWorldGenerator(new StarOreGenerator(), 0);
-        JapariRecipeRegister.registry(this);
         MinecraftForge.EVENT_BUS.register(new JAPARILoot());
     }
 

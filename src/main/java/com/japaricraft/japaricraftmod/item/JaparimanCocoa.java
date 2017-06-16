@@ -15,11 +15,5 @@ public class JaparimanCocoa extends ItemFood {
         this.setCreativeTab(JapariCraftMod.tabJapariCraft);
         this.setUnlocalizedName("JaparimanCocoa");
     }
-    public void onCreated(ItemStack stack, World worldIn, EntityPlayer playerIn){
-        if (!worldIn.isRemote)
-        {
-            playerIn.addStat(JapariCraftMod.achievement_japariman);
-            playerIn.addStat(JapariCraftMod.achievement_japarimancocoa);
-        }
-    }
+
 }

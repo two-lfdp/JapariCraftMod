@@ -62,10 +62,7 @@ public class Serval extends EntityTameable {
         return SoundEvents.ENTITY_CAT_DEATH;
     }
 
-    @Override
-    protected SoundEvent getHurtSound() {
-        return SoundEvents.ENTITY_CAT_HURT;
-    }
+
 
     @Override
     protected SoundEvent getAmbientSound() {
@@ -119,7 +116,6 @@ public class Serval extends EntityTameable {
             {
                 if (this.rand.nextInt(3) == 0)
                 {
-                    player.addStat(JapariCraftMod.achievement_friend);
                     this.setTamed(true);
                     this.setOwnerId(player.getUniqueID());
                     this.playTameEffect(true);

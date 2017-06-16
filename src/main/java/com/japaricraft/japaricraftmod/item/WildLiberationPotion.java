@@ -42,7 +42,6 @@ public class WildLiberationPotion extends ItemFood
         {
 
             {
-                player.addStat(JapariCraftMod.achievement_wild);
                 player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 600, 1));
                 player.addPotionEffect(new PotionEffect(MobEffects.HEALTH_BOOST, 3600, 0));
                 player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 2400, 1));

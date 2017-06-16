@@ -17,19 +17,7 @@ public class StarJapariman extends ItemFood {
         this.setUnlocalizedName("StarJapariman");
         this.setAlwaysEdible();
     }
-    protected void onFoodEaten(ItemStack stack, World worldIn, EntityPlayer player)
-    {
-        if (!worldIn.isRemote)
-        {
 
-            {
-                player.addStat(JapariCraftMod.achievement_starjapariman);
-                player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 900, 0));
-                player.addPotionEffect(new PotionEffect(MobEffects.ABSORPTION, 2400, 1));
-
-            }
-        }
-    }
     public boolean hasEffect(ItemStack stack) {
         return true;
     }

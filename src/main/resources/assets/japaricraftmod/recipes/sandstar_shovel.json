@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "X",
+    "#",
+    "#"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:stick"
+    },
+    "X":[ {
+      "item": "japaricraftmod:sandstar_fragment"
+    }
+    ]
+  },
+  "result": {
+    "item": "japaricraftmod:sandstar_shovel",
+    "count": 1
+  }
+}

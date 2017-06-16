@@ -58,11 +58,6 @@ public class PoisonCerulean extends EntityMob  {
         return SoundEvents.ENTITY_SLIME_DEATH;
     }
     @Override
-    protected SoundEvent getHurtSound()
-    {
-        return SoundEvents.ENTITY_SLIME_HURT;
-    }
-    @Override
     protected SoundEvent getAmbientSound()
     {
         return SoundEvents.ENTITY_SLIME_SQUISH;

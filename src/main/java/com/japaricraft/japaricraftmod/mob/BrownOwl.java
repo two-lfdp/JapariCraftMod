@@ -73,10 +73,6 @@ public class BrownOwl extends EntityTameable {
     {
         return SoundEvents.ENTITY_PLAYER_DEATH;
     }
-    @Override
-    protected SoundEvent getHurtSound()
-    {
-        return SoundEvents.ENTITY_PLAYER_HURT;}
 
     protected void applyEntityAttributes()
     {
@@ -114,7 +110,6 @@ public class BrownOwl extends EntityTameable {
             {
                 if (this.rand.nextInt(3) == 0)
                 {
-                    player.addStat(JapariCraftMod.achievement_friend);
                     this.setTamed(true);
                     this.setOwnerId(player.getUniqueID());
                     this.playTameEffect(true);

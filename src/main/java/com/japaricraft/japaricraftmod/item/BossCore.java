@@ -12,10 +12,5 @@ public class BossCore extends Item {
         this.setUnlocalizedName("LuckyBeastCore");
         this.setMaxStackSize(16);
     }
-    public void onCreated(ItemStack stack, World worldIn, EntityPlayer playerIn){
-        if (!worldIn.isRemote)
-        {
-            playerIn.addStat(JapariCraftMod.achievement_bosscore);
-        }
-    }
+
 }

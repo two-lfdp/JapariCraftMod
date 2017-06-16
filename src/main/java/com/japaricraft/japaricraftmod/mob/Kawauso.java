@@ -37,11 +37,7 @@ protected SoundEvent getDeathSound()
         {
         return SoundEvents.ENTITY_PLAYER_DEATH;
         }
-@Override
-protected SoundEvent getHurtSound()
-        {
-        return SoundEvents.ENTITY_PLAYER_HURT;
-        }
+
 
 public EnumCreatureAttribute getCreatureAttribute() { return EnumCreatureAttribute.UNDEFINED; }
 

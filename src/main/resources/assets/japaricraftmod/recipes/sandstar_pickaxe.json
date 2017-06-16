@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX",
+    " # ",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:stick"
+    },
+    "X":[ {
+      "item": "japaricraftmod:sandstar_fragment"
+    }
+    ]
+  },
+  "result": {
+    "item": "japaricraftmod:sandstar_pickaxe",
+    "count": 1
+  }
+}

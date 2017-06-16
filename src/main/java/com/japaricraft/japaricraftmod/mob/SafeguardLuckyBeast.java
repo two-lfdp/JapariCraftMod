@@ -52,7 +52,6 @@ public class SafeguardLuckyBeast extends EntityTameable {
 
         if (this.isTamed()) {
             if (this.isOwner(player) && !this.world.isRemote && !this.isBreedingItem(stack)) {
-                player.addStat(JapariCraftMod.achievement_boss);
                 return true;
             }
         } else if (stack != null && stack.getItem() == Items.REDSTONE && player.getDistanceSqToEntity(this) < 22.0D) {
@@ -102,10 +101,7 @@ public class SafeguardLuckyBeast extends EntityTameable {
         return SoundEvents.BLOCK_GLASS_BREAK;
     }
 
-    @Override
-    protected SoundEvent getHurtSound() {
-        return SoundEvents.ENTITY_PLAYER_HURT;
-    }
+
 
     protected void applyEntityAttributes() {
         super.applyEntityAttributes();

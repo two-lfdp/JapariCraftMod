@@ -62,10 +62,7 @@ public class Jariuma extends EntityTameable implements IRangedAttackMob{
         return SoundEvents.BLOCK_GRAVEL_BREAK;
     }
 
-    @Override
-    protected SoundEvent getHurtSound() {
-        return SoundEvents.BLOCK_GRAVEL_BREAK;
-    }
+
 
     @Override
     protected SoundEvent getAmbientSound() {
@@ -125,8 +122,7 @@ public class Jariuma extends EntityTameable implements IRangedAttackMob{
             {
                 if (this.rand.nextInt(3) == 0)
                 {
-                    player.addStat(JapariCraftMod.achievement_friend);
-                    player.addStat(JapariCraftMod.achievement_jari);
+
                     this.setTamed(true);
                     this.setOwnerId(player.getUniqueID());
                     this.playTameEffect(true);
@@ -172,5 +168,10 @@ public class Jariuma extends EntityTameable implements IRangedAttackMob{
         entityflint.setThrowableHeading(d3,d4,d5,1.6F, 12.0F);
         this.playSound(SoundEvents.ENTITY_SNOWMAN_SHOOT, 1.0F, 1.0F / (this.getRNG().nextFloat() * 0.4F + 0.8F));
         this.world.spawnEntity(entityflint);
+    }
+
+    @Override
+    public void setSwingingArms(boolean swingingArms) {
+
     }
 }
