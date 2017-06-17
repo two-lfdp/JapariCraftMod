@@ -49,7 +49,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 public class JapariCraftMod {
 
     public static final String MODID = "japaricraftmod";
-    public static final String VERSION = "2.5.0";
+    public static final String VERSION = "2.5.1";
     public static final String MODNAME = "JapariCraftMod";
 
     //Modの情報を格納する。 mcmod.infoの上位互換
@@ -240,7 +240,6 @@ public class JapariCraftMod {
     public void Init(FMLInitializationEvent event) {
         MinecraftForge.EVENT_BUS.register(new JAPARILoot());
     }
-
 
 
 
