@@ -2,6 +2,7 @@ package com.japaricraft.japaricraftmod.mob;
 
 
 import com.japaricraft.japaricraftmod.JapariCraftMod;
+import com.japaricraft.japaricraftmod.item.JapariItems;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
@@ -128,7 +129,7 @@ public class SafeguardLuckyBeast extends EntityTameable {
     @Override
     protected void dropFewItems(boolean parRecentlyHit, int parLootingLevel) {
         {
-            this.entityDropItem(new ItemStack(JapariCraftMod.summonlucky, 1, 0), 0.0F);
+            this.entityDropItem(new ItemStack(JapariItems.summonlucky, 1, 0), 0.0F);
         }
     }
     public void fall(float distance, float damageMultiplier)

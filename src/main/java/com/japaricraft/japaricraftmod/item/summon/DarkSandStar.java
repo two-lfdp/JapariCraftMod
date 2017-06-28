@@ -12,14 +12,14 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import java.util.List;
+import static com.japaricraft.japaricraftmod.JapariCraftMod.tabJapariCraft;
 
 
 public class DarkSandStar extends Item {
 
     public DarkSandStar() {
         this.setMaxStackSize(1);
-        this.setCreativeTab(JapariCraftMod.tabJapariCraft);
+        this.setCreativeTab(tabJapariCraft);
         this.setUnlocalizedName("DarkSandStar");
     }
 

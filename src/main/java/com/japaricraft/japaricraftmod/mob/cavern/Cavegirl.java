@@ -1,6 +1,7 @@
 package com.japaricraft.japaricraftmod.mob.cavern;
 
 import com.japaricraft.japaricraftmod.JapariCraftMod;
+import com.japaricraft.japaricraftmod.item.JapariItems;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
@@ -96,7 +97,7 @@ public class Cavegirl extends EntityMob{
     protected void dropFewItems(boolean parRecentlyHit, int parLootingLevel) {
         //ほんとは確率とかで落とすものが決めれるんだと思う
         {
-            this.entityDropItem(new ItemStack(JapariCraftMod.sandstarfragment, 13, 0), 0.0F);
+            this.entityDropItem(new ItemStack(JapariItems.sandstarfragment, 13, 0), 0.0F);
 
         }
     }
@@ -119,7 +120,7 @@ public class Cavegirl extends EntityMob{
     protected void dropLoot(boolean wasRecentlyHit, int lootingModifier, DamageSource source) {
         super.dropLoot(wasRecentlyHit, lootingModifier, source);
 
-        this.entityDropItem(new ItemStack(JapariCraftMod.sandstarfragment, 8, 0), 0.0F);
+        this.entityDropItem(new ItemStack(JapariItems.sandstarfragment, 8, 0), 0.0F);
         this.entityDropItem(new ItemStack(Items.DIAMOND, 6, 0), 0.0F);
     }
     public boolean canDespawn()

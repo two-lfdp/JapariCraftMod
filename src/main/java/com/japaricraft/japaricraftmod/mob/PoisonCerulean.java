@@ -1,6 +1,7 @@
 package com.japaricraft.japaricraftmod.mob;
 
 import com.japaricraft.japaricraftmod.JapariCraftMod;
+import com.japaricraft.japaricraftmod.item.JapariItems;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
@@ -126,7 +127,7 @@ public class PoisonCerulean extends EntityMob  {
         this.entityDropItem(new ItemStack(Items.SLIME_BALL, 4, 0), 0.0F);
         this.entityDropItem(new ItemStack(Items.CLAY_BALL, 2, 0), 0.0F);
         if (rand.nextInt(10) == 0) {
-            entityDropItem(new ItemStack(JapariCraftMod.wildliberationsource), 0.5F);
+            entityDropItem(new ItemStack(JapariItems.wildliberationsource), 0.5F);
         }
     }
 

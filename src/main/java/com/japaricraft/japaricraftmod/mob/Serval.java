@@ -1,6 +1,6 @@
 package com.japaricraft.japaricraftmod.mob;
 
-import com.japaricraft.japaricraftmod.JapariCraftMod;
+import com.japaricraft.japaricraftmod.item.JapariItems;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EnumCreatureAttribute;
@@ -105,7 +105,7 @@ public class Serval extends EntityTameable {
                 return true;
             }
         }
-        else if ( stack != null && stack.getItem() == JapariCraftMod.japariman && player.getDistanceSqToEntity(this) < 22.0D)
+        else if ( stack != null && stack.getItem() == JapariItems.japariman && player.getDistanceSqToEntity(this) < 22.0D)
         {
             if (!player.capabilities.isCreativeMode)
             {

@@ -1,13 +1,14 @@
 package com.japaricraft.japaricraftmod.tool;
 
-import com.japaricraft.japaricraftmod.JapariCraftMod;
 import net.minecraft.item.ItemPickaxe;
+
+import static com.japaricraft.japaricraftmod.JapariCraftMod.tabJapariCraft;
 
 
 public class SandStarPickaxe extends ItemPickaxe {
     public SandStarPickaxe(ToolMaterial SandStar) {
         super(SandStar);
-        this.setCreativeTab(JapariCraftMod.tabJapariCraft);
+        this.setCreativeTab(tabJapariCraft);
         this.setUnlocalizedName("SandStarPickaxe");
     }
 }

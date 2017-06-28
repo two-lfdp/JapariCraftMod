@@ -1,5 +1,6 @@
 package com.japaricraft.japaricraftmod;
 
+import com.japaricraft.japaricraftmod.item.JapariItems;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 
@@ -14,7 +15,7 @@ public class TabJapariCraft extends CreativeTabs {
     @Override
     public ItemStack getTabIconItem()
     {
-        return new ItemStack(JapariCraftMod.starjapariman);
+        return new ItemStack(JapariItems.starjapariman);
     }
 
 

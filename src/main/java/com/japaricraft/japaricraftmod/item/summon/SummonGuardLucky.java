@@ -1,6 +1,5 @@
 package com.japaricraft.japaricraftmod.item.summon;
 
-import com.japaricraft.japaricraftmod.JapariCraftMod;
 import com.japaricraft.japaricraftmod.mob.SafeguardLuckyBeast;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
@@ -13,9 +12,11 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
 
+import static com.japaricraft.japaricraftmod.JapariCraftMod.tabJapariCraft;
+
 public class SummonGuardLucky extends Item {
     public SummonGuardLucky() {
-        this.setCreativeTab(JapariCraftMod.tabJapariCraft);
+        this.setCreativeTab(tabJapariCraft);
         this.setUnlocalizedName("SummonGuardLuckyBeast");
         this.setMaxStackSize(1);
     }

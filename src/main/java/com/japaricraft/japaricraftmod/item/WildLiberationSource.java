@@ -8,11 +8,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 
+import static com.japaricraft.japaricraftmod.JapariCraftMod.tabJapariCraft;
+
 
 public class WildLiberationSource extends ItemFood {
     public WildLiberationSource() {
         super(2,1,false);
-        this.setCreativeTab(JapariCraftMod.tabJapariCraft);
+        this.setCreativeTab(tabJapariCraft);
         this.setUnlocalizedName("WildLiberationSource");
         this.setAlwaysEdible();
 

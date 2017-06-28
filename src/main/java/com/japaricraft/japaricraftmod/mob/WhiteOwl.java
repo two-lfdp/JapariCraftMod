@@ -1,7 +1,7 @@
 package com.japaricraft.japaricraftmod.mob;
 
 
-import com.japaricraft.japaricraftmod.JapariCraftMod;
+import com.japaricraft.japaricraftmod.item.JapariItems;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
@@ -103,7 +103,7 @@ public class WhiteOwl extends EntityTameable {
                 return true;
             }
         }
-        else if ( stack != null && stack.getItem() == JapariCraftMod.curry && player.getDistanceSqToEntity(this) < 30.0D)
+        else if ( stack != null && stack.getItem() == JapariItems.curry && player.getDistanceSqToEntity(this) < 30.0D)
         {
             if (!player.capabilities.isCreativeMode)
             {

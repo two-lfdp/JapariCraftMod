@@ -1,15 +1,14 @@
 package com.japaricraft.japaricraftmod.item;
 
-import com.japaricraft.japaricraftmod.JapariCraftMod;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemFood;
-import net.minecraft.item.ItemStack;
-import net.minecraft.world.World;
+
+
+import static com.japaricraft.japaricraftmod.JapariCraftMod.tabJapariCraft;
 
 public class JaparimanApple extends ItemFood {
     public JaparimanApple() {
-        super(5, 3, false);
-        this.setCreativeTab(JapariCraftMod.tabJapariCraft);
+        super(7, 3, false);
+        this.setCreativeTab(tabJapariCraft);
         this.setUnlocalizedName("JaparimanApple");
     }
 

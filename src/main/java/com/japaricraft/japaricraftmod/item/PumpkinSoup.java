@@ -7,11 +7,13 @@ import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
+import static com.japaricraft.japaricraftmod.JapariCraftMod.tabJapariCraft;
+
 
 public class PumpkinSoup extends ItemFood {
     public PumpkinSoup (){
         super(7,3,false);
-        this.setCreativeTab(JapariCraftMod.tabJapariCraft);
+        this.setCreativeTab(tabJapariCraft);
         this.setUnlocalizedName("PumpkinSoup");
         this.setMaxStackSize(8);
     }

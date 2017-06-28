@@ -1,6 +1,5 @@
 package com.japaricraft.japaricraftmod.item;
 
-import com.japaricraft.japaricraftmod.JapariCraftMod;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -11,13 +10,15 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 
+import static com.japaricraft.japaricraftmod.JapariCraftMod.tabJapariCraft;
+
 
 public class WildLiberationPotion extends ItemFood
 {
 
     public WildLiberationPotion (){
         super(0,1,false);
-        this.setCreativeTab(JapariCraftMod.tabJapariCraft);
+        this.setCreativeTab(tabJapariCraft);
         this.setUnlocalizedName("WildLiberationPotion");
         this.setMaxStackSize(1);
         this.setAlwaysEdible();

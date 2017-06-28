@@ -1,6 +1,5 @@
 package com.japaricraft.japaricraftmod.item;
 
-import com.japaricraft.japaricraftmod.JapariCraftMod;
 import com.japaricraft.japaricraftmod.mob.Jariuma;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -12,11 +11,13 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+import static com.japaricraft.japaricraftmod.JapariCraftMod.tabJapariCraft;
+
 
 public class ItemSandStarFragment extends Item {
     public ItemSandStarFragment() {
 
-        this.setCreativeTab(JapariCraftMod.tabJapariCraft);
+        this.setCreativeTab(tabJapariCraft);
         this.setUnlocalizedName("SandStarFragment");
 
 
