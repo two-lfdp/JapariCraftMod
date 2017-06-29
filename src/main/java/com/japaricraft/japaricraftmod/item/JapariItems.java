@@ -72,7 +72,6 @@ public class JapariItems {
         ITEMS.add(item);
 
         registry.registerAll(item);
-        //GameRegistry.register(item);
     }
 
 
@@ -84,14 +83,14 @@ public class JapariItems {
         registerItems(registry, curry.setRegistryName("curry"));
         registerItems(registry, starjapariman.setRegistryName("starjapariman"));
         registerItems(registry, darksandstar.setRegistryName("darksandstar"));
-        registerItems(registry, starcaramel.setRegistryName("sugarstar"));
+        registerItems(registry, starcaramel.setRegistryName("starcaramel"));
         registerItems(registry, sugarstar.setRegistryName("sugarstar"));
         registerItems(registry, sandstarsword.setRegistryName("sandstarsword"));
         registerItems(registry, sandstarpickaxe.setRegistryName("sandstarpickaxe"));
         registerItems(registry, sandstarshovel.setRegistryName("sandstarshovel"));
         registerItems(registry, wildliberationpotion.setRegistryName("wildliberationpotion"));
         registerItems(registry, wildliberationsource.setRegistryName("wildliberationsource"));
-        registerItems(registry, pumpkinsoup.setRegistryName("japariman"));
+        registerItems(registry, pumpkinsoup.setRegistryName("pumpkinsoup"));
         registerItems(registry, bosscore.setRegistryName("bosscore"));
         registerItems(registry, bearstick.setRegistryName("bearstick"));
         registerItems(registry, summonlucky.setRegistryName("summonlucky"));
