@@ -1,26 +1,28 @@
 package com.japaricraft.japaricraftmod.render.modelrender;
 
-import net.minecraft.client.model.ModelBase;
-import net.minecraft.client.renderer.entity.RenderLiving;
+import com.japaricraft.japaricraftmod.mob.Cerulean;
+import com.japaricraft.japaricraftmod.render.ModelCerulean;
+import net.minecraft.client.renderer.entity.RenderLivingBase;
 import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import static com.japaricraft.japaricraftmod.JapariCraftMod.MODID;
+
 @SideOnly(Side.CLIENT)
-public class CeruleanRender <T extends EntityLiving> extends RenderLiving<T> {
-    private static final ResourceLocation texture = new ResourceLocation("JapariCraftMod:textures/entity/cerulean/cerulean.png");
-
-
-
-    public CeruleanRender(RenderManager rendermanagerIn, ModelBase modelbaseIn, float shadowsizeIn) {
-        super(rendermanagerIn, modelbaseIn, shadowsizeIn);
+public class CeruleanRender extends RenderLivingBase<Cerulean>
+{
+    private static final ResourceLocation Cerulean_TEXTURES = new ResourceLocation(MODID, "textures/entity/cerulean/cerulean.png");
+    public CeruleanRender(RenderManager renderManager)
+    {
+        super(renderManager, new ModelCerulean(), 0.9F);
     }
 
 
-
-
-    public ResourceLocation getEntityTexture(EntityLiving entity) { return texture; }
-
+    @Override
+    protected ResourceLocation getEntityTexture(Cerulean entity)
+    {
+        return Cerulean_TEXTURES;
+    }
 }

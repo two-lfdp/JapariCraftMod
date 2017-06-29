@@ -17,7 +17,6 @@ import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundEvent;
-import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 
 public class Araisan extends EntityTameable {
@@ -110,12 +109,6 @@ public class Araisan extends EntityTameable {
             if (this.isOwner(player) && !this.world.isRemote && !this.isBreedingItem(stack))
             {
                 this.aiSit.setSitting(!this.isSitting());
-                if (!this.hashat() &&  stack.getItem() == JapariItems.kabanhat)
-                {
-                    player.sendStatusMessage(new TextComponentTranslation("entity.arai.friend"), true);
-
-                    this.dataManager.set(HAT,true);
-                }
                 return true;
             }
         }

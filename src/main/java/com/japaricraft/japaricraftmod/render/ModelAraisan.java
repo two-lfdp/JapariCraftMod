@@ -230,9 +230,6 @@ public class ModelAraisan extends ModelBase {
         this.tail_1.render(f5);
         this.body.render(f5);
 
-        if(araisan.hashat()) {
-            this.head.addChild(this.hat_m);
-        }
     }
 
     //下は特殊なモデルを動かすのに必須

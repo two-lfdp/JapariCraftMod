@@ -7,7 +7,7 @@ import net.minecraft.entity.Entity;
 public class ModelCerulean extends ModelBase {
     public ModelRenderer shape1;
 
-    public ModelCerulean(int pentan) {
+    public ModelCerulean() {
         this.textureWidth = 64;
         this.textureHeight = 32;
         this.shape1 = new ModelRenderer(this, 0, 0);

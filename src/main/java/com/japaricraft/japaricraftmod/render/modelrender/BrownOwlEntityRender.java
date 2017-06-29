@@ -1,24 +1,28 @@
 package com.japaricraft.japaricraftmod.render.modelrender;
 
-import net.minecraft.client.model.ModelBase;
-import net.minecraft.client.renderer.entity.RenderLiving;
+import com.japaricraft.japaricraftmod.mob.BrownOwl;
+import com.japaricraft.japaricraftmod.render.ModelBrownOwl;
+import net.minecraft.client.renderer.entity.RenderLivingBase;
 import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import static com.japaricraft.japaricraftmod.JapariCraftMod.MODID;
+
 @SideOnly(Side.CLIENT)
-public class BrownOwlEntityRender <T extends EntityLiving> extends RenderLiving<T> {
-    private static final ResourceLocation texture = new ResourceLocation("JapariCraftMod:textures/entity/owl1.png");
-
-
-    public BrownOwlEntityRender(RenderManager rendermanagerIn, ModelBase modelbaseIn, float shadowsizeIn) {
-        super(rendermanagerIn, modelbaseIn, shadowsizeIn);
+public class BrownOwlEntityRender extends RenderLivingBase<BrownOwl>
+{
+    private static final ResourceLocation OWL_TEXTURES = new ResourceLocation(MODID, "textures/entity/owl1.png");
+    public BrownOwlEntityRender(RenderManager renderManager)
+    {
+        super(renderManager, new ModelBrownOwl(), 0.5F);
     }
 
 
-    public ResourceLocation getEntityTexture(EntityLiving entity) {
-        return texture;
+    @Override
+    protected ResourceLocation getEntityTexture(BrownOwl entity)
+    {
+        return OWL_TEXTURES;
     }
 }

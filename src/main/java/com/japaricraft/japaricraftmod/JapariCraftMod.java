@@ -3,12 +3,8 @@ package com.japaricraft.japaricraftmod;
 import com.japaricraft.japaricraftmod.item.*;
 import com.japaricraft.japaricraftmod.mob.*;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.EnumCreatureType;
-import net.minecraft.init.Biomes;
 import net.minecraft.item.Item;
 import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.biome.Biome;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
@@ -19,7 +15,6 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.EntityEntry;
-import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
@@ -40,7 +35,8 @@ public class JapariCraftMod {
     @SidedProxy(clientSide = "com.japaricraft.japaricraftmod.ClientProxy", serverSide = "com.japaricraft.japaricraftmod.ServerProxy")
     public static CommonProxy proxy;
 
-
+    @Mod.Instance(MODID)
+    public static JapariCraftMod instance;
     public static final CreativeTabs tabJapariCraft = new TabJapariCraft("JapariCraftTab");
 
     //Memo: 変数名は型のクラスがわかり易い名前にしましょう
@@ -76,8 +72,11 @@ public class JapariCraftMod {
     public void preInit(FMLPreInitializationEvent event) {
 
 
+        if (event.getSide().isClient())
+        {
+            JapariRenderingRegistry.registerRenderers();
+        }
         MinecraftForge.EVENT_BUS.register(this);
-        //蔵鯖共通処理終わらせてからクライアントのみの処理書いたほうが見やすい
         //メタ情報の登録
         loadMeta();
     }

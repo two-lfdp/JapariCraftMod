@@ -5,11 +5,9 @@ import com.google.common.collect.Lists;
 import com.japaricraft.japaricraftmod.RecipeHelper;
 import com.japaricraft.japaricraftmod.SandStarSword;
 import com.japaricraft.japaricraftmod.item.summon.DarkSandStar;
-import com.japaricraft.japaricraftmod.item.summon.SummonGuardLucky;
 import com.japaricraft.japaricraftmod.item.summon.SummonLucky;
 import com.japaricraft.japaricraftmod.tool.SandStarPickaxe;
 import com.japaricraft.japaricraftmod.tool.SandStarShovel;
-import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.init.Blocks;
@@ -22,7 +20,6 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.util.EnumHelper;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
@@ -55,11 +52,9 @@ public class JapariItems {
     public static final Item sandstarpickaxe = new SandStarPickaxe(SandStar);
     public static final Item wildliberationsource = new WildLiberationSource();
     public static final Item wildliberationpotion = new WildLiberationPotion();
-    public static final Item pumpkinsoup = new PumpkinSoup();
     public static final Item bosscore = new BossCore();
     public static final Item bearstick = new BearStick(Bearstick);
     public static final Item summonlucky = new SummonLucky();
-    public static final Item summonguardlucky = new SummonGuardLucky();
     public static final Item kabanhat= new ItemKabanHat(KabanHatMaterial, 0, EntityEquipmentSlot.HEAD);
 
     public static List<Item> getItems()
@@ -90,11 +85,9 @@ public class JapariItems {
         registerItems(registry, sandstarshovel.setRegistryName("sandstarshovel"));
         registerItems(registry, wildliberationpotion.setRegistryName("wildliberationpotion"));
         registerItems(registry, wildliberationsource.setRegistryName("wildliberationsource"));
-        registerItems(registry, pumpkinsoup.setRegistryName("pumpkinsoup"));
         registerItems(registry, bosscore.setRegistryName("bosscore"));
         registerItems(registry, bearstick.setRegistryName("bearstick"));
         registerItems(registry, summonlucky.setRegistryName("summonlucky"));
-        registerItems(registry, summonguardlucky.setRegistryName("summonguardlucky"));
         registerItems(registry, kabanhat.setRegistryName("kabanhat"));
     }
 
@@ -115,11 +108,9 @@ public class JapariItems {
         registerModel(sandstarshovel,"sandstar_shovel");
         registerModel(wildliberationpotion,"wildliberation_potion");
         registerModel(wildliberationsource,"wildliberation_source");
-        registerModel(pumpkinsoup,"japariman");
         registerModel(bosscore,"bosscore");
         registerModel(bearstick,"bearstick");
         registerModel(summonlucky,"summonlucky");
-        registerModel(summonguardlucky,"summonguardlucky");
         registerModel(kabanhat,"kabanhat");
     }
 
@@ -168,8 +159,12 @@ public class JapariItems {
     }
     public static void registerRecipes(IForgeRegistry<IRecipe> registry)
     {
+        registry.register(RecipeHelper.getShapelessRecipe("japariman_apple",
+                new ItemStack(japarimanapple),Items.WHEAT,Items.APPLE));
         registry.register(RecipeHelper.getShapelessRecipe("japariman",
                 new ItemStack(japariman),Items.WHEAT,Items.SUGAR));
+        registry.register(RecipeHelper.getShapelessRecipe("japariman_cocoa",
+                new ItemStack(japarimancocoa),Items.WHEAT,new ItemStack(Items.DYE,1,3)));
         registry.register(RecipeHelper.getSwordRecipe("sandstarsword",
                 new ItemStack(sandstarsword),JapariItems.sandstarfragment));
         registry.register(RecipeHelper.getPickaxeRecipe("sandstarpickaxe",
