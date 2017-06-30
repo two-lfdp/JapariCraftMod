@@ -159,6 +159,8 @@ public class JapariItems {
     }
     public static void registerRecipes(IForgeRegistry<IRecipe> registry)
     {
+        registry.register(RecipeHelper.getShapelessRecipe("curry",
+                new ItemStack(curry),Items.WHEAT,Items.POTIONITEM,Items.POTATO,Items.CARROT));
         registry.register(RecipeHelper.getShapelessRecipe("japariman_apple",
                 new ItemStack(japarimanapple),Items.WHEAT,Items.APPLE));
         registry.register(RecipeHelper.getShapelessRecipe("japariman",
