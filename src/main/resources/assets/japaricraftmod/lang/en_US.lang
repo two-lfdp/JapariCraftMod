@@ -17,9 +17,11 @@ achievement.japaricraftmod.summonlucky=Cute Robot
 achievement.japaricraftmod.summonlucky.desc=Summon Lucky Beast
 achievement.japaricraftmod.jari=What is this?
 achievement.japaricraftmod.jari.desc=Why Gravel Horse?
+
 tile.BlockWoodenFrame.name=Wooden Frame
 tile.SandStarBlock.name=SandStarBlock
 tile.SandStarOre.name=SandStarOre
+
 item.Japariman.name=Japariman
 item.JaparimanCocoa.name=Cocoa Japariman
 item.SandStarFragment.name=Fragment of SandStar
@@ -44,6 +46,7 @@ item.Curry.name=Curry
 item.SandStarLow.name=SandStarLow
 item.StarCaramel.name=StarCaramel
 item.GoldenJapariman.name=GoldenJapariman
+
 entity.AncientSkeleton.name=Ancient Skeleton
 entity.KouteiPenguin.name=Emperor Penguins
 entity.Serval.name=Serval Cat
@@ -60,7 +63,12 @@ entity.Guide.name=Alice
 entity.Jariuma.name=Jariuma
 entity.Villager.japalar=Japari Staff
 entity.Araisan.name=Araisan
+
 itemGroup.JapariCraftTab=JapariCraft
+
 entity.arai.friend=Thank`s!!
 entity.weitting=Weitting
 entity.active=Active
+
+advancements.japaricraftmod.japariman.title=Friends Food
+advancements.japaricraftmod.japariman.description=Make Japariman

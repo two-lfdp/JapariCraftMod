@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "japaricraftmod:japariman"
+    },
+    "title": {
+      "translate": "advancements.japaricraftmod.japariman.title"
+    },
+    "description": {
+      "translate": "advancements.japaricraftmod.japariman.description"
+    },
+    "frame": "task"
+  },
+  "criteria": {
+    "japariman": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "japaricraftmod:japariman"
+          }
+        ]
+      }
+    }
+  }
+}
