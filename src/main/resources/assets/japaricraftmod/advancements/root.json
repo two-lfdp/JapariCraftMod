@@ -9,7 +9,7 @@
     "description": {
       "translate": "advancements.japaricraftmod.japariman.description"
     },
-    "frame": "task"
+    "background": "minecraft:textures/blocks/leave.png"
   },
   "criteria": {
     "japariman": {

@@ -17,9 +17,11 @@ achievement.japaricraftmod.summonlucky=ラッキービースト
 achievement.japaricraftmod.summonlucky.desc=ラッキービーストにレッドストーンをあげる
 achievement.japaricraftmod.jari=なんのふれんず？
 achievement.japaricraftmod.jari.desc=じゃりじゃりする〜wwww
+
 tile.BlockWoodenFrame.name=木の枠
 tile.SandStarBlock.name=サンドスター
 tile.SandStarOre.name=サンドスター鉱石
+
 item.Japariman.name=じゃぱりまん
 item.JaparimanCocoa.name=じゃぱりまんココア味
 item.SandStarFragment.name=サンドスターの塊
@@ -44,6 +46,7 @@ item.Curry.name=カレー
 item.StarCaramel.name=サンドスターキャラメル
 item.GoldenJapariman.name=金りんごいりじゃぱりまん
 item.SandStarLow.name=サンドスターロウ
+
 entity.AncientSkeleton.name=古代スケルトン
 entity.KouteiPenguin.name=皇帝ペンギン
 entity.Cerulean.name=セルリアン
@@ -69,3 +72,8 @@ entity.lucky.friend=マカセテ
 entity.arai.friend=ありがとうなのだ！
 entity.weitting=じゃりうまは待機中です
 entity.active=じゃりうまはアクティブです
+
+advancements.japaricraftmod.japariman.title=フレンズのためなら
+advancements.japaricraftmod.japariman.description=じゃぱりまんをつくる
+advancements.japaricraftmod.curry.title=ほんとにカレー？
+advancements.japaricraftmod.curry.description=カレーを作る
