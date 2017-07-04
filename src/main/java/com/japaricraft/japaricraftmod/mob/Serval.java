@@ -44,7 +44,7 @@ public class Serval extends EntityTameable {
         this.tasks.addTask(6, new EntityAITempt(this, 1.05D, JapariItems.japariman, false));
         this.tasks.addTask(6, new EntityAIWander(this, 1.0D));
         this.tasks.addTask(7, new EntityAILookIdle(this));
-        this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityPlayer.class, 3.0F));
+        this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityPlayer.class, 4.0F));
         this.targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, Cerulean.class, false));
         this.targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, PoisonCerulean.class, false));
     }
