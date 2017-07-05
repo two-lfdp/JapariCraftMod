@@ -39,6 +39,9 @@ public class WhiteOwl extends EntityTameable {
         this.setSize(0.6F, 1.9F);
         this.setTamed(false);
     }
+    public EntityAgeable createChild(EntityAgeable ageable) {
+        return null;
+    }
 
     protected void initEntityAI()  {
         this.aiSit = new EntityAISit(this);
@@ -59,9 +62,6 @@ public class WhiteOwl extends EntityTameable {
 
     }
 
-    public EntityAgeable createChild(EntityAgeable ageable) {
-        return null;
-    }
 
 
     protected void updateAITasks()

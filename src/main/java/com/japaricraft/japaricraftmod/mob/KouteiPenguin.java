@@ -15,7 +15,7 @@ import net.minecraft.world.World;
 public class KouteiPenguin extends EntityCreature {
     public KouteiPenguin(World world) {
         super(world);
-
+        this.setSize(0.6F, 1.9F);
 
         //this.tasks.addTask(0, new Entityattack);
         this.tasks.addTask(1, new EntityAISwimming(this));

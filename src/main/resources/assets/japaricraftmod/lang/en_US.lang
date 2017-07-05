@@ -1,23 +1,4 @@
 #
-achievement.japaricraftmod.woodframe=Block for Shelters?
-achievement.japaricraftmod.woodframe.desc=It's Easy to craft this!
-achievement.japaricraftmod.craft_japariman=Fast Food
-achievement.japaricraftmod.craft_japariman.desc=Is This a Manju?
-achievement.japaricraftmod.craft_japarimancocoa=Arrange FastFood
-achievement.japaricraftmod.craft_japarimancocoa.desc=More delicious
-achievement.japaricraftmod.eat_starjapariman=Super Japariman
-achievement.japaricraftmod.eat_starjapariman.desc=SandStar's Power
-achievement.japaricraftmod.drink_wildpotion=WildPower
-achievement.japaricraftmod.drink_wildpotion.desc=Drink and get power!
-achievement.japaricraftmod.friend=FirstFriend!
-achievement.japaricraftmod.friend.desc=Give Friends a Favorite Food
-achievement.japaricraftmod.bosscore=Engineer
-achievement.japaricraftmod.bosscore.desc=Make Lucky Beast Core
-achievement.japaricraftmod.summonlucky=Cute Robot
-achievement.japaricraftmod.summonlucky.desc=Summon Lucky Beast
-achievement.japaricraftmod.jari=What is this?
-achievement.japaricraftmod.jari.desc=Why Gravel Horse?
-
 tile.BlockWoodenFrame.name=Wooden Frame
 tile.SandStarBlock.name=SandStarBlock
 tile.SandStarOre.name=SandStarOre
