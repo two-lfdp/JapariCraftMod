@@ -25,7 +25,7 @@ import net.minecraftforge.registries.IForgeRegistry;
 public class JapariCraftMod {
 
     public static final String MODID = "japaricraftmod";
-    public static final String VERSION = "2.5.3";
+    public static final String VERSION = "2.5.5";
     public static final String MODNAME = "JapariCraftMod";
 
 
@@ -93,7 +93,8 @@ public class JapariCraftMod {
         metadata.version = VERSION;
         metadata.description = ("けもフレ関連のアイテムを追加します");
         metadata.credits = ("制作者:bagu_chan");
-        metadata.logoFile = ("assets/j}aparicraftmod/textures/logo.png");
+        metadata.logoFile = ("assets/japaricraftmod/textures/logo.png");
+        metadata.url=("https://minecraft.curseforge.com/projects/japaricraftmod");
         metadata.useDependencyInformation = true;
         // Modのアップデートをチェックする為のJson 詳細は、 https://mcforge.readthedocs.io/en/latest/gettingstarted/autoupdate/ 参照
         //これをfalseにしておかないと、ModMetadataが読み込まれない
