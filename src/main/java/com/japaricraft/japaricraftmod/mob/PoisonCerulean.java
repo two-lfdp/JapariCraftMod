@@ -22,7 +22,7 @@ import net.minecraft.util.SoundEvent;
 import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
 
-public class PoisonCerulean extends EntityMob  {
+public class PoisonCerulean extends Cerulean  {
 
 
     public PoisonCerulean(World worldIn)
@@ -30,40 +30,6 @@ public class PoisonCerulean extends EntityMob  {
         super(worldIn);
         this.setSize(0.95F, 0.95F);
     }
-
-    protected void initEntityAI(){
-
-
-        //this.tasks.addTask(0, new Entityattack);
-        this.tasks.addTask(0, new EntityAIAttackMelee(this, 1.0D, true));
-        this.tasks.addTask(4, new EntityAIMoveTowardsRestriction(this, 1.0D));
-        this.tasks.addTask(5, new EntityAIWanderAvoidWater(this,1.0D));
-        this.tasks.addTask(6, new EntityAIMoveThroughVillage(this, 1.0D, false));
-        this.tasks.addTask(6, new EntityAIWander(this, 1.0D));
-        this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
-        this.tasks.addTask(7, new EntityAILookIdle(this));
-        this.tasks.addTask(6, new EntityAIMoveThroughVillage(this, 1.0D, false));
-        this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true, EntityPigZombie.class));
-        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, true));
-        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget<>(this, EntityVillager.class, false));
-        this.targetTasks.addTask(3,new EntityAINearestAttackableTarget<>(this, KouteiPenguin.class,true));
-        this.targetTasks.addTask(3,new EntityAINearestAttackableTarget<>(this, Serval.class,true));
-        this.targetTasks.addTask(3,new EntityAINearestAttackableTarget<>(this, WhiteOwl.class,true));
-        this.targetTasks.addTask(3,new EntityAINearestAttackableTarget<>(this, BrownOwl.class,true));
-    }
-
-
-    @Override
-    protected SoundEvent getDeathSound()
-    {
-        return SoundEvents.ENTITY_SLIME_DEATH;
-    }
-    @Override
-    protected SoundEvent getAmbientSound()
-    {
-        return SoundEvents.ENTITY_SLIME_SQUISH;
-    }
-
 
     public boolean attackEntityAsMob(Entity entityIn)
     {

@@ -2,6 +2,7 @@ package com.japaricraft.japaricraftmod.item;
 
 
 import com.google.common.collect.Lists;
+import com.japaricraft.japaricraftmod.JapariCraftMod;
 import com.japaricraft.japaricraftmod.RecipeHelper;
 import com.japaricraft.japaricraftmod.SandStarSword;
 import com.japaricraft.japaricraftmod.item.summon.DarkSandStar;
@@ -20,11 +21,16 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.util.EnumHelper;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.oredict.ShapedOreRecipe;
+import net.minecraftforge.oredict.ShapelessOreRecipe;
+import net.minecraftforge.registries.ForgeRegistry;
 import net.minecraftforge.registries.IForgeRegistry;
 
 
+import java.lang.ref.Reference;
 import java.util.Collections;
 import java.util.List;
 
@@ -173,6 +179,23 @@ public class JapariItems {
                 new ItemStack(sandstarpickaxe),JapariItems.sandstarfragment));
         registry.register(RecipeHelper.getShovelRecipe("sandstarshovel",
                 new ItemStack(sandstarshovel),JapariItems.sandstarfragment));
+        addOredictRecipe(new ItemStack(JapariItems.kabanhat, 1, 0), "sms", "m m", 's', Items.FEATHER, 'm', Items.LEATHER);
+    }
+    public static ShapedOreRecipe addOredictRecipe(final ItemStack output, final Object... recipe) {
+        final ShapedOreRecipe sor = new ShapedOreRecipe(getRecipeGroup(output), output, recipe);
+        ForgeRegistries.RECIPES.register(sor.setRegistryName(sor.getGroup()));
+        return sor;
     }
 
+    public static void addShapelessOredictRecipe(final ItemStack output, final Object... recipe) {
+        final ShapelessOreRecipe sor = new ShapelessOreRecipe(getRecipeGroup(output), output, recipe);
+        ForgeRegistries.RECIPES.register(sor.setRegistryName(sor.getGroup()));
+    }
+    public static ResourceLocation getRecipeGroup(final ItemStack stack) {
+        String s = stack.getUnlocalizedName();
+        final int idx = s.lastIndexOf(":");
+        if (idx>=0)
+            s = s.substring(idx+1);
+        return new ResourceLocation(MODID, s);
+    }
 }

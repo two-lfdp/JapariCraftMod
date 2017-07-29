@@ -11,28 +11,18 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.network.datasync.DataParameter;
-import net.minecraft.network.datasync.DataSerializers;
-import net.minecraft.network.datasync.EntityDataManager;
-import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 
-public class Araisan extends EntityTameable {
 
-    private static final DataParameter<Boolean> HAT = EntityDataManager.createKey(Araisan.class, DataSerializers.BOOLEAN);
+public class Fennec extends EntityTameable {
 
-    public Araisan(World worldIn) {
+
+    public Fennec(World worldIn) {
         super(worldIn);
         this.setSize(0.6F, 1.9F);
         this.setTamed(false);
-        this.dataManager.register(HAT, Boolean.FALSE);
-    }
-
-    public boolean hashat()
-    {
-        return this.dataManager.get(HAT);
     }
 
 
@@ -46,13 +36,14 @@ public class Araisan extends EntityTameable {
         this.aiSit = new EntityAISit(this);
 
         this.tasks.addTask(0, new EntityAISwimming(this));
-        this.tasks.addTask(2, this.aiSit);
-        this.tasks.addTask(3, new EntityAIAvoidEntity<>(this,Cerulean.class, 6.5F, 1.1D, 1.1D));
-        this.tasks.addTask(4, new EntityAIFollowOwner(this, 1.0D, 10.0F, 2.0F));
-        this.tasks.addTask(5, new EntityAIMate(this, 1.0D));
+        this.tasks.addTask(1, this.aiSit);
+        this.tasks.addTask(2, new EntityAIAvoidEntity<>(this,Cerulean.class, 6.5F, 1.1D, 1.1D));
+        this.tasks.addTask(3, new EntityAIFollowOwner(this, 1.0D, 10.0F, 2.0F));
+        this.tasks.addTask(4, new EntityAIMate(this, 1.0D));
+        this.tasks.addTask(4, new EntityAITempt(this, 1.05D, JapariItems.japariman, false));
         this.tasks.addTask(5, new EntityAIWander(this, 1.0D));
         this.tasks.addTask(6, new EntityAILookIdle(this));
-        this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 4.0F));
+        this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityPlayer.class, 4.0F));
     }
 
     protected void applyEntityAttributes() {
@@ -60,16 +51,18 @@ public class Araisan extends EntityTameable {
         this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(24D);
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.25D);
         this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(30D);
-
-        this.getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(3.0D);
     }
 
 
     @Override
     protected SoundEvent getDeathSound() {
-        return SoundEvents.ENTITY_PLAYER_DEATH;
+        return SoundEvents.ENTITY_CAT_DEATH;
     }
 
+    @Override
+    protected SoundEvent getAmbientSound() {
+        return SoundEvents.ENTITY_CAT_AMBIENT;
+    }
 
     public EnumCreatureAttribute getCreatureAttribute() {
         return EnumCreatureAttribute.UNDEFINED;
@@ -93,7 +86,7 @@ public class Araisan extends EntityTameable {
                 return true;
             }
         }
-        else if ( stack != null && stack.getItem() == JapariItems.japariman && player.getDistanceSqToEntity(this) < 22.0D)
+        else if ( stack != null && stack.getItem() == JapariItems.japariman && player.getDistanceSqToEntity(this) < 24.0D)
         {
             if (!player.capabilities.isCreativeMode)
             {
@@ -124,15 +117,11 @@ public class Araisan extends EntityTameable {
         return super.processInteract(player, hand);
     }
 
-
-
-
-
     protected void updateAITasks()
     {
         if (this.ticksExisted % 5 == 0)
         {
-            this.heal(0.12F);
+            this.heal(0.1F);
         }
     }
 

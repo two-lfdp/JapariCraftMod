@@ -1,5 +1,6 @@
 package com.japaricraft.japaricraftmod.mob;
 
+import com.japaricraft.japaricraftmod.render.modelrender.FennecRender;
 import com.japaricraft.japaricraftmod.render.modelrender.*;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.relauncher.Side;
@@ -18,6 +19,6 @@ public class JapariRenderingRegistry {
         RenderingRegistry.registerEntityRenderingHandler(LuckyBeast.class, LuckyBeastEntityRender::new);
         RenderingRegistry.registerEntityRenderingHandler(Guide.class, GuideRender::new);
         RenderingRegistry.registerEntityRenderingHandler(KouteiPenguin.class, KouteiPenginEntityRender::new);
-
+        RenderingRegistry.registerEntityRenderingHandler(Fennec.class, FennecRender::new);
     }
 }
