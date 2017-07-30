@@ -1,7 +1,6 @@
 package com.japaricraft.japaricraftmod.mob;
 
 import com.japaricraft.japaricraftmod.item.JapariItems;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -14,7 +13,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
-import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
@@ -27,12 +25,6 @@ public class Araisan extends EntityTameable {
         super(worldIn);
         this.setSize(0.6F, 1.9F);
         this.setTamed(false);
-        this.dataManager.register(HAT, Boolean.FALSE);
-    }
-
-    public boolean hashat()
-    {
-        return this.dataManager.get(HAT);
     }
 
 

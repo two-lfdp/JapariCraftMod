@@ -1,6 +1,5 @@
 package com.japaricraft.japaricraftmod.item;
 
-import com.japaricraft.japaricraftmod.JapariCraftMod;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemFood;

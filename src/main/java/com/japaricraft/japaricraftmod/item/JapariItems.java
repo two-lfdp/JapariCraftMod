@@ -2,7 +2,6 @@ package com.japaricraft.japaricraftmod.item;
 
 
 import com.google.common.collect.Lists;
-import com.japaricraft.japaricraftmod.JapariCraftMod;
 import com.japaricraft.japaricraftmod.RecipeHelper;
 import com.japaricraft.japaricraftmod.SandStarSword;
 import com.japaricraft.japaricraftmod.item.summon.DarkSandStar;
@@ -26,11 +25,9 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
-import net.minecraftforge.registries.ForgeRegistry;
 import net.minecraftforge.registries.IForgeRegistry;
 
 
-import java.lang.ref.Reference;
 import java.util.Collections;
 import java.util.List;
 

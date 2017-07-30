@@ -3,7 +3,6 @@ package com.japaricraft.japaricraftmod.world;
 
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.village.Village;
 import net.minecraft.world.gen.structure.StructureComponent;
 import net.minecraft.world.gen.structure.StructureVillagePieces;
 import net.minecraftforge.fml.common.registry.VillagerRegistry;

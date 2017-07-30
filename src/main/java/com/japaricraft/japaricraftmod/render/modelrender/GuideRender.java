@@ -1,14 +1,9 @@
 package com.japaricraft.japaricraftmod.render.modelrender;
 
 import com.japaricraft.japaricraftmod.mob.Guide;
-import com.japaricraft.japaricraftmod.mob.Serval;
 import com.japaricraft.japaricraftmod.render.ModelGuide;
-import com.japaricraft.japaricraftmod.render.ModelServal;
-import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.entity.RenderBiped;
-import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;

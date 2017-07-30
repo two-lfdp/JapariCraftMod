@@ -2,14 +2,11 @@ package com.japaricraft.japaricraftmod;
 
 import com.japaricraft.japaricraftmod.item.*;
 import com.japaricraft.japaricraftmod.mob.*;
-import com.japaricraft.japaricraftmod.world.ComponentJapariHouse1;
-import com.japaricraft.japaricraftmod.world.JapariHouseEventHandler;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.world.gen.structure.MapGenStructureIO;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
@@ -22,7 +19,6 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.EntityEntry;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.common.registry.VillagerRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -93,8 +89,8 @@ public class JapariCraftMod {
     public void init(FMLInitializationEvent event)
     {
         // チャンク生成時に追加構造物の生成が行われるようにフック
-        VillagerRegistry.instance().registerVillageCreationHandler(new JapariHouseEventHandler());
-        MapGenStructureIO.registerStructureComponent(ComponentJapariHouse1.class, "JH1");
+        //VillagerRegistry.instance().registerVillageCreationHandler(new JapariHouseEventHandler());
+        //MapGenStructureIO.registerStructureComponent(ComponentJapariHouse1.class, "JH1");
         japariProfession = new VillagerRegistry.VillagerProfession(JapariCraftMod.MODID + ":zookeeper","japaricraftmod:textures/entity/zookeeper.png", "japaricraftmod:textures/entity/zookeeper_zombie.png");
         ForgeRegistries.VILLAGER_PROFESSIONS.register(japariProfession);
         VillagerRegistry.VillagerCareer career_shop = new VillagerRegistry.VillagerCareer(japariProfession, MODID + ".zookeeper");

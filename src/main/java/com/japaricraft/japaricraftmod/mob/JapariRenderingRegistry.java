@@ -1,6 +1,5 @@
 package com.japaricraft.japaricraftmod.mob;
 
-import com.japaricraft.japaricraftmod.render.modelrender.FennecRender;
 import com.japaricraft.japaricraftmod.render.modelrender.*;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.relauncher.Side;
