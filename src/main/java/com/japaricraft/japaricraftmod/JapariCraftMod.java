@@ -2,9 +2,14 @@ package com.japaricraft.japaricraftmod;
 
 import com.japaricraft.japaricraftmod.item.*;
 import com.japaricraft.japaricraftmod.mob.*;
+import com.japaricraft.japaricraftmod.world.ComponentJapariHouse1;
+import com.japaricraft.japaricraftmod.world.JapariHouseEventHandler;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.passive.EntityVillager;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.world.gen.structure.MapGenStructureIO;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
@@ -16,6 +21,9 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.EntityEntry;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
+import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.common.registry.VillagerRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
@@ -39,6 +47,7 @@ public class JapariCraftMod {
     @Mod.Instance(MODID)
     public static JapariCraftMod instance;
     public static final CreativeTabs tabJapariCraft = new TabJapariCraft("JapariCraftTab");
+    public static VillagerRegistry.VillagerProfession japariProfession;
 
     //Memo: 変数名は型のクラスがわかり易い名前にしましょう
 
@@ -76,13 +85,35 @@ public class JapariCraftMod {
             JapariRenderingRegistry.registerRenderers();
         }
         MinecraftForge.EVENT_BUS.register(this);
+
         //メタ情報の登録
         loadMeta();
     }
     @EventHandler
     public void init(FMLInitializationEvent event)
     {
-
+        // チャンク生成時に追加構造物の生成が行われるようにフック
+        VillagerRegistry.instance().registerVillageCreationHandler(new JapariHouseEventHandler());
+        MapGenStructureIO.registerStructureComponent(ComponentJapariHouse1.class, "JH1");
+        japariProfession = new VillagerRegistry.VillagerProfession(JapariCraftMod.MODID + ":zookeeper","japaricraftmod:textures/entity/zookeeper.png", "japaricraftmod:textures/entity/zookeeper_zombie.png");
+        ForgeRegistries.VILLAGER_PROFESSIONS.register(japariProfession);
+        VillagerRegistry.VillagerCareer career_shop = new VillagerRegistry.VillagerCareer(japariProfession, MODID + ".zookeeper");
+        career_shop.addTrade(1,
+                new EntityVillager.EmeraldForItems(Items.WHEAT, new EntityVillager.PriceInfo(18, 22)),
+                new EntityVillager.EmeraldForItems(Items.APPLE, new EntityVillager.PriceInfo(12, 18)),
+                new EntityVillager.EmeraldForItems(Items.SUGAR, new EntityVillager.PriceInfo(14, 19))
+        );
+        career_shop.addTrade(2,
+                new EntityVillager.ListItemForEmeralds(JapariItems.japariman, new EntityVillager.PriceInfo(-10, -18)),
+                new EntityVillager.ListItemForEmeralds(JapariItems.kabanhat, new EntityVillager.PriceInfo(1, 2))
+        );
+        career_shop.addTrade(3,
+                new EntityVillager.EmeraldForItems(Items.SLIME_BALL, new EntityVillager.PriceInfo(8, 14))
+        );
+        career_shop.addTrade(3,
+                new EntityVillager.ListItemForEmeralds(JapariItems.sandstarsword, new EntityVillager.PriceInfo(13,17)),
+                new EntityVillager.ListItemForEmeralds(JapariItems.sandstarpickaxe, new EntityVillager.PriceInfo(13, 18))
+        );
         JapariEntityRegistry.addSpawns();
     }
 

@@ -56,3 +56,5 @@ advancements.japaricraftmod.japariman.title=Friends Food
 advancements.japaricraftmod.japariman.description=Make Japariman
 advancements.japaricraftmod.curry.title=Really curry?
 advancements.japaricraftmod.curry.description=Make Curry
+
+entity.Villager.japaricraftmod.zookeeper=ZooKeeper

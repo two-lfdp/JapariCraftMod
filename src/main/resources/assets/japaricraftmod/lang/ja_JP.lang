@@ -78,3 +78,5 @@ advancements.japaricraftmod.japariman.title=フレンズのためなら
 advancements.japaricraftmod.japariman.description=じゃぱりまんをつくる
 advancements.japaricraftmod.curry.title=ほんとにカレー？
 advancements.japaricraftmod.curry.description=カレーを作る
+
+entity.Villager.japaricraftmod.zookeeper=飼育員
