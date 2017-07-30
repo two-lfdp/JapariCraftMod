@@ -29,7 +29,7 @@ import net.minecraftforge.registries.IForgeRegistry;
 public class JapariCraftMod {
 
     public static final String MODID = "japaricraftmod";
-    public static final String VERSION = "2.6.0";
+    public static final String VERSION = "2.6.1";
     public static final String MODNAME = "JapariCraftMod";
 
 
@@ -88,6 +88,7 @@ public class JapariCraftMod {
     @EventHandler
     public void init(FMLInitializationEvent event)
     {
+        JapariEntityRegistry.addSpawns();
         // チャンク生成時に追加構造物の生成が行われるようにフック
         //VillagerRegistry.instance().registerVillageCreationHandler(new JapariHouseEventHandler());
         //MapGenStructureIO.registerStructureComponent(ComponentJapariHouse1.class, "JH1");
@@ -110,7 +111,6 @@ public class JapariCraftMod {
                 new EntityVillager.ListItemForEmeralds(JapariItems.sandstarsword, new EntityVillager.PriceInfo(13,17)),
                 new EntityVillager.ListItemForEmeralds(JapariItems.sandstarpickaxe, new EntityVillager.PriceInfo(13, 18))
         );
-        JapariEntityRegistry.addSpawns();
     }
 
     private void loadMeta() {
