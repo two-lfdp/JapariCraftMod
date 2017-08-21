@@ -93,7 +93,7 @@ public class JapariCraftMod {
         // チャンク生成時に追加構造物の生成が行われるようにフック
         VillagerRegistry villageRegistry = VillagerRegistry.instance();
         villageRegistry.instance().registerVillageCreationHandler(new ComponentJapariHouse1.VillageManager());
-        MapGenStructureIO.registerStructureComponent(ComponentJapariHouse1.class, JapariCraftMod.MODID + ":EngineersHouse");
+        MapGenStructureIO.registerStructureComponent(ComponentJapariHouse1.class, "JH1");
         japariProfession = new VillagerRegistry.VillagerProfession(JapariCraftMod.MODID + ":zookeeper","japaricraftmod:textures/entity/zookeeper.png", "japaricraftmod:textures/entity/zookeeper_zombie.png");
         ForgeRegistries.VILLAGER_PROFESSIONS.register(japariProfession);
         VillagerRegistry.VillagerCareer career_zookeeper = new VillagerRegistry.VillagerCareer(japariProfession, MODID + ".zookeeper");
