@@ -1,5 +1,13 @@
 {
   "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "japaricraftmod:japariman",
+      "japaricraftmod:japariman_apple",
+      "japaricraftmod:japariman_cocoa",
+      "japaricraftmod:curry"
+    ]
+  },
   "criteria": {
     "wheat": {
       "trigger": "minecraft:inventory_changed",
@@ -10,14 +18,17 @@
           }
         ]
       }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": [
+          "japaricraftmod:japariman",
+          "japaricraftmod:japariman_apple",
+          "japaricraftmod:japariman_cocoa",
+          "japaricraftmod:curry"
+        ]
+      }
     }
-  },
-  "rewards": {
-    "recipes": [
-      "japaricraftmod:japariman",
-      "japaricraftmod:japariman_apple",
-      "japaricraftmod:japariman_cocoa",
-      "japaricraftmod:curry"
-    ]
   }
 }

@@ -1,12 +1,14 @@
 package com.japaricraft.japaricraftmod;
 
-import com.japaricraft.japaricraftmod.item.*;
+import com.japaricraft.japaricraftmod.hander.JapariItems;
 import com.japaricraft.japaricraftmod.mob.*;
+import com.japaricraft.japaricraftmod.world.ComponentJapariHouse1;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.world.gen.structure.MapGenStructureIO;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
@@ -29,7 +31,7 @@ import net.minecraftforge.registries.IForgeRegistry;
 public class JapariCraftMod {
 
     public static final String MODID = "japaricraftmod";
-    public static final String VERSION = "2.6.1";
+    public static final String VERSION = "2.7.0";
     public static final String MODNAME = "JapariCraftMod";
 
 
@@ -51,7 +53,6 @@ public class JapariCraftMod {
     @SubscribeEvent
     public void registerItems(RegistryEvent.Register<Item> event) {
         IForgeRegistry<Item> registry = event.getRegistry();
-
         JapariItems.registerItems(registry);
     }
 
@@ -90,24 +91,26 @@ public class JapariCraftMod {
     {
         JapariEntityRegistry.addSpawns();
         // チャンク生成時に追加構造物の生成が行われるようにフック
-        //VillagerRegistry.instance().registerVillageCreationHandler(new JapariHouseEventHandler());
-        //MapGenStructureIO.registerStructureComponent(ComponentJapariHouse1.class, "JH1");
+        VillagerRegistry villageRegistry = VillagerRegistry.instance();
+        villageRegistry.instance().registerVillageCreationHandler(new ComponentJapariHouse1.VillageManager());
+        MapGenStructureIO.registerStructureComponent(ComponentJapariHouse1.class, JapariCraftMod.MODID + ":EngineersHouse");
         japariProfession = new VillagerRegistry.VillagerProfession(JapariCraftMod.MODID + ":zookeeper","japaricraftmod:textures/entity/zookeeper.png", "japaricraftmod:textures/entity/zookeeper_zombie.png");
         ForgeRegistries.VILLAGER_PROFESSIONS.register(japariProfession);
-        VillagerRegistry.VillagerCareer career_shop = new VillagerRegistry.VillagerCareer(japariProfession, MODID + ".zookeeper");
-        career_shop.addTrade(1,
+        VillagerRegistry.VillagerCareer career_zookeeper = new VillagerRegistry.VillagerCareer(japariProfession, MODID + ".zookeeper");
+        career_zookeeper.addTrade(1,
                 new EntityVillager.EmeraldForItems(Items.WHEAT, new EntityVillager.PriceInfo(18, 22)),
                 new EntityVillager.EmeraldForItems(Items.APPLE, new EntityVillager.PriceInfo(12, 18)),
-                new EntityVillager.EmeraldForItems(Items.SUGAR, new EntityVillager.PriceInfo(14, 19))
+                new EntityVillager.EmeraldForItems(Items.SUGAR, new EntityVillager.PriceInfo(14, 19)),
+                new EntityVillager.EmeraldForItems(Items.CARROT, new EntityVillager.PriceInfo(15, 19))
         );
-        career_shop.addTrade(2,
+        career_zookeeper.addTrade(2,
                 new EntityVillager.ListItemForEmeralds(JapariItems.japariman, new EntityVillager.PriceInfo(-10, -18)),
                 new EntityVillager.ListItemForEmeralds(JapariItems.kabanhat, new EntityVillager.PriceInfo(1, 2))
         );
-        career_shop.addTrade(3,
+        career_zookeeper.addTrade(3,
                 new EntityVillager.EmeraldForItems(Items.SLIME_BALL, new EntityVillager.PriceInfo(8, 14))
         );
-        career_shop.addTrade(3,
+        career_zookeeper.addTrade(4,
                 new EntityVillager.ListItemForEmeralds(JapariItems.sandstarsword, new EntityVillager.PriceInfo(13,17)),
                 new EntityVillager.ListItemForEmeralds(JapariItems.sandstarpickaxe, new EntityVillager.PriceInfo(13, 18))
         );

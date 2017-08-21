@@ -1,5 +1,10 @@
 {
   "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "japaricraftmod:kabanhat"
+    ]
+  },
   "criteria": {
     "wheat": {
       "trigger": "minecraft:inventory_changed",
@@ -10,11 +15,14 @@
           }
         ]
       }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": [
+          "japaricraftmod:kabanhat"
+        ]
+      }
     }
-  },
-  "rewards": {
-    "recipes": [
-      "japaricraftmod:kabanhat"
-    ]
   }
 }

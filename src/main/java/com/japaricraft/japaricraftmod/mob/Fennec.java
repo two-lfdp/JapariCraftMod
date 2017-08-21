@@ -1,6 +1,6 @@
 package com.japaricraft.japaricraftmod.mob;
 
-import com.japaricraft.japaricraftmod.item.JapariItems;
+import com.japaricraft.japaricraftmod.hander.JapariItems;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;

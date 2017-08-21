@@ -1,13 +1,15 @@
-package com.japaricraft.japaricraftmod.item;
+package com.japaricraft.japaricraftmod.hander;
 
 
 import com.google.common.collect.Lists;
 import com.japaricraft.japaricraftmod.RecipeHelper;
 import com.japaricraft.japaricraftmod.SandStarSword;
+import com.japaricraft.japaricraftmod.item.*;
 import com.japaricraft.japaricraftmod.item.summon.DarkSandStar;
 import com.japaricraft.japaricraftmod.item.summon.SummonLucky;
 import com.japaricraft.japaricraftmod.tool.SandStarPickaxe;
 import com.japaricraft.japaricraftmod.tool.SandStarShovel;
+import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.init.Blocks;
@@ -15,6 +17,7 @@ import net.minecraft.init.Items;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
@@ -39,6 +42,7 @@ public class JapariItems {
     private static Item.ToolMaterial SandStar = EnumHelper.addToolMaterial("SandStar", 3, 700, 6F, 4F, 16).setRepairItem(new ItemStack(JapariItems.sandstarfragment));
     private static Item.ToolMaterial Bearstick = EnumHelper.addToolMaterial("Bearstick", 1, 100, 4F, 2F, 12).setRepairItem(new ItemStack(Blocks.PLANKS));
     public static final ItemArmor.ArmorMaterial KabanHatMaterial = EnumHelper.addArmorMaterial("kabanhatmaterial", MODID +":"+"textures/models/armor/kabanhat_layer_1.png", 8, new int[]{2,0,0,2}, 30, net.minecraft.init.SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,0);
+
 
     public static final Item japariman = new Japariman();
     public static final Item japarimancocoa = new JaparimanCocoa();
@@ -72,6 +76,8 @@ public class JapariItems {
         registry.registerAll(item);
     }
 
+    //ブロックの登録。
+    ResourceLocation woodenframeblocklocation = new ResourceLocation(MODID, "woodenframeblock");//これはウッデンフレームブロックのテクスチャ指定。
 
     public static void registerItems(IForgeRegistry<Item> registry) {
         registerItems(registry, japariman.setRegistryName("japariman"));
@@ -115,6 +121,7 @@ public class JapariItems {
         registerModel(bearstick,"bearstick");
         registerModel(summonlucky,"summonlucky");
         registerModel(kabanhat,"kabanhat");
+        registerModel(sandstarfragment,"sandstar_fragment");
     }
 
     @SideOnly(Side.CLIENT)

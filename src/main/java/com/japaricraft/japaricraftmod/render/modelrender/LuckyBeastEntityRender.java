@@ -1,6 +1,7 @@
 package com.japaricraft.japaricraftmod.render.modelrender;
 
 import com.japaricraft.japaricraftmod.mob.LuckyBeast;
+import com.japaricraft.japaricraftmod.render.ModelLuckyBeast;
 import com.japaricraft.japaricraftmod.render.ModelShoebill;
 import net.minecraft.client.renderer.entity.RenderLivingBase;
 import net.minecraft.client.renderer.entity.RenderManager;
@@ -16,7 +17,7 @@ public class LuckyBeastEntityRender extends RenderLivingBase<LuckyBeast>
     private static final ResourceLocation Lucky_TEXTURES = new ResourceLocation(MODID, "textures/entity/luckybeast.png");
     public LuckyBeastEntityRender(RenderManager renderManager)
     {
-        super(renderManager, new ModelShoebill(), 0.6F);
+        super(renderManager, new ModelLuckyBeast(), 0.6F);
     }
 
 

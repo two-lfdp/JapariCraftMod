@@ -1,6 +1,6 @@
 package com.japaricraft.japaricraftmod;
 
-import com.japaricraft.japaricraftmod.item.JapariItems;
+import com.japaricraft.japaricraftmod.hander.JapariItems;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 

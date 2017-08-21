@@ -1,14 +1,21 @@
 package com.japaricraft.japaricraftmod.world;
 
+import com.japaricraft.japaricraftmod.JapariCraftMod;
 import net.minecraft.block.BlockStairs;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.IEntityLivingData;
+import net.minecraft.entity.monster.EntityZombieVillager;
+import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.structure.StructureBoundingBox;
 import net.minecraft.world.gen.structure.StructureComponent;
 import net.minecraft.world.gen.structure.StructureVillagePieces;
+import net.minecraftforge.fml.common.registry.VillagerRegistry;
 
 import java.util.List;
 import java.util.Random;
@@ -16,6 +23,7 @@ import java.util.Random;
 
 public class ComponentJapariHouse1 extends StructureVillagePieces.Village {
 
+    private int newvillagersSpawned;
     public ComponentJapariHouse1(StructureVillagePieces.Start p_i2107_1_, int p_i2107_2_, Random p_i2106_3_, StructureBoundingBox p_i2106_4_, EnumFacing facing) {
         super(p_i2107_1_, p_i2107_2_);
         this.setCoordBaseMode(facing);
@@ -34,21 +42,18 @@ public class ComponentJapariHouse1 extends StructureVillagePieces.Village {
      * second Part of Structure generating, this for example places Spiderwebs, Mob Spawners, it closes
      * Mineshafts at the end, it adds Fences...
      */
-    public boolean addComponentParts(World worldIn, Random randomIn, StructureBoundingBox structureBoundingBoxIn)
-    {
-        if (this.averageGroundLvl < 0)
-        {
+    public boolean addComponentParts(World worldIn, Random randomIn, StructureBoundingBox structureBoundingBoxIn) {
+        if (this.averageGroundLvl < 0) {
             this.averageGroundLvl = this.getAverageGroundLevel(worldIn, structureBoundingBoxIn);
 
-            if (this.averageGroundLvl < 0)
-            {
+            if (this.averageGroundLvl < 0) {
                 return true;
             }
 
             this.boundingBox.offset(0, this.averageGroundLvl - this.boundingBox.maxY + 7 - 1, 0);
         }
 
-        IBlockState iblockstate = this.getBiomeSpecificBlockState(Blocks.COBBLESTONE.getDefaultState());
+        IBlockState iblockstate = this.getBiomeSpecificBlockState(Blocks.CONCRETE.getDefaultState());
         IBlockState iblockstate1 = this.getBiomeSpecificBlockState(Blocks.OAK_STAIRS.getDefaultState().withProperty(BlockStairs.FACING, EnumFacing.NORTH));
         IBlockState iblockstate2 = this.getBiomeSpecificBlockState(Blocks.OAK_STAIRS.getDefaultState().withProperty(BlockStairs.FACING, EnumFacing.SOUTH));
         IBlockState iblockstate3 = this.getBiomeSpecificBlockState(Blocks.OAK_STAIRS.getDefaultState().withProperty(BlockStairs.FACING, EnumFacing.WEST));
@@ -79,10 +84,8 @@ public class ComponentJapariHouse1 extends StructureVillagePieces.Village {
         IBlockState iblockstate7 = iblockstate1;
         IBlockState iblockstate8 = iblockstate2;
 
-        for (int i = -1; i <= 2; ++i)
-        {
-            for (int j = 0; j <= 8; ++j)
-            {
+        for (int i = -1; i <= 2; ++i) {
+            for (int j = 0; j <= 8; ++j) {
                 this.setBlockState(worldIn, iblockstate7, j, 4 + i, i, structureBoundingBoxIn);
                 this.setBlockState(worldIn, iblockstate8, j, 4 + i, 5 - i, structureBoundingBoxIn);
             }
@@ -113,12 +116,10 @@ public class ComponentJapariHouse1 extends StructureVillagePieces.Village {
         this.placeTorch(worldIn, EnumFacing.NORTH, 2, 3, 1, structureBoundingBoxIn);
         this.createVillageDoor(worldIn, structureBoundingBoxIn, randomIn, 2, 1, 0, EnumFacing.NORTH);
 
-        if (this.getBlockStateFromPos(worldIn, 2, 0, -1, structureBoundingBoxIn).getMaterial() == Material.AIR && this.getBlockStateFromPos(worldIn, 2, -1, -1, structureBoundingBoxIn).getMaterial() != Material.AIR)
-        {
+        if (this.getBlockStateFromPos(worldIn, 2, 0, -1, structureBoundingBoxIn).getMaterial() == Material.AIR && this.getBlockStateFromPos(worldIn, 2, -1, -1, structureBoundingBoxIn).getMaterial() != Material.AIR) {
             this.setBlockState(worldIn, iblockstate7, 2, 0, -1, structureBoundingBoxIn);
 
-            if (this.getBlockStateFromPos(worldIn, 2, -1, -1, structureBoundingBoxIn).getBlock() == Blocks.GRASS_PATH)
-            {
+            if (this.getBlockStateFromPos(worldIn, 2, -1, -1, structureBoundingBoxIn).getBlock() == Blocks.GRASS_PATH) {
                 this.setBlockState(worldIn, Blocks.GRASS.getDefaultState(), 2, -1, -1, structureBoundingBoxIn);
             }
         }
@@ -128,21 +129,42 @@ public class ComponentJapariHouse1 extends StructureVillagePieces.Village {
         this.placeTorch(worldIn, EnumFacing.SOUTH, 6, 3, 4, structureBoundingBoxIn);
         this.createVillageDoor(worldIn, structureBoundingBoxIn, randomIn, 6, 1, 5, EnumFacing.SOUTH);
 
-        for (int k = 0; k < 5; ++k)
-        {
-            for (int l = 0; l < 9; ++l)
-            {
+        for (int k = 0; k < 5; ++k) {
+            for (int l = 0; l < 9; ++l) {
                 this.clearCurrentPositionBlocksUpwards(worldIn, l, 7, k, structureBoundingBoxIn);
                 this.replaceAirAndLiquidDownwards(worldIn, iblockstate, l, -1, k, structureBoundingBoxIn);
             }
         }
 
-        this.spawnVillagers(worldIn, structureBoundingBoxIn, 4, 1, 2, 6);
+        this.spawnVillagers(worldIn, structureBoundingBoxIn, 4, 1, 2, 2);
         return true;
     }
-
-    protected int chooseProfession(int villagersSpawnedIn, int currentVillagerProfession)
+    @Override
+    protected VillagerRegistry.VillagerProfession chooseForgeProfession(int count, net.minecraftforge.fml.common.registry.VillagerRegistry.VillagerProfession prof)
     {
-        return villagersSpawnedIn == 0 ? 4 : super.chooseProfession(villagersSpawnedIn, currentVillagerProfession);
+        return JapariCraftMod.japariProfession;
+    }
+    public static class VillageManager implements VillagerRegistry.IVillageCreationHandler
+    {
+        @Override
+        public StructureVillagePieces.Village buildComponent(StructureVillagePieces.PieceWeight villagePiece, StructureVillagePieces.Start startPiece, List<StructureComponent> pieces, Random random, int p1, int p2, int p3,
+                                                             EnumFacing facing, int p5) {
+
+            StructureBoundingBox structureboundingbox = StructureBoundingBox.getComponentToAddBoundingBox(p1, p2, p3, 0, 0, 0, 9, 7, 11, facing);
+            return canVillageGoDeeper(structureboundingbox) && StructureComponent.findIntersecting(pieces, structureboundingbox) == null ? new ComponentJapariHouse1(startPiece, p5, random, structureboundingbox, facing) : null;
+
+        }
+
+        @Override
+        public StructureVillagePieces.PieceWeight getVillagePieceWeight(Random random, int i) {
+
+            return new StructureVillagePieces.PieceWeight(ComponentJapariHouse1.class, 17, MathHelper.getInt(random, i, i + 1));
+
+        }
+        @Override
+        public Class<?> getComponentClass()
+        {
+            return ComponentJapariHouse1.class;
+        }
     }
 }
