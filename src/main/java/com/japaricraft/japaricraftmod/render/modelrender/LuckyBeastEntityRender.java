@@ -2,7 +2,6 @@ package com.japaricraft.japaricraftmod.render.modelrender;
 
 import com.japaricraft.japaricraftmod.mob.LuckyBeast;
 import com.japaricraft.japaricraftmod.render.ModelLuckyBeast;
-import com.japaricraft.japaricraftmod.render.ModelShoebill;
 import net.minecraft.client.renderer.entity.RenderLivingBase;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
