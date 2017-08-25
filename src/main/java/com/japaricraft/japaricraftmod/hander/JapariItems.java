@@ -37,7 +37,7 @@ import static com.japaricraft.japaricraftmod.JapariCraftMod.MODID;
 public class JapariItems {
     private static final NonNullList<Item> ITEMS = NonNullList.create();
 
-    private static Item.ToolMaterial SandStar = EnumHelper.addToolMaterial("SandStar", 3, 700, 6F, 4F, 16).setRepairItem(new ItemStack(JapariItems.sandstarfragment));
+    private static Item.ToolMaterial SandStar = EnumHelper.addToolMaterial("SandStar", 3, 800, 9F, 4F, 16).setRepairItem(new ItemStack(JapariItems.sandstarfragment));
     private static Item.ToolMaterial Bearstick = EnumHelper.addToolMaterial("Bearstick", 1, 100, 4F, 2F, 12).setRepairItem(new ItemStack(Blocks.PLANKS));
     public static final ItemArmor.ArmorMaterial KabanHatMaterial = EnumHelper.addArmorMaterial("kabanhatmaterial", MODID +":"+"textures/models/armor/kabanhat_layer_1.png", 8, new int[]{2,0,0,2}, 30, net.minecraft.init.SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,0);
 
@@ -153,8 +153,11 @@ public class JapariItems {
         registry.register(RecipeHelper.getShovelRecipe("sandstarshovel",
                 new ItemStack(sandstarshovel),JapariItems.sandstarfragment));
         addOredictRecipe(new ItemStack(JapariItems.kabanhat, 1, 0), "sms", "m m", 's', Items.FEATHER, 'm', Items.LEATHER);
-        registry.register(RecipeHelper.getShapelessRecipe("sandstar_block",
+        registry.register(RecipeHelper.getShapelessRecipe("wildliberationpotion",
                 new ItemStack(wildliberationpotion), Items.GOLDEN_APPLE,Items.POTIONITEM,JapariItems.wildliberationsource));
+        registry.register(RecipeHelper.getSquareRecipe("sandstarblock",new ItemStack(JapariBlocks.SANDSTAR_BLOCK),JapariItems.sandstarfragment));
+        registry.register(RecipeHelper.getShapelessRecipe("sandstar_fragment",
+                new ItemStack(sandstarfragment,9), JapariBlocks.SANDSTAR_BLOCK));
     }
     public static ShapedOreRecipe addOredictRecipe(final ItemStack output, final Object... recipe) {
         final ShapedOreRecipe sor = new ShapedOreRecipe(getRecipeGroup(output), output, recipe);

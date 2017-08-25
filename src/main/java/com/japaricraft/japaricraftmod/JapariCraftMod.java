@@ -33,7 +33,7 @@ import net.minecraftforge.registries.IForgeRegistry;
 public class JapariCraftMod {
 
     public static final String MODID = "japaricraftmod";
-    public static final String VERSION = "2.8.0";
+    public static final String VERSION = "2.7.1";
     public static final String MODNAME = "JapariCraftMod";
 
 
@@ -121,7 +121,8 @@ public class JapariCraftMod {
         career_zookeeper.addTrade(3,
                 new EntityVillager.EmeraldForItems(Items.SLIME_BALL, new EntityVillager.PriceInfo(8, 14)),
                 new EntityVillager.ListItemForEmeralds(JapariItems.sandstarsword, new EntityVillager.PriceInfo(13,17)),
-                new EntityVillager.ListItemForEmeralds(JapariItems.sandstarpickaxe, new EntityVillager.PriceInfo(13, 18))
+                new EntityVillager.ListItemForEmeralds(JapariItems.sandstarpickaxe, new EntityVillager.PriceInfo(13, 18)),
+                new EntityVillager.ListItemForEmeralds(JapariItems.wildliberationpotion, new EntityVillager.PriceInfo(10, 16))
         );
     }
 
