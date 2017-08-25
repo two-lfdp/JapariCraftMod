@@ -1,5 +1,5 @@
 {
-  "parent": "japaricraftmod:block/sandstarblock",
+  "parent": "japaricraftmod:block/sandstar_block",
   "display": {
     "thirdperson": {
       "rotation": [ 10, -45, 170 ],

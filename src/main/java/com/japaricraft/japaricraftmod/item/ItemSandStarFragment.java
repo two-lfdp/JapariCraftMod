@@ -8,11 +8,8 @@ import static com.japaricraft.japaricraftmod.JapariCraftMod.tabJapariCraft;
 
 public class ItemSandStarFragment extends Item {
     public ItemSandStarFragment() {
-
         this.setCreativeTab(tabJapariCraft);
         this.setUnlocalizedName("SandStarFragment");
-
-
     }
 
     public boolean hasEffect(ItemStack stack) {

@@ -1,8 +1,10 @@
 package com.japaricraft.japaricraftmod;
 
+import com.japaricraft.japaricraftmod.hander.JapariBlocks;
 import com.japaricraft.japaricraftmod.hander.JapariItems;
 import com.japaricraft.japaricraftmod.mob.*;
 import com.japaricraft.japaricraftmod.world.ComponentJapariHouse1;
+import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.init.Items;
@@ -51,14 +53,23 @@ public class JapariCraftMod {
 
 
     @SubscribeEvent
+    public void registerBlocks(RegistryEvent.Register<Block> event)
+    {
+        IForgeRegistry<Block> registry = event.getRegistry();
+
+        JapariBlocks.registerBlocks(registry);
+    }
+    @SubscribeEvent
     public void registerItems(RegistryEvent.Register<Item> event) {
         IForgeRegistry<Item> registry = event.getRegistry();
+        JapariBlocks.registerItemBlocks(registry);
         JapariItems.registerItems(registry);
     }
 
     @SideOnly(Side.CLIENT)
     @SubscribeEvent
     public void registerModels(ModelRegistryEvent event) {
+        JapariBlocks.registerModels();
         JapariItems.registerModels();
     }
 
@@ -108,9 +119,7 @@ public class JapariCraftMod {
                 new EntityVillager.ListItemForEmeralds(JapariItems.kabanhat, new EntityVillager.PriceInfo(1, 2))
         );
         career_zookeeper.addTrade(3,
-                new EntityVillager.EmeraldForItems(Items.SLIME_BALL, new EntityVillager.PriceInfo(8, 14))
-        );
-        career_zookeeper.addTrade(4,
+                new EntityVillager.EmeraldForItems(Items.SLIME_BALL, new EntityVillager.PriceInfo(8, 14)),
                 new EntityVillager.ListItemForEmeralds(JapariItems.sandstarsword, new EntityVillager.PriceInfo(13,17)),
                 new EntityVillager.ListItemForEmeralds(JapariItems.sandstarpickaxe, new EntityVillager.PriceInfo(13, 18))
         );
