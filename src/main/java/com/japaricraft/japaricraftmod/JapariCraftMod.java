@@ -14,10 +14,12 @@ import net.minecraft.world.gen.structure.MapGenStructureIO;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.ModMetadata;
 import net.minecraftforge.fml.common.SidedProxy;
+import net.minecraftforge.fml.common.event.FMLConstructionEvent;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -49,9 +51,15 @@ public class JapariCraftMod {
     public static final CreativeTabs tabJapariCraft = new TabJapariCraft("JapariCraftTab");
     public static VillagerRegistry.VillagerProfession japariProfession;
 
+    private static Block blockin;
     //Memo: 変数名は型のクラスがわかり易い名前にしましょう
 
-
+    @EventHandler
+    public void construct(FMLConstructionEvent event) {
+        MinecraftForge.EVENT_BUS.register(this);
+        JapariFluidCore.register();
+        FluidRegistry.enableUniversalBucket();
+    }
     @SubscribeEvent
     public void registerBlocks(RegistryEvent.Register<Block> event)
     {
@@ -92,8 +100,6 @@ public class JapariCraftMod {
         {
             JapariRenderingRegistry.registerRenderers();
         }
-        MinecraftForge.EVENT_BUS.register(this);
-
         //メタ情報の登録
         loadMeta();
     }
@@ -103,7 +109,7 @@ public class JapariCraftMod {
         JapariEntityRegistry.addSpawns();
         // チャンク生成時に追加構造物の生成が行われるようにフック
         VillagerRegistry villageRegistry = VillagerRegistry.instance();
-        villageRegistry.instance().registerVillageCreationHandler(new ComponentJapariHouse1.VillageManager());
+        VillagerRegistry.instance().registerVillageCreationHandler(new ComponentJapariHouse1.VillageManager());
         MapGenStructureIO.registerStructureComponent(ComponentJapariHouse1.class, "JH1");
         japariProfession = new VillagerRegistry.VillagerProfession(JapariCraftMod.MODID + ":zookeeper","japaricraftmod:textures/entity/zookeeper.png", "japaricraftmod:textures/entity/zookeeper_zombie.png");
         ForgeRegistries.VILLAGER_PROFESSIONS.register(japariProfession);
@@ -116,6 +122,7 @@ public class JapariCraftMod {
         );
         career_zookeeper.addTrade(2,
                 new EntityVillager.ListItemForEmeralds(JapariItems.japariman, new EntityVillager.PriceInfo(-10, -18)),
+                new EntityVillager.ListItemForEmeralds(JapariItems.japarimanapple, new EntityVillager.PriceInfo(-10, -18)),
                 new EntityVillager.ListItemForEmeralds(JapariItems.kabanhat, new EntityVillager.PriceInfo(1, 2))
         );
         career_zookeeper.addTrade(3,

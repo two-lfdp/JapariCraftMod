@@ -2,6 +2,7 @@
 tile.BlockWoodenFrame.name=Wooden Frame
 tile.SandStarBlock.name=SandStarBlock
 tile.SandStarOre.name=SandStarOre
+tile.sandstarwater.name=SandStarWater
 
 item.Japariman.name=Japariman
 item.JaparimanCocoa.name=Cocoa Japariman
@@ -58,3 +59,5 @@ advancements.japaricraftmod.curry.title=Really curry?
 advancements.japaricraftmod.curry.description=Make Curry
 
 entity.Villager.japaricraftmod.zookeeper=ZooKeeper
+
+fluid.sandstarwater=SandStarWater

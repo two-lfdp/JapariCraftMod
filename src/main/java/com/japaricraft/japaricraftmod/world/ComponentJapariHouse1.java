@@ -1,6 +1,7 @@
 package com.japaricraft.japaricraftmod.world;
 
 import com.japaricraft.japaricraftmod.JapariCraftMod;
+import com.japaricraft.japaricraftmod.hander.JapariBlocks;
 import net.minecraft.block.BlockStairs;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -19,7 +20,6 @@ import java.util.Random;
 
 public class ComponentJapariHouse1 extends StructureVillagePieces.Village {
 
-    private int newvillagersSpawned;
     public ComponentJapariHouse1(StructureVillagePieces.Start p_i2107_1_, int p_i2107_2_, Random p_i2106_3_, StructureBoundingBox p_i2106_4_, EnumFacing facing) {
         super(p_i2107_1_, p_i2107_2_);
         this.setCoordBaseMode(facing);
@@ -59,6 +59,7 @@ public class ComponentJapariHouse1 extends StructureVillagePieces.Village {
         this.fillWithBlocks(worldIn, structureBoundingBoxIn, 1, 1, 1, 7, 4, 4, Blocks.AIR.getDefaultState(), Blocks.AIR.getDefaultState(), false);
         this.fillWithBlocks(worldIn, structureBoundingBoxIn, 2, 1, 6, 8, 4, 10, Blocks.AIR.getDefaultState(), Blocks.AIR.getDefaultState(), false);
         this.fillWithBlocks(worldIn, structureBoundingBoxIn, 2, 0, 6, 8, 0, 10, Blocks.DIRT.getDefaultState(), Blocks.DIRT.getDefaultState(), false);
+        this.fillWithBlocks(worldIn, structureBoundingBoxIn, 4, 0, 8, 6, 0, 9, JapariBlocks.SANDSTARWATERBLOCK.getDefaultState(), Blocks.DIRT.getDefaultState(), false);
         this.setBlockState(worldIn, iblockstate, 6, 0, 6, structureBoundingBoxIn);
         this.fillWithBlocks(worldIn, structureBoundingBoxIn, 2, 1, 6, 2, 1, 10, iblockstate6, iblockstate6, false);
         this.fillWithBlocks(worldIn, structureBoundingBoxIn, 8, 1, 6, 8, 1, 10, iblockstate6, iblockstate6, false);
@@ -77,13 +78,11 @@ public class ComponentJapariHouse1 extends StructureVillagePieces.Village {
         this.setBlockState(worldIn, iblockstate4, 0, 4, 3, structureBoundingBoxIn);
         this.setBlockState(worldIn, iblockstate4, 8, 4, 2, structureBoundingBoxIn);
         this.setBlockState(worldIn, iblockstate4, 8, 4, 3, structureBoundingBoxIn);
-        IBlockState iblockstate7 = iblockstate1;
-        IBlockState iblockstate8 = iblockstate2;
 
         for (int i = -1; i <= 2; ++i) {
             for (int j = 0; j <= 8; ++j) {
-                this.setBlockState(worldIn, iblockstate7, j, 4 + i, i, structureBoundingBoxIn);
-                this.setBlockState(worldIn, iblockstate8, j, 4 + i, 5 - i, structureBoundingBoxIn);
+                this.setBlockState(worldIn, iblockstate1, j, 4 + i, i, structureBoundingBoxIn);
+                this.setBlockState(worldIn, iblockstate2, j, 4 + i, 5 - i, structureBoundingBoxIn);
             }
         }
 
@@ -102,7 +101,9 @@ public class ComponentJapariHouse1 extends StructureVillagePieces.Village {
         this.setBlockState(worldIn, iblockstate6, 2, 1, 3, structureBoundingBoxIn);
         this.setBlockState(worldIn, Blocks.WOODEN_PRESSURE_PLATE.getDefaultState(), 2, 2, 3, structureBoundingBoxIn);
         this.setBlockState(worldIn, iblockstate4, 1, 1, 4, structureBoundingBoxIn);
-        this.setBlockState(worldIn, iblockstate7, 2, 1, 4, structureBoundingBoxIn);
+        this.setBlockState(worldIn, Blocks.BOOKSHELF.getDefaultState(), 1, 2, 4, structureBoundingBoxIn);
+        this.setBlockState(worldIn, Blocks.BOOKSHELF.getDefaultState(), 1, 3, 4, structureBoundingBoxIn);
+        this.setBlockState(worldIn, iblockstate1, 2, 1, 4, structureBoundingBoxIn);
         this.setBlockState(worldIn, iblockstate3, 1, 1, 3, structureBoundingBoxIn);
         this.fillWithBlocks(worldIn, structureBoundingBoxIn, 5, 0, 1, 7, 0, 3, Blocks.DOUBLE_STONE_SLAB.getDefaultState(), Blocks.DOUBLE_STONE_SLAB.getDefaultState(), false);
         this.setBlockState(worldIn, Blocks.CRAFTING_TABLE.getDefaultState(), 6, 1, 1, structureBoundingBoxIn);
@@ -113,7 +114,7 @@ public class ComponentJapariHouse1 extends StructureVillagePieces.Village {
         this.createVillageDoor(worldIn, structureBoundingBoxIn, randomIn, 2, 1, 0, EnumFacing.NORTH);
 
         if (this.getBlockStateFromPos(worldIn, 2, 0, -1, structureBoundingBoxIn).getMaterial() == Material.AIR && this.getBlockStateFromPos(worldIn, 2, -1, -1, structureBoundingBoxIn).getMaterial() != Material.AIR) {
-            this.setBlockState(worldIn, iblockstate7, 2, 0, -1, structureBoundingBoxIn);
+            this.setBlockState(worldIn, iblockstate1, 2, 0, -1, structureBoundingBoxIn);
 
             if (this.getBlockStateFromPos(worldIn, 2, -1, -1, structureBoundingBoxIn).getBlock() == Blocks.GRASS_PATH) {
                 this.setBlockState(worldIn, Blocks.GRASS.getDefaultState(), 2, -1, -1, structureBoundingBoxIn);

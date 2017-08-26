@@ -1,26 +1,8 @@
 #
-achievement.japaricraftmod.woodframe=シェルター用ブロック？
-achievement.japaricraftmod.woodframe.desc=木の棒と紙を使って作る
-achievement.japaricraftmod.craft_japariman=じゃぱりまん！
-achievement.japaricraftmod.craft_japariman.desc=自然の味
-achievement.japaricraftmod.craft_japarimancocoa=さらに美味しく
-achievement.japaricraftmod.craft_japarimancocoa.desc=味のトッピング
-achievement.japaricraftmod.eat_starjapariman=エンチャントの力
-achievement.japaricraftmod.eat_starjapariman.desc=すごーい！なにこれなにこれ！？
-achievement.japaricraftmod.drink_wildpotion=やせい
-achievement.japaricraftmod.drink_wildpotion.desc=強力な力
-achievement.japaricraftmod.friend=最初のフレンズ！
-achievement.japaricraftmod.friend.desc=フレンズが好きな食べ物をあげる
-achievement.japaricraftmod.bosscore=機械作りが好きなフレンズ
-achievement.japaricraftmod.bosscore.desc=ラッキービーストのコアを作る
-achievement.japaricraftmod.summonlucky=ラッキービースト
-achievement.japaricraftmod.summonlucky.desc=ラッキービーストにレッドストーンをあげる
-achievement.japaricraftmod.jari=なんのふれんず？
-achievement.japaricraftmod.jari.desc=じゃりじゃりする〜wwww
-
 tile.BlockWoodenFrame.name=木の枠
 tile.SandStarBlock.name=サンドスター
 tile.SandStarOre.name=サンドスター鉱石
+tile.sandstarwater.name=サンドスターの温泉
 
 item.Japariman.name=じゃぱりまん
 item.JaparimanCocoa.name=じゃぱりまんココア味
@@ -80,3 +62,5 @@ advancements.japaricraftmod.curry.title=ほんとにカレー？
 advancements.japaricraftmod.curry.description=カレーを作る
 
 entity.Villager.japaricraftmod.zookeeper=飼育員
+
+fluid.sandstarwater=サンドスターの水
