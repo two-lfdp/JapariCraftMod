@@ -41,8 +41,8 @@ public class Fennec extends EntityTameable {
         this.tasks.addTask(4, new EntityAIMate(this, 1.0D));
         this.tasks.addTask(4, new EntityAITempt(this, 1.05D, JapariItems.japariman, false));
         this.tasks.addTask(5, new EntityAIWander(this, 1.0D));
+        this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
         this.tasks.addTask(6, new EntityAILookIdle(this));
-        this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityPlayer.class, 4.0F));
     }
 
     protected void applyEntityAttributes() {
