@@ -54,7 +54,7 @@ public class JapariCraftMod {
     private static Block blockin;
     //Memo: 変数名は型のクラスがわかり易い名前にしましょう
 
-    @EventHandler
+    @SubscribeEvent
     public void construct(FMLConstructionEvent event) {
         MinecraftForge.EVENT_BUS.register(this);
         JapariFluidCore.register();

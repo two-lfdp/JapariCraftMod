@@ -23,7 +23,7 @@ public class JapariFluidCore {
         if (FMLCommonHandler.instance().getSide().isClient()) {
             ModelLoader.setCustomStateMapper(JapariBlocks.SANDSTARWATERBLOCK, new StateMapperBase() {
                 @Override
-                protected ModelResourceLocation getModelResourceLocation(IBlockState p_178132_1_) {
+                protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
                     return new ModelResourceLocation(new ResourceLocation(JapariCraftMod.MODID, "sandstarwater"), "fluid");
                 }
             });
