@@ -35,7 +35,7 @@ import net.minecraftforge.registries.IForgeRegistry;
 public class JapariCraftMod {
 
     public static final String MODID = "japaricraftmod";
-    public static final String VERSION = "2.7.2";
+    public static final String VERSION = "2.7.3";
     public static final String MODNAME = "JapariCraftMod";
 
 
@@ -50,11 +50,8 @@ public class JapariCraftMod {
     public static JapariCraftMod instance;
     public static final CreativeTabs tabJapariCraft = new TabJapariCraft("JapariCraftTab");
     public static VillagerRegistry.VillagerProfession japariProfession;
-
-    private static Block blockin;
     //Memo: 変数名は型のクラスがわかり易い名前にしましょう
-
-    @SubscribeEvent
+    @EventHandler
     public void construct(FMLConstructionEvent event) {
         MinecraftForge.EVENT_BUS.register(this);
         JapariFluidCore.register();
