@@ -28,6 +28,7 @@ item.Curry.name=カレー
 item.StarCaramel.name=サンドスターキャラメル
 item.GoldenJapariman.name=金りんごいりじゃぱりまん
 item.SandStarLow.name=サンドスターロウ
+item.sandstarbook.name=とあるサンドスター研究者の本
 
 entity.AncientSkeleton.name=古代スケルトン
 entity.KouteiPenguin.name=皇帝ペンギン
@@ -64,3 +65,12 @@ advancements.japaricraftmod.curry.description=カレーを作る
 entity.Villager.japaricraftmod.zookeeper=飼育員
 
 fluid.sandstarwater=サンドスターの水
+
+page.0.name=この本について
+page.0.desc=この本はSandStarやフレンズについてまとめたものです
+page.1.name=サンドスターについて・その1
+page.1.desc=完全に分断された個別の環境を構築できたり永遠に保存できたりするようになっている
+page.2.name=サンドスターについて・その2
+page.2.desc=SandStarLowはまだ今の段階では黒いセルリアンを作り出す物質としかわかっていない
+page.3.name=メモ
+page.3.desc=・・・マターみたいなもの？ それとも・・・

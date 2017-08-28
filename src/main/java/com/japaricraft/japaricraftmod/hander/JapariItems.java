@@ -57,6 +57,7 @@ public class JapariItems {
     public static final Item sandstarpickaxe = new SandStarPickaxe(SandStar);
     public static final Item wildliberationsource = new WildLiberationSource();
     public static final Item wildliberationpotion = new WildLiberationPotion();
+    public static final Item japaribook = new JapariBook();
     public static final Item bosscore = new BossCore();
     public static final Item bearstick = new BearStick(Bearstick);
     public static final Item summonlucky = new SummonLucky();
@@ -95,6 +96,7 @@ public class JapariItems {
         register(registry, sandstarfragment.setRegistryName("sandstar_fragment"));
         register(registry, wildliberationpotion.setRegistryName("wildliberationpotion"));
         register(registry, wildliberationsource.setRegistryName("wildliberationsource"));
+        register(registry, japaribook.setRegistryName("japaribook"));
         register(registry, bosscore.setRegistryName("bosscore"));
         register(registry, bearstick.setRegistryName("bearstick"));
         register(registry, summonlucky.setRegistryName("summonlucky"));
@@ -118,6 +120,7 @@ public class JapariItems {
         registerModel(sandstarshovel,"sandstar_shovel");
         registerModel(wildliberationpotion,"wildliberation_potion");
         registerModel(wildliberationsource,"wildliberation_source");
+        registerModel(japaribook,"japaribook");
         registerModel(bosscore,"bosscore");
         registerModel(bearstick,"bearstick");
         registerModel(summonlucky,"summonlucky");

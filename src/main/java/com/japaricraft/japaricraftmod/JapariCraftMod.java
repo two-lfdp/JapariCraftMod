@@ -1,5 +1,6 @@
 package com.japaricraft.japaricraftmod;
 
+import com.japaricraft.japaricraftmod.gui.JapariGuiHandler;
 import com.japaricraft.japaricraftmod.hander.JapariBlocks;
 import com.japaricraft.japaricraftmod.hander.JapariItems;
 import com.japaricraft.japaricraftmod.mob.*;
@@ -23,6 +24,7 @@ import net.minecraftforge.fml.common.event.FMLConstructionEvent;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.EntityEntry;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.VillagerRegistry;
@@ -35,7 +37,7 @@ import net.minecraftforge.registries.IForgeRegistry;
 public class JapariCraftMod {
 
     public static final String MODID = "japaricraftmod";
-    public static final String VERSION = "2.7.3";
+    public static final String VERSION = "2.8.0";
     public static final String MODNAME = "JapariCraftMod";
 
 
@@ -97,6 +99,7 @@ public class JapariCraftMod {
         {
             JapariRenderingRegistry.registerRenderers();
         }
+        NetworkRegistry.INSTANCE.registerGuiHandler(this, new JapariGuiHandler());
         //メタ情報の登録
         loadMeta();
     }
