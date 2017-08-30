@@ -1,5 +1,6 @@
 package com.japaricraft.japaricraftmod.item;
 
+import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 
@@ -16,8 +17,10 @@ public class StarJapariman extends ItemFood {
         this.setUnlocalizedName("StarJapariman");
         this.setAlwaysEdible();
     }
-
     public boolean hasEffect(ItemStack stack) {
         return true;
+    }
+    public EnumRarity getRarity(ItemStack stack) {
+        return EnumRarity.RARE;
     }
 }

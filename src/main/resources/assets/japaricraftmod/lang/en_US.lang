@@ -17,17 +17,14 @@ item.PumpkinSoup.name=Pumpkin Soup
 item.WildLiberationSource.name=Source of Liberation of Wildness
 item.WildLiberationPotion.name=Potion of Liberation of Wildness
 item.sandstarbook.name=SandStarResearcher`s Book
-item.LuckyBeastCore.name=LuckyBeastCore
-item.Summonluckybeast.name=SummonLuckyBeast
-item.SummonGuardLuckyBeast.name=SummonGuardLuckyBeast
+item.LuckyBeastCore.name=LuckyBeastCore(Unuse)
+item.Summonluckybeast.name=SummonLuckyBeast(Unuse)
 item.Kabanhat.name=Kaban`s Hat
 item.JaparimanApple.name=JaparimanApple
-item.Record_FareWell.name=RecordFareWell
-item.Record_FareWell.desc=KemonoFriends Finalepisode ???
 item.BearStick.name=BearStick
 item.Curry.name=Curry
-item.SandStarLow.name=SandStarLow
-item.StarCaramel.name=StarCaramel
+item.SandStarLow.name=SandStarLow(Unuse)
+item.StarCaramel.name=StarCaramel(Unuse)
 item.GoldenJapariman.name=GoldenJapariman
 
 entity.AncientSkeleton.name=Ancient Skeleton
@@ -71,3 +68,5 @@ page.2.name=About Sand Star Part2
 page.2.desc=SandStar Low is still known only as a substance which produces a black cellian at this stage
 page.3.name=Notes
 page.3.desc=... Something like matters? Or ...
+
+commands.sandstarlocate.usage=/sandstarlocate SandStarDungeon

@@ -1,10 +1,14 @@
 package com.japaricraft.japaricraftmod;
 
+import com.japaricraft.japaricraftmod.command.SandStarStructureCommand;
 import com.japaricraft.japaricraftmod.gui.JapariGuiHandler;
 import com.japaricraft.japaricraftmod.hander.JapariBlocks;
 import com.japaricraft.japaricraftmod.hander.JapariItems;
 import com.japaricraft.japaricraftmod.mob.*;
 import com.japaricraft.japaricraftmod.world.ComponentJapariHouse1;
+import com.japaricraft.japaricraftmod.world.structure.ComponentSandStarDungeon1;
+import com.japaricraft.japaricraftmod.world.structure.SandStarDungeonEventHandler;
+import com.japaricraft.japaricraftmod.world.structure.StructureSandStarDungeonStart;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.passive.EntityVillager;
@@ -23,6 +27,7 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLConstructionEvent;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.EntityEntry;
@@ -99,6 +104,7 @@ public class JapariCraftMod {
         {
             JapariRenderingRegistry.registerRenderers();
         }
+        MinecraftForge.EVENT_BUS.register(new LootTableEventHandler());
         NetworkRegistry.INSTANCE.registerGuiHandler(this, new JapariGuiHandler());
         //メタ情報の登録
         loadMeta();
@@ -111,6 +117,12 @@ public class JapariCraftMod {
         VillagerRegistry villageRegistry = VillagerRegistry.instance();
         VillagerRegistry.instance().registerVillageCreationHandler(new ComponentJapariHouse1.VillageManager());
         MapGenStructureIO.registerStructureComponent(ComponentJapariHouse1.class, "JH1");
+
+        MinecraftForge.EVENT_BUS.register(new SandStarDungeonEventHandler());
+        MapGenStructureIO.registerStructure(StructureSandStarDungeonStart.class, "SandStarDungeon");
+        MapGenStructureIO.registerStructureComponent(ComponentSandStarDungeon1.class, "SD1");
+        //Villagerのレンダー
+
         japariProfession = new VillagerRegistry.VillagerProfession(JapariCraftMod.MODID + ":zookeeper","japaricraftmod:textures/entity/zookeeper.png", "japaricraftmod:textures/entity/zookeeper_zombie.png");
         ForgeRegistries.VILLAGER_PROFESSIONS.register(japariProfession);
         VillagerRegistry.VillagerCareer career_zookeeper = new VillagerRegistry.VillagerCareer(japariProfession, MODID + ".zookeeper");
@@ -131,6 +143,11 @@ public class JapariCraftMod {
                 new EntityVillager.ListItemForEmeralds(JapariItems.sandstarpickaxe, new EntityVillager.PriceInfo(13, 18)),
                 new EntityVillager.ListItemForEmeralds(JapariItems.wildliberationpotion, new EntityVillager.PriceInfo(10, 16))
         );
+    }
+    @EventHandler
+    public void serverStarting(FMLServerStartingEvent event)
+    {
+        event.registerServerCommand(new SandStarStructureCommand());
     }
 
     private void loadMeta() {

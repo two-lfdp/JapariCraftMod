@@ -1,5 +1,6 @@
 package com.japaricraft.japaricraftmod.item;
 
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -9,6 +10,11 @@ import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import javax.annotation.Nullable;
+import java.util.List;
 
 import static com.japaricraft.japaricraftmod.JapariCraftMod.tabJapariCraft;
 
@@ -52,5 +58,16 @@ public class WildLiberationPotion extends ItemFood
     }
     public boolean hasEffect(ItemStack stack) {
         return true;
+    }
+    @SideOnly(Side.CLIENT)
+    public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
+    {
+        tooltip.add(this.getItemInfoLocal());
+    }
+
+    @SideOnly(Side.CLIENT)
+    public String getItemInfoLocal()
+    {
+        return "Cerulean Hunter drinking";
     }
 }
