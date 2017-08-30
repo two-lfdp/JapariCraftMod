@@ -1,6 +1,5 @@
 package com.japaricraft.japaricraftmod;
 
-import com.japaricraft.japaricraftmod.command.SandStarStructureCommand;
 import com.japaricraft.japaricraftmod.gui.JapariGuiHandler;
 import com.japaricraft.japaricraftmod.hander.JapariBlocks;
 import com.japaricraft.japaricraftmod.hander.JapariItems;
@@ -27,7 +26,6 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLConstructionEvent;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.EntityEntry;
@@ -42,7 +40,7 @@ import net.minecraftforge.registries.IForgeRegistry;
 public class JapariCraftMod {
 
     public static final String MODID = "japaricraftmod";
-    public static final String VERSION = "2.8.0";
+    public static final String VERSION = "2.7.4";
     public static final String MODNAME = "JapariCraftMod";
 
 
@@ -118,9 +116,9 @@ public class JapariCraftMod {
         VillagerRegistry.instance().registerVillageCreationHandler(new ComponentJapariHouse1.VillageManager());
         MapGenStructureIO.registerStructureComponent(ComponentJapariHouse1.class, "JH1");
 
-        MinecraftForge.EVENT_BUS.register(new SandStarDungeonEventHandler());
-        MapGenStructureIO.registerStructure(StructureSandStarDungeonStart.class,"SandStarDungeon");
-        MapGenStructureIO.registerStructureComponent(ComponentSandStarDungeon1.class, "SD1");
+        //MinecraftForge.EVENT_BUS.register(new SandStarDungeonEventHandler());
+        //MapGenStructureIO.registerStructure(StructureSandStarDungeonStart.class,"SandStarDungeon");
+        //MapGenStructureIO.registerStructureComponent(ComponentSandStarDungeon1.class, "SD1");
         //Villagerのレンダー
 
         japariProfession = new VillagerRegistry.VillagerProfession(JapariCraftMod.MODID + ":zookeeper","japaricraftmod:textures/entity/zookeeper.png", "japaricraftmod:textures/entity/zookeeper_zombie.png");
@@ -144,12 +142,6 @@ public class JapariCraftMod {
                 new EntityVillager.ListItemForEmeralds(JapariItems.wildliberationpotion, new EntityVillager.PriceInfo(10, 16))
         );
     }
-    @EventHandler
-    public void serverStarting(FMLServerStartingEvent event)
-    {
-        event.registerServerCommand(new SandStarStructureCommand());
-    }
-
     private void loadMeta() {
         metadata.authorList.add("bagu_chan");
         metadata.modId = MODID;

@@ -27,7 +27,6 @@ public class StructureSandStarDungeonStart extends StructureStart {
             StructureComponent structurecomponent = list.remove(k);
             structurecomponent.buildComponent(componentSandStarDungeon1, this.components, par2Random);
         }
-
         // 構造物全体の占有範囲を更新する
         this.updateBoundingBox();
     }

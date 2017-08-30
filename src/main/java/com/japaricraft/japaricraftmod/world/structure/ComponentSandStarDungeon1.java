@@ -20,7 +20,6 @@ import java.util.Random;
 
 public class ComponentSandStarDungeon1 extends StructureComponent {
 
-    private StructureBoundingBox box;
     private EnumFacing facing;
     // 構成パーツリストを記憶するためのリスト
     public List<StructureComponent> structureComponents = new ArrayList();
@@ -30,7 +29,7 @@ public class ComponentSandStarDungeon1 extends StructureComponent {
     public ComponentSandStarDungeon1(int par1, Random par2Random, int par3, int par4) {
         super();
         this.setCoordBaseMode(facing);
-        this.boundingBox = box;
+        this.boundingBox = new StructureBoundingBox();
     }
     @Override
     protected void writeStructureToNBT(NBTTagCompound tagCompound) {
