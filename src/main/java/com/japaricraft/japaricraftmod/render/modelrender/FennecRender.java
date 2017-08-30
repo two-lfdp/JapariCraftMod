@@ -4,7 +4,6 @@ package com.japaricraft.japaricraftmod.render.modelrender;
 import com.japaricraft.japaricraftmod.mob.Fennec;
 import com.japaricraft.japaricraftmod.render.ModelFennec;
 import net.minecraft.client.renderer.entity.RenderLiving;
-import net.minecraft.client.renderer.entity.RenderLivingBase;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
 

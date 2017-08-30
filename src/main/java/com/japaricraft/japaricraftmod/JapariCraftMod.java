@@ -119,7 +119,7 @@ public class JapariCraftMod {
         MapGenStructureIO.registerStructureComponent(ComponentJapariHouse1.class, "JH1");
 
         MinecraftForge.EVENT_BUS.register(new SandStarDungeonEventHandler());
-        MapGenStructureIO.registerStructure(StructureSandStarDungeonStart.class, "SandStarDungeon");
+        MapGenStructureIO.registerStructure(StructureSandStarDungeonStart.class,"SandStarDungeon");
         MapGenStructureIO.registerStructureComponent(ComponentSandStarDungeon1.class, "SD1");
         //Villagerのレンダー
 
