@@ -54,7 +54,6 @@ public class ComponentSandStarDungeon1 extends StructureComponent {
         this.fillWithAir(world, structureboundingbox, 0, 0, 0, 0, 3, 2);
 
         this.fillWithBlocks(world, structureboundingbox, 3, 0, 3, 5, 0, 5, iblockstate,iblockstate, false);
-        this.setBlockState(world, JapariBlocks.SANDSTARWATERBLOCK.getDefaultState(), 4, 0, 4, structureboundingbox);
         this.spawnIllusionillager(world, structureboundingbox, 5, 1, 5);
         return true;
     }
