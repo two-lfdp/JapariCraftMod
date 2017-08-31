@@ -19,5 +19,6 @@ public class JapariRenderingRegistry {
         RenderingRegistry.registerEntityRenderingHandler(Guide.class, GuideRender::new);
         RenderingRegistry.registerEntityRenderingHandler(KouteiPenguin.class, KouteiPenginEntityRender::new);
         RenderingRegistry.registerEntityRenderingHandler(Fennec.class, FennecRender::new);
+        RenderingRegistry.registerEntityRenderingHandler(SandStarHandler.class, SandStarHandlerRender::new);
     }
 }

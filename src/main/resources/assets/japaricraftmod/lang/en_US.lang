@@ -44,6 +44,7 @@ entity.Jariuma.name=Jariuma
 entity.Villager.japalar=Japari Staff
 entity.Araisan.name=Araisan
 entity.Fennec.name=Fennec
+entity.SandStarHandler.name=SandStarHandler
 
 itemGroup.JapariCraftTab=JapariCraft
 
