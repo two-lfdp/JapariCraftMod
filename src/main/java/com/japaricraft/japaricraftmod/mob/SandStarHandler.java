@@ -111,11 +111,8 @@ public class SandStarHandler extends EntitySpellcasterIllager {
             return true;
         } else if (entityIn instanceof EntityVex) {
             return this.isOnSameTeam(((EntityVex) entityIn).getOwner());
-        } else if (entityIn instanceof EntityLivingBase && ((EntityLivingBase) entityIn).getCreatureAttribute() == EnumCreatureAttribute.ILLAGER) {
-            return this.getTeam() == null && entityIn.getTeam() == null;
-        } else {
-            return false;
-        }
+        } else
+            return entityIn instanceof EntityLivingBase && ((EntityLivingBase) entityIn).getCreatureAttribute() == EnumCreatureAttribute.ILLAGER && this.getTeam() == null && entityIn.getTeam() == null;
     }
 
     protected SoundEvent getAmbientSound() {
