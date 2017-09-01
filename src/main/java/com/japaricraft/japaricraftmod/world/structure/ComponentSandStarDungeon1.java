@@ -2,6 +2,7 @@ package com.japaricraft.japaricraftmod.world.structure;
 
 
 import com.japaricraft.japaricraftmod.hander.JapariBlocks;
+import com.japaricraft.japaricraftmod.mob.SandStarHandler;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.monster.EntityIllusionIllager;
@@ -54,8 +55,29 @@ public class ComponentSandStarDungeon1 extends StructureComponent {
         this.fillWithAir(world, structureboundingbox, 0, 0, 0, 0, 3, 2);
 
         this.fillWithBlocks(world, structureboundingbox, 3, 0, 3, 5, 0, 5, iblockstate,iblockstate, false);
+        this.setBlockState(world, JapariBlocks.SANDSTAR_BLOCK.getDefaultState(), 6, 0, 6, structureboundingbox);
         this.spawnIllusionillager(world, structureboundingbox, 5, 1, 5);
         return true;
+    }
+    protected boolean spawnHandler(World worldIn, StructureBoundingBox p_175817_2_, int p_175817_3_, int p_175817_4_, int p_175817_5_)
+    {
+        int i = this.getXWithOffset(p_175817_3_, p_175817_5_);
+        int j = this.getYWithOffset(p_175817_4_);
+        int k = this.getZWithOffset(p_175817_3_, p_175817_5_);
+
+        if (p_175817_2_.isVecInside(new BlockPos(i, j, k)))
+        {
+            SandStarHandler entityhandler = new SandStarHandler(worldIn);
+            entityhandler.heal(entityhandler.getMaxHealth());
+            entityhandler.setLocationAndAngles((double)i + 0.5D, (double)j, (double)k + 0.5D, 0.0F, 0.0F);
+            entityhandler.onInitialSpawn(worldIn.getDifficultyForLocation(new BlockPos(entityhandler)), null);
+            worldIn.spawnEntity(entityhandler);
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
     protected boolean spawnIllusionillager(World worldIn, StructureBoundingBox p_175817_2_, int p_175817_3_, int p_175817_4_, int p_175817_5_)
     {

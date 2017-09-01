@@ -1,11 +1,11 @@
 package com.japaricraft.japaricraftmod.mob;
 
+import com.japaricraft.japaricraftmod.JapariCraftMod;
 import com.japaricraft.japaricraftmod.hander.JapariItems;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
 import com.japaricraft.japaricraftmod.mob.SandStarHandler;
-import net.minecraft.entity.monster.EntityEvoker;
 import net.minecraft.entity.monster.EntityIronGolem;
 import net.minecraft.entity.monster.EntitySpellcasterIllager;
 import net.minecraft.entity.monster.EntityVex;
@@ -27,7 +27,6 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
-import net.minecraft.world.storage.loot.LootTableList;
 
 import javax.annotation.Nullable;
 
@@ -35,6 +34,7 @@ import javax.annotation.Nullable;
 public class SandStarHandler extends EntitySpellcasterIllager {
     private EntitySheep wololoTarget;
 
+    public static final ResourceLocation LOOT_TABLE = new ResourceLocation(JapariCraftMod.MODID, "entitys/sandstarhandler");
     public SandStarHandler(World worldIn) {
         super(worldIn);
         this.setSize(0.6F, 1.95F);
@@ -61,8 +61,8 @@ public class SandStarHandler extends EntitySpellcasterIllager {
     protected void applyEntityAttributes() {
         super.applyEntityAttributes();
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.5D);
-        this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(15.0D);
-        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(60.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(16.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(80.0D);
         this.getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(1D);
     }
 
@@ -86,10 +86,6 @@ public class SandStarHandler extends EntitySpellcasterIllager {
      */
     public void writeEntityToNBT(NBTTagCompound compound) {
         super.writeEntityToNBT(compound);
-    }
-
-    protected ResourceLocation getLootTable() {
-        return LootTableList.ENTITIES_EVOCATION_ILLAGER;
     }
 
     protected void updateAITasks() {
@@ -147,6 +143,10 @@ public class SandStarHandler extends EntitySpellcasterIllager {
         return SoundEvents.EVOCATION_ILLAGER_CAST_SPELL;
     }
 
+    protected ResourceLocation getLootTable()
+    {
+        return LOOT_TABLE;
+    }
     class AIAttackSpell extends AIUseSpell {
         private AIAttackSpell() {
             super();

@@ -1,0 +1,23 @@
+
+{
+  "pools": [
+    {
+      "name": "sandstar",
+      "rolls": 1,
+      "entries": [{
+        "type": "item",
+        "name": "japaricraftmod:sandstar_fragment",
+        "functions": [{ "function": "set_count", "count": { "min": 6, "max": 11 } }]
+      }]
+    },
+    {
+      "name": "sandstarsugar",
+      "rolls": 1,
+      "entries": [{
+        "type": "item",
+        "name": "japaricraftmod:sugarstar",
+        "functions": [{ "function": "set_count", "count": { "min": 2, "max": 6 } }]
+      }]
+    }
+  ]
+}

@@ -8,16 +8,15 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.structure.MapGenStructure;
 import net.minecraft.world.gen.structure.StructureStart;
 
+import javax.annotation.Nullable;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
 public class MapGenSandStarDungeon extends MapGenStructure {
 
-    public Random rand;
-    public static List<Biome> SPAWN_BIOMES = Arrays.asList(Biomes.PLAINS, Biomes.DESERT, Biomes.MESA, Biomes.ROOFED_FOREST);
     private int distance;
-
+    public static List<Biome> SPAWN_BIOMES = Arrays.asList(Biomes.PLAINS, Biomes.DESERT, Biomes.MESA, Biomes.ROOFED_FOREST);
     public MapGenSandStarDungeon(){
         this.distance = 30;
     }
@@ -44,7 +43,7 @@ public class MapGenSandStarDungeon extends MapGenStructure {
 
         int k = chunkX / this.distance;
         int l = chunkZ / this.distance;
-        Random random = this.world.setRandomSeed(k, l, 10387314);
+        Random random = new Random(world.getSeed() + chunkX + chunkZ * 31);
         k = k * this.distance;
         l = l * this.distance;
         k = k + random.nextInt(this.distance - 8);
@@ -54,25 +53,23 @@ public class MapGenSandStarDungeon extends MapGenStructure {
         {
             boolean flag = this.world.getBiomeProvider().areBiomesViable(i * 16 + 8, j * 16 + 8, 0, SPAWN_BIOMES);
 
-            if (flag)
-            {
+            if(flag) {
                 return true;
             }
         }
 
         return false;
     }
+    @Nullable
     @Override
     public BlockPos getNearestStructurePos(World worldIn, BlockPos pos, boolean findUnexplored)
     {
-        this.world = worldIn;
-        return findNearestStructurePosBySpacing(worldIn, this, pos, this.distance, 8, 10387314, false, 100, findUnexplored);
+       return null;
     }
 
     @Override
     protected StructureStart getStructureStart(int i, int j) {
-
-        return new StructureSandStarDungeonStart(world,this.rand, i, j);
+        return new StructureSandStarDungeonStart(this.world,this.rand, i, j);
     }
 
 }

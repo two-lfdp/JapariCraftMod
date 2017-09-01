@@ -149,6 +149,8 @@ public class JapariItems {
                 new ItemStack(goldenjapariman),Items.WHEAT,Items.GOLDEN_APPLE));
         registry.register(RecipeHelper.getShapelessRecipe("japariman",
                 new ItemStack(japariman),Items.WHEAT,Items.SUGAR));
+        registry.register(RecipeHelper.getShapelessRecipe("starjapariman",
+                new ItemStack(starjapariman),Items.WHEAT,JapariItems.sugarstar));
         registry.register(RecipeHelper.getShapelessRecipe("japariman_cocoa",
                 new ItemStack(japarimancocoa),Items.WHEAT,new ItemStack(Items.DYE,1,3)));
         registry.register(RecipeHelper.getSwordRecipe("sandstarsword",
