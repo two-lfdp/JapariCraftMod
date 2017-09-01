@@ -179,7 +179,8 @@ public class SandStarHandler extends EntitySpellcasterIllager {
             } else {
                 for (int l = 0; l < 16; ++l) {
                     double d2 = 1.25D * (double) (l + 1);
-                    int j = 1 * l;
+                    int j;
+                    j = l;
                     this.spawnFangs(SandStarHandler.this.posX + (double) MathHelper.cos(f) * d2, SandStarHandler.this.posZ + (double) MathHelper.sin(f) * d2, d0, d1, f, j);
                 }
             }
@@ -297,18 +298,8 @@ public class SandStarHandler extends EntitySpellcasterIllager {
             super();
         }
 
-        public boolean shouldExecute()
-        {
-            if (SandStarHandler.this.isSpellcasting())
-            {
-                return false;
-            }
-            else if (SandStarHandler.this.ticksExisted < this.spellCooldown)
-            {
-                return false;
-            }else{
-                return true;
-            }
+        public boolean shouldExecute() {
+            return !SandStarHandler.this.isSpellcasting() && SandStarHandler.this.ticksExisted >= this.spellCooldown;
         }
 
         protected int getCastingTime() {
