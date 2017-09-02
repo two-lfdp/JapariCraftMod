@@ -67,7 +67,7 @@ page.1.name=About Sand Star Part1
 page.1.desc=It is designed to be able to build a completely decoupled individual environment and to save forever
 page.2.name=About Sand Star Part2
 page.2.desc=SandStar Low is still known only as a substance which produces a black cellian at this stage
-page.3.name=Notes
-page.3.desc=... Something like matters? Or ...
+page.3.name=Author
+page.3.desc=SandStarResearcher
 
 commands.sandstarlocate.usage=/sandstarlocate SandStarDungeon

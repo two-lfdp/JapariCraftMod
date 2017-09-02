@@ -9,8 +9,10 @@ import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 
@@ -79,6 +81,22 @@ public class Fennec extends EntityTameable {
 
         if (this.isTamed())
         {
+            if (!stack.isEmpty()) {
+                if (stack.getItem() == JapariItems.japariman) {
+                    ItemFood itemfood = (ItemFood) stack.getItem();
+
+                    if (!player.capabilities.isCreativeMode) {
+                        stack.shrink(1);
+                    }
+
+                    this.heal((float) itemfood.getHealAmount(stack));
+                    double d0 = this.rand.nextGaussian() * 0.02D;
+                    double d1 = this.rand.nextGaussian() * 0.02D;
+                    double d2 = this.rand.nextGaussian() * 0.02D;
+                    this.world.spawnParticle(EnumParticleTypes.VILLAGER_HAPPY, this.posX + (double)(this.rand.nextFloat() * this.width * 2.0F) - (double)this.width, this.posY + 0.5D + (double)(this.rand.nextFloat() * this.height), this.posZ + (double)(this.rand.nextFloat() * this.width * 2.0F) - (double)this.width, d0, d1, d2);
+                    return true;
+                }
+            }
             if (this.isOwner(player) && !this.world.isRemote && !this.isBreedingItem(stack))
             {
                 this.aiSit.setSitting(!this.isSitting());

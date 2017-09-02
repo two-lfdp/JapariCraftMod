@@ -5,9 +5,6 @@ import com.japaricraft.japaricraftmod.hander.JapariBlocks;
 import com.japaricraft.japaricraftmod.hander.JapariItems;
 import com.japaricraft.japaricraftmod.mob.*;
 import com.japaricraft.japaricraftmod.world.ComponentJapariHouse1;
-import com.japaricraft.japaricraftmod.world.structure.ComponentSandStarDungeon1;
-import com.japaricraft.japaricraftmod.world.structure.SandStarDungeonEventHandler;
-import com.japaricraft.japaricraftmod.world.structure.StructureSandStarDungeonStart;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.passive.EntityVillager;
@@ -39,7 +36,7 @@ import net.minecraftforge.registries.IForgeRegistry;
 public class JapariCraftMod {
 
     public static final String MODID = "japaricraftmod";
-    public static final String VERSION = "2.7.5";
+    public static final String VERSION = "2.8.0";
     public static final String MODNAME = "JapariCraftMod";
 
 
@@ -112,10 +109,6 @@ public class JapariCraftMod {
         VillagerRegistry villageRegistry = VillagerRegistry.instance();
         VillagerRegistry.instance().registerVillageCreationHandler(new ComponentJapariHouse1.VillageManager());
         MapGenStructureIO.registerStructureComponent(ComponentJapariHouse1.class, "JH1");
-
-        MinecraftForge.EVENT_BUS.register(new SandStarDungeonEventHandler());
-        MapGenStructureIO.registerStructure(StructureSandStarDungeonStart.class,"SandStarDungeon");
-        MapGenStructureIO.registerStructureComponent(ComponentSandStarDungeon1.class, "SD1");
         //Villagerのレンダー
 
         japariProfession = new VillagerRegistry.VillagerProfession(JapariCraftMod.MODID + ":zookeeper","japaricraftmod:textures/entity/zookeeper.png", "japaricraftmod:textures/entity/zookeeper_zombie.png");
