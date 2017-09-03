@@ -226,7 +226,7 @@ public class ModelServal extends ModelBase {
         }
 
         Serval entityServal = (Serval) entityIn;
-        boolean flag = entityIn instanceof EntityLivingBase && ((EntityLivingBase)entityIn).getTicksElytraFlying() > 4;
+        boolean flag = ((EntityLivingBase) entityIn).getTicksElytraFlying() > 4;
         this.head.rotateAngleY = netHeadYaw * 0.017453292F;
 
         if (flag)

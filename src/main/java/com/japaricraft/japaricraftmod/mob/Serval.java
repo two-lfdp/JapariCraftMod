@@ -40,6 +40,8 @@ public class Serval extends EntityTameable {
         super.initEntityAI();
         this.aiSit = new EntityAISit(this);
 
+        this.tasks.addTask(0, new EntityAISwimming(this));
+        this.tasks.addTask(2, this.aiSit);
         this.tasks.addTask(4, new EntityAIAttackMelee(this, 1.0D, true));
         this.tasks.addTask(5, new EntityAIFollowOwner(this, 1.0D, 10.0F, 2.0F));
         this.tasks.addTask(6, new EntityAIMate(this, 1.0D));
