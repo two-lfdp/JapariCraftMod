@@ -201,6 +201,7 @@ public class ModelFennec extends ModelBase {
         this.hair_fh6.addChild(this.shape51);
         this.hand_r.addChild(this.cl_r);
         this.ear_3.addChild(this.ear_5);
+        this.head.addChild(this.ear_3);
         this.head.addChild(this.neck);
         this.head.addChild(this.hair_fh);
         this.tie1.addChild(this.tie1_l2);
@@ -235,8 +236,7 @@ public class ModelFennec extends ModelBase {
     }
 
     @Override
-    public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) { 
-        this.ear_3.render(f5);
+    public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
         this.tail_1.render(f5);
         this.body.render(f5);
     }

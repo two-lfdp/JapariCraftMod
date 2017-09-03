@@ -8,10 +8,12 @@ import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
@@ -38,17 +40,17 @@ public class Serval extends EntityTameable {
         super.initEntityAI();
         this.aiSit = new EntityAISit(this);
 
-        this.tasks.addTask(0, new EntityAISwimming(this));
-        this.tasks.addTask(2, this.aiSit);
         this.tasks.addTask(4, new EntityAIAttackMelee(this, 1.0D, true));
         this.tasks.addTask(5, new EntityAIFollowOwner(this, 1.0D, 10.0F, 2.0F));
         this.tasks.addTask(6, new EntityAIMate(this, 1.0D));
-        this.tasks.addTask(6, new EntityAITempt(this, 1.05D, JapariItems.japariman, false));
         this.tasks.addTask(6, new EntityAIWander(this, 1.0D));
-        this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
+        this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityPlayer.class, 5.0F));
         this.tasks.addTask(7, new EntityAILookIdle(this));
-        this.targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, Cerulean.class, false));
-        this.targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, PoisonCerulean.class, false));
+        this.targetTasks.addTask(1, new EntityAIOwnerHurtByTarget(this));
+        this.targetTasks.addTask(2, new EntityAIOwnerHurtTarget(this));
+        this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
+        this.targetTasks.addTask(4, new EntityAINearestAttackableTarget<>(this, Cerulean.class, false));
+        this.targetTasks.addTask(4, new EntityAINearestAttackableTarget<>(this, PoisonCerulean.class, false));
     }
 
     protected void applyEntityAttributes() {
@@ -105,16 +107,35 @@ public class Serval extends EntityTameable {
             if (!stack.isEmpty()) {
                 if (stack.getItem() == JapariItems.japariman) {
                     ItemFood itemfood = (ItemFood) stack.getItem();
+                    if(this.getHealth()<this.getMaxHealth()) {
+                        if (!player.capabilities.isCreativeMode) {
+                            stack.shrink(1);
+                        }
+
+                        this.heal((float) itemfood.getHealAmount(stack));
+                        for (int i = 0; i < 7; ++i) {
+                            double d0 = this.rand.nextGaussian() * 0.02D;
+                            double d1 = this.rand.nextGaussian() * 0.02D;
+                            double d2 = this.rand.nextGaussian() * 0.02D;
+                            this.world.spawnParticle(EnumParticleTypes.VILLAGER_HAPPY, this.posX + (double) (this.rand.nextFloat() * this.width * 2.0F) - (double) this.width, this.posY + 0.5D + (double) (this.rand.nextFloat() * this.height), this.posZ + (double) (this.rand.nextFloat() * this.width * 2.0F) - (double) this.width, d0, d1, d2);
+                        }
+                        return true;
+                    }
+                }
+                if (stack.getItem() == JapariItems.wildliberationpotion) {
 
                     if (!player.capabilities.isCreativeMode) {
                         stack.shrink(1);
                     }
+                    this.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 1000, 0));
+                    this.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 2400, 0));
 
-                    this.heal((float) itemfood.getHealAmount(stack));
-                    double d0 = this.rand.nextGaussian() * 0.02D;
-                    double d1 = this.rand.nextGaussian() * 0.02D;
-                    double d2 = this.rand.nextGaussian() * 0.02D;
-                    this.world.spawnParticle(EnumParticleTypes.VILLAGER_HAPPY, this.posX + (double)(this.rand.nextFloat() * this.width * 2.0F) - (double)this.width, this.posY + 0.5D + (double)(this.rand.nextFloat() * this.height), this.posZ + (double)(this.rand.nextFloat() * this.width * 2.0F) - (double)this.width, d0, d1, d2);
+                    for (int i = 0; i < 7; ++i) {
+                        double d0 = this.rand.nextGaussian() * 0.02D;
+                        double d1 = this.rand.nextGaussian() * 0.02D;
+                        double d2 = this.rand.nextGaussian() * 0.02D;
+                        this.world.spawnParticle(EnumParticleTypes.CRIT_MAGIC, this.posX + (double) (this.rand.nextFloat() * this.width * 2.0F) - (double) this.width, this.posY + 0.8D + (double) (this.rand.nextFloat() * this.height), this.posZ + (double) (this.rand.nextFloat() * this.width * 2.0F) - (double) this.width, d0, d1, d2);
+                    }
                     return true;
                 }
             }
@@ -159,7 +180,7 @@ public class Serval extends EntityTameable {
     {
         if (this.ticksExisted % 5 == 0)
         {
-            this.heal(0.1F);
+            this.heal(0.05F);
         }
     }
 

@@ -85,17 +85,20 @@ public class Araisan extends EntityTameable {
             if (!stack.isEmpty()) {
                 if (stack.getItem() == JapariItems.japariman) {
                     ItemFood itemfood = (ItemFood) stack.getItem();
+                    if(this.getHealth()<this.getMaxHealth()) {
+                        if (!player.capabilities.isCreativeMode) {
+                            stack.shrink(1);
+                        }
 
-                    if (!player.capabilities.isCreativeMode) {
-                        stack.shrink(1);
+                        this.heal((float) itemfood.getHealAmount(stack));
+                        for (int i = 0; i < 7; ++i) {
+                            double d0 = this.rand.nextGaussian() * 0.02D;
+                            double d1 = this.rand.nextGaussian() * 0.02D;
+                            double d2 = this.rand.nextGaussian() * 0.02D;
+                            this.world.spawnParticle(EnumParticleTypes.VILLAGER_HAPPY, this.posX + (double) (this.rand.nextFloat() * this.width * 2.0F) - (double) this.width, this.posY + 0.5D + (double) (this.rand.nextFloat() * this.height), this.posZ + (double) (this.rand.nextFloat() * this.width * 2.0F) - (double) this.width, d0, d1, d2);
+                        }
+                        return true;
                     }
-
-                    this.heal((float) itemfood.getHealAmount(stack));
-                    double d0 = this.rand.nextGaussian() * 0.02D;
-                    double d1 = this.rand.nextGaussian() * 0.02D;
-                    double d2 = this.rand.nextGaussian() * 0.02D;
-                    this.world.spawnParticle(EnumParticleTypes.VILLAGER_HAPPY, this.posX + (double)(this.rand.nextFloat() * this.width * 2.0F) - (double)this.width, this.posY + 0.5D + (double)(this.rand.nextFloat() * this.height), this.posZ + (double)(this.rand.nextFloat() * this.width * 2.0F) - (double)this.width, d0, d1, d2);
-                    return true;
                 }
             }
             if (this.isOwner(player) && !this.world.isRemote && !this.isBreedingItem(stack))
@@ -143,7 +146,7 @@ public class Araisan extends EntityTameable {
     {
         if (this.ticksExisted % 5 == 0)
         {
-            this.heal(0.12F);
+            this.heal(0.05F);
         }
     }
 
