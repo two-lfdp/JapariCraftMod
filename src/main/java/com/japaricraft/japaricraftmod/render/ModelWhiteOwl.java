@@ -7,6 +7,7 @@ import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.math.MathHelper;
+import org.lwjgl.opengl.GL11;
 
 public class ModelWhiteOwl extends ModelBase {
     private ModelRenderer handA_L;
@@ -121,6 +122,7 @@ public class ModelWhiteOwl extends ModelBase {
         this.body.render(f5);
     }
 
+
     //下は特殊なモデルを動かすのに必須
     public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entityIn)
     {
@@ -204,6 +206,7 @@ public class ModelWhiteOwl extends ModelBase {
         this.handA_R.rotateAngleX += MathHelper.sin(ageInTicks * 0.067F) * 0.05F;
         this.handA_L.rotateAngleX -= MathHelper.sin(ageInTicks * 0.067F) * 0.05F;
 
+        GL11.glTranslatef(0F, 0.3F, 0F);
 
     }
 

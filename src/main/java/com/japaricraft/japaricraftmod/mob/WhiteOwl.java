@@ -40,7 +40,7 @@ public class WhiteOwl extends EntityTameable {
     public WhiteOwl(World worldIn)
     {
         super(worldIn);
-        this.setSize(0.6F, 1.9F);
+        this.setSize(0.6F, 1.88F);
         this.setTamed(false);
     }
     public EntityAgeable createChild(EntityAgeable ageable) {
@@ -85,7 +85,7 @@ public class WhiteOwl extends EntityTameable {
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.29D);
+        this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.25D);
         this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(30.0D);
         this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(30D);
         this.getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(5.0D);

@@ -1,5 +1,6 @@
 package com.japaricraft.japaricraftmod.mob;
 
+import com.google.common.collect.Sets;
 import com.japaricraft.japaricraftmod.hander.JapariItems;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EnumCreatureAttribute;
@@ -7,7 +8,6 @@ import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
@@ -20,13 +20,16 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 
+import java.util.Set;
+
 public class Araisan extends EntityTameable {
 
+    private static final Set<Item> TAME_ITEMS = Sets.newHashSet(JapariItems.japariman,JapariItems.japarimanapple,JapariItems.japarimancocoa);
     private static final DataParameter<Boolean> HAT = EntityDataManager.createKey(Araisan.class, DataSerializers.BOOLEAN);
 
     public Araisan(World worldIn) {
         super(worldIn);
-        this.setSize(0.6F, 1.9F);
+        this.setSize(0.6F, 1.7F);
         this.setTamed(false);
     }
 
@@ -83,7 +86,7 @@ public class Araisan extends EntityTameable {
         if (this.isTamed())
         {
             if (!stack.isEmpty()) {
-                if (stack.getItem() == JapariItems.japariman) {
+                if (this.isOwner(player) && TAME_ITEMS.contains(stack.getItem())) {
                     ItemFood itemfood = (ItemFood) stack.getItem();
                     if(this.getHealth()<this.getMaxHealth()) {
                         if (!player.capabilities.isCreativeMode) {
@@ -107,7 +110,7 @@ public class Araisan extends EntityTameable {
                 return true;
             }
         }
-        else if ( stack != null && stack.getItem() == JapariItems.japariman && player.getDistanceSqToEntity(this) < 22.0D)
+        else if (!this.isTamed() && TAME_ITEMS.contains(stack.getItem()))
         {
             if (!player.capabilities.isCreativeMode)
             {

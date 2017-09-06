@@ -1,5 +1,6 @@
 package com.japaricraft.japaricraftmod.mob;
 
+import com.google.common.collect.Sets;
 import com.japaricraft.japaricraftmod.hander.JapariItems;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.Entity;
@@ -22,10 +23,12 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 
+import java.util.Set;
 
 
 public class Shoebill extends EntityTameable {
 
+    private static final Set<Item> TAME_ITEMS = Sets.newHashSet(JapariItems.japariman,JapariItems.japarimanapple,JapariItems.japarimancocoa);
     private EntityPlayerSP player;
 
     public Shoebill(World worldIn)
@@ -92,7 +95,7 @@ public class Shoebill extends EntityTameable {
         if (this.isTamed())
         {
             if (!stack.isEmpty()) {
-                if (stack.getItem() == JapariItems.japariman) {
+                if (this.isOwner(player) && TAME_ITEMS.contains(stack.getItem())) {
                     ItemFood itemfood = (ItemFood) stack.getItem();
                     if(this.getHealth()<this.getMaxHealth()) {
                         if (!player.capabilities.isCreativeMode) {
@@ -109,22 +112,22 @@ public class Shoebill extends EntityTameable {
                         return true;
                     }
                 }
-            }
-            if (stack.getItem() == JapariItems.wildliberationpotion) {
+                if (stack.getItem() == JapariItems.wildliberationpotion) {
 
-                if (!player.capabilities.isCreativeMode) {
-                    stack.shrink(1);
-                }
-                this.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 1000, 0));
-                this.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 2400, 0));
+                    if (!player.capabilities.isCreativeMode) {
+                        stack.shrink(1);
+                    }
+                    this.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 1000, 0));
+                    this.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 2400, 0));
 
-                for (int i = 0; i < 7; ++i) {
-                    double d0 = this.rand.nextGaussian() * 0.02D;
-                    double d1 = this.rand.nextGaussian() * 0.02D;
-                    double d2 = this.rand.nextGaussian() * 0.02D;
-                    this.world.spawnParticle(EnumParticleTypes.CRIT_MAGIC, this.posX + (double) (this.rand.nextFloat() * this.width * 2.0F) - (double) this.width, this.posY + 0.8D + (double) (this.rand.nextFloat() * this.height), this.posZ + (double) (this.rand.nextFloat() * this.width * 2.0F) - (double) this.width, d0, d1, d2);
+                    for (int i = 0; i < 7; ++i) {
+                        double d0 = this.rand.nextGaussian() * 0.02D;
+                        double d1 = this.rand.nextGaussian() * 0.02D;
+                        double d2 = this.rand.nextGaussian() * 0.02D;
+                        this.world.spawnParticle(EnumParticleTypes.CRIT_MAGIC, this.posX + (double) (this.rand.nextFloat() * this.width * 2.0F) - (double) this.width, this.posY + 0.8D + (double) (this.rand.nextFloat() * this.height), this.posZ + (double) (this.rand.nextFloat() * this.width * 2.0F) - (double) this.width, d0, d1, d2);
+                    }
+                    return true;
                 }
-                return true;
             }
             if (this.isOwner(player) && !this.world.isRemote && !this.isBreedingItem(stack))
             {
@@ -132,7 +135,7 @@ public class Shoebill extends EntityTameable {
                 return true;
             }
         }
-        else if ( stack != null && stack.getItem() == JapariItems.japariman && player.getDistanceSqToEntity(this) < 22.0D)
+        else if (!this.isTamed() && TAME_ITEMS.contains(stack.getItem()))
         {
             if (!player.capabilities.isCreativeMode)
             {

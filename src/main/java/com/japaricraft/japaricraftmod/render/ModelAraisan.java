@@ -6,6 +6,7 @@ import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.math.MathHelper;
+import org.lwjgl.opengl.GL11;
 
 
 public class ModelAraisan extends ModelBase {
@@ -308,7 +309,7 @@ public class ModelAraisan extends ModelBase {
         this.hand_r.rotateAngleX += MathHelper.sin(ageInTicks * 0.067F) * 0.05F;
         this.hand_l.rotateAngleX -= MathHelper.sin(ageInTicks * 0.067F) * 0.05F;
 
-
+        GL11.glTranslatef(0F, 0.4F, 0F);
     }
     /**
      * This is a helper function from Tabula to set the rotation of model parts

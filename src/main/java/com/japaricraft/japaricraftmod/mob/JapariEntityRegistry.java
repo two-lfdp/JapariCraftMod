@@ -41,6 +41,13 @@ public class JapariEntityRegistry {
                 snow_biomes.add(biome);
             }
         }
+        List<Biome> plain_biomes = Lists.newArrayList();
+        for (Biome biome : Biome.REGISTRY) {
+            Set<BiomeDictionary.Type> types = BiomeDictionary.getTypes(biome);
+            if (types.contains(FOREST) &&types.contains(PLAINS) && !types.contains(SNOWY) && !types.contains(NETHER) && !biome.getSpawnableList(EnumCreatureType.CREATURE).isEmpty()) {
+                plain_biomes.add(biome);
+            }
+        }
         List<Biome> forest_biomes = Lists.newArrayList();
         for (Biome biome : Biome.REGISTRY) {
             Set<BiomeDictionary.Type> types = BiomeDictionary.getTypes(biome);
@@ -57,10 +64,10 @@ public class JapariEntityRegistry {
         }
         EntityRegistry.addSpawn(Fennec.class, 7, 1, 3, EnumCreatureType.CREATURE,sandy_biomes.toArray(new Biome[sandy_biomes.size()]));
         EntityRegistry.addSpawn(KouteiPenguin.class, 7, 1, 3, EnumCreatureType.CREATURE,snow_biomes.toArray(new Biome[snow_biomes.size()]));
-        EntityRegistry.addSpawn(Cerulean.class, 15, 2, 5, EnumCreatureType.MONSTER,forest_biomes.toArray(new Biome[forest_biomes.size()]));
+        EntityRegistry.addSpawn(Cerulean.class, 15, 2, 5, EnumCreatureType.MONSTER,plain_biomes.toArray(new Biome[plain_biomes.size()]));
         EntityRegistry.addSpawn(Serval.class, 12, 2, 3, EnumCreatureType.CREATURE, Biome.getBiome(35), Biome.getBiome(36), Biome.getBiome(163));
-        EntityRegistry.addSpawn(Shoebill.class, 12, 2, 3, EnumCreatureType.CREATURE,forest_biomes.toArray(new Biome[forest_biomes.size()]));
-        EntityRegistry.addSpawn(Araisan.class, 12, 2, 3, EnumCreatureType.CREATURE,forest_biomes.toArray(new Biome[forest_biomes.size()]));
+        EntityRegistry.addSpawn(Shoebill.class, 12, 2, 3, EnumCreatureType.CREATURE,plain_biomes.toArray(new Biome[plain_biomes.size()]));
+        EntityRegistry.addSpawn(Araisan.class, 12, 2, 3, EnumCreatureType.CREATURE,plain_biomes.toArray(new Biome[plain_biomes.size()]));
         EntityRegistry.addSpawn(WhiteOwl.class, 12, 1, 3, EnumCreatureType.CREATURE,forest_biomes.toArray(new Biome[forest_biomes.size()]));
         EntityRegistry.addSpawn(BrownOwl.class, 12, 1, 3, EnumCreatureType.CREATURE,forest_biomes.toArray(new Biome[forest_biomes.size()]));
         EntityRegistry.addSpawn(PoisonCerulean.class, 18, 3, 5, EnumCreatureType.MONSTER, Biomes.MUTATED_SWAMPLAND, Biomes.SWAMPLAND, Biomes.ROOFED_FOREST, Biomes.MUTATED_ROOFED_FOREST);

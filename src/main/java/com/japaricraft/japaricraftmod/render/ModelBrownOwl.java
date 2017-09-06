@@ -6,6 +6,7 @@ import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.math.MathHelper;
+import org.lwjgl.opengl.GL11;
 
 public class ModelBrownOwl extends ModelBase {
     private ModelRenderer handA_L;
@@ -203,16 +204,11 @@ public class ModelBrownOwl extends ModelBase {
         this.handA_L.rotateAngleZ -= MathHelper.cos(ageInTicks * 0.09F) * 0.05F + 0.05F;
         this.handA_R.rotateAngleX += MathHelper.sin(ageInTicks * 0.067F) * 0.05F;
         this.handA_L.rotateAngleX -= MathHelper.sin(ageInTicks * 0.067F) * 0.05F;
+        GL11.glTranslatef(0F, 0.3F, 0F);
     }
-
-
-
     public void setRotateAngle(ModelRenderer modelRenderer, float x, float y, float z) {
         modelRenderer.rotateAngleX = x;
         modelRenderer.rotateAngleY = y;
         modelRenderer.rotateAngleZ = z;
     }
-
-
-
 }
