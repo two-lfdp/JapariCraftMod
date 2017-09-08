@@ -34,6 +34,7 @@ public class JapariEntityRegistry {
     }
     public static void addSpawns()
     {
+        //Biomeの種類で湧くように
         List<Biome> snow_biomes = Lists.newArrayList();
         for (Biome biome : Biome.REGISTRY) {
             Set<BiomeDictionary.Type> types = BiomeDictionary.getTypes(biome);
