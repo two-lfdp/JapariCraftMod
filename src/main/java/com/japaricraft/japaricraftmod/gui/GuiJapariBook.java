@@ -26,11 +26,11 @@ public class GuiJapariBook extends GuiScreen {
     private GuiJapariBook.NextPageButton buttonPreviousPage;
     private GuiButton buttonDone;
     private int currPage;
-    private int bookTotalPages = 4;
+    private int bookTotalPages = 5;
 
     public GuiJapariBook(EntityPlayer player) {
         this.player = player;
-        this.bookTotalPages = 4;
+        this.bookTotalPages = 5;
     }
 
 
