@@ -5,6 +5,9 @@ import com.japaricraft.japaricraftmod.hander.JapariBlocks;
 import com.japaricraft.japaricraftmod.hander.JapariItems;
 import com.japaricraft.japaricraftmod.mob.*;
 import com.japaricraft.japaricraftmod.world.ComponentJapariHouse1;
+import com.japaricraft.japaricraftmod.world.structure.ComponentHumanHouse1;
+import com.japaricraft.japaricraftmod.world.structure.HumanHouseEventHandler;
+import com.japaricraft.japaricraftmod.world.structure.StructureHumanHouseStart;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.passive.EntityVillager;
@@ -109,6 +112,10 @@ public class JapariCraftMod {
         VillagerRegistry villageRegistry = VillagerRegistry.instance();
         VillagerRegistry.instance().registerVillageCreationHandler(new ComponentJapariHouse1.VillageManager());
         MapGenStructureIO.registerStructureComponent(ComponentJapariHouse1.class, "JH1");
+
+        MinecraftForge.EVENT_BUS.register(new HumanHouseEventHandler());
+        MapGenStructureIO.registerStructure(StructureHumanHouseStart.class,"HumanHouse");
+        MapGenStructureIO.registerStructureComponent(ComponentHumanHouse1.class, "HH1");
         //Villagerのレンダー
 
         japariProfession = new VillagerRegistry.VillagerProfession(JapariCraftMod.MODID + ":zookeeper","japaricraftmod:textures/entity/zookeeper.png", "japaricraftmod:textures/entity/zookeeper_zombie.png");
