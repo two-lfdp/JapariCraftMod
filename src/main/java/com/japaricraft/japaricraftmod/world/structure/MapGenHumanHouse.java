@@ -16,7 +16,7 @@ import java.util.Random;
 public class MapGenHumanHouse extends MapGenStructure {
 
     private int distance;
-    public static List<Biome> SPAWN_BIOMES = Arrays.asList(Biomes.FOREST, Biomes.BIRCH_FOREST, Biomes.TAIGA);
+    public static List<Biome> SPAWN_BIOMES = Arrays.asList(Biomes.SWAMPLAND,Biomes.MUTATED_SWAMPLAND);
     public MapGenHumanHouse(){
         this.distance = 30;
     }
