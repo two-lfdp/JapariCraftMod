@@ -6,7 +6,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class HumanHouseEventHandler {
 
-    MapGenHumanHouse mapGenSandStarDungeon = new MapGenHumanHouse();
+    private MapGenHumanHouse mapGenSandStarDungeon = new MapGenHumanHouse();
 
 
     @SubscribeEvent

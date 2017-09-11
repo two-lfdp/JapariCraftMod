@@ -159,6 +159,7 @@ public class SandStarHandler extends EntitySpellcasterIllager {
 
         protected void castSpell() {
             EntityLivingBase entitylivingbase = SandStarHandler.this.getAttackTarget();
+            assert entitylivingbase != null;
             double d0 = Math.min(entitylivingbase.posY, SandStarHandler.this.posY);
             double d1 = Math.max(entitylivingbase.posY, SandStarHandler.this.posY) + 1.0D;
             float f = (float) MathHelper.atan2(entitylivingbase.posZ - SandStarHandler.this.posZ, entitylivingbase.posX - SandStarHandler.this.posX);

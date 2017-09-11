@@ -1,13 +1,11 @@
 package com.japaricraft.japaricraftmod.world.structure;
 
-import com.japaricraft.japaricraftmod.JapariCraftMod;
 import com.japaricraft.japaricraftmod.hander.JapariBlocks;
 import com.japaricraft.japaricraftmod.hander.JapariTreasure;
 import com.japaricraft.japaricraftmod.mob.Cerulean;
 import com.japaricraft.japaricraftmod.mob.SandStarHandler;
 import net.minecraft.block.*;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.monster.EntityIllusionIllager;
 import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
@@ -28,7 +26,7 @@ public class ComponentHumanHouse1 extends StructureComponent {
 
     int par1;
     // 構成パーツリストを記憶するためのリスト
-    public List<StructureComponent> structureComponents = new ArrayList();
+    public List<StructureComponent> structureComponents = new ArrayList<>();
 
     public ComponentHumanHouse1() {}
 
@@ -138,7 +136,7 @@ public class ComponentHumanHouse1 extends StructureComponent {
             EntityIllusionIllager entityIllusion = new EntityIllusionIllager(worldIn);
             entityIllusion.heal(entityIllusion.getMaxHealth());
             entityIllusion.setLocationAndAngles((double)i + 0.5D, (double)j, (double)k + 0.5D, 0.0F, 0.0F);
-            entityIllusion.onInitialSpawn(worldIn.getDifficultyForLocation(new BlockPos(entityIllusion)), (IEntityLivingData)null);
+            entityIllusion.onInitialSpawn(worldIn.getDifficultyForLocation(new BlockPos(entityIllusion)), null);
             worldIn.spawnEntity(entityIllusion);
             return true;
         }
