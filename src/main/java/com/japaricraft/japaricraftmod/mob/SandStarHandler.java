@@ -38,7 +38,7 @@ public class SandStarHandler extends EntitySpellcasterIllager {
     public SandStarHandler(World worldIn) {
         super(worldIn);
         this.setSize(0.6F, 1.95F);
-        this.experienceValue = 10;
+        this.experienceValue = 12;
     }
 
     protected void initEntityAI() {
