@@ -1,0 +1,48 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "japaricraftmod:japariman",
+      "japaricraftmod:japariman_apple",
+      "japaricraftmod:japariman_cocoa"
+    ]
+  },
+  "criteria": {
+    "has_wheat": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:wheat"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "japaricraftmod:japariman"
+      }
+    },
+    "has_the_applerecipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "japaricraftmod:japariman_apple"
+      }
+    },
+    "has_the_cocoarecipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "japaricraftmod:japariman_cocoa"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_wheat",
+      "has_the_recipe",
+      "has_the_applerecipe",
+      "has_the_cocoarecipe"
+    ]
+  ]
+}
