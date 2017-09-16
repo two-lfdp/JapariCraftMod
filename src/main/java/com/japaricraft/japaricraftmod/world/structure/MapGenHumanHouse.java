@@ -18,7 +18,7 @@ public class MapGenHumanHouse extends MapGenStructure {
     private int distance;
     private static List<Biome> SPAWN_BIOMES = Arrays.asList(Biomes.SWAMPLAND,Biomes.MUTATED_SWAMPLAND);
     public MapGenHumanHouse(){
-        this.distance = 30;
+        this.distance = 29;
     }
     @Override
     public String getStructureName() {

@@ -72,8 +72,6 @@ public class ComponentHumanHouse1 extends StructureComponent {
         this.fillWithAir(world, structureboundingbox, 0, 1, 1, 0, 2, 2);
         //地下室の作成
         this.fillWithAir(world, structureboundingbox, 1, -8, 1, 8,-4, 8);
-        this.fillWithAir(world, structureboundingbox, 4, -8, 9, 4,-7, 10);
-        this.fillWithBlocks(world, structureboundingbox, 4, -8, 9, 4, -7, 9, iblockstate4,iblockstate4, false);
         this.fillWithBlocks(world, structureboundingbox, 1, -8, 5, 1, 0, 5, iblockstate5,iblockstate5, false);
         //窓
         this.fillWithBlocks(world, structureboundingbox, 6, 2, 2, 6, 3, 4, iblockstate3,iblockstate3, false);
@@ -102,7 +100,6 @@ public class ComponentHumanHouse1 extends StructureComponent {
 
         this.spawnHandler(world, structureboundingbox, 3, -7, 3);
         this.spawnIllusionillager(world, structureboundingbox, 3, 1, 3);
-        this.spawnCelurean(world, structureboundingbox, 4, -8, 10);
         return true;
     }
     protected boolean spawnHandler(World worldIn, StructureBoundingBox p_175817_2_, int p_175817_3_, int p_175817_4_, int p_175817_5_)
@@ -138,26 +135,6 @@ public class ComponentHumanHouse1 extends StructureComponent {
             entityIllusion.setLocationAndAngles((double)i + 0.5D, (double)j, (double)k + 0.5D, 0.0F, 0.0F);
             entityIllusion.onInitialSpawn(worldIn.getDifficultyForLocation(new BlockPos(entityIllusion)), null);
             worldIn.spawnEntity(entityIllusion);
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-    protected boolean spawnCelurean(World worldIn, StructureBoundingBox p_175817_2_, int p_175817_3_, int p_175817_4_, int p_175817_5_)
-    {
-        int i = this.getXWithOffset(p_175817_3_, p_175817_5_);
-        int j = this.getYWithOffset(p_175817_4_);
-        int k = this.getZWithOffset(p_175817_3_, p_175817_5_);
-
-        if (p_175817_2_.isVecInside(new BlockPos(i, j, k)))
-        {
-            Cerulean entitycelurean = new Cerulean(worldIn);
-            entitycelurean.heal(entitycelurean.getMaxHealth());
-            entitycelurean.setLocationAndAngles((double)i + 0.5D, (double)j, (double)k + 0.5D, 0.0F, 0.0F);
-            entitycelurean.onInitialSpawn(worldIn.getDifficultyForLocation(new BlockPos(entitycelurean)), null);
-            worldIn.spawnEntity(entitycelurean);
             return true;
         }
         else
