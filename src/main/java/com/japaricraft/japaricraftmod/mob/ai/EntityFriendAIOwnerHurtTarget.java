@@ -34,6 +34,7 @@ public class EntityFriendAIOwnerHurtTarget extends EntityAITarget
         {
             EntityLivingBase entitylivingbase = this.tameable.getOwner();
 
+            //EntityFriendsのついたフレンズは間違って叩いても攻撃されない
             if (entitylivingbase == null)
             {
                 return false;
