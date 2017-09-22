@@ -69,7 +69,7 @@ public class BrownOwl extends EntityTameable {
     {
         if (this.ticksExisted % 5 == 0)
         {
-            this.heal(0.05F);
+            this.heal(0.06F);
         }
     }
     @Override
