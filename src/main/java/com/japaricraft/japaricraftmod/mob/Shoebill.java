@@ -2,14 +2,11 @@ package com.japaricraft.japaricraftmod.mob;
 
 import com.google.common.collect.Sets;
 import com.japaricraft.japaricraftmod.hander.JapariItems;
-import com.japaricraft.japaricraftmod.mob.ai.EntityFriendAIOwnerHurtTarget;
+import com.japaricraft.japaricraftmod.mob.ai.EntityFriend;
 import net.minecraft.client.entity.EntityPlayerSP;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityAgeable;
-import net.minecraft.entity.EnumCreatureAttribute;
-import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
-import net.minecraft.entity.passive.EntityTameable;
+import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
@@ -24,12 +21,13 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 
+import javax.annotation.Nullable;
 import java.util.Set;
 
 
-public class Shoebill extends EntityFriends {
+public class Shoebill extends EntityFriend {
 
-    private static final Set<Item> TAME_ITEMS = Sets.newHashSet(JapariItems.japariman,JapariItems.japarimanapple,JapariItems.japarimancocoa);
+    private static final Set<Item> TAME_ITEMS = Sets.newHashSet(JapariItems.japariman,JapariItems.japarimanapple,JapariItems.japarimancocoa,JapariItems.japarimanfruit);
     private EntityPlayerSP player;
 
     public Shoebill(World worldIn)
@@ -52,7 +50,13 @@ public class Shoebill extends EntityFriends {
         this.tasks.addTask(8, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
         this.tasks.addTask(8, new EntityAILookIdle(this));
         this.targetTasks.addTask(1, new EntityAIOwnerHurtByTarget(this));
-        this.targetTasks.addTask(2, new EntityFriendAIOwnerHurtTarget(this));
+        this.targetTasks.addTask(2, new EntityAIOwnerHurtTarget(this)
+        {
+            public boolean apply(@Nullable EntityLiving p_apply_1_)
+            {
+                return p_apply_1_ != null && IMob.VISIBLE_MOB_SELECTOR.apply(p_apply_1_) && !(p_apply_1_ instanceof EntityFriend);
+            }
+        });
         this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
         this.targetTasks.addTask(4, new EntityAINearestAttackableTarget<>(this, Cerulean.class, false));
         this.targetTasks.addTask(4, new EntityAINearestAttackableTarget<>(this, PoisonCerulean.class, false));

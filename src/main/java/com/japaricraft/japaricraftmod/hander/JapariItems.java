@@ -45,6 +45,7 @@ public class JapariItems {
     public static final Item japariman = new Japariman();
     public static final Item japarimancocoa = new JaparimanCocoa();
     public static final Item japarimanapple = new JaparimanApple();
+    public static final Item japarimanfruit = new JaparimanFruit();
     public static final Item goldenjapariman = new GoldenJapariman();
     public static final Item curry = new Curry();
     public static final Item starjapariman = new StarJapariman();
@@ -84,6 +85,7 @@ public class JapariItems {
         register(registry, japariman.setRegistryName("japariman"));
         register(registry, japarimancocoa.setRegistryName("japarimancocoa"));
         register(registry, japarimanapple.setRegistryName("japarimanapple"));
+        register(registry, japarimanfruit.setRegistryName("japarimanfruit"));
         register(registry, goldenjapariman.setRegistryName("goldenjapariman"));
         register(registry, curry.setRegistryName("curry"));
         register(registry, starjapariman.setRegistryName("starjapariman"));
@@ -109,6 +111,7 @@ public class JapariItems {
         registerModel(japariman,"japariman");
         registerModel(japarimancocoa,"japariman_cocoa");
         registerModel(japarimanapple,"japariman_apple");
+        registerModel(japarimanfruit,"japariman_fruit");
         registerModel(goldenjapariman,"golden_japariman");
         registerModel(curry,"curry");
         registerModel(starjapariman,"star_japariman");

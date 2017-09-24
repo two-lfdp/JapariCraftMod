@@ -2,6 +2,7 @@ package com.japaricraft.japaricraftmod.mob;
 
 import com.google.common.collect.Sets;
 import com.japaricraft.japaricraftmod.hander.JapariItems;
+import com.japaricraft.japaricraftmod.mob.ai.EntityFriend;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -22,9 +23,9 @@ import net.minecraft.world.World;
 
 import java.util.Set;
 
-public class Araisan extends EntityTameable {
+public class Araisan extends EntityFriend {
 
-    private static final Set<Item> TAME_ITEMS = Sets.newHashSet(JapariItems.japariman,JapariItems.japarimanapple,JapariItems.japarimancocoa);
+    private static final Set<Item> TAME_ITEMS = Sets.newHashSet(JapariItems.japariman,JapariItems.japarimanapple,JapariItems.japarimancocoa,JapariItems.japarimanfruit);
     private static final DataParameter<Boolean> HAT = EntityDataManager.createKey(Araisan.class, DataSerializers.BOOLEAN);
 
     public Araisan(World worldIn) {

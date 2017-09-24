@@ -1,4 +1,4 @@
-package com.japaricraft.japaricraftmod.mob;
+package com.japaricraft.japaricraftmod.mob.ai;
 
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.passive.EntityTameable;
@@ -6,8 +6,8 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
 
-public class EntityFriends extends EntityTameable{
-    public EntityFriends(World worldIn) {
+public class EntityFriend extends EntityTameable{
+    public EntityFriend(World worldIn) {
         super(worldIn);
     }
 

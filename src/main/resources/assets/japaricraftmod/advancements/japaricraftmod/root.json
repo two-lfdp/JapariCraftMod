@@ -43,13 +43,24 @@
           }
         ]
       }
+    },
+    "japarimanfruit": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "japaricraftmod:japarimanfruit"
+          }
+        ]
+      }
     }
   },
   "requirements": [
     [
       "japariman",
       "japarimancocoa",
-      "japarimanapple"
+      "japarimanapple",
+      "japarimanfruit"
     ]
   ]
 }

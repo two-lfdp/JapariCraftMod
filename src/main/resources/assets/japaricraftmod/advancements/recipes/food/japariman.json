@@ -4,7 +4,8 @@
     "recipes": [
       "japaricraftmod:japariman",
       "japaricraftmod:japariman_apple",
-      "japaricraftmod:japariman_cocoa"
+      "japaricraftmod:japariman_cocoa",
+      "japaricraftmod:japarimanfruit"
     ]
   },
   "criteria": {
@@ -35,6 +36,12 @@
       "conditions": {
         "recipe": "japaricraftmod:japariman_cocoa"
       }
+    },
+    "has_the_fruitrecipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "japaricraftmod:japarimanfruit"
+      }
     }
   },
   "requirements": [
@@ -42,7 +49,8 @@
       "has_wheat",
       "has_the_recipe",
       "has_the_applerecipe",
-      "has_the_cocoarecipe"
+      "has_the_cocoarecipe",
+      "has_the_fruitrecipe"
     ]
   ]
 }
