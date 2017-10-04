@@ -192,7 +192,7 @@ public class WhiteOwl extends EntityFriend {
         if (this.isTamed())
         {
             if(player.isSneaking()&&!this.isSitting()){
-                player.openGui(JapariCraftMod.instance,1,this.getEntityWorld(), this.getEntityId(), 0, 0);
+                player.openGui(JapariCraftMod.instance,JapariCraftMod.ID_JAPARI_INVENTORY,this.getEntityWorld(), this.getEntityId(), 0, 0);
             }
             if (!stack.isEmpty()) {
                 if (stack.getItem() == JapariItems.curry) {

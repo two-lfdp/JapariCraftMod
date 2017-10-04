@@ -1,5 +1,5 @@
 {
-    "parent": "japaricraftmod:block/woodenframeblock",
+    "parent": "japaricraftmod:block/woodenbox",
     "display": {
         "thirdperson": {
             "rotation": [ 10, -45, 170 ],

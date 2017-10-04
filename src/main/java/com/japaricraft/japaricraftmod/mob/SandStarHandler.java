@@ -309,7 +309,7 @@ public class SandStarHandler extends EntitySpellcasterIllager {
         }
 
         protected void castSpell() {
-          SandStarHandler.this.addPotionEffect(new PotionEffect(MobEffects.REGENERATION,400,0));
+            SandStarHandler.this.addPotionEffect(new PotionEffect(MobEffects.REGENERATION,400,0));
         }
 
         protected SoundEvent getSpellPrepareSound() {

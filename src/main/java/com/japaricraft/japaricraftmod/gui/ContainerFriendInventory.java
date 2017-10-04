@@ -28,7 +28,7 @@ public class ContainerFriendInventory extends Container
         entityFriend.getInventoryFriendEquipment().openInventory(entityPlayer);
 
         //フレンズの装備スロットを追加する
-        for (index = 0; index < 5; ++index)
+        for (index = 0; index < 2; ++index)
         {
             switch (index)
             {
