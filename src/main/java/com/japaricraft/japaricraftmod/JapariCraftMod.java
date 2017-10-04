@@ -53,6 +53,7 @@ public class JapariCraftMod {
 
     @Mod.Instance(MODID)
     public static JapariCraftMod instance;
+    public static final int ID_JAPARI_INVENTORY = 1;
     public static final CreativeTabs tabJapariCraft = new TabJapariCraft("JapariCraftTab");
     public static VillagerRegistry.VillagerProfession japariProfession;
     public static Biome sandstarbiome;
@@ -116,8 +117,8 @@ public class JapariCraftMod {
         MapGenStructureIO.registerStructureComponent(ComponentJapariHouse1.class, "JH1");
 
         MinecraftForge.EVENT_BUS.register(new HumanHouseEventHandler());
-        MapGenStructureIO.registerStructure(StructureHumanHouseStart.class,"HumanHouse");
-        MapGenStructureIO.registerStructureComponent(ComponentHumanHouse1.class, "HH1");
+        MapGenStructureIO.registerStructure(StructureHumanHouseStart.class,"SandStarDungeon");
+        MapGenStructureIO.registerStructureComponent(ComponentHumanHouse1.class, "SSD1");
         //Villagerのレンダー
 
         japariProfession = new VillagerRegistry.VillagerProfession(JapariCraftMod.MODID + ":zookeeper","japaricraftmod:textures/entity/zookeeper.png", "japaricraftmod:textures/entity/zookeeper_zombie.png");

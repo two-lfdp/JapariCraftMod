@@ -16,13 +16,13 @@ import java.util.Random;
 public class MapGenHumanHouse extends MapGenStructure {
 
     private int distance;
-    private static List<Biome> SPAWN_BIOMES = Arrays.asList(Biomes.SWAMPLAND,Biomes.MUTATED_SWAMPLAND);
+    private static List<Biome> SPAWN_BIOMES = Arrays.asList(Biomes.OCEAN,Biomes.DEEP_OCEAN);
     public MapGenHumanHouse(){
-        this.distance = 29;
+        this.distance = 32;
     }
     @Override
     public String getStructureName() {
-        return "HumanHouse";
+        return "SandStarDungeon";
     }
 
     @Override
