@@ -1,6 +1,7 @@
 package com.japaricraft.japaricraftmod.mob;
 
 
+import com.google.common.collect.Sets;
 import com.japaricraft.japaricraftmod.JapariCraftMod;
 import com.japaricraft.japaricraftmod.gui.FriendMobNBTs;
 import com.japaricraft.japaricraftmod.gui.InventoryFriendEquipment;
@@ -31,10 +32,12 @@ import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
+import java.util.Set;
 
 
 public class WhiteOwl extends EntityFriend {
 
+    private static final Set<Item> TAME_ITEMS = Sets.newHashSet(JapariItems.curry,Items.RABBIT_STEW,Items.MUSHROOM_STEW);
     private InventoryFriendMain inventoryFriendMain;
     private InventoryFriendEquipment inventoryFriendEquipment;
     private EntityPlayerSP player;
@@ -64,8 +67,9 @@ public class WhiteOwl extends EntityFriend {
         this.tasks.addTask(6, new EntityAIMate(this, 1.0D));
         this.tasks.addTask(6, new EntityAIMoveTowardsRestriction(this, 1.0D));
         this.tasks.addTask(8, new EntityAIWanderAvoidWater(this, 1.0D));
-        this.tasks.addTask(9, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
+        this.tasks.addTask(9, new EntityAIWatchClosest2(this, EntityPlayer.class, 6.0F,1.0F));
         this.tasks.addTask(9, new EntityAILookIdle(this));
+        this.tasks.addTask(10, new EntityAIWatchClosest(this, EntityCreature.class, 8.0F));
         this.targetTasks.addTask(1, new EntityAIOwnerHurtByTarget(this));
         this.targetTasks.addTask(2, new EntityAIOwnerHurtTarget(this)
         {
@@ -195,7 +199,7 @@ public class WhiteOwl extends EntityFriend {
                 player.openGui(JapariCraftMod.instance,JapariCraftMod.ID_JAPARI_INVENTORY,this.getEntityWorld(), this.getEntityId(), 0, 0);
             }
             if (!stack.isEmpty()) {
-                if (stack.getItem() == JapariItems.curry) {
+                if (this.isOwner(player) && TAME_ITEMS.contains(stack.getItem())) {
                     ItemFood itemfood = (ItemFood) stack.getItem();
                     if(this.getHealth()<this.getMaxHealth()) {
                         if (!player.capabilities.isCreativeMode) {
@@ -235,7 +239,7 @@ public class WhiteOwl extends EntityFriend {
                 return true;
             }
         }
-        else if (stack.getItem() == JapariItems.curry && player.getDistanceSqToEntity(this) < 30.0D)
+        else if (!this.isTamed() && TAME_ITEMS.contains(stack.getItem()))
         {
             if (!player.capabilities.isCreativeMode)
             {

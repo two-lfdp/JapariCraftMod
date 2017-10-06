@@ -20,8 +20,7 @@ public class LootTableEventHandler {
             LootPool main = event.getTable().getPool("main");
             if (main != null)
             {
-                main.addEntry(new LootEntryItem(JapariItems.sandstarfragment, 12,2 , new LootFunction[0], new LootCondition[0], "japaricraftmod:sandstarfragment"));
-                main.addEntry(new LootEntryItem(JapariItems.japaribook, 10, 1, new LootFunction[0], new LootCondition[0], "japaricraftmod:japaribook"));
+                main.addEntry(new LootEntryItem(JapariItems.sandstarfragment, 10,2 , new LootFunction[0], new LootCondition[0], "japaricraftmod:sandstarfragment"));
             }
         }
         if (event.getName().equals(LootTableList.CHESTS_SPAWN_BONUS_CHEST))
