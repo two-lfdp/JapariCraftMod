@@ -35,6 +35,16 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
 
+/* 
+ * Two テスト
+ * 
+ * コミットテスト
+ * ここに直接書き込んでよいものか
+ * 壊れないのか
+ * コミットされたファイルはどこへ行くのか
+ * まだ魔法に見えるGit どちらかと言うとGix
+ * コミットする前の最初のファイルはどこに保管されるのか
+ */
 
 @Mod(modid = JapariCraftMod.MODID, name = JapariCraftMod.MODNAME, version = JapariCraftMod.VERSION, useMetadata = true,updateJSON = "https://github.com/pentantan/JapariCraftMod/blob/master/src/main/japaricraftmod.json")
 public class JapariCraftMod {
