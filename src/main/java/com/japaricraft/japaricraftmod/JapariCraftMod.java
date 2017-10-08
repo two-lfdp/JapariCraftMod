@@ -38,12 +38,15 @@ import net.minecraftforge.registries.IForgeRegistry;
 /* 
  * Two テスト
  * 
- * コミットテスト
- * ここに直接書き込んでよいものか
- * 壊れないのか
- * コミットされたファイルはどこへ行くのか
- * まだ魔法に見えるGit どちらかと言うとGix
- * コミットする前の最初のファイルはどこに保管されるのか
+ * 第二のテスト
+ * ここに直接書き込んで壊れない
+ * コミットされたファイルは.gitの中
+ * もはや魔法でないGit
+ * 最初のファイルなど保管されず、ただ.gitに差分が記されるのみ
+ * PullとPull Requestは異なるもので、Requestは単なる通知
+ * 
+ * 完了した
+ * 私は全てを悟ったのだ
  */
 
 @Mod(modid = JapariCraftMod.MODID, name = JapariCraftMod.MODNAME, version = JapariCraftMod.VERSION, useMetadata = true,updateJSON = "https://github.com/pentantan/JapariCraftMod/blob/master/src/main/japaricraftmod.json")
